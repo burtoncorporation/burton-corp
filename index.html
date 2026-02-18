@@ -13,19 +13,18 @@
             --color-text: #ffffff; --color-text-muted: #999999; --color-text-subtle: #666666;
             --font-display: 'Cormorant Garamond', serif; --font-body: 'Work Sans', sans-serif;
         }
-        .page-loader { position: fixed; top:0;left:0;width:100%;height:100%; background:var(--color-bg); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 1.5s cubic-bezier(0.4,0,0.2,1),visibility 1.5s cubic-bezier(0.4,0,0.2,1); }
-        .page-loader.hidden { opacity:0; visibility:hidden; }
-        .loader-content { text-align:center; }
-        .loader-logo { font-family:var(--font-display); font-size:2.5rem; font-weight:300; letter-spacing:0.3em; color:var(--color-text); opacity:0; animation:loaderFade 2s ease-in-out forwards; }
-        .loader-line { width:200px; height:1px; background:linear-gradient(90deg,transparent,var(--color-text-muted),transparent); margin:2rem auto 0; opacity:0; animation:loaderLineFade 2s ease-in-out 0.5s forwards; }
+        .page-loader { position:fixed;top:0;left:0;width:100%;height:100%;background:var(--color-bg);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 1.5s cubic-bezier(0.4,0,0.2,1),visibility 1.5s cubic-bezier(0.4,0,0.2,1); }
+        .page-loader.hidden { opacity:0;visibility:hidden; }
+        .loader-logo { font-family:var(--font-display);font-size:2.5rem;font-weight:300;letter-spacing:0.3em;color:var(--color-text);opacity:0;animation:loaderFade 2s ease-in-out forwards; }
+        .loader-line { width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--color-text-muted),transparent);margin:2rem auto 0;opacity:0;animation:loaderLineFade 2s ease-in-out 0.5s forwards; }
         @keyframes loaderFade { 0%{opacity:0;transform:translateY(20px)}50%,100%{opacity:1;transform:translateY(0)} }
         @keyframes loaderLineFade { 0%{opacity:0;transform:scaleX(0)}50%,100%{opacity:1;transform:scaleX(1)} }
         body.loading { overflow:hidden; }
         body.loading .main-content { opacity:0; }
-        .main-content { opacity:0; animation:contentFadeIn 1.8s cubic-bezier(0.4,0,0.2,1) 0.5s forwards; }
+        .main-content { opacity:0;animation:contentFadeIn 1.8s cubic-bezier(0.4,0,0.2,1) 0.5s forwards; }
         @keyframes contentFadeIn { to{opacity:1} }
         *{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth}
-        body { font-family:var(--font-body); background:var(--color-bg); color:var(--color-text); overflow-x:hidden; line-height:1.6; font-weight:300; }
+        body { font-family:var(--font-body);background:var(--color-bg);color:var(--color-text);overflow-x:hidden;line-height:1.6;font-weight:300; }
 
         nav { position:fixed;top:0;width:100%;padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:all 0.9s cubic-bezier(0.4,0,0.2,1); }
         nav.scrolled { background:rgba(10,10,10,0.85);backdrop-filter:blur(30px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.04);padding:1.8rem 5rem; }
@@ -43,6 +42,7 @@
         .section-title h2 { font-family:var(--font-display);font-size:4rem;font-weight:300;letter-spacing:0.12em;margin-bottom:1.5rem; }
         .section-title .subtitle { font-size:0.95rem;color:var(--color-text-muted);letter-spacing:0.2em;text-transform:uppercase;font-weight:300; }
 
+        /* HERO */
         .hero { height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,rgba(20,30,45,0.15) 0%,var(--color-bg) 60%); }
         .hero::before { content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(26,35,50,0.08) 0%,transparent 40%),radial-gradient(circle at 80% 20%,rgba(26,35,50,0.08) 0%,transparent 40%);pointer-events:none;animation:subtleGlow 15s ease-in-out infinite; }
         @keyframes subtleGlow { 0%,100%{opacity:0.3}50%{opacity:0.6} }
@@ -53,34 +53,66 @@
         .scroll-indicator { position:absolute;bottom:5rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeInUp 2s cubic-bezier(0.4,0,0.2,1) forwards 2.8s,float 4s ease-in-out infinite 3.5s; }
         .scroll-line { width:1px;height:70px;background:linear-gradient(to bottom,transparent,var(--color-text-subtle),transparent); }
 
+        /* INTRO */
         .intro { background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface) 50%,var(--color-bg) 100%); }
         .intro-content { max-width:950px;margin:0 auto;text-align:center; }
         .intro-content p { font-size:2.2rem;line-height:2;font-weight:300;font-family:var(--font-display);letter-spacing:0.02em; }
 
+        /* VISION */
         .vision-grid { display:grid;grid-template-columns:1fr 1fr;gap:8rem;max-width:1200px;margin:6rem auto 0; }
         .vision-card { padding:5rem;background:linear-gradient(135deg,rgba(255,255,255,0.015) 0%,rgba(255,255,255,0) 100%);border:1px solid rgba(255,255,255,0.04);transition:all 1.2s cubic-bezier(0.4,0,0.2,1);opacity:0;transform:translateY(60px); }
         .vision-card.reveal { opacity:1;transform:translateY(0); }
-        .vision-card:hover { border-color:rgba(255,255,255,0.1);background:linear-gradient(135deg,rgba(255,255,255,0.03) 0%,rgba(255,255,255,0.005) 100%);transform:translateY(-5px); }
+        .vision-card:hover { border-color:rgba(255,255,255,0.1);transform:translateY(-5px); }
         .vision-card h3 { font-family:var(--font-display);font-size:2.8rem;font-weight:300;margin-bottom:2.5rem;letter-spacing:0.1em; }
         .vision-card p { font-size:1.05rem;line-height:2;color:var(--color-text-muted);font-weight:300; }
 
+        /* BRANCHES INLINE */
+        .branches-section { min-height:auto;display:block;padding:10rem 0;background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface-alt) 30%,var(--color-surface-alt) 70%,var(--color-bg) 100%); }
+        .branches-section .b-header { max-width:1300px;margin:0 auto;padding:0 5rem 4rem; }
+
+        .branches-tabs-inline { display:flex;justify-content:center;border-bottom:1px solid rgba(255,255,255,0.06);padding:0 5rem; }
+        .branch-tab-inline { background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.25);font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.4rem 2.5rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px; }
+        .branch-tab-inline:hover { color:rgba(255,255,255,0.6); }
+        .branch-tab-inline.active { color:rgba(255,255,255,0.9);border-bottom-color:rgba(255,255,255,0.4); }
+
+        .branch-panel-inline { display:none;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards; }
+        .branch-panel-inline.active { display:block; }
+        @keyframes panelReveal { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+
+        .branch-inner { max-width:1300px;margin:0 auto;padding:6rem 5rem; }
+        .branch-inner-grid { display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;margin-bottom:6rem; }
+        .branch-eyebrow-inline { font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;display:block; }
+        .branch-name-inline { font-family:var(--font-display);font-size:5rem;font-weight:300;letter-spacing:0.12em;line-height:1;margin-bottom:2rem; }
+        .branch-tagline-inline { font-size:1rem;color:rgba(255,255,255,0.45);font-weight:300;letter-spacing:0.1em;line-height:1.8;margin-bottom:3rem; }
+        .branch-desc-inline { font-size:1.05rem;color:rgba(255,255,255,0.5);line-height:2.2;font-weight:300;font-family:var(--font-display); }
+        .branch-detail-row { display:flex;gap:2rem;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04); }
+        .branch-detail-key { font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25);min-width:120px;flex-shrink:0;padding-top:2px; }
+        .branch-detail-val { font-size:0.85rem;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.7; }
+        .branch-products-inline-title { font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:2.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.04); }
+        .branch-products-inline-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
+        .branch-product-card { background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:2.5rem 2rem;transition:all 0.5s cubic-bezier(0.4,0,0.2,1); }
+        .branch-product-card:hover { background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);transform:translateY(-4px); }
+        .product-num { font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:rgba(255,255,255,0.06);margin-bottom:1.5rem; }
+        .product-name { font-family:var(--font-display);font-size:1.2rem;font-weight:400;letter-spacing:0.08em;margin-bottom:0.8rem; }
+        .product-desc { font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300; }
+
+        /* PROGRESSION */
         .progression { background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface-alt) 50%,var(--color-bg) 100%); }
         .progression-timeline { max-width:850px;margin:6rem auto 0;position:relative; }
         .progression-timeline::before { content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.08),transparent); }
         .progression-step { padding:3rem 0 3rem 5rem;position:relative;opacity:0;transform:translateX(-40px);transition:all 1.4s cubic-bezier(0.4,0,0.2,1); }
         .progression-step.reveal { opacity:1;transform:translateX(0); }
-        .progression-step::before { content:'';position:absolute;left:-4px;top:50%;transform:translateY(-50%);width:9px;height:9px;background:var(--color-text);border-radius:50%;transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
+        .progression-step::before { content:'';position:absolute;left:-4px;top:50%;transform:translateY(-50%);width:9px;height:9px;background:var(--color-text);border-radius:50%;transition:all 0.8s; }
         .progression-step:hover::before { width:13px;height:13px;left:-6px;box-shadow:0 0 0 8px rgba(255,255,255,0.05); }
         .progression-step h4 { font-family:var(--font-display);font-size:2rem;font-weight:400;margin-bottom:0.8rem;letter-spacing:0.06em; }
         .progression-step p { color:var(--color-text-muted);font-size:1rem;line-height:2; }
 
+        /* SÉLECTION */
         .selection-stats { display:flex;justify-content:center;gap:10rem;max-width:1100px;margin:6rem auto 0; }
         .stat { text-align:center;opacity:0;transform:scale(0.9);transition:all 1.6s cubic-bezier(0.4,0,0.2,1); }
         .stat.reveal { opacity:1;transform:scale(1); }
         .stat-number { font-family:var(--font-display);font-size:6rem;font-weight:300;display:block;margin-bottom:2rem;background:linear-gradient(135deg,#ffffff 0%,#777777 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:0.05em; }
         .stat-label { font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-text-muted);font-weight:300; }
-
-        .procedure { background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface) 50%,var(--color-bg) 100%); }
         .procedure-steps { max-width:1100px;margin:6rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:5rem; }
         .procedure-step { text-align:center;opacity:0;transform:translateY(60px);transition:all 1.5s cubic-bezier(0.4,0,0.2,1); }
         .procedure-step.reveal { opacity:1;transform:translateY(0); }
@@ -89,7 +121,8 @@
         .procedure-step h4 { font-family:var(--font-display);font-size:1.6rem;font-weight:400;margin-bottom:1.8rem;letter-spacing:0.06em; }
         .procedure-step p { color:var(--color-text-muted);font-size:0.95rem;line-height:2; }
 
-        .cta { min-height:100vh;background:radial-gradient(ellipse at 50% 30%,rgba(20,30,45,0.2) 0%,transparent 60%),radial-gradient(ellipse at 50% 70%,rgba(26,35,50,0.15) 0%,transparent 60%); }
+        /* CTA */
+        .cta { min-height:100vh;background:radial-gradient(ellipse at 50% 30%,rgba(20,30,45,0.2) 0%,transparent 60%); }
         .cta-content { text-align:center; }
         .cta h2 { font-family:var(--font-display);font-size:4rem;font-weight:300;margin-bottom:5rem;letter-spacing:0.12em; }
         .cta-button { display:inline-block;padding:1.8rem 5rem;background:transparent;color:var(--color-text);text-decoration:none;border:1px solid rgba(255,255,255,0.15);font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;transition:all 0.9s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;font-weight:300;cursor:pointer; }
@@ -102,45 +135,6 @@
         @keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-15px)} }
         .reveal-element { opacity:0;transform:translateY(60px);transition:all 1.4s cubic-bezier(0.4,0,0.2,1); }
         .reveal-element.reveal { opacity:1;transform:translateY(0); }
-
-        /* BRANCHES */
-        .branches-overlay { position:fixed;inset:0;background:#080808;z-index:45000;opacity:0;visibility:hidden;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.06) transparent; }
-        .branches-overlay::-webkit-scrollbar{width:2px}.branches-overlay::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06)}
-        .branches-overlay.open { opacity:1;visibility:visible; }
-        .branches-header { position:sticky;top:0;padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,8,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.04);z-index:10; }
-        .branches-header-left { display:flex;align-items:center;gap:2rem; }
-        .branches-logo { font-family:var(--font-display);font-size:1.1rem;font-weight:300;letter-spacing:0.35em;color:rgba(255,255,255,0.3); }
-        .branches-title { font-family:var(--font-display);font-size:1rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.6); }
-        .branches-close { background:none;border:none;color:rgba(255,255,255,0.3);font-family:var(--font-body);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:color 0.3s; }
-        .branches-close:hover { color:rgba(255,255,255,0.7); }
-
-        /* TABS — desktop */
-        .branches-tabs { display:flex;padding:0 5rem;border-bottom:1px solid rgba(255,255,255,0.05);overflow-x:auto;scrollbar-width:none; }
-        .branches-tabs::-webkit-scrollbar{display:none}
-        .branch-tab { background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.25);font-family:var(--font-body);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.4rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px; }
-        .branch-tab:hover{color:rgba(255,255,255,0.6)}.branch-tab.active{color:rgba(255,255,255,0.9);border-bottom-color:rgba(255,255,255,0.4)}
-
-        .branch-panel{display:none;animation:stepReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}.branch-panel.active{display:block}
-        @keyframes stepReveal{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
-        .branch-hero{min-height:55vh;display:flex;align-items:flex-end;padding:5rem;position:relative;overflow:hidden}
-        .branch-hero-gradient{position:absolute;inset:0}
-        .branch-hero-content{position:relative;z-index:1;max-width:700px}
-        .branch-eyebrow{font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem}
-        .branch-name{font-family:var(--font-display);font-size:5rem;font-weight:300;letter-spacing:0.12em;line-height:1;margin-bottom:2rem}
-        .branch-tagline{font-size:1rem;color:rgba(255,255,255,0.45);font-weight:300;letter-spacing:0.12em;line-height:1.8}
-        .branch-body{padding:5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1300px;margin:0 auto}
-        .branch-desc{font-size:1.05rem;color:rgba(255,255,255,0.5);line-height:2.2;font-weight:300;font-family:var(--font-display)}
-        .branch-detail-row{display:flex;gap:2rem;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-        .branch-detail-key{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25);min-width:120px;flex-shrink:0;padding-top:2px}
-        .branch-detail-val{font-size:0.85rem;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.7}
-        .branch-products{padding:0 5rem 5rem;max-width:1300px;margin:0 auto}
-        .branch-products-title{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:2.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.04)}
-        .branch-products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-        .branch-product-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:2.5rem 2rem;transition:all 0.5s cubic-bezier(0.4,0,0.2,1)}
-        .branch-product-card:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);transform:translateY(-4px)}
-        .product-num{font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:rgba(255,255,255,0.06);margin-bottom:1.5rem}
-        .product-name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;letter-spacing:0.08em;margin-bottom:0.8rem}
-        .product-desc{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300}
 
         /* MODAL */
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px) saturate(180%);z-index:50000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s cubic-bezier(0.4,0,0.2,1);padding:2rem}
@@ -157,6 +151,7 @@
         .modal-title{font-family:var(--font-display);font-size:2.6rem;font-weight:300;letter-spacing:0.1em;color:var(--color-text)}
         .modal-subtitle{margin-top:0.8rem;font-size:0.85rem;color:var(--color-text-muted);letter-spacing:0.12em;font-weight:300}
         .form-step{display:none;padding:4rem 5rem;animation:stepReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}.form-step.active{display:block}
+        @keyframes stepReveal{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
         .form-group{margin-bottom:3rem}
         .form-label{display:block;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:1rem;font-weight:400}
         .form-label span{color:rgba(255,255,255,0.25);font-size:0.6rem;margin-left:0.4rem;text-transform:none;letter-spacing:0}
@@ -202,54 +197,20 @@
         .analyzing-text{font-size:0.8rem;letter-spacing:0.2em;color:var(--color-text-muted);text-transform:uppercase}
         .analyzing-dots::after{content:'';animation:dots 1.5s steps(4,end) infinite}
         @keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
-
         body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.015;pointer-events:none;z-index:10000}
 
-        @media(max-width:1024px){nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}.nav-links{gap:2.5rem}.hero h1{font-size:4.5rem}.vision-grid,.procedure-steps{grid-template-columns:1fr;gap:4rem}.selection-stats{flex-direction:column;gap:5rem}section{padding:8rem 3rem}.section-title h2{font-size:3.2rem}}
-
+        @media(max-width:1024px){nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}.nav-links{gap:2.5rem}.hero h1{font-size:4.5rem}.vision-grid,.procedure-steps{grid-template-columns:1fr;gap:4rem}.selection-stats{flex-direction:column;gap:5rem}section{padding:8rem 3rem}.section-title h2{font-size:3.2rem}.branch-inner{padding:4rem 3rem}.branch-inner-grid{gap:4rem}.branches-tabs-inline{padding:0 3rem}.branches-section .b-header{padding:0 3rem 4rem}}
         @media(max-width:768px){
             .hero h1{font-size:3.5rem}.nav-links{display:none}.cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}
-            .modal-header,.form-step,.modal-footer{padding-left:2.5rem;padding-right:2.5rem}
-            .modal-close{right:2.5rem}.modal-title{font-size:2rem;padding-right:4rem}.form-grid-2{grid-template-columns:1fr}
-            .branch-hero{padding:3rem 2rem;min-height:40vh}.branch-name{font-size:3rem}
-            .branch-body{grid-template-columns:1fr;gap:3rem;padding:3rem 2rem}
-            .branch-products{padding:0 2rem 3rem}.branch-products-grid{grid-template-columns:1fr}
-
-            /* Header branches mobile */
-            .branches-header{padding:1.5rem 1.5rem}
-            .branches-title{display:none}
-
-            /* TABS MOBILE : grille 2x3 fixe, toujours visible */
-            .branches-tabs{
-                display:grid;
-                grid-template-columns:repeat(3,1fr);
-                padding:0;
-                border-bottom:1px solid rgba(255,255,255,0.05);
-                overflow-x:visible;
-                gap:0;
-            }
-            .branch-tab{
-                padding:1rem 0.5rem;
-                font-size:0.55rem;
-                letter-spacing:0.18em;
-                text-align:center;
-                border-bottom:2px solid transparent;
-                border-right:1px solid rgba(255,255,255,0.04);
-                margin-bottom:0;
-                width:100%;
-            }
-            .branch-tab:last-child{border-right:none}
-            .branch-tab.active{
-                color:rgba(255,255,255,0.9);
-                border-bottom-color:rgba(255,255,255,0.4);
-                background:rgba(255,255,255,0.03);
-            }
+            .modal-header,.form-step,.modal-footer{padding-left:2.5rem;padding-right:2.5rem}.modal-close{right:2.5rem}.modal-title{font-size:2rem;padding-right:4rem}.form-grid-2{grid-template-columns:1fr}
+            .branch-inner{padding:3rem 2rem}.branch-inner-grid{grid-template-columns:1fr;gap:3rem}.branch-products-inline-grid{grid-template-columns:1fr}.branch-name-inline{font-size:3rem}
+            .branches-section .b-header{padding:0 2rem 3rem}
+            .branches-tabs-inline{display:grid;grid-template-columns:repeat(3,1fr);padding:0;gap:0}
+            .branch-tab-inline{padding:1rem 0.4rem;font-size:0.55rem;letter-spacing:0.15em;text-align:center;border-bottom:2px solid transparent;border-right:1px solid rgba(255,255,255,0.04);width:100%;margin-bottom:0}
+            .branch-tab-inline:last-child{border-right:none}
+            .branch-tab-inline.active{background:rgba(255,255,255,0.03)}
         }
-
-        @media(max-width:480px){
-            .hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}.intro-content p{font-size:1.2rem}.stat-number{font-size:3rem}.cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
-            .branch-tab{font-size:0.5rem;letter-spacing:0.12em;padding:0.9rem 0.3rem}
-        }
+        @media(max-width:480px){.hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}.intro-content p{font-size:1.2rem}.stat-number{font-size:3rem}.cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}.branch-tab-inline{font-size:0.48rem;padding:0.9rem 0.2rem}}
     </style>
 </head>
 <body class="loading">
@@ -259,14 +220,15 @@
         <nav id="navbar">
             <a href="#" class="logo">BURTON</a>
             <ul class="nav-links">
-                <li><a href="#vision" class="nav-link">Vision</a></li>
-                <li><a href="#" id="branchesNavLink" class="nav-link">Branches</a></li>
-                <li><a href="#progression" class="nav-link">Progression</a></li>
-                <li><a href="#selection" class="nav-link">Sélection</a></li>
-                <li><a href="#rejoindre" class="nav-link">Rejoindre</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#branches">Branches</a></li>
+                <li><a href="#progression">Progression</a></li>
+                <li><a href="#selection">Sélection</a></li>
+                <li><a href="#rejoindre">Rejoindre</a></li>
             </ul>
         </nav>
 
+        <!-- HERO -->
         <section class="hero" id="hero">
             <div class="hero-content">
                 <h1>BURTON CORPORATION</h1>
@@ -275,13 +237,17 @@
             <div class="scroll-indicator"><div class="scroll-line"></div></div>
         </section>
 
+        <!-- INTRO -->
         <section class="intro" id="intro">
             <div class="container">
                 <span class="section-number reveal-element">01 — Introduction</span>
-                <div class="intro-content reveal-element"><p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu'une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d'une maison spécialisée — Burton Watch pour l'horlogerie, Burton Parfum pour l'univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d'œuvres audiovisuelles. Cette organisation repose sur une logique simple : permettre à la création de s'exprimer librement sans être enfermée dans un seul domaine, tout en conservant une cohérence esthétique et philosophique forte. Burton Corporation agit donc comme un socle, un lieu d'origine où les disciplines se rencontrent et dialoguent, transformant chaque nouvelle idée en une branche identifiable, indépendante dans sa pratique mais unifiée par un même langage, une même exigence et une même signature. À travers cette structure, la création devient un écosystème plutôt qu'un produit isolé : chaque maison explore un territoire particulier — le temps, le parfum, le style, le goût, l'image — mais toutes participent à une recherche commune autour de l'identité, de la précision et de l'expérience humaine. Burton Corporation incarne ainsi une vision globale de la création contemporaine, où l'acte de concevoir dépasse les frontières traditionnelles entre art, design et objet, pour construire un univers cohérent capable d'évoluer, de s'étendre et de se réinventer continuellement.</p></div>
+                <div class="intro-content reveal-element">
+                    <p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu'une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d'une maison spécialisée — Burton Watch pour l'horlogerie, Burton Parfum pour l'univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d'œuvres audiovisuelles.</p>
+                </div>
             </div>
         </section>
 
+        <!-- VISION -->
         <section class="vision" id="vision">
             <div class="container">
                 <span class="section-number reveal-element">02 — Vision</span>
@@ -293,10 +259,103 @@
             </div>
         </section>
 
+        <!-- BRANCHES -->
+        <section class="branches-section" id="branches">
+            <div class="b-header">
+                <span class="section-number reveal-element">03 — Branches</span>
+                <div class="section-title reveal-element"><h2>Nos Branches</h2></div>
+            </div>
+            <div class="branches-tabs-inline">
+                <button class="branch-tab-inline active" data-panel="watch">Watch</button>
+                <button class="branch-tab-inline" data-panel="parfum">Parfum</button>
+                <button class="branch-tab-inline" data-panel="clothes">Clothes</button>
+                <button class="branch-tab-inline" data-panel="chocolate">Chocolate</button>
+                <button class="branch-tab-inline" data-panel="production">Production</button>
+            </div>
+            <div class="branches-panels">
+                <!-- WATCH -->
+                <div class="branch-panel-inline active" id="panel-watch">
+                    <div class="branch-inner">
+                        <div class="branch-inner-grid">
+                            <div><span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><div class="branch-name-inline">Watch</div><div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div></div>
+                            <div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div>
+                        </div>
+                        <div class="branch-products-inline-title">Collections</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PARFUM -->
+                <div class="branch-panel-inline" id="panel-parfum">
+                    <div class="branch-inner">
+                        <div class="branch-inner-grid">
+                            <div><span class="branch-eyebrow-inline">Burton — Division Olfactive</span><div class="branch-name-inline">Parfum</div><div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div></div>
+                            <div><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div>
+                        </div>
+                        <div class="branch-products-inline-title">Fragrances</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CLOTHES -->
+                <div class="branch-panel-inline" id="panel-clothes">
+                    <div class="branch-inner">
+                        <div class="branch-inner-grid">
+                            <div><span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><div class="branch-name-inline">Clothes</div><div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div></div>
+                            <div><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div>
+                        </div>
+                        <div class="branch-products-inline-title">Pièces Signature</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CHOCOLATE -->
+                <div class="branch-panel-inline" id="panel-chocolate">
+                    <div class="branch-inner">
+                        <div class="branch-inner-grid">
+                            <div><span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><div class="branch-name-inline">Chocolate</div><div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div></div>
+                            <div><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div></div>
+                        </div>
+                        <div class="branch-products-inline-title">Créations</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PRODUCTION -->
+                <div class="branch-panel-inline" id="panel-production">
+                    <div class="branch-inner">
+                        <div class="branch-inner-grid">
+                            <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
+                            <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+                        </div>
+                        <div class="branch-products-inline-title">Activités</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRESSION -->
         <section class="progression" id="progression">
             <div class="container">
-                <span class="section-number reveal-element">03 — Progression</span>
-                <div class="section-title reveal-element"><h2>Parcours Interne</h2><p class="subtitle">Une trajectoire définie par le mérite ( qui varie en fonction de la branche )</p></div>
+                <span class="section-number reveal-element">04 — Progression</span>
+                <div class="section-title reveal-element"><h2>Parcours Interne</h2><p class="subtitle">Une trajectoire définie par le mérite</p></div>
                 <div class="progression-timeline">
                     <div class="progression-step"><h4>Stagiaire</h4><p>Point d'entrée initial, période d'observation et d'apprentissage des fondamentaux de l'organisation.</p></div>
                     <div class="progression-step"><h4>Employé</h4><p>Intégration complète aux équipes opérationnelles avec responsabilités définies et objectifs mesurables.</p></div>
@@ -307,21 +366,15 @@
             </div>
         </section>
 
+        <!-- SÉLECTION -->
         <section class="selection" id="selection">
             <div class="container">
-                <span class="section-number reveal-element">04 — Sélection</span>
+                <span class="section-number reveal-element">05 — Sélection</span>
                 <div class="section-title reveal-element"><h2>Excellence par la Sélectivité</h2></div>
                 <div class="selection-stats">
                     <div class="stat"><span class="stat-number">10 000+</span><span class="stat-label">Candidatures par an</span></div>
                     <div class="stat"><span class="stat-number">24</span><span class="stat-label">Candidats retenus</span></div>
                 </div>
-            </div>
-        </section>
-
-        <section class="procedure" id="procedure">
-            <div class="container">
-                <span class="section-number reveal-element">05 — Procédure</span>
-                <div class="section-title reveal-element"><h2>Processus de Sélection</h2><p class="subtitle">Trois étapes vers l'excellence</p></div>
                 <div class="procedure-steps">
                     <div class="procedure-step"><div class="step-number">01</div><h4>Questionnaire de Sélection</h4><p>Évaluation initiale des compétences, motivations et alignement avec les valeurs de Burton Corporation.</p></div>
                     <div class="procedure-step"><div class="step-number">02</div><h4>Entretien avec le Fondateur</h4><p>Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression.</p></div>
@@ -330,6 +383,7 @@
             </div>
         </section>
 
+        <!-- REJOINDRE -->
         <section class="cta" id="rejoindre">
             <div class="container">
                 <div class="cta-content reveal-element">
@@ -398,89 +452,49 @@
         </div>
     </div>
 
-    <!-- BRANCHES -->
-    <div class="branches-overlay" id="branchesOverlay">
-        <div class="branches-header"><div class="branches-header-left"><span class="branches-logo">BURTON</span><span class="branches-title">Nos Branches</span></div><button class="branches-close" id="branchesClose">Fermer ×</button></div>
-        <div class="branches-tabs"><button class="branch-tab active" data-branch="watch">Watch</button><button class="branch-tab" data-branch="parfum">Parfum</button><button class="branch-tab" data-branch="clothes">Clothes</button><button class="branch-tab" data-branch="chocolate">Chocolate</button><button class="branch-tab" data-branch="production">Production</button></div>
-        <div class="branches-content">
-            <div class="branch-panel active" id="branch-watch"><div class="branch-hero"><div class="branch-hero-gradient" style="background:linear-gradient(135deg,rgba(180,160,100,0.04) 0%,transparent 60%),linear-gradient(to top,#080808 30%,transparent 100%)"></div><div class="branch-hero-content"><div class="branch-eyebrow">Burton — Division Horlogerie</div><div class="branch-name">Watch</div><div class="branch-tagline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div></div></div><div class="branch-body"><div class="branch-desc">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div><div class="branch-details"><div class="branch-detail-row"><span class="branch-detail-key">Fondée</span><span class="branch-detail-val">Division inaugurée en seconde année d'existence de Burton Corp.</span></div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div></div><div class="branch-products" style="max-width:1300px;margin:0 auto"><div class="branch-products-title">Collections</div><div class="branch-products-grid"><div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div><div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div><div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div></div></div></div>
-            <div class="branch-panel" id="branch-parfum"><div class="branch-hero"><div class="branch-hero-gradient" style="background:linear-gradient(135deg,rgba(160,120,180,0.04) 0%,transparent 60%),linear-gradient(to top,#080808 30%,transparent 100%)"></div><div class="branch-hero-content"><div class="branch-eyebrow">Burton — Division Olfactive</div><div class="branch-name">Parfum</div><div class="branch-tagline">Une présence que l'on ressent avant même de vous voir.</div></div></div><div class="branch-body"><div class="branch-desc">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div><div class="branch-details"><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Nez</span><span class="branch-detail-val">Compositions élaborées par un maître parfumeur indépendant</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div></div><div class="branch-products" style="max-width:1300px;margin:0 auto"><div class="branch-products-title">Fragrances</div><div class="branch-products-grid"><div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div><div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div><div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div></div></div></div>
-            <div class="branch-panel" id="branch-clothes"><div class="branch-hero"><div class="branch-hero-gradient" style="background:linear-gradient(135deg,rgba(100,140,180,0.04) 0%,transparent 60%),linear-gradient(to top,#080808 30%,transparent 100%)"></div><div class="branch-hero-content"><div class="branch-eyebrow">Burton — Division Vestimentaire</div><div class="branch-name">Clothes</div><div class="branch-tagline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div></div></div><div class="branch-body"><div class="branch-desc">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div><div class="branch-details"><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Production</span><span class="branch-detail-val">Ateliers européens certifiés, confection à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div></div><div class="branch-products" style="max-width:1300px;margin:0 auto"><div class="branch-products-title">Pièces Signature</div><div class="branch-products-grid"><div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection. Une seule version, pour toujours.</div></div><div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div><div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres de rang Co-directeur et au-delà.</div></div></div></div></div>
-            <div class="branch-panel" id="branch-chocolate"><div class="branch-hero"><div class="branch-hero-gradient" style="background:linear-gradient(135deg,rgba(140,90,50,0.05) 0%,transparent 60%),linear-gradient(to top,#080808 30%,transparent 100%)"></div><div class="branch-hero-content"><div class="branch-eyebrow">Burton — Division Gastronomique</div><div class="branch-name">Chocolate</div><div class="branch-tagline">Le luxe qui se consomme. La perfection, éphémère par design.</div></div></div><div class="branch-body"><div class="branch-desc">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes et confections sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div><div class="branch-details"><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Packaging</span><span class="branch-detail-val">Papier japonais noir gaufré, scellé à la cire Burton</span></div></div></div><div class="branch-products" style="max-width:1300px;margin:0 auto"><div class="branch-products-title">Créations</div><div class="branch-products-grid"><div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div><div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais qui refusent la médiocrité.</div></div><div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration officielle.</div></div></div></div></div>
-            <div class="branch-panel" id="branch-production"><div class="branch-hero"><div class="branch-hero-gradient" style="background:linear-gradient(135deg,rgba(80,120,100,0.04) 0%,transparent 60%),linear-gradient(to top,#080808 30%,transparent 100%)"></div><div class="branch-hero-content"><div class="branch-eyebrow">Burton — Division Créative</div><div class="branch-name">Production</div><div class="branch-tagline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div></div></div><div class="branch-body"><div class="branch-desc">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div><div class="branch-details"><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Output</span><span class="branch-detail-val">Contenu exclusif, campagnes internes, archives visuelles</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div></div><div class="branch-products" style="max-width:1300px;margin:0 auto"><div class="branch-products-title">Activités</div><div class="branch-products-grid"><div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div><div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div><div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration, sessions de direction et rencontres annuelles de Burton Corp.</div></div></div></div></div>
-        </div>
-    </div>
-
     <script>
-        // LOADER
         window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
-
-        // NAV
         const navbar=document.getElementById('navbar');
         window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>100));
-
-        // SCROLL REVEAL
-        const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:0.1,rootMargin:'0px 0px -120px 0px'});
+        const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
         document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el=>obs.observe(el));
-
-        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
-
-        // STAGGERED
         document.querySelectorAll('.progression-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.2}s`);
         document.querySelectorAll('.procedure-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.25}s`);
         document.querySelectorAll('.vision-card').forEach((el,i)=>el.style.transitionDelay=`${i*0.3}s`);
         document.querySelectorAll('.stat').forEach((el,i)=>el.style.transitionDelay=`${i*0.4}s`);
-
-        // PARALLAX
         let ticking=false;
         window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
-
-        // BRANCHES
-        document.getElementById('branchesNavLink').addEventListener('click',e=>{e.preventDefault();document.getElementById('branchesOverlay').classList.add('open');document.body.style.overflow='hidden'});
-        document.getElementById('branchesClose').addEventListener('click',()=>{document.getElementById('branchesOverlay').classList.remove('open');document.body.style.overflow=''});
-        document.querySelectorAll('.branch-tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.branch-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.branch-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById('branch-'+tab.dataset.branch).classList.add('active');document.getElementById('branchesOverlay').scrollTo({top:0,behavior:'smooth'})}));
-
-        // MODAL
+        document.querySelectorAll('.branch-tab-inline').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.branch-panel-inline').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById('panel-'+tab.dataset.panel).classList.add('active')})});
         const TOTAL_STEPS=4;let currentStep=1;
         const modal=document.getElementById('applicationModal'),progressBar=document.getElementById('progressBar'),stepIndicator=document.getElementById('stepIndicator'),modalTitle=document.getElementById('modalTitle'),modalSubtitle=document.getElementById('modalSubtitle'),modalFooter=document.getElementById('modal-footer'),successScreen=document.getElementById('modal-success');
         const stepMeta=[{title:'Informations Personnelles',subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},{title:'Motivation & Valeurs',subtitle:'Exprimez ce qui vous anime et votre adéquation avec notre culture.'},{title:'Expérience & Aptitudes',subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},{title:'Engagement & Finalisation',subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'}];
-
         function buildRating(id){const c=document.getElementById(id);for(let i=1;i<=10;i++){const b=document.createElement('button');b.type='button';b.classList.add('rating-btn');b.textContent=i;b.dataset.value=i;b.addEventListener('click',()=>{c.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});c.appendChild(b)}}
         buildRating('rating-equipe');buildRating('rating-pression');
-
         function openModal(){modal.classList.add('open');document.body.style.overflow='hidden';goToStep(1)}
         function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
         document.getElementById('openApplication').addEventListener('click',openModal);
         document.getElementById('closeModal').addEventListener('click',closeModal);
         modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-        document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();document.getElementById('branchesOverlay').classList.remove('open');document.body.style.overflow=''}});
-
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
         function goToStep(n){
             document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
-            successScreen.classList.remove('active');
-            currentStep=n;
+            successScreen.classList.remove('active');currentStep=n;
             if(n<=TOTAL_STEPS){
                 document.getElementById(`step-${n}`).classList.add('active');
                 stepIndicator.textContent=`Étape ${n} sur ${TOTAL_STEPS}`;
-                modalTitle.textContent=stepMeta[n-1].title;
-                modalSubtitle.textContent=stepMeta[n-1].subtitle;
+                modalTitle.textContent=stepMeta[n-1].title;modalSubtitle.textContent=stepMeta[n-1].subtitle;
                 progressBar.style.width=`${((n-1)/TOTAL_STEPS)*100}%`;
                 document.getElementById('btnPrev').disabled=(n===1);
                 document.getElementById('btnNext').textContent=(n===TOTAL_STEPS)?'Soumettre ma candidature →':'Continuer →';
                 modalFooter.style.display='flex';
             }else{
-                progressBar.style.width='100%';
-                successScreen.classList.add('active');
-                modalFooter.style.display='none';
-                stepIndicator.textContent='Traitement en cours…';
-                modalTitle.textContent='';modalSubtitle.textContent='';
-                document.getElementById('success-analyzing').style.display='block';
-                document.getElementById('success-final').style.display='none';
+                progressBar.style.width='100%';successScreen.classList.add('active');modalFooter.style.display='none';
+                stepIndicator.textContent='Traitement en cours…';modalTitle.textContent='';modalSubtitle.textContent='';
+                document.getElementById('success-analyzing').style.display='block';document.getElementById('success-final').style.display='none';
             }
             modal.querySelector('.modal').scrollTo({top:0,behavior:'smooth'});
         }
-
         function validateStep(n){
             const step=document.getElementById(`step-${n}`);let valid=true;
             step.querySelectorAll('[required]').forEach(f=>{f.style.borderColor='';if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false}});
@@ -489,8 +503,6 @@
             if(!valid){const m=modal.querySelector('.modal');m.style.transform='translateX(-8px)';setTimeout(()=>{m.style.transition='transform 0.4s ease';m.style.transform=''},100)}
             return valid;
         }
-
-        // CONFIG
         const GOOGLE_SHEET_URL='https://script.google.com/macros/s/AKfycbwLlBylC344mWSkO4ybEuqbMweYNOmJaU5cgsUzSPehK-68XBAPpRt7yORIopooWLqNjA/exec';
         const GOOGLE_SHEET_REJECTED_URL='https://script.google.com/macros/s/AKfycbxgQ8LwLwjMWCKSliFhiOYivE38ugOdx-UzR9ulUpdmrVtb3uIlcao1Y0sc4Lc4Mr77PA/exec';
         const ALLOWED_NAT=['fr','be','ch','ca','lu','de','es','it','pt','nl','gb','pl','ro'];
@@ -498,53 +510,31 @@
         const natL={fr:'Française',be:'Belge',ch:'Suisse',ca:'Canadienne',lu:'Luxembourgeoise',ma:'Marocaine',dz:'Algérienne',tn:'Tunisienne',sn:'Sénégalaise',ci:'Ivoirienne',cm:'Camerounaise',ml:'Malienne',gn:'Guinéenne',cd:'Congolaise (RDC)',ga:'Gabonaise',de:'Allemande',es:'Espagnole',it:'Italienne',pt:'Portugaise',nl:'Néerlandaise',gb:'Britannique',pl:'Polonaise',ro:'Roumaine',us:'Américaine',br:'Brésilienne',other:'Autre'};
         const dispoL={'<5':'< 5h / sem','5-10':'5–10h / sem','10-20':'10–20h / sem','>20':'20h+ / sem'};
         const valeurL={reussite:'Réussite',progres:'Progrès',excellence:'Excellence',loyaute:'Loyauté'};
-
         async function submitApplication(){
-            const age=parseInt(document.getElementById('f-age')?.value||0);
-            const nat=document.getElementById('f-nationalite')?.value||'';
-            const dispo=document.getElementById('f-disponibilite')?.value||'';
-            const prenom=document.getElementById('f-prenom')?.value.trim()||'';
-            const nom=document.getElementById('f-nom')?.value.trim()||'';
-            const email=document.getElementById('f-email')?.value.trim()||'';
+            const age=parseInt(document.getElementById('f-age')?.value||0),nat=document.getElementById('f-nationalite')?.value||'',dispo=document.getElementById('f-disponibilite')?.value||'';
+            const prenom=document.getElementById('f-prenom')?.value.trim()||'',nom=document.getElementById('f-nom')?.value.trim()||'',email=document.getElementById('f-email')?.value.trim()||'';
             const ref='BC-'+Date.now().toString(36).toUpperCase().slice(-6);
-
             if(age<18||!ALLOWED_NAT.includes(nat)||!ALLOWED_DISPO.includes(dispo)){
                 try{const d=new FormData();d.append('reference',ref);d.append('nom',nom);d.append('prenom',prenom);d.append('email',email);d.append('raison',age<18?'Âge < 18':!ALLOWED_NAT.includes(nat)?'Nationalité hors liste':'Disponibilité insuffisante');await fetch(GOOGLE_SHEET_REJECTED_URL,{method:'POST',body:d})}catch(e){}
                 showSuccess(ref);return;
             }
-
             try{
                 const d=new FormData();
-                d.append('timestamp',new Date().toLocaleString('fr-FR'));d.append('reference',ref);
-                d.append('prenom',prenom);d.append('nom',nom);d.append('age',age);d.append('email',email);
+                d.append('timestamp',new Date().toLocaleString('fr-FR'));d.append('reference',ref);d.append('prenom',prenom);d.append('nom',nom);d.append('age',age);d.append('email',email);
                 d.append('nationalite',natL[nat]||nat);d.append('disponibilite',dispoL[dispo]||dispo);
                 d.append('valeur',valeurL[document.querySelector('input[name="valeur"]:checked')?.value]||'—');
-                d.append('motivation',document.getElementById('f-motivation')?.value.trim()||'');
-                d.append('apport',document.getElementById('f-apport')?.value.trim()||'');
-                d.append('objectif',document.getElementById('f-objectif')?.value.trim()||'');
-                d.append('defi',document.getElementById('f-defi')?.value.trim()||'');
-                d.append('experience',document.getElementById('f-experience')?.value||'');
-                d.append('detailExp',document.getElementById('f-detail-exp')?.value.trim()||'');
-                const rE=document.querySelector('#rating-equipe .rating-btn.selected');
-                const rP=document.querySelector('#rating-pression .rating-btn.selected');
-                d.append('ratingEquipe',rE?rE.dataset.value+'/10':'—');
-                d.append('ratingPression',rP?rP.dataset.value+'/10':'—');
+                d.append('motivation',document.getElementById('f-motivation')?.value.trim()||'');d.append('apport',document.getElementById('f-apport')?.value.trim()||'');
+                d.append('objectif',document.getElementById('f-objectif')?.value.trim()||'');d.append('defi',document.getElementById('f-defi')?.value.trim()||'');
+                d.append('experience',document.getElementById('f-experience')?.value||'');d.append('detailExp',document.getElementById('f-detail-exp')?.value.trim()||'');
+                const rE=document.querySelector('#rating-equipe .rating-btn.selected'),rP=document.querySelector('#rating-pression .rating-btn.selected');
+                d.append('ratingEquipe',rE?rE.dataset.value+'/10':'—');d.append('ratingPression',rP?rP.dataset.value+'/10':'—');
                 d.append('competences',[...document.querySelectorAll('input[name="competence"]:checked')].map(c=>c.value).join(', ')||'—');
-                d.append('comment',document.getElementById('f-comment')?.value||'—');
-                d.append('statut','new');
+                d.append('comment',document.getElementById('f-comment')?.value||'—');d.append('statut','new');
                 await fetch(GOOGLE_SHEET_URL,{method:'POST',body:d});
             }catch(e){console.error(e)}
-
             showSuccess(ref);
         }
-
-        function showSuccess(ref){
-            document.getElementById('success-analyzing').style.display='none';
-            document.getElementById('success-final').style.display='block';
-            document.getElementById('success-ref').textContent=`Référence — ${ref}`;
-            stepIndicator.textContent='Candidature envoyée';
-        }
-
+        function showSuccess(ref){document.getElementById('success-analyzing').style.display='none';document.getElementById('success-final').style.display='block';document.getElementById('success-ref').textContent=`Référence — ${ref}`;stepIndicator.textContent='Candidature envoyée';}
         (function(){
             const b=document.getElementById('btnNext'),nb=b.cloneNode(true);b.parentNode.replaceChild(nb,b);
             nb.addEventListener('click',async()=>{if(validateStep(currentStep)){if(currentStep===TOTAL_STEPS){goToStep(currentStep+1);await submitApplication()}else goToStep(currentStep+1)}});
