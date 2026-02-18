@@ -1,7 +1,3 @@
-
-Burton corporation · HTML
-Copier
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -3548,12 +3544,18 @@ Copier
     }
 
     // ========================================
-    // CONFIG — Remplace par tes vraies clés
+    // CONFIG GOOGLE SHEETS
+    // ========================================
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwLlBylC344mWSkO4ybEuqbMweYNOmJaU5cgsUzSPehK-68XBAPpRt7yORIopooWLqNjA/exec';
+    const GOOGLE_SHEETS_ENABLED = true; // ✅ Activé — les candidatures vont dans Google Sheets
+
+    // ========================================
+    // CONFIG EMAILJS
     // ========================================
     const EMAILJS_PUBLIC_KEY  = 'cI12kdK1EJZEsQQRO';
     const EMAILJS_SERVICE_ID  = 'service_c6ka75f';
     const EMAILJS_TEMPLATE_ID = 'template_9q6yprl';
-    const EMAILJS_ENABLED     = false;
+    const EMAILJS_ENABLED     = false; // Désactivé pour gestion manuelle
 
     // ========================================
     // HOOK — Intercept form submission (async)
@@ -3709,6 +3711,45 @@ Réponds UNIQUEMENT en JSON strict (sans markdown) avec ce format exact :
             aiScore, aiReason
         };
 
+        // ── 6b. Envoyer vers Google Sheets ──────────────────────────
+        if (GOOGLE_SHEETS_ENABLED) {
+            try {
+                const sheetData = new FormData();
+                sheetData.append('timestamp', new Date(app.ts).toLocaleString('fr-FR'));
+                sheetData.append('reference', app.ref);
+                sheetData.append('prenom', app.prenom);
+                sheetData.append('nom', app.nom);
+                sheetData.append('age', app.age);
+                sheetData.append('email', app.email);
+                sheetData.append('nationalite', natLabels[app.nationalite] || app.nationalite);
+                sheetData.append('disponibilite', dispoLabels[app.dispo] || app.dispo);
+                sheetData.append('valeur', valeurLabels[app.valeur] || app.valeur);
+                sheetData.append('motivation', app.motivation);
+                sheetData.append('apport', app.apport);
+                sheetData.append('objectif', app.objectif);
+                sheetData.append('defi', app.defi);
+                sheetData.append('experience', app.experience);
+                sheetData.append('detailExp', app.detailExp);
+                sheetData.append('ratingEquipe', app.ratingEquipe ? app.ratingEquipe + '/10' : '—');
+                sheetData.append('ratingPression', app.ratingPression ? app.ratingPression + '/10' : '—');
+                sheetData.append('competences', app.competences.join(', ') || '—');
+                sheetData.append('comment', app.comment || '—');
+                sheetData.append('aiScore', app.aiScore !== null ? app.aiScore + '/100' : '—');
+                sheetData.append('aiReason', app.aiReason || '—');
+                sheetData.append('statut', app.status);
+
+                await fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    body: sheetData
+                });
+
+                console.log('✓ Candidature enregistrée dans Google Sheets');
+            } catch (sheetErr) {
+                console.error('✗ Google Sheets error:', sheetErr.message);
+            }
+        }
+
+        // ── 6c. Save to localStorage (backup local) ──────────────────
         const stored = JSON.parse(localStorage.getItem('bc_applications') || '[]');
         stored.push(app);
         localStorage.setItem('bc_applications', JSON.stringify(stored));
