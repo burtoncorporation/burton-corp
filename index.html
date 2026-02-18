@@ -802,6 +802,95 @@
                 font-size: 14px;
             }
 
+            /* Mobile burger menu */
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                width: 24px;
+                height: 20px;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .mobile-menu-btn span {
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: var(--color-text);
+                position: absolute;
+                left: 0;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-menu-btn span:nth-child(1) { top: 0; }
+            .mobile-menu-btn span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+            .mobile-menu-btn span:nth-child(3) { bottom: 0; }
+
+            .mobile-menu-btn.open span:nth-child(1) {
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+            }
+
+            .mobile-menu-btn.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.open span:nth-child(3) {
+                bottom: 50%;
+                transform: translateY(50%) rotate(-45deg);
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10,10,10,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.4s ease, visibility 0.4s ease;
+            }
+
+            .nav-links.open {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links li {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .nav-links.open li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .nav-links.open li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.open li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-links.open li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-links.open li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-links.open li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-links.open li:nth-child(6) { transition-delay: 0.35s; }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                letter-spacing: 0.15em;
+            }
+
             .hero {
                 min-height: 80vh;
                 padding: 2rem 1.5rem;
@@ -2359,13 +2448,18 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="#" class="logo">BURTON</a>
-        <ul class="nav-links">
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#progression">Progression</a></li>
-            <li><a href="#selection">Sélection</a></li>
-            <li><a href="#rejoindre">Rejoindre</a></li>
-            <li><a href="#" id="branchesNavLink">Branches</a></li>
-            <li><a href="#" id="adminNavLink" style="color:rgba(255,255,255,0.12);font-size:0.6rem;letter-spacing:0.3em;" title="Espace interne">&#9670;</a></li>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" style="display:none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#vision" class="nav-link">Vision</a></li>
+            <li><a href="#progression" class="nav-link">Progression</a></li>
+            <li><a href="#selection" class="nav-link">Sélection</a></li>
+            <li><a href="#rejoindre" class="nav-link">Rejoindre</a></li>
+            <li><a href="#" id="branchesNavLink" class="nav-link">Branches</a></li>
+            <li><a href="#" id="adminNavLink" class="nav-link" style="color:rgba(255,255,255,0.12);font-size:0.6rem;letter-spacing:0.3em;" title="Espace interne">&#9670;</a></li>
         </ul>
     </nav>
 
@@ -2456,7 +2550,7 @@
                     <span class="stat-label">Candidatures par an</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">15</span>
+                    <span class="stat-number">24</span>
                     <span class="stat-label">Candidats retenus</span>
                 </div>
             </div>
@@ -2797,6 +2891,31 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // ========================================
+        // MOBILE MENU
+        // ========================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('open');
+                navLinks.classList.toggle('open');
+                document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (!link.id.includes('admin') && !link.id.includes('branches')) {
+                        mobileMenuBtn.classList.remove('open');
+                        navLinks.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        }
 
         // Smooth scroll reveal with Intersection Observer
         const observerOptions = {
@@ -3405,7 +3524,7 @@
     // ========================================
     // ADMIN PANEL
     // ========================================
-    const ADMIN_PIN = '1234'; // ← Modifier ce code PIN
+    const ADMIN_PIN = '0310'; // ← Modifier ce code PIN
     const ALLOWED_NATIONALITIES = ['fr','be','ch','ca','lu','de','es','it','pt','nl','gb','pl','ro'];
     const ALLOWED_DISPO = ['>20'];
 
