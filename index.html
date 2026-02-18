@@ -113,10 +113,13 @@
         .branches-title { font-family:var(--font-display);font-size:1rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.6); }
         .branches-close { background:none;border:none;color:rgba(255,255,255,0.3);font-family:var(--font-body);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:color 0.3s; }
         .branches-close:hover { color:rgba(255,255,255,0.7); }
+
+        /* TABS — desktop */
         .branches-tabs { display:flex;padding:0 5rem;border-bottom:1px solid rgba(255,255,255,0.05);overflow-x:auto;scrollbar-width:none; }
         .branches-tabs::-webkit-scrollbar{display:none}
         .branch-tab { background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.25);font-family:var(--font-body);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;padding:1.4rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px; }
         .branch-tab:hover{color:rgba(255,255,255,0.6)}.branch-tab.active{color:rgba(255,255,255,0.9);border-bottom-color:rgba(255,255,255,0.4)}
+
         .branch-panel{display:none;animation:stepReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}.branch-panel.active{display:block}
         @keyframes stepReveal{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
         .branch-hero{min-height:55vh;display:flex;align-items:flex-end;padding:5rem;position:relative;overflow:hidden}
@@ -203,8 +206,50 @@
         body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.015;pointer-events:none;z-index:10000}
 
         @media(max-width:1024px){nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}.nav-links{gap:2.5rem}.hero h1{font-size:4.5rem}.vision-grid,.procedure-steps{grid-template-columns:1fr;gap:4rem}.selection-stats{flex-direction:column;gap:5rem}section{padding:8rem 3rem}.section-title h2{font-size:3.2rem}}
-        @media(max-width:768px){.hero h1{font-size:3.5rem}.nav-links{display:none}.cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}.modal-header,.form-step,.modal-footer{padding-left:2.5rem;padding-right:2.5rem}.modal-close{right:2.5rem}.modal-title{font-size:2rem;padding-right:4rem}.form-grid-2{grid-template-columns:1fr}.branch-hero{padding:3rem 2rem;min-height:40vh}.branch-name{font-size:3rem}.branch-body{grid-template-columns:1fr;gap:3rem;padding:3rem 2rem}.branch-products{padding:0 2rem 3rem}.branch-products-grid{grid-template-columns:1fr}.branches-header{padding:1.8rem 2rem}.branches-tabs{padding:0 2rem}}
-        @media(max-width:480px){.hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}.intro-content p{font-size:1.2rem}.stat-number{font-size:3rem}.cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}}
+
+        @media(max-width:768px){
+            .hero h1{font-size:3.5rem}.nav-links{display:none}.cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}
+            .modal-header,.form-step,.modal-footer{padding-left:2.5rem;padding-right:2.5rem}
+            .modal-close{right:2.5rem}.modal-title{font-size:2rem;padding-right:4rem}.form-grid-2{grid-template-columns:1fr}
+            .branch-hero{padding:3rem 2rem;min-height:40vh}.branch-name{font-size:3rem}
+            .branch-body{grid-template-columns:1fr;gap:3rem;padding:3rem 2rem}
+            .branch-products{padding:0 2rem 3rem}.branch-products-grid{grid-template-columns:1fr}
+
+            /* Header branches mobile */
+            .branches-header{padding:1.5rem 1.5rem}
+            .branches-title{display:none}
+
+            /* TABS MOBILE : grille 2x3 fixe, toujours visible */
+            .branches-tabs{
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                padding:0;
+                border-bottom:1px solid rgba(255,255,255,0.05);
+                overflow-x:visible;
+                gap:0;
+            }
+            .branch-tab{
+                padding:1rem 0.5rem;
+                font-size:0.55rem;
+                letter-spacing:0.18em;
+                text-align:center;
+                border-bottom:2px solid transparent;
+                border-right:1px solid rgba(255,255,255,0.04);
+                margin-bottom:0;
+                width:100%;
+            }
+            .branch-tab:last-child{border-right:none}
+            .branch-tab.active{
+                color:rgba(255,255,255,0.9);
+                border-bottom-color:rgba(255,255,255,0.4);
+                background:rgba(255,255,255,0.03);
+            }
+        }
+
+        @media(max-width:480px){
+            .hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}.intro-content p{font-size:1.2rem}.stat-number{font-size:3rem}.cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
+            .branch-tab{font-size:0.5rem;letter-spacing:0.12em;padding:0.9rem 0.3rem}
+        }
     </style>
 </head>
 <body class="loading">
@@ -233,7 +278,7 @@
         <section class="intro" id="intro">
             <div class="container">
                 <span class="section-number reveal-element">01 — Introduction</span>
-                <div class="intro-content reveal-element"><p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu’une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d’une maison spécialisée — Burton Watch pour l’horlogerie, Burton Parfum pour l’univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d’œuvres audiovisuelles. Cette organisation repose sur une logique simple : permettre à la création de s’exprimer librement sans être enfermée dans un seul domaine, tout en conservant une cohérence esthétique et philosophique forte. Burton Corporation agit donc comme un socle, un lieu d’origine où les disciplines se rencontrent et dialoguent, transformant chaque nouvelle idée en une branche identifiable, indépendante dans sa pratique mais unifiée par un même langage, une même exigence et une même signature. À travers cette structure, la création devient un écosystème plutôt qu’un produit isolé : chaque maison explore un territoire particulier — le temps, le parfum, le style, le goût, l’image — mais toutes participent à une recherche commune autour de l’identité, de la précision et de l’expérience humaine. Burton Corporation incarne ainsi une vision globale de la création contemporaine, où l’acte de concevoir dépasse les frontières traditionnelles entre art, design et objet, pour construire un univers cohérent capable d’évoluer, de s’étendre et de se réinventer continuellement.</p></div>
+                <div class="intro-content reveal-element"><p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu'une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d'une maison spécialisée — Burton Watch pour l'horlogerie, Burton Parfum pour l'univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d'œuvres audiovisuelles. Cette organisation repose sur une logique simple : permettre à la création de s'exprimer librement sans être enfermée dans un seul domaine, tout en conservant une cohérence esthétique et philosophique forte. Burton Corporation agit donc comme un socle, un lieu d'origine où les disciplines se rencontrent et dialoguent, transformant chaque nouvelle idée en une branche identifiable, indépendante dans sa pratique mais unifiée par un même langage, une même exigence et une même signature. À travers cette structure, la création devient un écosystème plutôt qu'un produit isolé : chaque maison explore un territoire particulier — le temps, le parfum, le style, le goût, l'image — mais toutes participent à une recherche commune autour de l'identité, de la précision et de l'expérience humaine. Burton Corporation incarne ainsi une vision globale de la création contemporaine, où l'acte de concevoir dépasse les frontières traditionnelles entre art, design et objet, pour construire un univers cohérent capable d'évoluer, de s'étendre et de se réinventer continuellement.</p></div>
             </div>
         </section>
 
