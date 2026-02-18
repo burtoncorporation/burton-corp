@@ -796,6 +796,140 @@
             }
         }
 
+        /* MOBILE TRÈS PETITS ÉCRANS (iPhone, Android) */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                letter-spacing: 0.15em;
+            }
+
+            nav {
+                padding: 1.2rem 1.5rem;
+            }
+
+            nav.scrolled {
+                padding: 1rem 1.5rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+                min-height: auto;
+            }
+
+            .section-number {
+                font-size: 0.6rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .section-title .subtitle {
+                font-size: 0.75rem;
+            }
+
+            .intro-content p {
+                font-size: 1.2rem;
+                line-height: 1.7;
+            }
+
+            .vision-card {
+                padding: 2rem;
+            }
+
+            .vision-card h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .vision-card p {
+                font-size: 0.9rem;
+            }
+
+            .progression-step {
+                padding: 2rem 0 2rem 3rem;
+            }
+
+            .progression-step h4 {
+                font-size: 1.4rem;
+            }
+
+            .progression-step p {
+                font-size: 0.85rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .procedure-step {
+                padding: 2rem 1.5rem;
+            }
+
+            .step-number {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .procedure-step h4 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .procedure-step p {
+                font-size: 0.8rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .cta-button {
+                padding: 1.2rem 2.5rem;
+                font-size: 0.65rem;
+            }
+
+            .cta-disclaimer {
+                font-size: 0.65rem;
+                margin-top: 3rem;
+            }
+
+            .scroll-indicator {
+                bottom: 3rem;
+            }
+
+            .scroll-line {
+                height: 50px;
+            }
+        }
+
         /* Smooth reveal effect */
         .reveal-element {
             opacity: 0;
@@ -2322,7 +2456,7 @@
                     <span class="stat-label">Candidatures par an</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">24</span>
+                    <span class="stat-number">15</span>
                     <span class="stat-label">Candidats retenus</span>
                 </div>
             </div>
@@ -3271,7 +3405,7 @@
     // ========================================
     // ADMIN PANEL
     // ========================================
-    const ADMIN_PIN = '0310'; // ← Modifier ce code PIN
+    const ADMIN_PIN = '1234'; // ← Modifier ce code PIN
     const ALLOWED_NATIONALITIES = ['fr','be','ch','ca','lu','de','es','it','pt','nl','gb','pl','ro'];
     const ALLOWED_DISPO = ['>20'];
 
