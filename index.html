@@ -1,6 +1,3 @@
-Burton corporation · HTML
-Copier
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -3551,6 +3548,9 @@ Copier
     // ========================================
     const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwLlBylC344mWSkO4ybEuqbMweYNOmJaU5cgsUzSPehK-68XBAPpRt7yORIopooWLqNjA/exec';
     const GOOGLE_SHEETS_ENABLED = true; // ✅ Activé — les candidatures vont dans Google Sheets
+    
+    const GOOGLE_SHEET_REJECTED_URL = 'https://script.google.com/macros/s/AKfycbxgQ8LwLwjMWCKSliFhiOYivE38ugOdx-UzR9ulUpdmrVtb3uIlcao1Y0sc4Lc4Mr77PA/exec';
+    const REJECTED_SHEETS_ENABLED = true; // ✅ Activé — les candidatures rejetées vont dans un 2e Sheet
 
     // ========================================
     // CONFIG EMAILJS
@@ -3633,6 +3633,27 @@ Copier
         const passDispo = ALLOWED_DISPO.includes(dispoVal);
 
         if (!passAge || !passNat || !passDispo) {
+            // ── 4b. Envoyer les candidatures rejetées dans un 2e Sheet ───
+            if (REJECTED_SHEETS_ENABLED) {
+                try {
+                    const rejectedData = new FormData();
+                    rejectedData.append('reference', ref);
+                    rejectedData.append('nom', nom);
+                    rejectedData.append('prenom', prenom);
+                    rejectedData.append('email', email);
+                    rejectedData.append('raison', !passAge ? 'Âge < 18' : !passNat ? 'Nationalité hors Europe' : 'Disponibilité < 20h/sem');
+
+                    await fetch(GOOGLE_SHEET_REJECTED_URL, {
+                        method: 'POST',
+                        body: rejectedData
+                    });
+
+                    console.log('✓ Candidature rejetée enregistrée');
+                } catch (err) {
+                    console.error('✗ Rejected sheets error:', err.message);
+                }
+            }
+            
             showSuccessFinal(ref);
             return;
         }
@@ -3694,6 +3715,27 @@ Réponds UNIQUEMENT en JSON strict (sans markdown) avec ce format exact :
         }
 
         if (!aiPasses) {
+            // ── 5b. Enregistrer aussi les refus IA ──────────────────────
+            if (REJECTED_SHEETS_ENABLED) {
+                try {
+                    const rejectedData = new FormData();
+                    rejectedData.append('reference', ref);
+                    rejectedData.append('nom', nom);
+                    rejectedData.append('prenom', prenom);
+                    rejectedData.append('email', email);
+                    rejectedData.append('raison', `IA: ${aiReason || 'Critères non satisfaits'}`);
+
+                    await fetch(GOOGLE_SHEET_REJECTED_URL, {
+                        method: 'POST',
+                        body: rejectedData
+                    });
+
+                    console.log('✓ Candidature rejetée (IA) enregistrée');
+                } catch (err) {
+                    console.error('✗ Rejected sheets error:', err.message);
+                }
+            }
+            
             showSuccessFinal(ref);
             return;
         }
