@@ -31,8 +31,7 @@
         .nav-links{display:flex;gap:3.5rem;list-style:none;opacity:0;animation:fadeInUp 2s cubic-bezier(0.4,0,0.2,1) forwards 0.8s}
         .nav-links a{color:var(--color-text-muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.6s;font-weight:300;position:relative}
         .nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--color-text);transition:width 0.6s}
-        .nav-links a:hover{color:var(--color-text)}
-        .nav-links a:hover::after{width:100%}
+        .nav-links a:hover{color:var(--color-text)}.nav-links a:hover::after{width:100%}
         section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:12rem 5rem;position:relative}
         .container{max-width:1400px;width:100%;margin:0 auto;position:relative;z-index:1}
         .section-number{font-size:0.7rem;letter-spacing:0.25em;color:var(--color-text-subtle);margin-bottom:4rem;display:block;text-transform:uppercase;font-weight:400}
@@ -82,6 +81,34 @@
         .product-num{font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:rgba(255,255,255,0.06);margin-bottom:1.5rem}
         .product-name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;letter-spacing:0.08em;margin-bottom:0.8rem}
         .product-desc{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300}
+        /* PRODUCTION SUB-TABS */
+        .production-sub-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:0}
+        .prod-sub-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.2);font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px}
+        .prod-sub-tab:hover{color:rgba(255,255,255,0.5)}
+        .prod-sub-tab.active{color:rgba(255,255,255,0.85);border-bottom-color:rgba(255,255,255,0.3)}
+        .prod-sub-panel{display:none}
+        .prod-sub-panel.active{display:block;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
+        /* AFFICHE */
+        .affiche-section{padding:5rem 0 2rem}
+        .affiche-block{margin-bottom:6rem}
+        .affiche-label{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem}
+        .affiche-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.05)}
+        .affiche-cadre{display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:start}
+        .affiche-poster{width:240px;flex-shrink:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02)}
+        .affiche-poster img{width:100%;display:none;object-fit:cover;aspect-ratio:2/3;transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)}
+        .affiche-poster:hover img{transform:scale(1.04)}
+        .affiche-poster-placeholder{width:100%;aspect-ratio:2/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%,rgba(255,255,255,0) 100%)}
+        .affiche-poster-placeholder span{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.12);text-align:center;padding:0 1rem}
+        .affiche-info{padding-top:0.5rem}
+        .affiche-categorie{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.8rem}
+        .affiche-titre{font-family:var(--font-display);font-size:3.8rem;font-weight:300;letter-spacing:0.08em;line-height:1.05;margin-bottom:2rem;color:rgba(255,255,255,0.92)}
+        .affiche-description{font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:2.1;font-weight:300;max-width:600px}
+        .affiche-meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap}
+        .affiche-meta-item{display:flex;flex-direction:column;gap:0.5rem}
+        .affiche-meta-key{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+        .affiche-meta-val{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300}
+        .affiche-separator{border:none;border-top:1px solid rgba(255,255,255,0.04);margin:5rem 0}
+        /* PROGRESSION */
         .progression{background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface-alt) 50%,var(--color-bg) 100%)}
         .progression-timeline{max-width:850px;margin:6rem auto 0;position:relative}
         .progression-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.08),transparent)}
@@ -115,88 +142,7 @@
         @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-15px)}}
         .reveal-element{opacity:0;transform:translateY(60px);transition:all 1.4s cubic-bezier(0.4,0,0.2,1)}
         .reveal-element.reveal{opacity:1;transform:translateY(0)}
-
-        /* ================================================================
-           SUB-TABS — Production
-        ================================================================ */
-        .production-sub-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:0}
-        .prod-sub-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.2);font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px}
-        .prod-sub-tab:hover{color:rgba(255,255,255,0.5)}
-        .prod-sub-tab.active{color:rgba(255,255,255,0.85);border-bottom-color:rgba(255,255,255,0.3)}
-        .prod-sub-panel{display:none}
-        .prod-sub-panel.active{display:block;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
-
-        /* ================================================================
-           À L'AFFICHE — styles
-        ================================================================ */
-        .affiche-section{padding:5rem 0 2rem}
-        .affiche-block{margin-bottom:6rem}
-        .affiche-label{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem}
-        .affiche-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.05)}
-        .affiche-cadre{display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:start}
-        .affiche-poster{width:240px;flex-shrink:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02)}
-        .affiche-poster img{width:100%;display:block;object-fit:cover;aspect-ratio:2/3;transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)}
-        .affiche-poster:hover img{transform:scale(1.04)}
-        .affiche-poster-placeholder{width:100%;aspect-ratio:2/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%,rgba(255,255,255,0) 100%)}
-        .affiche-poster-placeholder span{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.12);text-align:center;padding:0 1rem}
-        .affiche-info{padding-top:0.5rem}
-        .affiche-categorie{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.8rem}
-        .affiche-titre{font-family:var(--font-display);font-size:3.8rem;font-weight:300;letter-spacing:0.08em;line-height:1.05;margin-bottom:2rem;color:rgba(255,255,255,0.92)}
-        .affiche-description{font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:2.1;font-weight:300;max-width:600px}
-        .affiche-meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap}
-        .affiche-meta-item{display:flex;flex-direction:column;gap:0.5rem}
-        .affiche-meta-key{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
-        .affiche-meta-val{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300}
-        .affiche-separator{border:none;border-top:1px solid rgba(255,255,255,0.04);margin:5rem 0}
-
-        /* ================================================================
-           PANNEAU ADMIN — accessible via mot de passe
-        ================================================================ */
-        .admin-trigger{position:fixed;bottom:2rem;right:2rem;width:36px;height:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:50%;cursor:pointer;z-index:40000;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center}
-        .admin-trigger:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15)}
-        .admin-trigger svg{width:12px;height:12px;fill:none;stroke:rgba(255,255,255,0.3);stroke-width:1.5}
-
-        .admin-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);backdrop-filter:blur(30px);z-index:45000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.5s,visibility 0.5s}
-        .admin-overlay.open{opacity:1;visibility:visible}
-        .admin-panel{background:var(--color-surface);border:1px solid rgba(255,255,255,0.07);width:100%;max-width:700px;max-height:90vh;overflow-y:auto;padding:4rem;position:relative;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.08) transparent}
-        .admin-close{position:absolute;top:2rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.3);cursor:pointer;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--font-body);transition:color 0.3s}
-        .admin-close:hover{color:rgba(255,255,255,0.7)}
-        .admin-title{font-family:var(--font-display);font-size:1.8rem;font-weight:300;letter-spacing:0.1em;margin-bottom:0.5rem}
-        .admin-subtitle{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:3rem}
-
-        /* auth screen */
-        .admin-auth{text-align:center;padding:2rem 0}
-        .admin-auth p{font-size:0.75rem;letter-spacing:0.15em;color:rgba(255,255,255,0.35);margin-bottom:2rem;text-transform:uppercase}
-        .admin-pw-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);color:var(--color-text);font-family:var(--font-body);font-size:0.95rem;font-weight:300;padding:1rem 1.4rem;outline:none;transition:border-color 0.4s;letter-spacing:0.2em;text-align:center;margin-bottom:1.5rem}
-        .admin-pw-input:focus{border-color:rgba(255,255,255,0.2)}
-        .admin-pw-error{font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,80,80,0.7);text-transform:uppercase;margin-top:-0.5rem;margin-bottom:1rem;display:none}
-        .admin-btn{width:100%;background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;padding:1rem;cursor:pointer;transition:all 0.4s}
-        .admin-btn:hover{border-color:rgba(255,255,255,0.3);color:var(--color-text)}
-
-        /* editor */
-        .admin-editor{display:none}
-        .admin-block{margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
-        .admin-block:last-of-type{border-bottom:none}
-        .admin-block-title{font-family:var(--font-display);font-size:1.1rem;font-weight:400;letter-spacing:0.1em;margin-bottom:2rem;color:rgba(255,255,255,0.7)}
-        .admin-field{margin-bottom:1.8rem}
-        .admin-label{display:block;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.8rem}
-        .admin-input,.admin-textarea{width:100%;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);color:var(--color-text);font-family:var(--font-body);font-size:0.9rem;font-weight:300;padding:0.9rem 1.2rem;outline:none;transition:border-color 0.4s;resize:vertical}
-        .admin-input:focus,.admin-textarea:focus{border-color:rgba(255,255,255,0.2)}
-        .admin-textarea{min-height:100px;line-height:1.7}
-        .admin-img-preview{width:120px;aspect-ratio:2/3;object-fit:cover;border:1px solid rgba(255,255,255,0.07);margin-top:1rem;display:block}
-        .admin-img-preview-placeholder{width:120px;aspect-ratio:2/3;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;margin-top:1rem}
-        .admin-img-preview-placeholder span{font-size:0.5rem;letter-spacing:0.15em;color:rgba(255,255,255,0.15);text-transform:uppercase;text-align:center;padding:0.5rem}
-        .admin-save-btn{background:transparent;border:1px solid rgba(255,255,255,0.18);color:var(--color-text);font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;padding:1rem 3rem;cursor:pointer;transition:all 0.5s;width:100%;margin-top:1rem}
-        .admin-save-btn:hover{border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.03)}
-        .admin-saved-msg{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(120,200,120,0.7);text-align:center;margin-top:1rem;opacity:0;transition:opacity 0.4s}
-        .admin-saved-msg.show{opacity:1}
-
-        /* meta fields inline */
-        .admin-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-
-        /* ================================================================
-           MODAL — BASE STYLES
-        ================================================================ */
+        /* MODAL */
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px) saturate(180%);z-index:50000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s cubic-bezier(0.4,0,0.2,1);padding:2rem}
         .modal-overlay.open{opacity:1;visibility:visible}
         .modal{background:var(--color-surface);border:1px solid rgba(255,255,255,0.07);max-width:780px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(60px) scale(0.97);transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
@@ -263,10 +209,7 @@
         .analyzing-dots::after{content:'';animation:dots 1.5s steps(4,end) infinite}
         @keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
         body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.015;pointer-events:none;z-index:10000}
-
-        /* ================================================================
-           RESPONSIVE
-        ================================================================ */
+        /* RESPONSIVE */
         @media(max-width:1024px){
             nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}
             .nav-links{gap:2.5rem}.hero h1{font-size:4.5rem}
@@ -276,19 +219,15 @@
             .branch-inner{padding:4rem 3rem}.branch-inner-grid{gap:4rem}
             .branches-tabs-inline{padding:0 3rem}
             .branches-section .b-header{padding:0 3rem 4rem}
-            .affiche-cadre{grid-template-columns:1fr;gap:3rem}
-            .affiche-poster{width:200px}
+            .affiche-cadre{grid-template-columns:1fr;gap:3rem}.affiche-poster{width:200px}
         }
         @media(max-width:768px){
             .hero h1{font-size:3.5rem}.nav-links{display:none}
             .cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}
             section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}
-            .modal-header{padding:3rem 2.5rem 2.5rem}
-            .modal-close{right:2rem;top:2.8rem}
-            .modal-title{font-size:1.9rem;padding-right:5rem}
-            .modal-subtitle{font-size:0.78rem}
-            .form-step{padding:3rem 2.5rem}
-            .form-grid-2{grid-template-columns:1fr}
+            .modal-header{padding:3rem 2.5rem 2.5rem}.modal-close{right:2rem;top:2.8rem}
+            .modal-title{font-size:1.9rem;padding-right:5rem}.modal-subtitle{font-size:0.78rem}
+            .form-step{padding:3rem 2.5rem}.form-grid-2{grid-template-columns:1fr}
             .modal-footer{padding:1.5rem 2.5rem 2rem;flex-direction:column;gap:0;align-items:stretch}
             .btn-next{order:1;width:100%;padding:1.1rem 1rem;font-size:0.68rem;letter-spacing:0.18em;text-align:center}
             .btn-prev{order:2;width:100%;text-align:center;padding:0.9rem;font-size:0.62rem;border-top:1px solid rgba(255,255,255,0.04);margin-top:0}
@@ -299,422 +238,385 @@
             .success-title{font-size:1.7rem;letter-spacing:0.05em;margin-bottom:1rem}
             .success-text{font-size:0.82rem;letter-spacing:0.07em;line-height:1.85;max-width:100%;margin:0 0 2rem}
             .success-ref{font-size:0.58rem;letter-spacing:0.18em}
-            .branch-inner{padding:3rem 2rem}
-            .branch-inner-grid{grid-template-columns:1fr;gap:3rem}
-            .branch-products-inline-grid{grid-template-columns:1fr}
-            .branch-name-inline{font-size:3rem}
+            .branch-inner{padding:3rem 2rem}.branch-inner-grid{grid-template-columns:1fr;gap:3rem}
+            .branch-products-inline-grid{grid-template-columns:1fr}.branch-name-inline{font-size:3rem}
             .branches-section .b-header{padding:0 2rem 3rem}
             .branches-tabs-inline{display:grid;grid-template-columns:repeat(3,1fr);padding:0;gap:0}
             .branch-tab-inline{padding:1rem 0.4rem;font-size:0.55rem;letter-spacing:0.15em;text-align:center;border-bottom:2px solid transparent;border-right:1px solid rgba(255,255,255,0.04);width:100%;margin-bottom:0}
-            .branch-tab-inline:last-child{border-right:none}
-            .branch-tab-inline.active{background:rgba(255,255,255,0.03)}
-            .affiche-titre{font-size:2.4rem}
-            .affiche-poster{width:160px}
-            .admin-panel{padding:2.5rem}
-            .admin-meta-grid{grid-template-columns:1fr}
+            .branch-tab-inline:last-child{border-right:none}.branch-tab-inline.active{background:rgba(255,255,255,0.03)}
+            .affiche-titre{font-size:2.4rem}.affiche-poster{width:160px}
         }
         @media(max-width:480px){
             .hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}
             nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}
-            section{padding:4rem 1.5rem;min-height:auto}
-            .section-title h2{font-size:2rem}
-            .intro-content p{font-size:1.2rem}
-            .stat-number{font-size:3rem}
-            .cta h2{font-size:2rem}
-            .cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
-            .modal-header{padding:2.5rem 1.5rem 2rem}
-            .modal-close{right:1.5rem;top:2.5rem}
-            .modal-title{font-size:1.5rem;padding-right:4.5rem}
-            .form-step{padding:2.5rem 1.5rem}
+            section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}
+            .intro-content p{font-size:1.2rem}.stat-number{font-size:3rem}
+            .cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
+            .modal-header{padding:2.5rem 1.5rem 2rem}.modal-close{right:1.5rem;top:2.5rem}
+            .modal-title{font-size:1.5rem;padding-right:4.5rem}.form-step{padding:2.5rem 1.5rem}
             .modal-footer{padding:1.2rem 1.5rem 1.8rem}
             .btn-next{padding:1rem 0.8rem;font-size:0.62rem;letter-spacing:0.14em}
             .btn-prev{font-size:0.56rem;padding:0.7rem}
-            .modal-success{padding:3rem 1.5rem}
-            .success-title{font-size:1.35rem;letter-spacing:0.03em}
-            .success-text{font-size:0.76rem;letter-spacing:0.05em}
-            .success-mark{width:42px;height:42px;margin-bottom:1.8rem}
+            .modal-success{padding:3rem 1.5rem}.success-title{font-size:1.35rem;letter-spacing:0.03em}
+            .success-text{font-size:0.76rem;letter-spacing:0.05em}.success-mark{width:42px;height:42px;margin-bottom:1.8rem}
             .branch-tab-inline{font-size:0.48rem;padding:0.9rem 0.2rem}
-            .affiche-titre{font-size:1.8rem}
-            .affiche-poster{width:130px}
+            .affiche-titre{font-size:1.8rem}.affiche-poster{width:130px}
         }
     </style>
 </head>
 <body class="loading">
-    <div class="page-loader"><div class="loader-content"><div class="loader-logo">BURTON</div><div class="loader-line"></div></div></div>
+<div class="page-loader"><div class="loader-content"><div class="loader-logo">BURTON</div><div class="loader-line"></div></div></div>
 
-    <div class="main-content">
-        <nav id="navbar">
-            <a href="#" class="logo">BURTON</a>
-            <ul class="nav-links">
-                <li><a href="#vision">Vision</a></li>
-                <li><a href="#branches">Branches</a></li>
-                <li><a href="#progression">Progression</a></li>
-                <li><a href="#selection">Sélection</a></li>
-                <li><a href="#rejoindre">Rejoindre</a></li>
-            </ul>
-        </nav>
+<div class="main-content">
+    <nav id="navbar">
+        <a href="#" class="logo">BURTON</a>
+        <ul class="nav-links">
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#branches">Branches</a></li>
+            <li><a href="#progression">Progression</a></li>
+            <li><a href="#selection">Sélection</a></li>
+            <li><a href="#rejoindre">Rejoindre</a></li>
+        </ul>
+    </nav>
 
-        <section class="hero" id="hero">
-            <div class="hero-content">
-                <h1>BURTON CORPORATION</h1>
-                <p class="hero-tagline">Construire. Progresser. Réussir.</p>
-            </div>
-            <div class="scroll-indicator"><div class="scroll-line"></div></div>
-        </section>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>BURTON CORPORATION</h1>
+            <p class="hero-tagline">Construire. Progresser. Réussir.</p>
+        </div>
+        <div class="scroll-indicator"><div class="scroll-line"></div></div>
+    </section>
 
-        <section class="intro" id="intro">
-            <div class="container">
-                <span class="section-number reveal-element">01 — Introduction</span>
-                <div class="intro-content reveal-element">
-                    <p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu'une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d'une maison spécialisée — Burton Watch pour l'horlogerie, Burton Parfum pour l'univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d'œuvres audiovisuelles.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="vision" id="vision">
-            <div class="container">
-                <span class="section-number reveal-element">02 — Vision</span>
-                <div class="section-title reveal-element"><h2>Nos Piliers</h2></div>
-                <div class="vision-grid">
-                    <div class="vision-card"><h3>Excellence</h3><p>Rechercher constamment le plus haut niveau de qualité dans chaque création. L'excellence chez Burton Corporation repose sur la précision, l'exigence et l'attention portée au détail. Elle guide chaque décision et garantit des réalisations durables, pensées pour dépasser les standards ordinaires.</p></div>
-                    <div class="vision-card"><h3>Progrès</h3><p>Évoluer en permanence, individuellement et collectivement. Le progrès est le moteur de toute organisation qui aspire à l'excellence. Nous cultivons une culture de l'amélioration continue et de l'innovation.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="branches-section" id="branches">
-            <div class="b-header">
-                <span class="section-number reveal-element">03 — Branches</span>
-                <div class="section-title reveal-element"><h2>Nos Branches</h2></div>
-            </div>
-            <div class="branches-tabs-inline">
-                <button class="branch-tab-inline active" data-panel="watch">Watch</button>
-                <button class="branch-tab-inline" data-panel="parfum">Parfum</button>
-                <button class="branch-tab-inline" data-panel="clothes">Clothes</button>
-                <button class="branch-tab-inline" data-panel="chocolate">Chocolate</button>
-                <button class="branch-tab-inline" data-panel="production">Production</button>
-            </div>
-            <div class="branches-panels">
-
-                <!-- WATCH -->
-                <div class="branch-panel-inline active" id="panel-watch">
-                    <div class="branch-inner">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><div class="branch-name-inline">Watch</div><div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div>
-                        </div>
-                        <div class="branch-products-inline-title">Collections</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PARFUM -->
-                <div class="branch-panel-inline" id="panel-parfum">
-                    <div class="branch-inner">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Olfactive</span><div class="branch-name-inline">Parfum</div><div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div>
-                        </div>
-                        <div class="branch-products-inline-title">Fragrances</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CLOTHES -->
-                <div class="branch-panel-inline" id="panel-clothes">
-                    <div class="branch-inner">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><div class="branch-name-inline">Clothes</div><div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div>
-                        </div>
-                        <div class="branch-products-inline-title">Pièces Signature</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CHOCOLATE -->
-                <div class="branch-panel-inline" id="panel-chocolate">
-                    <div class="branch-inner">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><div class="branch-name-inline">Chocolate</div><div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div></div>
-                        </div>
-                        <div class="branch-products-inline-title">Créations</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PRODUCTION -->
-                <div class="branch-panel-inline" id="panel-production">
-                    <div class="branch-inner">
-
-                        <!-- Sub-tabs Production -->
-                        <div class="production-sub-tabs">
-                            <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
-                            <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
-                        </div>
-
-                        <!-- Sub-panel : Aperçu -->
-                        <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
-                            <div class="branch-inner-grid">
-                                <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
-                                <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
-                            </div>
-                            <div class="branch-products-inline-title">Activités</div>
-                            <div class="branch-products-inline-grid">
-                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
-                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
-                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
-                            </div>
-                        </div>
-
-                        <!-- ============================================================
-                             SUB-PANEL : À L'AFFICHE
-                        ============================================================ -->
-                        <div class="prod-sub-panel" id="sub-affiche">
-                            <div class="affiche-section">
-
-
-                                <!-- ====================================================
-                                     🎬 COURT MÉTRAGE DU MOIS — À MODIFIER CHAQUE MOIS
-                                     ====================================================
-                                     ✏️ AFFICHE     → colle l'URL de l'image dans src=""
-                                     ✏️ TITRE       → modifie le texte dans la div affiche-titre
-                                     ✏️ DESCRIPTION → modifie le texte dans la div affiche-description
-                                     ✏️ DURÉE       → remplace le tiret — par ex: 14 min
-                                     ✏️ RÉALISATION → remplace le tiret — par le nom du réalisateur
-                                     ✏️ MOIS        → remplace le tiret — par ex: Février 2026
-                                     ==================================================== -->
-                                <div class="affiche-block">
-                                    <div class="affiche-label">Court Métrage du Mois</div>
-                                    <div class="affiche-cadre">
-                                        <div class="affiche-poster">
-                                            <img src="" alt="Affiche court métrage" class="affiche-poster-img"
-                                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                                                onload="this.style.display='block';this.nextElementSibling.style.display='none'">
-                                            <div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>
-                                        </div>
-                                        <div class="affiche-info">
-                                            <div class="affiche-categorie">Court Métrage</div>
-
-                                            <div class="affiche-titre">Titre du court métrage</div><!-- ✏️ TITRE ICI -->
-
-                                            <div class="affiche-description">Description du court métrage. Remplace ce texte par le synopsis.</div><!-- ✏️ DESCRIPTION ICI -->
-
-                                            <div class="affiche-meta">
-                                                <div class="affiche-meta-item">
-                                                    <span class="affiche-meta-key">Durée</span>
-                                                    <span class="affiche-meta-val">—</span><!-- ✏️ DURÉE ICI ex: 14 min -->
-                                                </div>
-                                                <div class="affiche-meta-item">
-                                                    <span class="affiche-meta-key">Réalisation</span>
-                                                    <span class="affiche-meta-val">—</span><!-- ✏️ RÉALISATEUR ICI -->
-                                                </div>
-                                                <div class="affiche-meta-item">
-                                                    <span class="affiche-meta-key">Mois</span>
-                                                    <span class="affiche-meta-val">—</span><!-- ✏️ MOIS ICI ex: Février 2026 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FIN COURT MÉTRAGE -->
-
-
-                                <hr class="affiche-separator">
-
-
-                                <!-- ====================================================
-                                     🎥 FILM DE L'ANNÉE — À MODIFIER CHAQUE ANNÉE
-                                     ====================================================
-                                     ✏️ AFFICHE     → colle l'URL de l'image dans src=""
-                                     ✏️ TITRE       → modifie le texte dans la div affiche-titre
-                                     ✏️ DESCRIPTION → modifie le texte dans la div affiche-description
-                                     ✏️ DURÉE       → remplace le tiret — par ex: 1h 52 min
-                                     ✏️ RÉALISATION → remplace le tiret — par le nom du réalisateur
-                                     ✏️ ANNÉE       → remplace le tiret — par ex: 2026
-                                     ==================================================== -->
-                                <div class="affiche-block">
-                                    <div class="affiche-label">Film de l'Année</div>
-                                    <div class="affiche-cadre">
-                                        <div class="affiche-poster">
-                                            <img src="" alt="Affiche film" class="affiche-poster-img"
-                                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                                                onload="this.style.display='block';this.nextElementSibling.style.display='none'">
-                                            <div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>
-                                        </div>
-                                        <div class="affiche-info">
-                                            <div class="affiche-categorie">Long Métrage</div>
-
-                                            <div class="affiche-titre">Titre du film</div><!-- ✏️ TITRE ICI -->
-
-                                            <div class="affiche-description">Description du film. Remplace ce texte par le synopsis.</div><!-- ✏️ DESCRIPTION ICI -->
-
-                                            <div class="affiche-meta">
-                                                <div class="affiche-meta-item">
-                                                    <span class="affiche-meta-key">Durée</span>
-                                                    <span class="affiche-meta-val">—</span><!-- ✏️ DURÉE ICI ex: 1h 52 min -->
-                                                </div>
-                                                <div class="affiche-meta-item">
-                                                    <span class="affiche-meta-key">Réalisation</span>
-                                                    <span class="affiche-meta-val">—</span><!-- ✏️ RÉALISATEUR ICI -->
-                                                </div>
-                                                <div class="affiche-meta-item">
-                                                    <span class="affiche-meta-key">Année</span>
-                                                    <span class="affiche-meta-val">—</span><!-- ✏️ ANNÉE ICI ex: 2026 -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FIN FILM DE L'ANNÉE -->
-
-
-                            </div>
-                        </div>
-                        <!-- FIN SUB-PANEL À L'AFFICHE -->
-
-                    </div><!-- /branch-inner -->
-                </div><!-- /panel-production -->
-            </div><!-- /branches-panels -->
-        </section>
-
-        <section class="progression" id="progression">
-            <div class="container">
-                <span class="section-number reveal-element">04 — Progression</span>
-                <div class="section-title reveal-element"><h2>Parcours Interne</h2><p class="subtitle">Une trajectoire définie par le mérite</p></div>
-                <div class="progression-timeline">
-                    <div class="progression-step"><h4>Stagiaire</h4><p>Point d'entrée initial, période d'observation et d'apprentissage des fondamentaux de l'organisation.</p></div>
-                    <div class="progression-step"><h4>Employé</h4><p>Intégration complète aux équipes opérationnelles avec responsabilités définies et objectifs mesurables.</p></div>
-                    <div class="progression-step"><h4>Employé Installé</h4><p>Expertise confirmée, autonomie complète et contribution significative aux projets stratégiques.</p></div>
-                    <div class="progression-step"><h4>Co-directeur</h4><p>Leadership partagé sur des départements clés, participation aux décisions stratégiques majeures.</p></div>
-                    <div class="progression-step"><h4>Directeur</h4><p>Responsabilité totale d'un département, vision stratégique et influence directe sur l'avenir de l'organisation.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="selection" id="selection">
-            <div class="container">
-                <span class="section-number reveal-element">05 — Sélection</span>
-                <div class="section-title reveal-element"><h2>Excellence par la Sélectivité</h2></div>
-                <div class="selection-stats">
-                    <div class="stat"><span class="stat-number">10 000+</span><span class="stat-label">Candidatures par an</span></div>
-                    <div class="stat"><span class="stat-number">24</span><span class="stat-label">Candidats retenus</span></div>
-                </div>
-                <div class="procedure-steps">
-                    <div class="procedure-step"><div class="step-number">01</div><h4>Questionnaire de Sélection</h4><p>Évaluation initiale des compétences, motivations et alignement avec les valeurs de Burton Corporation.</p></div>
-                    <div class="procedure-step"><div class="step-number">02</div><h4>Entretien avec le Fondateur</h4><p>Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression.</p></div>
-                    <div class="procedure-step"><div class="step-number">03</div><h4>Décision Finale</h4><p>La direction collégiale examine votre candidature et prend la décision d'intégration définitive.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta" id="rejoindre">
-            <div class="container">
-                <div class="cta-content reveal-element">
-                    <h2>Rejoindre Burton Corporation</h2>
-                    <button class="cta-button" id="openApplication">Commencer la Candidature</button>
-                    <p class="cta-disclaimer">Les candidatures sont examinées sur une base mensuelle</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- MODAL CANDIDATURE -->
-    <div class="modal-overlay" id="applicationModal" role="dialog" aria-modal="true">
-        <div class="modal">
-            <div class="modal-progress"><div class="modal-progress-bar" id="progressBar"></div></div>
-            <div class="modal-header">
-                <button class="modal-close" id="closeModal">Fermer &times;</button>
-                <div class="modal-step-indicator" id="stepIndicator">Étape 1 sur 4</div>
-                <h2 class="modal-title" id="modalTitle">Informations Personnelles</h2>
-                <p class="modal-subtitle" id="modalSubtitle">Renseignez vos coordonnées pour débuter votre dossier de candidature.</p>
-            </div>
-            <div class="form-step active" id="step-1">
-                <div class="form-grid-2">
-                    <div class="form-group"><label class="form-label" for="f-prenom">Prénom <span>*</span></label><input class="form-input" type="text" id="f-prenom" placeholder="Votre prénom" required></div>
-                    <div class="form-group"><label class="form-label" for="f-nom">Nom <span>*</span></label><input class="form-input" type="text" id="f-nom" placeholder="Votre nom de famille" required></div>
-                </div>
-                <div class="form-grid-2">
-                    <div class="form-group"><label class="form-label" for="f-age">Âge <span>*</span></label><input class="form-input" type="number" id="f-age" placeholder="18" min="16" max="80" required></div>
-                    <div class="form-group"><label class="form-label" for="f-nationalite">Nationalité <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-nationalite" required><option value="" disabled selected>Sélectionnez votre nationalité</option><option value="fr">Française</option><option value="be">Belge</option><option value="ch">Suisse</option><option value="ca">Canadienne</option><option value="lu">Luxembourgeoise</option><option value="ma">Marocaine</option><option value="dz">Algérienne</option><option value="tn">Tunisienne</option><option value="sn">Sénégalaise</option><option value="ci">Ivoirienne</option><option value="cm">Camerounaise</option><option value="ml">Malienne</option><option value="gn">Guinéenne</option><option value="cd">Congolaise (RDC)</option><option value="ga">Gabonaise</option><option value="de">Allemande</option><option value="es">Espagnole</option><option value="it">Italienne</option><option value="pt">Portugaise</option><option value="nl">Néerlandaise</option><option value="gb">Britannique</option><option value="pl">Polonaise</option><option value="ro">Roumaine</option><option value="us">Américaine</option><option value="br">Brésilienne</option><option value="other">Autre</option></select></div></div>
-                </div>
-                <div class="form-group"><label class="form-label" for="f-email">Adresse e-mail <span>*</span></label><input class="form-input" type="email" id="f-email" placeholder="votre@email.com" required></div>
-                <div class="form-group"><label class="form-label" for="f-disponibilite">Disponibilité hebdomadaire <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-disponibilite" required><option value="" disabled selected>Sélectionnez une plage</option><option value="<5">Moins de 5 heures / semaine</option><option value="5-10">5 à 10 heures / semaine</option><option value="10-20">10 à 20 heures / semaine</option><option value=">20">Plus de 20 heures / semaine</option></select></div></div>
-            </div>
-            <div class="form-step" id="step-2">
-                <p class="form-section-title">Motivation &amp; Alignement</p>
-                <div class="form-group"><label class="form-label" for="f-motivation">Pourquoi souhaitez-vous rejoindre Burton Corporation ? <span>*</span></label><textarea class="form-textarea" id="f-motivation" placeholder="Exprimez de façon sincère et précise ce qui vous attire dans notre structure..." required style="min-height:160px;"></textarea></div>
-                <div class="form-group"><label class="form-label">Quelle valeur vous correspond le mieux ? <span>*</span></label><div class="radio-group"><label class="radio-option"><input type="radio" name="valeur" value="reussite"><span class="radio-custom"></span><span class="option-label"><strong>Réussite</strong> — Atteindre des résultats concrets et mesurables</span></label><label class="radio-option"><input type="radio" name="valeur" value="progres"><span class="radio-custom"></span><span class="option-label"><strong>Progrès</strong> — Évoluer sans cesse, individuellement et collectivement</span></label><label class="radio-option"><input type="radio" name="valeur" value="excellence"><span class="radio-custom"></span><span class="option-label"><strong>Excellence</strong> — Faire chaque chose avec le plus haut niveau d'exigence</span></label><label class="radio-option"><input type="radio" name="valeur" value="loyaute"><span class="radio-custom"></span><span class="option-label"><strong>Loyauté</strong> — S'engager pleinement envers une organisation et ses membres</span></label></div></div>
-                <hr class="form-divider">
-                <div class="form-group"><label class="form-label" for="f-apport">Quelle compétence ou valeur ajoutée apporteriez-vous ? <span>*</span></label><textarea class="form-textarea" id="f-apport" placeholder="Décrivez concrètement ce que vous pouvez apporter à notre organisation..." required></textarea></div>
-            </div>
-            <div class="form-step" id="step-3">
-                <p class="form-section-title">Expérience &amp; Aptitudes</p>
-                <div class="form-group"><label class="form-label" for="f-experience">Avez-vous déjà travaillé au sein d'une organisation similaire ? <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-experience" required><option value="" disabled selected>Sélectionnez une réponse</option><option value="aucune">Non, aucune expérience préalable</option><option value="peu">Oui, brièvement (moins de 3 mois)</option><option value="moderee">Oui, pendant plusieurs mois</option><option value="avancee">Oui, j'ai occupé un poste de responsabilité</option></select></div></div>
-                <div class="form-group"><label class="form-label" for="f-detail-exp">Si oui, décrivez brièvement votre rôle et vos réalisations</label><textarea class="form-textarea" id="f-detail-exp" placeholder="Laissez vide si sans expérience préalable..."></textarea></div>
-                <hr class="form-divider">
-                <div class="form-group"><label class="form-label">Évaluez votre capacité à travailler en équipe</label><div class="rating-scale" id="rating-equipe"></div><div class="rating-labels"><span>Solitaire</span><span>Très collaboratif</span></div></div>
-                <div class="form-group"><label class="form-label">Évaluez votre capacité à gérer la pression</label><div class="rating-scale" id="rating-pression"></div><div class="rating-labels"><span>Sensible</span><span>Très résistant</span></div></div>
-                <div class="form-group"><label class="form-label">Compétences que vous maîtrisez</label><div class="checkbox-group"><label class="checkbox-option"><input type="checkbox" name="competence" value="communication"><span class="checkbox-custom"></span><span class="option-label">Communication &amp; Diplomatie</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="gestion"><span class="checkbox-custom"></span><span class="option-label">Gestion de projet &amp; Organisation</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="leadership"><span class="checkbox-custom"></span><span class="option-label">Leadership &amp; Management d'équipe</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="analyse"><span class="checkbox-custom"></span><span class="option-label">Analyse &amp; Prise de décision stratégique</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="negociation"><span class="checkbox-custom"></span><span class="option-label">Négociation &amp; Persuasion</span></label></div></div>
-            </div>
-            <div class="form-step" id="step-4">
-                <p class="form-section-title">Engagement &amp; Finalisation</p>
-                <div class="form-group"><label class="form-label" for="f-objectif">Quel objectif souhaitez-vous atteindre dans les 6 prochains mois ? <span>*</span></label><textarea class="form-textarea" id="f-objectif" placeholder="Soyez précis et ambitieux dans votre réponse..." required style="min-height:150px;"></textarea></div>
-                <div class="form-group"><label class="form-label" for="f-defi">Décrivez un défi que vous avez surmonté et ce que vous en avez retenu <span>*</span></label><textarea class="form-textarea" id="f-defi" placeholder="Choisissez un exemple révélateur de votre caractère..." required style="min-height:150px;"></textarea></div>
-                <div class="form-group"><label class="form-label" for="f-comment">Comment avez-vous entendu parler de Burton Corporation ?</label><div class="select-wrapper"><select class="form-select" id="f-comment"><option value="" disabled selected>Sélectionnez une source</option><option value="bouche">Bouche-à-oreille / Recommandation</option><option value="reseaux">Réseaux sociaux</option><option value="discord">Serveurs Discord</option><option value="autre">Autre</option></select></div></div>
-                <hr class="form-divider">
-                <div class="form-group"><label class="form-label">Engagements <span>*</span></label><div class="checkbox-group"><label class="checkbox-option"><input type="checkbox" id="cb-regles" required><span class="checkbox-custom"></span><span class="option-label">Je m'engage à respecter les règles internes de Burton Corporation en tout temps.</span></label><label class="checkbox-option"><input type="checkbox" id="cb-sincere" required><span class="checkbox-custom"></span><span class="option-label">Je certifie que les informations fournies sont sincères et exactes.</span></label><label class="checkbox-option"><input type="checkbox" id="cb-dispo" required><span class="checkbox-custom"></span><span class="option-label">Je comprends que ma candidature sera examinée dans un délai d'un mois calendaire.</span></label></div></div>
-            </div>
-            <div class="modal-success" id="modal-success">
-                <div id="success-analyzing" style="display:none;text-align:center;padding:4rem 0;width:100%">
-                    <div class="analyzing-spinner"></div>
-                    <p class="analyzing-text">Traitement de votre candidature<span class="analyzing-dots"></span></p>
-                    <p style="font-size:0.65rem;letter-spacing:0.2em;color:var(--color-text-subtle);margin-top:1rem;text-transform:uppercase">Veuillez patienter</p>
-                </div>
-                <div id="success-final" style="display:none;flex-direction:column;align-items:center;width:100%;text-align:center">
-                    <div class="success-mark">✦</div>
-                    <h2 class="success-title">Candidature Transmise</h2>
-                    <p class="success-text">Votre dossier a bien été reçu par Burton Corporation. Il sera examiné lors de notre prochaine session mensuelle de sélection.</p>
-                    <p class="success-ref" id="success-ref">Référence — —</p>
-                </div>
-            </div>
-            <div class="modal-footer" id="modal-footer">
-                <button class="btn-prev" id="btnPrev" disabled>← Précédent</button>
-                <button class="btn-next" id="btnNext">Continuer →</button>
+    <section class="intro" id="intro">
+        <div class="container">
+            <span class="section-number reveal-element">01 — Introduction</span>
+            <div class="intro-content reveal-element">
+                <p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu'une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d'une maison spécialisée — Burton Watch pour l'horlogerie, Burton Parfum pour l'univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d'œuvres audiovisuelles.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    //  LOADER
-    // ================================================================
+    <section class="vision" id="vision">
+        <div class="container">
+            <span class="section-number reveal-element">02 — Vision</span>
+            <div class="section-title reveal-element"><h2>Nos Piliers</h2></div>
+            <div class="vision-grid">
+                <div class="vision-card"><h3>Excellence</h3><p>Rechercher constamment le plus haut niveau de qualité dans chaque création. L'excellence chez Burton Corporation repose sur la précision, l'exigence et l'attention portée au détail. Elle guide chaque décision et garantit des réalisations durables, pensées pour dépasser les standards ordinaires.</p></div>
+                <div class="vision-card"><h3>Progrès</h3><p>Évoluer en permanence, individuellement et collectivement. Le progrès est le moteur de toute organisation qui aspire à l'excellence. Nous cultivons une culture de l'amélioration continue et de l'innovation.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="branches-section" id="branches">
+        <div class="b-header">
+            <span class="section-number reveal-element">03 — Branches</span>
+            <div class="section-title reveal-element"><h2>Nos Branches</h2></div>
+        </div>
+        <div class="branches-tabs-inline">
+            <button class="branch-tab-inline active" data-panel="watch">Watch</button>
+            <button class="branch-tab-inline" data-panel="parfum">Parfum</button>
+            <button class="branch-tab-inline" data-panel="clothes">Clothes</button>
+            <button class="branch-tab-inline" data-panel="chocolate">Chocolate</button>
+            <button class="branch-tab-inline" data-panel="production">Production</button>
+        </div>
+        <div class="branches-panels">
+
+            <div class="branch-panel-inline active" id="panel-watch">
+                <div class="branch-inner">
+                    <div class="branch-inner-grid">
+                        <div><span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><div class="branch-name-inline">Watch</div><div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div></div>
+                        <div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div>
+                    </div>
+                    <div class="branch-products-inline-title">Collections</div>
+                    <div class="branch-products-inline-grid">
+                        <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div>
+                        <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div>
+                        <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branch-panel-inline" id="panel-parfum">
+                <div class="branch-inner">
+                    <div class="branch-inner-grid">
+                        <div><span class="branch-eyebrow-inline">Burton — Division Olfactive</span><div class="branch-name-inline">Parfum</div><div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div></div>
+                        <div><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div>
+                    </div>
+                    <div class="branch-products-inline-title">Fragrances</div>
+                    <div class="branch-products-inline-grid">
+                        <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div>
+                        <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div>
+                        <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branch-panel-inline" id="panel-clothes">
+                <div class="branch-inner">
+                    <div class="branch-inner-grid">
+                        <div><span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><div class="branch-name-inline">Clothes</div><div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div></div>
+                        <div><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div>
+                    </div>
+                    <div class="branch-products-inline-title">Pièces Signature</div>
+                    <div class="branch-products-inline-grid">
+                        <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div>
+                        <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div>
+                        <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branch-panel-inline" id="panel-chocolate">
+                <div class="branch-inner">
+                    <div class="branch-inner-grid">
+                        <div><span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><div class="branch-name-inline">Chocolate</div><div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div></div>
+                        <div><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div></div>
+                    </div>
+                    <div class="branch-products-inline-title">Créations</div>
+                    <div class="branch-products-inline-grid">
+                        <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div>
+                        <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div>
+                        <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branch-panel-inline" id="panel-production">
+                <div class="branch-inner">
+                    <div class="production-sub-tabs">
+                        <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
+                        <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
+                    </div>
+
+                    <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
+                        <div class="branch-inner-grid">
+                            <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
+                            <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+                        </div>
+                        <div class="branch-products-inline-title">Activités</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="prod-sub-panel" id="sub-affiche">
+                        <div class="affiche-section">
+
+                            <!-- ============================================================
+                                 🎬 COURT MÉTRAGE DU MOIS — À MODIFIER CHAQUE MOIS
+                                 ============================================================
+                                 ✏️ AFFICHE  → colle l'URL de l'image dans src="" ci-dessous
+                                 ✏️ TITRE    → remplace le texte "Titre du court métrage"
+                                 ✏️ SYNOPSIS → remplace le texte du synopsis
+                                 ✏️ DURÉE    → remplace le tiret après Durée  (ex: 14 min)
+                                 ✏️ RÉAL.    → remplace le tiret après Réalisation
+                                 ✏️ MOIS     → remplace le tiret après Mois (ex: Février 2026)
+                            ============================================================ -->
+                            <div class="affiche-block">
+                                <div class="affiche-label">Court Métrage du Mois</div>
+                                <div class="affiche-cadre">
+                                    <div class="affiche-poster">
+                                        <img src="" alt="Affiche court métrage" id="cm-img"
+                                            style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
+                                        <div class="affiche-poster-placeholder" id="cm-placeholder">
+                                            <span>Affiche à venir</span>
+                                        </div>
+                                    </div>
+                                    <div class="affiche-info">
+                                        <div class="affiche-categorie">Court Métrage</div>
+                                        <div class="affiche-titre">Titre du court métrage</div>
+                                        <div class="affiche-description">Synopsis du court métrage. Remplace ce texte par la description de ton film.</div>
+                                        <div class="affiche-meta">
+                                            <div class="affiche-meta-item">
+                                                <span class="affiche-meta-key">Durée</span>
+                                                <span class="affiche-meta-val">—</span>
+                                            </div>
+                                            <div class="affiche-meta-item">
+                                                <span class="affiche-meta-key">Réalisation</span>
+                                                <span class="affiche-meta-val">—</span>
+                                            </div>
+                                            <div class="affiche-meta-item">
+                                                <span class="affiche-meta-key">Mois</span>
+                                                <span class="affiche-meta-val">—</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FIN COURT MÉTRAGE -->
+
+                            <hr class="affiche-separator">
+
+                            <!-- ============================================================
+                                 🎥 FILM DE L'ANNÉE — À MODIFIER CHAQUE ANNÉE
+                                 ============================================================
+                                 ✏️ AFFICHE  → colle l'URL de l'image dans src="" ci-dessous
+                                 ✏️ TITRE    → remplace le texte "Titre du film"
+                                 ✏️ SYNOPSIS → remplace le texte du synopsis
+                                 ✏️ DURÉE    → remplace le tiret après Durée  (ex: 1h 52 min)
+                                 ✏️ RÉAL.    → remplace le tiret après Réalisation
+                                 ✏️ ANNÉE    → remplace le tiret après Année (ex: 2026)
+                            ============================================================ -->
+                            <div class="affiche-block">
+                                <div class="affiche-label">Film de l'Année</div>
+                                <div class="affiche-cadre">
+                                    <div class="affiche-poster">
+                                        <img src="" alt="Affiche film" id="film-img"
+                                            style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
+                                        <div class="affiche-poster-placeholder" id="film-placeholder">
+                                            <span>Affiche à venir</span>
+                                        </div>
+                                    </div>
+                                    <div class="affiche-info">
+                                        <div class="affiche-categorie">Long Métrage</div>
+                                        <div class="affiche-titre">Titre du film</div>
+                                        <div class="affiche-description">Synopsis du film. Remplace ce texte par la description de ton film.</div>
+                                        <div class="affiche-meta">
+                                            <div class="affiche-meta-item">
+                                                <span class="affiche-meta-key">Durée</span>
+                                                <span class="affiche-meta-val">—</span>
+                                            </div>
+                                            <div class="affiche-meta-item">
+                                                <span class="affiche-meta-key">Réalisation</span>
+                                                <span class="affiche-meta-val">—</span>
+                                            </div>
+                                            <div class="affiche-meta-item">
+                                                <span class="affiche-meta-key">Année</span>
+                                                <span class="affiche-meta-val">—</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FIN FILM DE L'ANNÉE -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="progression" id="progression">
+        <div class="container">
+            <span class="section-number reveal-element">04 — Progression</span>
+            <div class="section-title reveal-element"><h2>Parcours Interne</h2><p class="subtitle">Une trajectoire définie par le mérite</p></div>
+            <div class="progression-timeline">
+                <div class="progression-step"><h4>Stagiaire</h4><p>Point d'entrée initial, période d'observation et d'apprentissage des fondamentaux de l'organisation.</p></div>
+                <div class="progression-step"><h4>Employé</h4><p>Intégration complète aux équipes opérationnelles avec responsabilités définies et objectifs mesurables.</p></div>
+                <div class="progression-step"><h4>Employé Installé</h4><p>Expertise confirmée, autonomie complète et contribution significative aux projets stratégiques.</p></div>
+                <div class="progression-step"><h4>Co-directeur</h4><p>Leadership partagé sur des départements clés, participation aux décisions stratégiques majeures.</p></div>
+                <div class="progression-step"><h4>Directeur</h4><p>Responsabilité totale d'un département, vision stratégique et influence directe sur l'avenir de l'organisation.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="selection" id="selection">
+        <div class="container">
+            <span class="section-number reveal-element">05 — Sélection</span>
+            <div class="section-title reveal-element"><h2>Excellence par la Sélectivité</h2></div>
+            <div class="selection-stats">
+                <div class="stat"><span class="stat-number">10 000+</span><span class="stat-label">Candidatures par an</span></div>
+                <div class="stat"><span class="stat-number">24</span><span class="stat-label">Candidats retenus</span></div>
+            </div>
+            <div class="procedure-steps">
+                <div class="procedure-step"><div class="step-number">01</div><h4>Questionnaire de Sélection</h4><p>Évaluation initiale des compétences, motivations et alignement avec les valeurs de Burton Corporation.</p></div>
+                <div class="procedure-step"><div class="step-number">02</div><h4>Entretien avec le Fondateur</h4><p>Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression.</p></div>
+                <div class="procedure-step"><div class="step-number">03</div><h4>Décision Finale</h4><p>La direction collégiale examine votre candidature et prend la décision d'intégration définitive.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="rejoindre">
+        <div class="container">
+            <div class="cta-content reveal-element">
+                <h2>Rejoindre Burton Corporation</h2>
+                <button class="cta-button" id="openApplication">Commencer la Candidature</button>
+                <p class="cta-disclaimer">Les candidatures sont examinées sur une base mensuelle</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- MODAL CANDIDATURE -->
+<div class="modal-overlay" id="applicationModal" role="dialog" aria-modal="true">
+    <div class="modal">
+        <div class="modal-progress"><div class="modal-progress-bar" id="progressBar"></div></div>
+        <div class="modal-header">
+            <button class="modal-close" id="closeModal">Fermer &times;</button>
+            <div class="modal-step-indicator" id="stepIndicator">Étape 1 sur 4</div>
+            <h2 class="modal-title" id="modalTitle">Informations Personnelles</h2>
+            <p class="modal-subtitle" id="modalSubtitle">Renseignez vos coordonnées pour débuter votre dossier de candidature.</p>
+        </div>
+        <div class="form-step active" id="step-1">
+            <div class="form-grid-2">
+                <div class="form-group"><label class="form-label" for="f-prenom">Prénom <span>*</span></label><input class="form-input" type="text" id="f-prenom" placeholder="Votre prénom" required></div>
+                <div class="form-group"><label class="form-label" for="f-nom">Nom <span>*</span></label><input class="form-input" type="text" id="f-nom" placeholder="Votre nom de famille" required></div>
+            </div>
+            <div class="form-grid-2">
+                <div class="form-group"><label class="form-label" for="f-age">Âge <span>*</span></label><input class="form-input" type="number" id="f-age" placeholder="18" min="16" max="80" required></div>
+                <div class="form-group"><label class="form-label" for="f-nationalite">Nationalité <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-nationalite" required><option value="" disabled selected>Sélectionnez votre nationalité</option><option value="fr">Française</option><option value="be">Belge</option><option value="ch">Suisse</option><option value="ca">Canadienne</option><option value="lu">Luxembourgeoise</option><option value="ma">Marocaine</option><option value="dz">Algérienne</option><option value="tn">Tunisienne</option><option value="sn">Sénégalaise</option><option value="ci">Ivoirienne</option><option value="cm">Camerounaise</option><option value="ml">Malienne</option><option value="gn">Guinéenne</option><option value="cd">Congolaise (RDC)</option><option value="ga">Gabonaise</option><option value="de">Allemande</option><option value="es">Espagnole</option><option value="it">Italienne</option><option value="pt">Portugaise</option><option value="nl">Néerlandaise</option><option value="gb">Britannique</option><option value="pl">Polonaise</option><option value="ro">Roumaine</option><option value="us">Américaine</option><option value="br">Brésilienne</option><option value="other">Autre</option></select></div></div>
+            </div>
+            <div class="form-group"><label class="form-label" for="f-email">Adresse e-mail <span>*</span></label><input class="form-input" type="email" id="f-email" placeholder="votre@email.com" required></div>
+            <div class="form-group"><label class="form-label" for="f-disponibilite">Disponibilité hebdomadaire <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-disponibilite" required><option value="" disabled selected>Sélectionnez une plage</option><option value="<5">Moins de 5 heures / semaine</option><option value="5-10">5 à 10 heures / semaine</option><option value="10-20">10 à 20 heures / semaine</option><option value=">20">Plus de 20 heures / semaine</option></select></div></div>
+        </div>
+        <div class="form-step" id="step-2">
+            <p class="form-section-title">Motivation &amp; Alignement</p>
+            <div class="form-group"><label class="form-label" for="f-motivation">Pourquoi souhaitez-vous rejoindre Burton Corporation ? <span>*</span></label><textarea class="form-textarea" id="f-motivation" placeholder="Exprimez de façon sincère et précise ce qui vous attire dans notre structure..." required style="min-height:160px;"></textarea></div>
+            <div class="form-group"><label class="form-label">Quelle valeur vous correspond le mieux ? <span>*</span></label><div class="radio-group"><label class="radio-option"><input type="radio" name="valeur" value="reussite"><span class="radio-custom"></span><span class="option-label"><strong>Réussite</strong> — Atteindre des résultats concrets et mesurables</span></label><label class="radio-option"><input type="radio" name="valeur" value="progres"><span class="radio-custom"></span><span class="option-label"><strong>Progrès</strong> — Évoluer sans cesse, individuellement et collectivement</span></label><label class="radio-option"><input type="radio" name="valeur" value="excellence"><span class="radio-custom"></span><span class="option-label"><strong>Excellence</strong> — Faire chaque chose avec le plus haut niveau d'exigence</span></label><label class="radio-option"><input type="radio" name="valeur" value="loyaute"><span class="radio-custom"></span><span class="option-label"><strong>Loyauté</strong> — S'engager pleinement envers une organisation et ses membres</span></label></div></div>
+            <hr class="form-divider">
+            <div class="form-group"><label class="form-label" for="f-apport">Quelle compétence ou valeur ajoutée apporteriez-vous ? <span>*</span></label><textarea class="form-textarea" id="f-apport" placeholder="Décrivez concrètement ce que vous pouvez apporter à notre organisation..." required></textarea></div>
+        </div>
+        <div class="form-step" id="step-3">
+            <p class="form-section-title">Expérience &amp; Aptitudes</p>
+            <div class="form-group"><label class="form-label" for="f-experience">Avez-vous déjà travaillé au sein d'une organisation similaire ? <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-experience" required><option value="" disabled selected>Sélectionnez une réponse</option><option value="aucune">Non, aucune expérience préalable</option><option value="peu">Oui, brièvement (moins de 3 mois)</option><option value="moderee">Oui, pendant plusieurs mois</option><option value="avancee">Oui, j'ai occupé un poste de responsabilité</option></select></div></div>
+            <div class="form-group"><label class="form-label" for="f-detail-exp">Si oui, décrivez brièvement votre rôle et vos réalisations</label><textarea class="form-textarea" id="f-detail-exp" placeholder="Laissez vide si sans expérience préalable..."></textarea></div>
+            <hr class="form-divider">
+            <div class="form-group"><label class="form-label">Évaluez votre capacité à travailler en équipe</label><div class="rating-scale" id="rating-equipe"></div><div class="rating-labels"><span>Solitaire</span><span>Très collaboratif</span></div></div>
+            <div class="form-group"><label class="form-label">Évaluez votre capacité à gérer la pression</label><div class="rating-scale" id="rating-pression"></div><div class="rating-labels"><span>Sensible</span><span>Très résistant</span></div></div>
+            <div class="form-group"><label class="form-label">Compétences que vous maîtrisez</label><div class="checkbox-group"><label class="checkbox-option"><input type="checkbox" name="competence" value="communication"><span class="checkbox-custom"></span><span class="option-label">Communication &amp; Diplomatie</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="gestion"><span class="checkbox-custom"></span><span class="option-label">Gestion de projet &amp; Organisation</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="leadership"><span class="checkbox-custom"></span><span class="option-label">Leadership &amp; Management d'équipe</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="analyse"><span class="checkbox-custom"></span><span class="option-label">Analyse &amp; Prise de décision stratégique</span></label><label class="checkbox-option"><input type="checkbox" name="competence" value="negociation"><span class="checkbox-custom"></span><span class="option-label">Négociation &amp; Persuasion</span></label></div></div>
+        </div>
+        <div class="form-step" id="step-4">
+            <p class="form-section-title">Engagement &amp; Finalisation</p>
+            <div class="form-group"><label class="form-label" for="f-objectif">Quel objectif souhaitez-vous atteindre dans les 6 prochains mois ? <span>*</span></label><textarea class="form-textarea" id="f-objectif" placeholder="Soyez précis et ambitieux dans votre réponse..." required style="min-height:150px;"></textarea></div>
+            <div class="form-group"><label class="form-label" for="f-defi">Décrivez un défi que vous avez surmonté et ce que vous en avez retenu <span>*</span></label><textarea class="form-textarea" id="f-defi" placeholder="Choisissez un exemple révélateur de votre caractère..." required style="min-height:150px;"></textarea></div>
+            <div class="form-group"><label class="form-label" for="f-comment">Comment avez-vous entendu parler de Burton Corporation ?</label><div class="select-wrapper"><select class="form-select" id="f-comment"><option value="" disabled selected>Sélectionnez une source</option><option value="bouche">Bouche-à-oreille / Recommandation</option><option value="reseaux">Réseaux sociaux</option><option value="discord">Serveurs Discord</option><option value="autre">Autre</option></select></div></div>
+            <hr class="form-divider">
+            <div class="form-group"><label class="form-label">Engagements <span>*</span></label><div class="checkbox-group"><label class="checkbox-option"><input type="checkbox" id="cb-regles" required><span class="checkbox-custom"></span><span class="option-label">Je m'engage à respecter les règles internes de Burton Corporation en tout temps.</span></label><label class="checkbox-option"><input type="checkbox" id="cb-sincere" required><span class="checkbox-custom"></span><span class="option-label">Je certifie que les informations fournies sont sincères et exactes.</span></label><label class="checkbox-option"><input type="checkbox" id="cb-dispo" required><span class="checkbox-custom"></span><span class="option-label">Je comprends que ma candidature sera examinée dans un délai d'un mois calendaire.</span></label></div></div>
+        </div>
+        <div class="modal-success" id="modal-success">
+            <div id="success-analyzing" style="display:none;text-align:center;padding:4rem 0;width:100%">
+                <div class="analyzing-spinner"></div>
+                <p class="analyzing-text">Traitement de votre candidature<span class="analyzing-dots"></span></p>
+                <p style="font-size:0.65rem;letter-spacing:0.2em;color:var(--color-text-subtle);margin-top:1rem;text-transform:uppercase">Veuillez patienter</p>
+            </div>
+            <div id="success-final" style="display:none;flex-direction:column;align-items:center;width:100%;text-align:center">
+                <div class="success-mark">✦</div>
+                <h2 class="success-title">Candidature Transmise</h2>
+                <p class="success-text">Votre dossier a bien été reçu par Burton Corporation. Il sera examiné lors de notre prochaine session mensuelle de sélection.</p>
+                <p class="success-ref" id="success-ref">Référence — —</p>
+            </div>
+        </div>
+        <div class="modal-footer" id="modal-footer">
+            <button class="btn-prev" id="btnPrev" disabled>← Précédent</button>
+            <button class="btn-next" id="btnNext">Continuer →</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Loader
     window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
 
-    // ================================================================
-    //  NAV SCROLL
-    // ================================================================
+    // Nav scroll
     const navbar=document.getElementById('navbar');
     window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>100));
 
-    // ================================================================
-    //  REVEAL ON SCROLL
-    // ================================================================
+    // Reveal on scroll
     const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
     document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el=>obs.observe(el));
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
@@ -723,15 +625,11 @@
     document.querySelectorAll('.vision-card').forEach((el,i)=>el.style.transitionDelay=`${i*0.3}s`);
     document.querySelectorAll('.stat').forEach((el,i)=>el.style.transitionDelay=`${i*0.4}s`);
 
-    // ================================================================
-    //  PARALLAX HERO
-    // ================================================================
+    // Parallax hero
     let ticking=false;
     window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
 
-    // ================================================================
-    //  BRANCH TABS (main)
-    // ================================================================
+    // Branch tabs
     document.querySelectorAll('.branch-tab-inline').forEach(tab=>{
         tab.addEventListener('click',()=>{
             document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));
@@ -741,9 +639,7 @@
         });
     });
 
-    // ================================================================
-    //  PRODUCTION SUB-TABS
-    // ================================================================
+    // Production sub-tabs
     document.querySelectorAll('.prod-sub-tab').forEach(tab=>{
         tab.addEventListener('click',()=>{
             document.querySelectorAll('.prod-sub-tab').forEach(t=>t.classList.remove('active'));
@@ -753,23 +649,31 @@
         });
     });
 
-    // ================================================================
-    //  MODAL CANDIDATURE
-    // ================================================================
+    // Affiche images — show img if src is set, else show placeholder
+    ['cm','film'].forEach(id=>{
+        const img=document.getElementById(id+'-img');
+        const ph=document.getElementById(id+'-placeholder');
+        if(img&&ph){
+            if(img.src&&img.src!==window.location.href){
+                img.style.display='block';ph.style.display='none';
+            } else {
+                img.style.display='none';ph.style.display='flex';
+            }
+        }
+    });
+
+    // Modal
     const TOTAL_STEPS=4;let currentStep=1;
     const modal=document.getElementById('applicationModal'),progressBar=document.getElementById('progressBar'),stepIndicator=document.getElementById('stepIndicator'),modalTitle=document.getElementById('modalTitle'),modalSubtitle=document.getElementById('modalSubtitle'),modalFooter=document.getElementById('modal-footer'),successScreen=document.getElementById('modal-success');
     const stepMeta=[{title:'Informations Personnelles',subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},{title:'Motivation & Valeurs',subtitle:'Exprimez ce qui vous anime et votre adéquation avec notre culture.'},{title:'Expérience & Aptitudes',subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},{title:'Engagement & Finalisation',subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'}];
-
     function buildRating(id){const c=document.getElementById(id);for(let i=1;i<=10;i++){const b=document.createElement('button');b.type='button';b.classList.add('rating-btn');b.textContent=i;b.dataset.value=i;b.addEventListener('click',()=>{c.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});c.appendChild(b)}}
     buildRating('rating-equipe');buildRating('rating-pression');
-
     function openModal(){modal.classList.add('open');document.body.style.overflow='hidden';goToStep(1)}
     function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
     document.getElementById('openApplication').addEventListener('click',openModal);
     document.getElementById('closeModal').addEventListener('click',closeModal);
     modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
     function goToStep(n){
         document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
         successScreen.classList.remove('active');currentStep=n;
@@ -781,7 +685,7 @@
             document.getElementById('btnPrev').disabled=(n===1);
             document.getElementById('btnNext').textContent=(n===TOTAL_STEPS)?'Soumettre ma candidature →':'Continuer →';
             modalFooter.style.display='flex';
-        }else{
+        } else {
             progressBar.style.width='100%';successScreen.classList.add('active');modalFooter.style.display='none';
             stepIndicator.textContent='Traitement en cours…';modalTitle.textContent='';modalSubtitle.textContent='';
             document.getElementById('success-analyzing').style.display='block';
@@ -789,7 +693,6 @@
         }
         modal.querySelector('.modal').scrollTo({top:0,behavior:'smooth'});
     }
-
     function validateStep(n){
         const step=document.getElementById(`step-${n}`);let valid=true;
         step.querySelectorAll('[required]').forEach(f=>{f.style.borderColor='';if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false}});
@@ -798,7 +701,6 @@
         if(!valid){const m=modal.querySelector('.modal');m.style.transform='translateX(-8px)';setTimeout(()=>{m.style.transition='transform 0.4s ease';m.style.transform=''},100)}
         return valid;
     }
-
     const GOOGLE_SHEET_URL='https://script.google.com/macros/s/AKfycbwLlBylC344mWSkO4ybEuqbMweYNOmJaU5cgsUzSPehK-68XBAPpRt7yORIopooWLqNjA/exec';
     const GOOGLE_SHEET_REJECTED_URL='https://script.google.com/macros/s/AKfycbxgQ8LwLwjMWCKSliFhiOYivE38ugOdx-UzR9ulUpdmrVtb3uIlcao1Y0sc4Lc4Mr77PA/exec';
     const ALLOWED_NAT=['fr','be','ch','ca','lu','de','es','it','pt','nl','gb','pl','ro'];
@@ -806,7 +708,6 @@
     const natL={fr:'Française',be:'Belge',ch:'Suisse',ca:'Canadienne',lu:'Luxembourgeoise',ma:'Marocaine',dz:'Algérienne',tn:'Tunisienne',sn:'Sénégalaise',ci:'Ivoirienne',cm:'Camerounaise',ml:'Malienne',gn:'Guinéenne',cd:'Congolaise (RDC)',ga:'Gabonaise',de:'Allemande',es:'Espagnole',it:'Italienne',pt:'Portugaise',nl:'Néerlandaise',gb:'Britannique',pl:'Polonaise',ro:'Roumaine',us:'Américaine',br:'Brésilienne',other:'Autre'};
     const dispoL={'<5':'< 5h / sem','5-10':'5–10h / sem','10-20':'10–20h / sem','>20':'20h+ / sem'};
     const valeurL={reussite:'Réussite',progres:'Progrès',excellence:'Excellence',loyaute:'Loyauté'};
-
     async function submitApplication(){
         const age=parseInt(document.getElementById('f-age')?.value||0),nat=document.getElementById('f-nationalite')?.value||'',dispo=document.getElementById('f-disponibilite')?.value||'';
         const prenom=document.getElementById('f-prenom')?.value.trim()||'',nom=document.getElementById('f-nom')?.value.trim()||'',email=document.getElementById('f-email')?.value.trim()||'';
@@ -831,21 +732,18 @@
         }catch(e){console.error(e)}
         showSuccess(ref);
     }
-
     function showSuccess(ref){
         document.getElementById('success-analyzing').style.display='none';
-        const sf=document.getElementById('success-final');
-        sf.style.display='flex';
+        const sf=document.getElementById('success-final');sf.style.display='flex';
         document.getElementById('success-ref').textContent=`Référence — ${ref}`;
         stepIndicator.textContent='Candidature envoyée';
     }
-
     (function(){
         const b=document.getElementById('btnNext'),nb=b.cloneNode(true);b.parentNode.replaceChild(nb,b);
         nb.addEventListener('click',async()=>{if(validateStep(currentStep)){if(currentStep===TOTAL_STEPS){goToStep(currentStep+1);await submitApplication()}else goToStep(currentStep+1)}});
         const p=document.getElementById('btnPrev'),np=p.cloneNode(true);p.parentNode.replaceChild(np,p);
         np.addEventListener('click',()=>{if(currentStep>1)goToStep(currentStep-1)});
     })();
-    </script>
+</script>
 </body>
 </html>
