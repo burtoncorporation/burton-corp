@@ -117,6 +117,84 @@
         .reveal-element.reveal{opacity:1;transform:translateY(0)}
 
         /* ================================================================
+           SUB-TABS — Production
+        ================================================================ */
+        .production-sub-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:0}
+        .prod-sub-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.2);font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px}
+        .prod-sub-tab:hover{color:rgba(255,255,255,0.5)}
+        .prod-sub-tab.active{color:rgba(255,255,255,0.85);border-bottom-color:rgba(255,255,255,0.3)}
+        .prod-sub-panel{display:none}
+        .prod-sub-panel.active{display:block;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
+
+        /* ================================================================
+           À L'AFFICHE — styles
+        ================================================================ */
+        .affiche-section{padding:5rem 0 2rem}
+        .affiche-block{margin-bottom:6rem}
+        .affiche-label{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem}
+        .affiche-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.05)}
+        .affiche-cadre{display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:start}
+        .affiche-poster{width:240px;flex-shrink:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02)}
+        .affiche-poster img{width:100%;display:block;object-fit:cover;aspect-ratio:2/3;transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)}
+        .affiche-poster:hover img{transform:scale(1.04)}
+        .affiche-poster-placeholder{width:100%;aspect-ratio:2/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%,rgba(255,255,255,0) 100%)}
+        .affiche-poster-placeholder span{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.12);text-align:center;padding:0 1rem}
+        .affiche-info{padding-top:0.5rem}
+        .affiche-categorie{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.8rem}
+        .affiche-titre{font-family:var(--font-display);font-size:3.8rem;font-weight:300;letter-spacing:0.08em;line-height:1.05;margin-bottom:2rem;color:rgba(255,255,255,0.92)}
+        .affiche-description{font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:2.1;font-weight:300;max-width:600px}
+        .affiche-meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap}
+        .affiche-meta-item{display:flex;flex-direction:column;gap:0.5rem}
+        .affiche-meta-key{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+        .affiche-meta-val{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300}
+        .affiche-separator{border:none;border-top:1px solid rgba(255,255,255,0.04);margin:5rem 0}
+
+        /* ================================================================
+           PANNEAU ADMIN — accessible via mot de passe
+        ================================================================ */
+        .admin-trigger{position:fixed;bottom:2rem;right:2rem;width:36px;height:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:50%;cursor:pointer;z-index:40000;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center}
+        .admin-trigger:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15)}
+        .admin-trigger svg{width:12px;height:12px;fill:none;stroke:rgba(255,255,255,0.3);stroke-width:1.5}
+
+        .admin-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);backdrop-filter:blur(30px);z-index:45000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.5s,visibility 0.5s}
+        .admin-overlay.open{opacity:1;visibility:visible}
+        .admin-panel{background:var(--color-surface);border:1px solid rgba(255,255,255,0.07);width:100%;max-width:700px;max-height:90vh;overflow-y:auto;padding:4rem;position:relative;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.08) transparent}
+        .admin-close{position:absolute;top:2rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.3);cursor:pointer;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--font-body);transition:color 0.3s}
+        .admin-close:hover{color:rgba(255,255,255,0.7)}
+        .admin-title{font-family:var(--font-display);font-size:1.8rem;font-weight:300;letter-spacing:0.1em;margin-bottom:0.5rem}
+        .admin-subtitle{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:3rem}
+
+        /* auth screen */
+        .admin-auth{text-align:center;padding:2rem 0}
+        .admin-auth p{font-size:0.75rem;letter-spacing:0.15em;color:rgba(255,255,255,0.35);margin-bottom:2rem;text-transform:uppercase}
+        .admin-pw-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);color:var(--color-text);font-family:var(--font-body);font-size:0.95rem;font-weight:300;padding:1rem 1.4rem;outline:none;transition:border-color 0.4s;letter-spacing:0.2em;text-align:center;margin-bottom:1.5rem}
+        .admin-pw-input:focus{border-color:rgba(255,255,255,0.2)}
+        .admin-pw-error{font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,80,80,0.7);text-transform:uppercase;margin-top:-0.5rem;margin-bottom:1rem;display:none}
+        .admin-btn{width:100%;background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;padding:1rem;cursor:pointer;transition:all 0.4s}
+        .admin-btn:hover{border-color:rgba(255,255,255,0.3);color:var(--color-text)}
+
+        /* editor */
+        .admin-editor{display:none}
+        .admin-block{margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .admin-block:last-of-type{border-bottom:none}
+        .admin-block-title{font-family:var(--font-display);font-size:1.1rem;font-weight:400;letter-spacing:0.1em;margin-bottom:2rem;color:rgba(255,255,255,0.7)}
+        .admin-field{margin-bottom:1.8rem}
+        .admin-label{display:block;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.8rem}
+        .admin-input,.admin-textarea{width:100%;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);color:var(--color-text);font-family:var(--font-body);font-size:0.9rem;font-weight:300;padding:0.9rem 1.2rem;outline:none;transition:border-color 0.4s;resize:vertical}
+        .admin-input:focus,.admin-textarea:focus{border-color:rgba(255,255,255,0.2)}
+        .admin-textarea{min-height:100px;line-height:1.7}
+        .admin-img-preview{width:120px;aspect-ratio:2/3;object-fit:cover;border:1px solid rgba(255,255,255,0.07);margin-top:1rem;display:block}
+        .admin-img-preview-placeholder{width:120px;aspect-ratio:2/3;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;margin-top:1rem}
+        .admin-img-preview-placeholder span{font-size:0.5rem;letter-spacing:0.15em;color:rgba(255,255,255,0.15);text-transform:uppercase;text-align:center;padding:0.5rem}
+        .admin-save-btn{background:transparent;border:1px solid rgba(255,255,255,0.18);color:var(--color-text);font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;padding:1rem 3rem;cursor:pointer;transition:all 0.5s;width:100%;margin-top:1rem}
+        .admin-save-btn:hover{border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.03)}
+        .admin-saved-msg{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(120,200,120,0.7);text-align:center;margin-top:1rem;opacity:0;transition:opacity 0.4s}
+        .admin-saved-msg.show{opacity:1}
+
+        /* meta fields inline */
+        .admin-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+
+        /* ================================================================
            MODAL — BASE STYLES
         ================================================================ */
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px) saturate(180%);z-index:50000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s cubic-bezier(0.4,0,0.2,1);padding:2rem}
@@ -164,8 +242,6 @@
         .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
         .form-divider{border:none;border-top:1px solid rgba(255,255,255,0.05);margin:3rem 0}
         .form-section-title{font-family:var(--font-display);font-size:1.3rem;font-weight:300;letter-spacing:0.1em;color:var(--color-text);margin-bottom:2rem}
-
-        /* FOOTER */
         .modal-footer{padding:2.5rem 5rem 4rem;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;position:sticky;bottom:0;background:var(--color-surface)}
         .btn-prev{background:none;border:none;color:var(--color-text-subtle);font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;font-weight:300;transition:color 0.4s ease;padding:0.5rem 0}
         .btn-prev:hover{color:var(--color-text-muted)}
@@ -174,8 +250,6 @@
         .btn-next::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,0.04);transition:left 0.6s cubic-bezier(0.4,0,0.2,1)}
         .btn-next:hover::before{left:100%}
         .btn-next:hover{border-color:rgba(255,255,255,0.4);transform:translateY(-2px)}
-
-        /* SUCCESS SCREEN */
         .modal-success{display:none;padding:7rem 5rem;text-align:center}
         .modal-success.active{display:flex;flex-direction:column;align-items:center;justify-content:center;animation:stepReveal 0.6s cubic-bezier(0.4,0,0.2,1) forwards}
         .success-mark{width:60px;height:60px;border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 4rem;font-size:1.4rem;color:rgba(255,255,255,0.5);flex-shrink:0;animation:successPulse 3s ease-in-out infinite}
@@ -188,12 +262,10 @@
         .analyzing-text{font-size:0.8rem;letter-spacing:0.2em;color:var(--color-text-muted);text-transform:uppercase}
         .analyzing-dots::after{content:'';animation:dots 1.5s steps(4,end) infinite}
         @keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
-
-        /* GRAIN OVERLAY */
         body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.015;pointer-events:none;z-index:10000}
 
         /* ================================================================
-           BREAKPOINT 1024px
+           RESPONSIVE
         ================================================================ */
         @media(max-width:1024px){
             nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}
@@ -204,88 +276,29 @@
             .branch-inner{padding:4rem 3rem}.branch-inner-grid{gap:4rem}
             .branches-tabs-inline{padding:0 3rem}
             .branches-section .b-header{padding:0 3rem 4rem}
+            .affiche-cadre{grid-template-columns:1fr;gap:3rem}
+            .affiche-poster{width:200px}
         }
-
-        /* ================================================================
-           BREAKPOINT 768px — CORRECTIONS PRINCIPALES
-        ================================================================ */
         @media(max-width:768px){
-            /* General */
             .hero h1{font-size:3.5rem}.nav-links{display:none}
             .cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}
             section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}
-
-            /* Modal header */
             .modal-header{padding:3rem 2.5rem 2.5rem}
             .modal-close{right:2rem;top:2.8rem}
             .modal-title{font-size:1.9rem;padding-right:5rem}
             .modal-subtitle{font-size:0.78rem}
             .form-step{padding:3rem 2.5rem}
             .form-grid-2{grid-template-columns:1fr}
-
-            /* ---- FOOTER : empilement vertical ---- */
-            .modal-footer{
-                padding:1.5rem 2.5rem 2rem;
-                flex-direction:column;
-                gap:0;
-                align-items:stretch;
-            }
-            .btn-next{
-                order:1;
-                width:100%;
-                padding:1.1rem 1rem;
-                font-size:0.68rem;
-                letter-spacing:0.18em;
-                text-align:center;
-            }
-            .btn-prev{
-                order:2;
-                width:100%;
-                text-align:center;
-                padding:0.9rem;
-                font-size:0.62rem;
-                border-top:1px solid rgba(255,255,255,0.04);
-                margin-top:0;
-            }
-            /* Masquer complètement le bouton précédent quand désactivé */
-            .btn-prev:disabled{
-                display:none;
-            }
-
-            /* ---- SUCCESS SCREEN : centrage complet ---- */
-            .modal-success{
-                padding:4rem 2.5rem;
-            }
-            .modal-success.active{
-                display:flex;
-                flex-direction:column;
-                align-items:center;
-                justify-content:center;
-                text-align:center;
-            }
-            .success-mark{
-                width:48px;height:48px;
-                font-size:1rem;
-                margin:0 auto 2.5rem;
-            }
-            .success-title{
-                font-size:1.7rem;
-                letter-spacing:0.05em;
-                margin-bottom:1rem;
-            }
-            .success-text{
-                font-size:0.82rem;
-                letter-spacing:0.07em;
-                line-height:1.85;
-                max-width:100%;
-                margin:0 0 2rem;
-            }
-            .success-ref{
-                font-size:0.58rem;
-                letter-spacing:0.18em;
-            }
-
-            /* Branches */
+            .modal-footer{padding:1.5rem 2.5rem 2rem;flex-direction:column;gap:0;align-items:stretch}
+            .btn-next{order:1;width:100%;padding:1.1rem 1rem;font-size:0.68rem;letter-spacing:0.18em;text-align:center}
+            .btn-prev{order:2;width:100%;text-align:center;padding:0.9rem;font-size:0.62rem;border-top:1px solid rgba(255,255,255,0.04);margin-top:0}
+            .btn-prev:disabled{display:none}
+            .modal-success{padding:4rem 2.5rem}
+            .modal-success.active{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+            .success-mark{width:48px;height:48px;font-size:1rem;margin:0 auto 2.5rem}
+            .success-title{font-size:1.7rem;letter-spacing:0.05em;margin-bottom:1rem}
+            .success-text{font-size:0.82rem;letter-spacing:0.07em;line-height:1.85;max-width:100%;margin:0 0 2rem}
+            .success-ref{font-size:0.58rem;letter-spacing:0.18em}
             .branch-inner{padding:3rem 2rem}
             .branch-inner-grid{grid-template-columns:1fr;gap:3rem}
             .branch-products-inline-grid{grid-template-columns:1fr}
@@ -295,11 +308,11 @@
             .branch-tab-inline{padding:1rem 0.4rem;font-size:0.55rem;letter-spacing:0.15em;text-align:center;border-bottom:2px solid transparent;border-right:1px solid rgba(255,255,255,0.04);width:100%;margin-bottom:0}
             .branch-tab-inline:last-child{border-right:none}
             .branch-tab-inline.active{background:rgba(255,255,255,0.03)}
+            .affiche-titre{font-size:2.4rem}
+            .affiche-poster{width:160px}
+            .admin-panel{padding:2.5rem}
+            .admin-meta-grid{grid-template-columns:1fr}
         }
-
-        /* ================================================================
-           BREAKPOINT 480px
-        ================================================================ */
         @media(max-width:480px){
             .hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}
             nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}
@@ -309,26 +322,20 @@
             .stat-number{font-size:3rem}
             .cta h2{font-size:2rem}
             .cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
-
-            /* Modal */
             .modal-header{padding:2.5rem 1.5rem 2rem}
             .modal-close{right:1.5rem;top:2.5rem}
             .modal-title{font-size:1.5rem;padding-right:4.5rem}
             .form-step{padding:2.5rem 1.5rem}
-
-            /* Footer petit mobile */
             .modal-footer{padding:1.2rem 1.5rem 1.8rem}
             .btn-next{padding:1rem 0.8rem;font-size:0.62rem;letter-spacing:0.14em}
             .btn-prev{font-size:0.56rem;padding:0.7rem}
-
-            /* Success petit mobile */
             .modal-success{padding:3rem 1.5rem}
             .success-title{font-size:1.35rem;letter-spacing:0.03em}
             .success-text{font-size:0.76rem;letter-spacing:0.05em}
             .success-mark{width:42px;height:42px;margin-bottom:1.8rem}
-
-            /* Branches */
             .branch-tab-inline{font-size:0.48rem;padding:0.9rem 0.2rem}
+            .affiche-titre{font-size:1.8rem}
+            .affiche-poster{width:130px}
         }
     </style>
 </head>
@@ -388,6 +395,8 @@
                 <button class="branch-tab-inline" data-panel="production">Production</button>
             </div>
             <div class="branches-panels">
+
+                <!-- WATCH -->
                 <div class="branch-panel-inline active" id="panel-watch">
                     <div class="branch-inner">
                         <div class="branch-inner-grid">
@@ -402,6 +411,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- PARFUM -->
                 <div class="branch-panel-inline" id="panel-parfum">
                     <div class="branch-inner">
                         <div class="branch-inner-grid">
@@ -416,6 +427,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- CLOTHES -->
                 <div class="branch-panel-inline" id="panel-clothes">
                     <div class="branch-inner">
                         <div class="branch-inner-grid">
@@ -430,6 +443,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- CHOCOLATE -->
                 <div class="branch-panel-inline" id="panel-chocolate">
                     <div class="branch-inner">
                         <div class="branch-inner-grid">
@@ -444,21 +459,91 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- PRODUCTION -->
                 <div class="branch-panel-inline" id="panel-production">
                     <div class="branch-inner">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+
+                        <!-- Sub-tabs Production -->
+                        <div class="production-sub-tabs">
+                            <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
+                            <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
                         </div>
-                        <div class="branch-products-inline-title">Activités</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+
+                        <!-- Sub-panel : Aperçu (contenu original) -->
+                        <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
+                                <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+                            </div>
+                            <div class="branch-products-inline-title">Activités</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+
+                        <!-- Sub-panel : À l'Affiche -->
+                        <div class="prod-sub-panel" id="sub-affiche">
+                            <div class="affiche-section">
+
+                                <!-- Court métrage -->
+                                <div class="affiche-block">
+                                    <div class="affiche-label">Court Métrage du Mois</div>
+                                    <div class="affiche-cadre">
+                                        <div class="affiche-poster" id="cm-poster-wrap">
+                                            <div class="affiche-poster-placeholder" id="cm-placeholder">
+                                                <span>Affiche à venir</span>
+                                            </div>
+                                            <img id="cm-poster-img" src="" alt="" style="display:none">
+                                        </div>
+                                        <div class="affiche-info">
+                                            <div class="affiche-categorie" id="cm-categorie-display">Court Métrage</div>
+                                            <div class="affiche-titre" id="cm-titre-display">Titre du court métrage</div>
+                                            <div class="affiche-description" id="cm-desc-display">La description du court métrage apparaîtra ici. Modifiez ce contenu depuis le panneau d'administration.</div>
+                                            <div class="affiche-meta" id="cm-meta-display">
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val" id="cm-duree-display">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val" id="cm-real-display">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val" id="cm-mois-display">—</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="affiche-separator">
+
+                                <!-- Film -->
+                                <div class="affiche-block">
+                                    <div class="affiche-label">Film de l'Année</div>
+                                    <div class="affiche-cadre">
+                                        <div class="affiche-poster" id="film-poster-wrap">
+                                            <div class="affiche-poster-placeholder" id="film-placeholder">
+                                                <span>Affiche à venir</span>
+                                            </div>
+                                            <img id="film-poster-img" src="" alt="" style="display:none">
+                                        </div>
+                                        <div class="affiche-info">
+                                            <div class="affiche-categorie" id="film-categorie-display">Long Métrage</div>
+                                            <div class="affiche-titre" id="film-titre-display">Titre du film</div>
+                                            <div class="affiche-description" id="film-desc-display">La description du film apparaîtra ici. Modifiez ce contenu depuis le panneau d'administration.</div>
+                                            <div class="affiche-meta" id="film-meta-display">
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val" id="film-duree-display">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val" id="film-real-display">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val" id="film-annee-display">—</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /sub-panels -->
+
+                    </div><!-- /branch-inner -->
+                </div><!-- /panel-production -->
+
+            </div><!-- /branches-panels -->
         </section>
 
         <section class="progression" id="progression">
@@ -502,7 +587,7 @@
         </section>
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL CANDIDATURE -->
     <div class="modal-overlay" id="applicationModal" role="dialog" aria-modal="true">
         <div class="modal">
             <div class="modal-progress"><div class="modal-progress-bar" id="progressBar"></div></div>
@@ -548,8 +633,6 @@
                 <hr class="form-divider">
                 <div class="form-group"><label class="form-label">Engagements <span>*</span></label><div class="checkbox-group"><label class="checkbox-option"><input type="checkbox" id="cb-regles" required><span class="checkbox-custom"></span><span class="option-label">Je m'engage à respecter les règles internes de Burton Corporation en tout temps.</span></label><label class="checkbox-option"><input type="checkbox" id="cb-sincere" required><span class="checkbox-custom"></span><span class="option-label">Je certifie que les informations fournies sont sincères et exactes.</span></label><label class="checkbox-option"><input type="checkbox" id="cb-dispo" required><span class="checkbox-custom"></span><span class="option-label">Je comprends que ma candidature sera examinée dans un délai d'un mois calendaire.</span></label></div></div>
             </div>
-
-            <!-- SUCCESS -->
             <div class="modal-success" id="modal-success">
                 <div id="success-analyzing" style="display:none;text-align:center;padding:4rem 0;width:100%">
                     <div class="analyzing-spinner"></div>
@@ -563,7 +646,6 @@
                     <p class="success-ref" id="success-ref">Référence — —</p>
                 </div>
             </div>
-
             <div class="modal-footer" id="modal-footer">
                 <button class="btn-prev" id="btnPrev" disabled>← Précédent</button>
                 <button class="btn-next" id="btnNext">Continuer →</button>
@@ -571,104 +653,474 @@
         </div>
     </div>
 
-    <script>
-        window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
-        const navbar=document.getElementById('navbar');
-        window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>100));
-        const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
-        document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el=>obs.observe(el));
-        document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
-        document.querySelectorAll('.progression-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.2}s`);
-        document.querySelectorAll('.procedure-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.25}s`);
-        document.querySelectorAll('.vision-card').forEach((el,i)=>el.style.transitionDelay=`${i*0.3}s`);
-        document.querySelectorAll('.stat').forEach((el,i)=>el.style.transitionDelay=`${i*0.4}s`);
-        let ticking=false;
-        window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
-        document.querySelectorAll('.branch-tab-inline').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.branch-panel-inline').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById('panel-'+tab.dataset.panel).classList.add('active')})});
+    <!-- BOUTON ADMIN (discret, coin bas-droite) -->
+    <button class="admin-trigger" id="adminTrigger" title="Administration">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+    </button>
 
-        // MODAL
-        const TOTAL_STEPS=4;let currentStep=1;
-        const modal=document.getElementById('applicationModal'),progressBar=document.getElementById('progressBar'),stepIndicator=document.getElementById('stepIndicator'),modalTitle=document.getElementById('modalTitle'),modalSubtitle=document.getElementById('modalSubtitle'),modalFooter=document.getElementById('modal-footer'),successScreen=document.getElementById('modal-success');
-        const stepMeta=[{title:'Informations Personnelles',subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},{title:'Motivation & Valeurs',subtitle:'Exprimez ce qui vous anime et votre adéquation avec notre culture.'},{title:'Expérience & Aptitudes',subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},{title:'Engagement & Finalisation',subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'}];
-        function buildRating(id){const c=document.getElementById(id);for(let i=1;i<=10;i++){const b=document.createElement('button');b.type='button';b.classList.add('rating-btn');b.textContent=i;b.dataset.value=i;b.addEventListener('click',()=>{c.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});c.appendChild(b)}}
-        buildRating('rating-equipe');buildRating('rating-pression');
-        function openModal(){modal.classList.add('open');document.body.style.overflow='hidden';goToStep(1)}
-        function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
-        document.getElementById('openApplication').addEventListener('click',openModal);
-        document.getElementById('closeModal').addEventListener('click',closeModal);
-        modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-        function goToStep(n){
-            document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
-            successScreen.classList.remove('active');currentStep=n;
-            if(n<=TOTAL_STEPS){
-                document.getElementById(`step-${n}`).classList.add('active');
-                stepIndicator.textContent=`Étape ${n} sur ${TOTAL_STEPS}`;
-                modalTitle.textContent=stepMeta[n-1].title;modalSubtitle.textContent=stepMeta[n-1].subtitle;
-                progressBar.style.width=`${((n-1)/TOTAL_STEPS)*100}%`;
-                document.getElementById('btnPrev').disabled=(n===1);
-                document.getElementById('btnNext').textContent=(n===TOTAL_STEPS)?'Soumettre ma candidature →':'Continuer →';
-                modalFooter.style.display='flex';
-            }else{
-                progressBar.style.width='100%';successScreen.classList.add('active');modalFooter.style.display='none';
-                stepIndicator.textContent='Traitement en cours…';modalTitle.textContent='';modalSubtitle.textContent='';
-                document.getElementById('success-analyzing').style.display='block';
-                document.getElementById('success-final').style.display='none';
+    <!-- PANNEAU ADMIN -->
+    <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-panel">
+            <button class="admin-close" id="adminClose">Fermer ×</button>
+            <div class="admin-title">Administration</div>
+            <div class="admin-subtitle">Burton Corporation — Gestion des affiches</div>
+
+            <!-- Auth -->
+            <div class="admin-auth" id="adminAuth">
+                <p>Mot de passe requis</p>
+                <input class="admin-pw-input" type="password" id="adminPw" placeholder="••••••••" autocomplete="off">
+                <div class="admin-pw-error" id="adminPwError">Mot de passe incorrect</div>
+                <button class="admin-btn" id="adminPwBtn">Accéder →</button>
+            </div>
+
+            <!-- Éditeur (masqué par défaut) -->
+            <div class="admin-editor" id="adminEditor">
+
+                <!-- Court métrage -->
+                <div class="admin-block">
+                    <div class="admin-block-title">Court Métrage du Mois</div>
+                    <div class="admin-field">
+                        <label class="admin-label">Titre</label>
+                        <input class="admin-input" type="text" id="a-cm-titre" placeholder="Titre du court métrage">
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-label">Description</label>
+                        <textarea class="admin-textarea" id="a-cm-desc" placeholder="Synopsis, ambiance, intentions..."></textarea>
+                    </div>
+                    <div class="admin-meta-grid">
+                        <div class="admin-field">
+                            <label class="admin-label">Durée</label>
+                            <input class="admin-input" type="text" id="a-cm-duree" placeholder="Ex : 12 min">
+                        </div>
+                        <div class="admin-field">
+                            <label class="admin-label">Réalisation</label>
+                            <input class="admin-input" type="text" id="a-cm-real" placeholder="Nom du réalisateur">
+                        </div>
+                        <div class="admin-field">
+                            <label class="admin-label">Mois de diffusion</label>
+                            <input class="admin-input" type="text" id="a-cm-mois" placeholder="Ex : Février 2026">
+                        </div>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-label">Affiche — URL de l'image</label>
+                        <input class="admin-input" type="url" id="a-cm-img" placeholder="https://... ou data:image/...">
+                        <div id="a-cm-img-preview-wrap">
+                            <div class="admin-img-preview-placeholder"><span>Aperçu</span></div>
+                        </div>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-label">Ou importer une image depuis votre appareil</label>
+                        <input type="file" accept="image/*" id="a-cm-file" style="color:rgba(255,255,255,0.4);font-size:0.75rem;font-family:var(--font-body)">
+                    </div>
+                </div>
+
+                <!-- Film -->
+                <div class="admin-block">
+                    <div class="admin-block-title">Film de l'Année</div>
+                    <div class="admin-field">
+                        <label class="admin-label">Titre</label>
+                        <input class="admin-input" type="text" id="a-film-titre" placeholder="Titre du film">
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-label">Description</label>
+                        <textarea class="admin-textarea" id="a-film-desc" placeholder="Synopsis, ambiance, intentions..."></textarea>
+                    </div>
+                    <div class="admin-meta-grid">
+                        <div class="admin-field">
+                            <label class="admin-label">Durée</label>
+                            <input class="admin-input" type="text" id="a-film-duree" placeholder="Ex : 1h 42 min">
+                        </div>
+                        <div class="admin-field">
+                            <label class="admin-label">Réalisation</label>
+                            <input class="admin-input" type="text" id="a-film-real" placeholder="Nom du réalisateur">
+                        </div>
+                        <div class="admin-field">
+                            <label class="admin-label">Année</label>
+                            <input class="admin-input" type="text" id="a-film-annee" placeholder="Ex : 2026">
+                        </div>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-label">Affiche — URL de l'image</label>
+                        <input class="admin-input" type="url" id="a-film-img" placeholder="https://... ou data:image/...">
+                        <div id="a-film-img-preview-wrap">
+                            <div class="admin-img-preview-placeholder"><span>Aperçu</span></div>
+                        </div>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-label">Ou importer une image depuis votre appareil</label>
+                        <input type="file" accept="image/*" id="a-film-file" style="color:rgba(255,255,255,0.4);font-size:0.75rem;font-family:var(--font-body)">
+                    </div>
+                </div>
+
+                <button class="admin-save-btn" id="adminSaveBtn">Enregistrer les modifications</button>
+                <div class="admin-saved-msg" id="adminSavedMsg">✦ Modifications enregistrées avec succès</div>
+
+            </div><!-- /admin-editor -->
+        </div>
+    </div>
+
+    <script>
+    // ================================================================
+    //  LOADER
+    // ================================================================
+    window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
+
+    // ================================================================
+    //  NAV SCROLL
+    // ================================================================
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>100));
+
+    // ================================================================
+    //  REVEAL ON SCROLL
+    // ================================================================
+    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
+    document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el=>obs.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
+    document.querySelectorAll('.progression-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.2}s`);
+    document.querySelectorAll('.procedure-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.25}s`);
+    document.querySelectorAll('.vision-card').forEach((el,i)=>el.style.transitionDelay=`${i*0.3}s`);
+    document.querySelectorAll('.stat').forEach((el,i)=>el.style.transitionDelay=`${i*0.4}s`);
+
+    // ================================================================
+    //  PARALLAX HERO
+    // ================================================================
+    let ticking=false;
+    window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
+
+    // ================================================================
+    //  BRANCH TABS (main)
+    // ================================================================
+    document.querySelectorAll('.branch-tab-inline').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+            document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('.branch-panel-inline').forEach(p=>p.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('panel-'+tab.dataset.panel).classList.add('active');
+        });
+    });
+
+    // ================================================================
+    //  PRODUCTION SUB-TABS
+    // ================================================================
+    document.querySelectorAll('.prod-sub-tab').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+            document.querySelectorAll('.prod-sub-tab').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('.prod-sub-panel').forEach(p=>p.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('sub-'+tab.dataset.sub).classList.add('active');
+        });
+    });
+
+    // ================================================================
+    //  PERSISTANCE LOCALE (localStorage)
+    // ================================================================
+    const STORAGE_KEY = 'burton_affiche_data';
+
+    function loadAfficheData(){
+        try{
+            const raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : null;
+        }catch(e){ return null; }
+    }
+
+    function saveAfficheData(data){
+        try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
+    }
+
+    function applyAfficheData(data){
+        if(!data) return;
+
+        // Court métrage
+        if(data.cm){
+            const cm = data.cm;
+            setText('cm-titre-display', cm.titre, 'Titre du court métrage');
+            setText('cm-desc-display', cm.desc, 'La description apparaîtra ici.');
+            setText('cm-duree-display', cm.duree, '—');
+            setText('cm-real-display', cm.real, '—');
+            setText('cm-mois-display', cm.mois, '—');
+            setPoster('cm', cm.img);
+        }
+
+        // Film
+        if(data.film){
+            const film = data.film;
+            setText('film-titre-display', film.titre, 'Titre du film');
+            setText('film-desc-display', film.desc, 'La description apparaîtra ici.');
+            setText('film-duree-display', film.duree, '—');
+            setText('film-real-display', film.real, '—');
+            setText('film-annee-display', film.annee, '—');
+            setPoster('film', film.img);
+        }
+    }
+
+    function setText(id, val, fallback){
+        const el = document.getElementById(id);
+        if(el) el.textContent = (val && val.trim()) ? val : fallback;
+    }
+
+    function setPoster(prefix, src){
+        const img = document.getElementById(prefix+'-poster-img');
+        const placeholder = document.getElementById(prefix+'-placeholder');
+        if(!img || !placeholder) return;
+        if(src && src.trim()){
+            img.src = src;
+            img.style.display = 'block';
+            placeholder.style.display = 'none';
+        } else {
+            img.style.display = 'none';
+            placeholder.style.display = 'flex';
+        }
+    }
+
+    // Charger au démarrage
+    applyAfficheData(loadAfficheData());
+
+    // ================================================================
+    //  ADMIN — Authentification
+    // ================================================================
+    const ADMIN_PASSWORD = 'burton2026'; // ← CHANGEZ CE MOT DE PASSE
+
+    const adminOverlay  = document.getElementById('adminOverlay');
+    const adminAuth     = document.getElementById('adminAuth');
+    const adminEditor   = document.getElementById('adminEditor');
+    const adminPw       = document.getElementById('adminPw');
+    const adminPwError  = document.getElementById('adminPwError');
+    const adminPwBtn    = document.getElementById('adminPwBtn');
+
+    document.getElementById('adminTrigger').addEventListener('click',()=>{
+        adminOverlay.classList.add('open');
+        adminPw.value='';
+        adminPwError.style.display='none';
+        // Si déjà authentifié en session
+        if(sessionStorage.getItem('burton_admin')==='1'){
+            openEditor();
+        } else {
+            adminAuth.style.display='block';
+            adminEditor.style.display='none';
+        }
+    });
+
+    document.getElementById('adminClose').addEventListener('click',()=>adminOverlay.classList.remove('open'));
+    adminOverlay.addEventListener('click',e=>{ if(e.target===adminOverlay) adminOverlay.classList.remove('open'); });
+
+    adminPwBtn.addEventListener('click', checkPw);
+    adminPw.addEventListener('keydown', e=>{ if(e.key==='Enter') checkPw(); });
+
+    function checkPw(){
+        if(adminPw.value === ADMIN_PASSWORD){
+            sessionStorage.setItem('burton_admin','1');
+            openEditor();
+        } else {
+            adminPwError.style.display='block';
+            adminPw.value='';
+            adminPw.focus();
+        }
+    }
+
+    function openEditor(){
+        adminAuth.style.display='none';
+        adminEditor.style.display='block';
+        fillEditorFromStorage();
+    }
+
+    // ================================================================
+    //  ADMIN — Remplir les champs depuis les données stockées
+    // ================================================================
+    function fillEditorFromStorage(){
+        const data = loadAfficheData() || {};
+        const cm   = data.cm   || {};
+        const film = data.film || {};
+
+        setVal('a-cm-titre',  cm.titre);
+        setVal('a-cm-desc',   cm.desc);
+        setVal('a-cm-duree',  cm.duree);
+        setVal('a-cm-real',   cm.real);
+        setVal('a-cm-mois',   cm.mois);
+        setVal('a-cm-img',    cm.img);
+        updateImgPreview('a-cm-img-preview-wrap', cm.img);
+
+        setVal('a-film-titre', film.titre);
+        setVal('a-film-desc',  film.desc);
+        setVal('a-film-duree', film.duree);
+        setVal('a-film-real',  film.real);
+        setVal('a-film-annee', film.annee);
+        setVal('a-film-img',   film.img);
+        updateImgPreview('a-film-img-preview-wrap', film.img);
+    }
+
+    function setVal(id, val){
+        const el = document.getElementById(id);
+        if(el && val) el.value = val;
+    }
+
+    // ================================================================
+    //  ADMIN — Prévisualisation image URL
+    // ================================================================
+    function updateImgPreview(wrapId, src){
+        const wrap = document.getElementById(wrapId);
+        if(!wrap) return;
+        wrap.innerHTML = '';
+        if(src && src.trim()){
+            const img = document.createElement('img');
+            img.className = 'admin-img-preview';
+            img.src = src;
+            img.alt = 'Aperçu affiche';
+            wrap.appendChild(img);
+        } else {
+            wrap.innerHTML = '<div class="admin-img-preview-placeholder"><span>Aperçu</span></div>';
+        }
+    }
+
+    // Prévisualisation live URL
+    ['a-cm-img','a-film-img'].forEach(id=>{
+        document.getElementById(id).addEventListener('input', function(){
+            const wrapId = id === 'a-cm-img' ? 'a-cm-img-preview-wrap' : 'a-film-img-preview-wrap';
+            updateImgPreview(wrapId, this.value);
+        });
+    });
+
+    // Import fichier local → base64
+    function bindFileInput(fileId, imgInputId, previewWrapId){
+        document.getElementById(fileId).addEventListener('change', function(){
+            const file = this.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e){
+                const b64 = e.target.result;
+                document.getElementById(imgInputId).value = b64;
+                updateImgPreview(previewWrapId, b64);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+    bindFileInput('a-cm-file',   'a-cm-img',   'a-cm-img-preview-wrap');
+    bindFileInput('a-film-file', 'a-film-img', 'a-film-img-preview-wrap');
+
+    // ================================================================
+    //  ADMIN — Sauvegarder
+    // ================================================================
+    document.getElementById('adminSaveBtn').addEventListener('click',()=>{
+        const data = {
+            cm: {
+                titre : document.getElementById('a-cm-titre').value.trim(),
+                desc  : document.getElementById('a-cm-desc').value.trim(),
+                duree : document.getElementById('a-cm-duree').value.trim(),
+                real  : document.getElementById('a-cm-real').value.trim(),
+                mois  : document.getElementById('a-cm-mois').value.trim(),
+                img   : document.getElementById('a-cm-img').value.trim(),
+            },
+            film: {
+                titre : document.getElementById('a-film-titre').value.trim(),
+                desc  : document.getElementById('a-film-desc').value.trim(),
+                duree : document.getElementById('a-film-duree').value.trim(),
+                real  : document.getElementById('a-film-real').value.trim(),
+                annee : document.getElementById('a-film-annee').value.trim(),
+                img   : document.getElementById('a-film-img').value.trim(),
             }
-            modal.querySelector('.modal').scrollTo({top:0,behavior:'smooth'});
+        };
+
+        saveAfficheData(data);
+        applyAfficheData(data);
+
+        const msg = document.getElementById('adminSavedMsg');
+        msg.classList.add('show');
+        setTimeout(()=>msg.classList.remove('show'), 3000);
+    });
+
+    // ================================================================
+    //  MODAL CANDIDATURE
+    // ================================================================
+    const TOTAL_STEPS=4;let currentStep=1;
+    const modal=document.getElementById('applicationModal'),progressBar=document.getElementById('progressBar'),stepIndicator=document.getElementById('stepIndicator'),modalTitle=document.getElementById('modalTitle'),modalSubtitle=document.getElementById('modalSubtitle'),modalFooter=document.getElementById('modal-footer'),successScreen=document.getElementById('modal-success');
+    const stepMeta=[{title:'Informations Personnelles',subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},{title:'Motivation & Valeurs',subtitle:'Exprimez ce qui vous anime et votre adéquation avec notre culture.'},{title:'Expérience & Aptitudes',subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},{title:'Engagement & Finalisation',subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'}];
+
+    function buildRating(id){const c=document.getElementById(id);for(let i=1;i<=10;i++){const b=document.createElement('button');b.type='button';b.classList.add('rating-btn');b.textContent=i;b.dataset.value=i;b.addEventListener('click',()=>{c.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});c.appendChild(b)}}
+    buildRating('rating-equipe');buildRating('rating-pression');
+
+    function openModal(){modal.classList.add('open');document.body.style.overflow='hidden';goToStep(1)}
+    function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
+    document.getElementById('openApplication').addEventListener('click',openModal);
+    document.getElementById('closeModal').addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();adminOverlay.classList.remove('open');}});
+
+    function goToStep(n){
+        document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+        successScreen.classList.remove('active');currentStep=n;
+        if(n<=TOTAL_STEPS){
+            document.getElementById(`step-${n}`).classList.add('active');
+            stepIndicator.textContent=`Étape ${n} sur ${TOTAL_STEPS}`;
+            modalTitle.textContent=stepMeta[n-1].title;modalSubtitle.textContent=stepMeta[n-1].subtitle;
+            progressBar.style.width=`${((n-1)/TOTAL_STEPS)*100}%`;
+            document.getElementById('btnPrev').disabled=(n===1);
+            document.getElementById('btnNext').textContent=(n===TOTAL_STEPS)?'Soumettre ma candidature →':'Continuer →';
+            modalFooter.style.display='flex';
+        }else{
+            progressBar.style.width='100%';successScreen.classList.add('active');modalFooter.style.display='none';
+            stepIndicator.textContent='Traitement en cours…';modalTitle.textContent='';modalSubtitle.textContent='';
+            document.getElementById('success-analyzing').style.display='block';
+            document.getElementById('success-final').style.display='none';
         }
-        function validateStep(n){
-            const step=document.getElementById(`step-${n}`);let valid=true;
-            step.querySelectorAll('[required]').forEach(f=>{f.style.borderColor='';if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false}});
-            if(n===2&&!document.querySelector('input[name="valeur"]:checked')){valid=false;const r=step.querySelectorAll('.radio-option');r.forEach(x=>x.style.borderColor='rgba(255,80,80,0.3)');setTimeout(()=>r.forEach(x=>x.style.borderColor=''),2000)}
-            if(n===4){['cb-regles','cb-sincere','cb-dispo'].forEach(id=>{const cb=document.getElementById(id);if(cb&&!cb.checked){valid=false;const w=cb.closest('.checkbox-option');if(w){w.style.borderColor='rgba(255,80,80,0.3)';setTimeout(()=>w.style.borderColor='',2000)}}})}
-            if(!valid){const m=modal.querySelector('.modal');m.style.transform='translateX(-8px)';setTimeout(()=>{m.style.transition='transform 0.4s ease';m.style.transform=''},100)}
-            return valid;
+        modal.querySelector('.modal').scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function validateStep(n){
+        const step=document.getElementById(`step-${n}`);let valid=true;
+        step.querySelectorAll('[required]').forEach(f=>{f.style.borderColor='';if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false}});
+        if(n===2&&!document.querySelector('input[name="valeur"]:checked')){valid=false;const r=step.querySelectorAll('.radio-option');r.forEach(x=>x.style.borderColor='rgba(255,80,80,0.3)');setTimeout(()=>r.forEach(x=>x.style.borderColor=''),2000)}
+        if(n===4){['cb-regles','cb-sincere','cb-dispo'].forEach(id=>{const cb=document.getElementById(id);if(cb&&!cb.checked){valid=false;const w=cb.closest('.checkbox-option');if(w){w.style.borderColor='rgba(255,80,80,0.3)';setTimeout(()=>w.style.borderColor='',2000)}}})}
+        if(!valid){const m=modal.querySelector('.modal');m.style.transform='translateX(-8px)';setTimeout(()=>{m.style.transition='transform 0.4s ease';m.style.transform=''},100)}
+        return valid;
+    }
+
+    const GOOGLE_SHEET_URL='https://script.google.com/macros/s/AKfycbwLlBylC344mWSkO4ybEuqbMweYNOmJaU5cgsUzSPehK-68XBAPpRt7yORIopooWLqNjA/exec';
+    const GOOGLE_SHEET_REJECTED_URL='https://script.google.com/macros/s/AKfycbxgQ8LwLwjMWCKSliFhiOYivE38ugOdx-UzR9ulUpdmrVtb3uIlcao1Y0sc4Lc4Mr77PA/exec';
+    const ALLOWED_NAT=['fr','be','ch','ca','lu','de','es','it','pt','nl','gb','pl','ro'];
+    const ALLOWED_DISPO=['>20'];
+    const natL={fr:'Française',be:'Belge',ch:'Suisse',ca:'Canadienne',lu:'Luxembourgeoise',ma:'Marocaine',dz:'Algérienne',tn:'Tunisienne',sn:'Sénégalaise',ci:'Ivoirienne',cm:'Camerounaise',ml:'Malienne',gn:'Guinéenne',cd:'Congolaise (RDC)',ga:'Gabonaise',de:'Allemande',es:'Espagnole',it:'Italienne',pt:'Portugaise',nl:'Néerlandaise',gb:'Britannique',pl:'Polonaise',ro:'Roumaine',us:'Américaine',br:'Brésilienne',other:'Autre'};
+    const dispoL={'<5':'< 5h / sem','5-10':'5–10h / sem','10-20':'10–20h / sem','>20':'20h+ / sem'};
+    const valeurL={reussite:'Réussite',progres:'Progrès',excellence:'Excellence',loyaute:'Loyauté'};
+
+    async function submitApplication(){
+        const age=parseInt(document.getElementById('f-age')?.value||0),nat=document.getElementById('f-nationalite')?.value||'',dispo=document.getElementById('f-disponibilite')?.value||'';
+        const prenom=document.getElementById('f-prenom')?.value.trim()||'',nom=document.getElementById('f-nom')?.value.trim()||'',email=document.getElementById('f-email')?.value.trim()||'';
+        const ref='BC-'+Date.now().toString(36).toUpperCase().slice(-6);
+        if(age<18||!ALLOWED_NAT.includes(nat)||!ALLOWED_DISPO.includes(dispo)){
+            try{const d=new FormData();d.append('reference',ref);d.append('nom',nom);d.append('prenom',prenom);d.append('email',email);d.append('raison',age<18?'Âge < 18':!ALLOWED_NAT.includes(nat)?'Nationalité hors liste':'Disponibilité insuffisante');await fetch(GOOGLE_SHEET_REJECTED_URL,{method:'POST',body:d})}catch(e){}
+            showSuccess(ref);return;
         }
-        const GOOGLE_SHEET_URL='https://script.google.com/macros/s/AKfycbwLlBylC344mWSkO4ybEuqbMweYNOmJaU5cgsUzSPehK-68XBAPpRt7yORIopooWLqNjA/exec';
-        const GOOGLE_SHEET_REJECTED_URL='https://script.google.com/macros/s/AKfycbxgQ8LwLwjMWCKSliFhiOYivE38ugOdx-UzR9ulUpdmrVtb3uIlcao1Y0sc4Lc4Mr77PA/exec';
-        const ALLOWED_NAT=['fr','be','ch','ca','lu','de','es','it','pt','nl','gb','pl','ro'];
-        const ALLOWED_DISPO=['>20'];
-        const natL={fr:'Française',be:'Belge',ch:'Suisse',ca:'Canadienne',lu:'Luxembourgeoise',ma:'Marocaine',dz:'Algérienne',tn:'Tunisienne',sn:'Sénégalaise',ci:'Ivoirienne',cm:'Camerounaise',ml:'Malienne',gn:'Guinéenne',cd:'Congolaise (RDC)',ga:'Gabonaise',de:'Allemande',es:'Espagnole',it:'Italienne',pt:'Portugaise',nl:'Néerlandaise',gb:'Britannique',pl:'Polonaise',ro:'Roumaine',us:'Américaine',br:'Brésilienne',other:'Autre'};
-        const dispoL={'<5':'< 5h / sem','5-10':'5–10h / sem','10-20':'10–20h / sem','>20':'20h+ / sem'};
-        const valeurL={reussite:'Réussite',progres:'Progrès',excellence:'Excellence',loyaute:'Loyauté'};
-        async function submitApplication(){
-            const age=parseInt(document.getElementById('f-age')?.value||0),nat=document.getElementById('f-nationalite')?.value||'',dispo=document.getElementById('f-disponibilite')?.value||'';
-            const prenom=document.getElementById('f-prenom')?.value.trim()||'',nom=document.getElementById('f-nom')?.value.trim()||'',email=document.getElementById('f-email')?.value.trim()||'';
-            const ref='BC-'+Date.now().toString(36).toUpperCase().slice(-6);
-            if(age<18||!ALLOWED_NAT.includes(nat)||!ALLOWED_DISPO.includes(dispo)){
-                try{const d=new FormData();d.append('reference',ref);d.append('nom',nom);d.append('prenom',prenom);d.append('email',email);d.append('raison',age<18?'Âge < 18':!ALLOWED_NAT.includes(nat)?'Nationalité hors liste':'Disponibilité insuffisante');await fetch(GOOGLE_SHEET_REJECTED_URL,{method:'POST',body:d})}catch(e){}
-                showSuccess(ref);return;
-            }
-            try{
-                const d=new FormData();
-                d.append('timestamp',new Date().toLocaleString('fr-FR'));d.append('reference',ref);d.append('prenom',prenom);d.append('nom',nom);d.append('age',age);d.append('email',email);
-                d.append('nationalite',natL[nat]||nat);d.append('disponibilite',dispoL[dispo]||dispo);
-                d.append('valeur',valeurL[document.querySelector('input[name="valeur"]:checked')?.value]||'—');
-                d.append('motivation',document.getElementById('f-motivation')?.value.trim()||'');d.append('apport',document.getElementById('f-apport')?.value.trim()||'');
-                d.append('objectif',document.getElementById('f-objectif')?.value.trim()||'');d.append('defi',document.getElementById('f-defi')?.value.trim()||'');
-                d.append('experience',document.getElementById('f-experience')?.value||'');d.append('detailExp',document.getElementById('f-detail-exp')?.value.trim()||'');
-                const rE=document.querySelector('#rating-equipe .rating-btn.selected'),rP=document.querySelector('#rating-pression .rating-btn.selected');
-                d.append('ratingEquipe',rE?rE.dataset.value+'/10':'—');d.append('ratingPression',rP?rP.dataset.value+'/10':'—');
-                d.append('competences',[...document.querySelectorAll('input[name="competence"]:checked')].map(c=>c.value).join(', ')||'—');
-                d.append('comment',document.getElementById('f-comment')?.value||'—');d.append('statut','new');
-                await fetch(GOOGLE_SHEET_URL,{method:'POST',body:d});
-            }catch(e){console.error(e)}
-            showSuccess(ref);
-        }
-        function showSuccess(ref){
-            document.getElementById('success-analyzing').style.display='none';
-            const sf=document.getElementById('success-final');
-            sf.style.display='flex';
-            document.getElementById('success-ref').textContent=`Référence — ${ref}`;
-            stepIndicator.textContent='Candidature envoyée';
-        }
-        (function(){
-            const b=document.getElementById('btnNext'),nb=b.cloneNode(true);b.parentNode.replaceChild(nb,b);
-            nb.addEventListener('click',async()=>{if(validateStep(currentStep)){if(currentStep===TOTAL_STEPS){goToStep(currentStep+1);await submitApplication()}else goToStep(currentStep+1)}});
-            const p=document.getElementById('btnPrev'),np=p.cloneNode(true);p.parentNode.replaceChild(np,p);
-            np.addEventListener('click',()=>{if(currentStep>1)goToStep(currentStep-1)});
-        })();
+        try{
+            const d=new FormData();
+            d.append('timestamp',new Date().toLocaleString('fr-FR'));d.append('reference',ref);d.append('prenom',prenom);d.append('nom',nom);d.append('age',age);d.append('email',email);
+            d.append('nationalite',natL[nat]||nat);d.append('disponibilite',dispoL[dispo]||dispo);
+            d.append('valeur',valeurL[document.querySelector('input[name="valeur"]:checked')?.value]||'—');
+            d.append('motivation',document.getElementById('f-motivation')?.value.trim()||'');d.append('apport',document.getElementById('f-apport')?.value.trim()||'');
+            d.append('objectif',document.getElementById('f-objectif')?.value.trim()||'');d.append('defi',document.getElementById('f-defi')?.value.trim()||'');
+            d.append('experience',document.getElementById('f-experience')?.value||'');d.append('detailExp',document.getElementById('f-detail-exp')?.value.trim()||'');
+            const rE=document.querySelector('#rating-equipe .rating-btn.selected'),rP=document.querySelector('#rating-pression .rating-btn.selected');
+            d.append('ratingEquipe',rE?rE.dataset.value+'/10':'—');d.append('ratingPression',rP?rP.dataset.value+'/10':'—');
+            d.append('competences',[...document.querySelectorAll('input[name="competence"]:checked')].map(c=>c.value).join(', ')||'—');
+            d.append('comment',document.getElementById('f-comment')?.value||'—');d.append('statut','new');
+            await fetch(GOOGLE_SHEET_URL,{method:'POST',body:d});
+        }catch(e){console.error(e)}
+        showSuccess(ref);
+    }
+
+    function showSuccess(ref){
+        document.getElementById('success-analyzing').style.display='none';
+        const sf=document.getElementById('success-final');
+        sf.style.display='flex';
+        document.getElementById('success-ref').textContent=`Référence — ${ref}`;
+        stepIndicator.textContent='Candidature envoyée';
+    }
+
+    (function(){
+        const b=document.getElementById('btnNext'),nb=b.cloneNode(true);b.parentNode.replaceChild(nb,b);
+        nb.addEventListener('click',async()=>{if(validateStep(currentStep)){if(currentStep===TOTAL_STEPS){goToStep(currentStep+1);await submitApplication()}else goToStep(currentStep+1)}});
+        const p=document.getElementById('btnPrev'),np=p.cloneNode(true);p.parentNode.replaceChild(np,p);
+        np.addEventListener('click',()=>{if(currentStep>1)goToStep(currentStep-1)});
+    })();
     </script>
 </body>
 </html>
