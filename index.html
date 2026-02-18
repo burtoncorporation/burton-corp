@@ -470,7 +470,7 @@
                             <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
                         </div>
 
-                        <!-- Sub-panel : Aperçu (contenu original) -->
+                        <!-- Sub-panel : Aperçu -->
                         <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
                             <div class="branch-inner-grid">
                                 <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
@@ -484,65 +484,114 @@
                             </div>
                         </div>
 
-                        <!-- Sub-panel : À l'Affiche -->
+                        <!-- ============================================================
+                             SUB-PANEL : À L'AFFICHE
+                        ============================================================ -->
                         <div class="prod-sub-panel" id="sub-affiche">
                             <div class="affiche-section">
 
-                                <!-- Court métrage -->
+
+                                <!-- ====================================================
+                                     🎬 COURT MÉTRAGE DU MOIS — À MODIFIER CHAQUE MOIS
+                                     ====================================================
+                                     ✏️ AFFICHE     → colle l'URL de l'image dans src=""
+                                     ✏️ TITRE       → modifie le texte dans la div affiche-titre
+                                     ✏️ DESCRIPTION → modifie le texte dans la div affiche-description
+                                     ✏️ DURÉE       → remplace le tiret — par ex: 14 min
+                                     ✏️ RÉALISATION → remplace le tiret — par le nom du réalisateur
+                                     ✏️ MOIS        → remplace le tiret — par ex: Février 2026
+                                     ==================================================== -->
                                 <div class="affiche-block">
                                     <div class="affiche-label">Court Métrage du Mois</div>
                                     <div class="affiche-cadre">
-                                        <div class="affiche-poster" id="cm-poster-wrap">
-                                            <div class="affiche-poster-placeholder" id="cm-placeholder">
-                                                <span>Affiche à venir</span>
-                                            </div>
-                                            <img id="cm-poster-img" src="" alt="" style="display:none">
+                                        <div class="affiche-poster">
+                                            <img src="" alt="Affiche court métrage" class="affiche-poster-img"
+                                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                                                onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+                                            <div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>
                                         </div>
                                         <div class="affiche-info">
-                                            <div class="affiche-categorie" id="cm-categorie-display">Court Métrage</div>
-                                            <div class="affiche-titre" id="cm-titre-display">Titre du court métrage</div>
-                                            <div class="affiche-description" id="cm-desc-display">La description du court métrage apparaîtra ici. Modifiez ce contenu depuis le panneau d'administration.</div>
-                                            <div class="affiche-meta" id="cm-meta-display">
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val" id="cm-duree-display">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val" id="cm-real-display">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val" id="cm-mois-display">—</span></div>
+                                            <div class="affiche-categorie">Court Métrage</div>
+
+                                            <div class="affiche-titre">Titre du court métrage</div><!-- ✏️ TITRE ICI -->
+
+                                            <div class="affiche-description">Description du court métrage. Remplace ce texte par le synopsis.</div><!-- ✏️ DESCRIPTION ICI -->
+
+                                            <div class="affiche-meta">
+                                                <div class="affiche-meta-item">
+                                                    <span class="affiche-meta-key">Durée</span>
+                                                    <span class="affiche-meta-val">—</span><!-- ✏️ DURÉE ICI ex: 14 min -->
+                                                </div>
+                                                <div class="affiche-meta-item">
+                                                    <span class="affiche-meta-key">Réalisation</span>
+                                                    <span class="affiche-meta-val">—</span><!-- ✏️ RÉALISATEUR ICI -->
+                                                </div>
+                                                <div class="affiche-meta-item">
+                                                    <span class="affiche-meta-key">Mois</span>
+                                                    <span class="affiche-meta-val">—</span><!-- ✏️ MOIS ICI ex: Février 2026 -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- FIN COURT MÉTRAGE -->
+
 
                                 <hr class="affiche-separator">
 
-                                <!-- Film -->
+
+                                <!-- ====================================================
+                                     🎥 FILM DE L'ANNÉE — À MODIFIER CHAQUE ANNÉE
+                                     ====================================================
+                                     ✏️ AFFICHE     → colle l'URL de l'image dans src=""
+                                     ✏️ TITRE       → modifie le texte dans la div affiche-titre
+                                     ✏️ DESCRIPTION → modifie le texte dans la div affiche-description
+                                     ✏️ DURÉE       → remplace le tiret — par ex: 1h 52 min
+                                     ✏️ RÉALISATION → remplace le tiret — par le nom du réalisateur
+                                     ✏️ ANNÉE       → remplace le tiret — par ex: 2026
+                                     ==================================================== -->
                                 <div class="affiche-block">
                                     <div class="affiche-label">Film de l'Année</div>
                                     <div class="affiche-cadre">
-                                        <div class="affiche-poster" id="film-poster-wrap">
-                                            <div class="affiche-poster-placeholder" id="film-placeholder">
-                                                <span>Affiche à venir</span>
-                                            </div>
-                                            <img id="film-poster-img" src="" alt="" style="display:none">
+                                        <div class="affiche-poster">
+                                            <img src="" alt="Affiche film" class="affiche-poster-img"
+                                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                                                onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+                                            <div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>
                                         </div>
                                         <div class="affiche-info">
-                                            <div class="affiche-categorie" id="film-categorie-display">Long Métrage</div>
-                                            <div class="affiche-titre" id="film-titre-display">Titre du film</div>
-                                            <div class="affiche-description" id="film-desc-display">La description du film apparaîtra ici. Modifiez ce contenu depuis le panneau d'administration.</div>
-                                            <div class="affiche-meta" id="film-meta-display">
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val" id="film-duree-display">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val" id="film-real-display">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val" id="film-annee-display">—</span></div>
+                                            <div class="affiche-categorie">Long Métrage</div>
+
+                                            <div class="affiche-titre">Titre du film</div><!-- ✏️ TITRE ICI -->
+
+                                            <div class="affiche-description">Description du film. Remplace ce texte par le synopsis.</div><!-- ✏️ DESCRIPTION ICI -->
+
+                                            <div class="affiche-meta">
+                                                <div class="affiche-meta-item">
+                                                    <span class="affiche-meta-key">Durée</span>
+                                                    <span class="affiche-meta-val">—</span><!-- ✏️ DURÉE ICI ex: 1h 52 min -->
+                                                </div>
+                                                <div class="affiche-meta-item">
+                                                    <span class="affiche-meta-key">Réalisation</span>
+                                                    <span class="affiche-meta-val">—</span><!-- ✏️ RÉALISATEUR ICI -->
+                                                </div>
+                                                <div class="affiche-meta-item">
+                                                    <span class="affiche-meta-key">Année</span>
+                                                    <span class="affiche-meta-val">—</span><!-- ✏️ ANNÉE ICI ex: 2026 -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- FIN FILM DE L'ANNÉE -->
+
 
                             </div>
                         </div>
-                        <!-- /sub-panels -->
+                        <!-- FIN SUB-PANEL À L'AFFICHE -->
 
                     </div><!-- /branch-inner -->
                 </div><!-- /panel-production -->
-
             </div><!-- /branches-panels -->
         </section>
 
@@ -653,114 +702,6 @@
         </div>
     </div>
 
-    <!-- BOUTON ADMIN (discret, coin bas-droite) -->
-    <button class="admin-trigger" id="adminTrigger" title="Administration">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-    </button>
-
-    <!-- PANNEAU ADMIN -->
-    <div class="admin-overlay" id="adminOverlay">
-        <div class="admin-panel">
-            <button class="admin-close" id="adminClose">Fermer ×</button>
-            <div class="admin-title">Administration</div>
-            <div class="admin-subtitle">Burton Corporation — Gestion des affiches</div>
-
-            <!-- Auth -->
-            <div class="admin-auth" id="adminAuth">
-                <p>Mot de passe requis</p>
-                <input class="admin-pw-input" type="password" id="adminPw" placeholder="••••••••" autocomplete="off">
-                <div class="admin-pw-error" id="adminPwError">Mot de passe incorrect</div>
-                <button class="admin-btn" id="adminPwBtn">Accéder →</button>
-            </div>
-
-            <!-- Éditeur (masqué par défaut) -->
-            <div class="admin-editor" id="adminEditor">
-
-                <!-- Court métrage -->
-                <div class="admin-block">
-                    <div class="admin-block-title">Court Métrage du Mois</div>
-                    <div class="admin-field">
-                        <label class="admin-label">Titre</label>
-                        <input class="admin-input" type="text" id="a-cm-titre" placeholder="Titre du court métrage">
-                    </div>
-                    <div class="admin-field">
-                        <label class="admin-label">Description</label>
-                        <textarea class="admin-textarea" id="a-cm-desc" placeholder="Synopsis, ambiance, intentions..."></textarea>
-                    </div>
-                    <div class="admin-meta-grid">
-                        <div class="admin-field">
-                            <label class="admin-label">Durée</label>
-                            <input class="admin-input" type="text" id="a-cm-duree" placeholder="Ex : 12 min">
-                        </div>
-                        <div class="admin-field">
-                            <label class="admin-label">Réalisation</label>
-                            <input class="admin-input" type="text" id="a-cm-real" placeholder="Nom du réalisateur">
-                        </div>
-                        <div class="admin-field">
-                            <label class="admin-label">Mois de diffusion</label>
-                            <input class="admin-input" type="text" id="a-cm-mois" placeholder="Ex : Février 2026">
-                        </div>
-                    </div>
-                    <div class="admin-field">
-                        <label class="admin-label">Affiche — URL de l'image</label>
-                        <input class="admin-input" type="url" id="a-cm-img" placeholder="https://... ou data:image/...">
-                        <div id="a-cm-img-preview-wrap">
-                            <div class="admin-img-preview-placeholder"><span>Aperçu</span></div>
-                        </div>
-                    </div>
-                    <div class="admin-field">
-                        <label class="admin-label">Ou importer une image depuis votre appareil</label>
-                        <input type="file" accept="image/*" id="a-cm-file" style="color:rgba(255,255,255,0.4);font-size:0.75rem;font-family:var(--font-body)">
-                    </div>
-                </div>
-
-                <!-- Film -->
-                <div class="admin-block">
-                    <div class="admin-block-title">Film de l'Année</div>
-                    <div class="admin-field">
-                        <label class="admin-label">Titre</label>
-                        <input class="admin-input" type="text" id="a-film-titre" placeholder="Titre du film">
-                    </div>
-                    <div class="admin-field">
-                        <label class="admin-label">Description</label>
-                        <textarea class="admin-textarea" id="a-film-desc" placeholder="Synopsis, ambiance, intentions..."></textarea>
-                    </div>
-                    <div class="admin-meta-grid">
-                        <div class="admin-field">
-                            <label class="admin-label">Durée</label>
-                            <input class="admin-input" type="text" id="a-film-duree" placeholder="Ex : 1h 42 min">
-                        </div>
-                        <div class="admin-field">
-                            <label class="admin-label">Réalisation</label>
-                            <input class="admin-input" type="text" id="a-film-real" placeholder="Nom du réalisateur">
-                        </div>
-                        <div class="admin-field">
-                            <label class="admin-label">Année</label>
-                            <input class="admin-input" type="text" id="a-film-annee" placeholder="Ex : 2026">
-                        </div>
-                    </div>
-                    <div class="admin-field">
-                        <label class="admin-label">Affiche — URL de l'image</label>
-                        <input class="admin-input" type="url" id="a-film-img" placeholder="https://... ou data:image/...">
-                        <div id="a-film-img-preview-wrap">
-                            <div class="admin-img-preview-placeholder"><span>Aperçu</span></div>
-                        </div>
-                    </div>
-                    <div class="admin-field">
-                        <label class="admin-label">Ou importer une image depuis votre appareil</label>
-                        <input type="file" accept="image/*" id="a-film-file" style="color:rgba(255,255,255,0.4);font-size:0.75rem;font-family:var(--font-body)">
-                    </div>
-                </div>
-
-                <button class="admin-save-btn" id="adminSaveBtn">Enregistrer les modifications</button>
-                <div class="admin-saved-msg" id="adminSavedMsg">✦ Modifications enregistrées avec succès</div>
-
-            </div><!-- /admin-editor -->
-        </div>
-    </div>
-
-    <script>
-    // ================================================================
     //  LOADER
     // ================================================================
     window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
@@ -813,222 +754,6 @@
     });
 
     // ================================================================
-    //  PERSISTANCE LOCALE (localStorage)
-    // ================================================================
-    const STORAGE_KEY = 'burton_affiche_data';
-
-    function loadAfficheData(){
-        try{
-            const raw = localStorage.getItem(STORAGE_KEY);
-            return raw ? JSON.parse(raw) : null;
-        }catch(e){ return null; }
-    }
-
-    function saveAfficheData(data){
-        try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
-    }
-
-    function applyAfficheData(data){
-        if(!data) return;
-
-        // Court métrage
-        if(data.cm){
-            const cm = data.cm;
-            setText('cm-titre-display', cm.titre, 'Titre du court métrage');
-            setText('cm-desc-display', cm.desc, 'La description apparaîtra ici.');
-            setText('cm-duree-display', cm.duree, '—');
-            setText('cm-real-display', cm.real, '—');
-            setText('cm-mois-display', cm.mois, '—');
-            setPoster('cm', cm.img);
-        }
-
-        // Film
-        if(data.film){
-            const film = data.film;
-            setText('film-titre-display', film.titre, 'Titre du film');
-            setText('film-desc-display', film.desc, 'La description apparaîtra ici.');
-            setText('film-duree-display', film.duree, '—');
-            setText('film-real-display', film.real, '—');
-            setText('film-annee-display', film.annee, '—');
-            setPoster('film', film.img);
-        }
-    }
-
-    function setText(id, val, fallback){
-        const el = document.getElementById(id);
-        if(el) el.textContent = (val && val.trim()) ? val : fallback;
-    }
-
-    function setPoster(prefix, src){
-        const img = document.getElementById(prefix+'-poster-img');
-        const placeholder = document.getElementById(prefix+'-placeholder');
-        if(!img || !placeholder) return;
-        if(src && src.trim()){
-            img.src = src;
-            img.style.display = 'block';
-            placeholder.style.display = 'none';
-        } else {
-            img.style.display = 'none';
-            placeholder.style.display = 'flex';
-        }
-    }
-
-    // Charger au démarrage
-    applyAfficheData(loadAfficheData());
-
-    // ================================================================
-    //  ADMIN — Authentification
-    // ================================================================
-    const ADMIN_PASSWORD = 'burton2026'; // ← CHANGEZ CE MOT DE PASSE
-
-    const adminOverlay  = document.getElementById('adminOverlay');
-    const adminAuth     = document.getElementById('adminAuth');
-    const adminEditor   = document.getElementById('adminEditor');
-    const adminPw       = document.getElementById('adminPw');
-    const adminPwError  = document.getElementById('adminPwError');
-    const adminPwBtn    = document.getElementById('adminPwBtn');
-
-    document.getElementById('adminTrigger').addEventListener('click',()=>{
-        adminOverlay.classList.add('open');
-        adminPw.value='';
-        adminPwError.style.display='none';
-        // Si déjà authentifié en session
-        if(sessionStorage.getItem('burton_admin')==='1'){
-            openEditor();
-        } else {
-            adminAuth.style.display='block';
-            adminEditor.style.display='none';
-        }
-    });
-
-    document.getElementById('adminClose').addEventListener('click',()=>adminOverlay.classList.remove('open'));
-    adminOverlay.addEventListener('click',e=>{ if(e.target===adminOverlay) adminOverlay.classList.remove('open'); });
-
-    adminPwBtn.addEventListener('click', checkPw);
-    adminPw.addEventListener('keydown', e=>{ if(e.key==='Enter') checkPw(); });
-
-    function checkPw(){
-        if(adminPw.value === ADMIN_PASSWORD){
-            sessionStorage.setItem('burton_admin','1');
-            openEditor();
-        } else {
-            adminPwError.style.display='block';
-            adminPw.value='';
-            adminPw.focus();
-        }
-    }
-
-    function openEditor(){
-        adminAuth.style.display='none';
-        adminEditor.style.display='block';
-        fillEditorFromStorage();
-    }
-
-    // ================================================================
-    //  ADMIN — Remplir les champs depuis les données stockées
-    // ================================================================
-    function fillEditorFromStorage(){
-        const data = loadAfficheData() || {};
-        const cm   = data.cm   || {};
-        const film = data.film || {};
-
-        setVal('a-cm-titre',  cm.titre);
-        setVal('a-cm-desc',   cm.desc);
-        setVal('a-cm-duree',  cm.duree);
-        setVal('a-cm-real',   cm.real);
-        setVal('a-cm-mois',   cm.mois);
-        setVal('a-cm-img',    cm.img);
-        updateImgPreview('a-cm-img-preview-wrap', cm.img);
-
-        setVal('a-film-titre', film.titre);
-        setVal('a-film-desc',  film.desc);
-        setVal('a-film-duree', film.duree);
-        setVal('a-film-real',  film.real);
-        setVal('a-film-annee', film.annee);
-        setVal('a-film-img',   film.img);
-        updateImgPreview('a-film-img-preview-wrap', film.img);
-    }
-
-    function setVal(id, val){
-        const el = document.getElementById(id);
-        if(el && val) el.value = val;
-    }
-
-    // ================================================================
-    //  ADMIN — Prévisualisation image URL
-    // ================================================================
-    function updateImgPreview(wrapId, src){
-        const wrap = document.getElementById(wrapId);
-        if(!wrap) return;
-        wrap.innerHTML = '';
-        if(src && src.trim()){
-            const img = document.createElement('img');
-            img.className = 'admin-img-preview';
-            img.src = src;
-            img.alt = 'Aperçu affiche';
-            wrap.appendChild(img);
-        } else {
-            wrap.innerHTML = '<div class="admin-img-preview-placeholder"><span>Aperçu</span></div>';
-        }
-    }
-
-    // Prévisualisation live URL
-    ['a-cm-img','a-film-img'].forEach(id=>{
-        document.getElementById(id).addEventListener('input', function(){
-            const wrapId = id === 'a-cm-img' ? 'a-cm-img-preview-wrap' : 'a-film-img-preview-wrap';
-            updateImgPreview(wrapId, this.value);
-        });
-    });
-
-    // Import fichier local → base64
-    function bindFileInput(fileId, imgInputId, previewWrapId){
-        document.getElementById(fileId).addEventListener('change', function(){
-            const file = this.files[0];
-            if(!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e){
-                const b64 = e.target.result;
-                document.getElementById(imgInputId).value = b64;
-                updateImgPreview(previewWrapId, b64);
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-    bindFileInput('a-cm-file',   'a-cm-img',   'a-cm-img-preview-wrap');
-    bindFileInput('a-film-file', 'a-film-img', 'a-film-img-preview-wrap');
-
-    // ================================================================
-    //  ADMIN — Sauvegarder
-    // ================================================================
-    document.getElementById('adminSaveBtn').addEventListener('click',()=>{
-        const data = {
-            cm: {
-                titre : document.getElementById('a-cm-titre').value.trim(),
-                desc  : document.getElementById('a-cm-desc').value.trim(),
-                duree : document.getElementById('a-cm-duree').value.trim(),
-                real  : document.getElementById('a-cm-real').value.trim(),
-                mois  : document.getElementById('a-cm-mois').value.trim(),
-                img   : document.getElementById('a-cm-img').value.trim(),
-            },
-            film: {
-                titre : document.getElementById('a-film-titre').value.trim(),
-                desc  : document.getElementById('a-film-desc').value.trim(),
-                duree : document.getElementById('a-film-duree').value.trim(),
-                real  : document.getElementById('a-film-real').value.trim(),
-                annee : document.getElementById('a-film-annee').value.trim(),
-                img   : document.getElementById('a-film-img').value.trim(),
-            }
-        };
-
-        saveAfficheData(data);
-        applyAfficheData(data);
-
-        const msg = document.getElementById('adminSavedMsg');
-        msg.classList.add('show');
-        setTimeout(()=>msg.classList.remove('show'), 3000);
-    });
-
-    // ================================================================
     //  MODAL CANDIDATURE
     // ================================================================
     const TOTAL_STEPS=4;let currentStep=1;
@@ -1043,7 +768,7 @@
     document.getElementById('openApplication').addEventListener('click',openModal);
     document.getElementById('closeModal').addEventListener('click',closeModal);
     modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();adminOverlay.classList.remove('open');}});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
     function goToStep(n){
         document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
