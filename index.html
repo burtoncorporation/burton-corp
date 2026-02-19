@@ -49,7 +49,7 @@
         .scroll-line{width:1px;height:70px;background:linear-gradient(to bottom,transparent,var(--color-text-subtle),transparent)}
         .intro{background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface) 50%,var(--color-bg) 100%)}
         .intro-content{max-width:950px;margin:0 auto;text-align:center}
-        .intro-content p{font-size:2.2rem;line-height:2;font-weight:300;font-family:var(--font-display);letter-spacing:0.02em}
+        .intro-content p{font-size:1.15rem;line-height:2;font-weight:300;font-family:var(--font-body);letter-spacing:0.04em;color:var(--color-text-muted)}
         .vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;max-width:1200px;margin:6rem auto 0}
         .vision-card{padding:5rem;background:linear-gradient(135deg,rgba(255,255,255,0.015) 0%,rgba(255,255,255,0) 100%);border:1px solid rgba(255,255,255,0.04);transition:all 1.2s cubic-bezier(0.4,0,0.2,1);opacity:0;transform:translateY(60px)}
         .vision-card.reveal{opacity:1;transform:translateY(0)}
@@ -254,7 +254,7 @@
             .hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}
             nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}
             section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}
-            .intro-content p{font-size:1.2rem}.stat-number{font-size:3rem}
+            .intro-content p{font-size:0.95rem}.stat-number{font-size:3rem}
             .cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
             .modal-header{padding:2.5rem 1.5rem 2rem}.modal-close{right:1.5rem;top:2.5rem}
             .modal-title{font-size:1.5rem;padding-right:4.5rem}.form-step{padding:2.5rem 1.5rem}
@@ -305,6 +305,46 @@
             .genre-tab{flex:1;text-align:center;font-size:0.5rem;padding:0.7rem 0.5rem}
             .genre-tabs{flex-wrap:nowrap}
         }
+
+        /* WRITING */
+        .writing-sortie{padding:3rem 0 2rem}
+        .writing-card{display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:start;padding:4rem;background:linear-gradient(135deg,rgba(255,255,255,0.015) 0%,rgba(255,255,255,0) 100%);border:1px solid rgba(255,255,255,0.06);transition:border-color 0.6s}
+        .writing-card:hover{border-color:rgba(255,255,255,0.1)}
+        .writing-cover{position:relative;width:220px;aspect-ratio:2/3;overflow:hidden;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);flex-shrink:0}
+        .writing-cover img{transition:transform 1.2s cubic-bezier(0.4,0,0.2,1)}
+        .writing-cover:hover img{transform:scale(1.04)}
+        .writing-cover-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem}
+        .writing-cover-placeholder span{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.1);text-align:center;padding:0 1rem}
+        .writing-content{flex:1;padding-top:0.5rem}
+        .writing-genre-tag{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1.5rem}
+        .writing-titre{font-family:var(--font-display);font-size:3.2rem;font-weight:300;letter-spacing:0.08em;line-height:1.1;margin-bottom:2rem;color:rgba(255,255,255,0.9)}
+        .writing-description{font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:2.1;font-weight:300;max-width:650px;margin-bottom:0}
+        .writing-meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap}
+        @media(max-width:1024px){
+            .writing-card{grid-template-columns:180px 1fr;gap:3rem;padding:3rem}
+            .writing-cover{width:180px}
+        }
+        @media(max-width:768px){
+            .writing-card{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 2rem}
+            .writing-cover{width:160px;margin:0 auto}
+            .writing-titre{font-size:2.2rem}
+            .writing-meta{gap:2rem}
+            .writing-content{padding-top:0}
+        }
+        @media(max-width:480px){
+            .writing-titre{font-size:1.8rem}
+            .writing-card{padding:2rem 1.5rem}
+            .writing-cover{width:140px}
+        }
+
+        /* SOON SCREEN */
+        .branch-soon{display:none;padding:8rem 5rem;text-align:center;flex-direction:column;align-items:center;gap:2rem}
+        .branch-soon.visible{display:flex;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
+        .branch-soon-title{font-family:var(--font-display);font-size:3.5rem;font-weight:300;letter-spacing:0.25em;color:rgba(255,255,255,0.08)}
+        .branch-soon-sub{font-size:0.62rem;letter-spacing:0.45em;text-transform:uppercase;color:rgba(255,255,255,0.08);font-weight:300}
+        .branch-content-wrap{display:block}
+        .branch-content-wrap.hidden{display:none}
+        @media(max-width:480px){.branch-soon{padding:5rem 2rem}.branch-soon-title{font-size:2rem}}
     </style>
 </head>
 <body class="loading">
@@ -334,7 +374,8 @@
         <div class="container">
             <span class="section-number reveal-element">01 — Introduction</span>
             <div class="intro-content reveal-element">
-                <p>Burton Corporation est conçue comme une maison fondatrice, une entité centrale réunissant sous une même vision des créations issues de domaines différents mais guidées par une identité commune. Plus qu'une entreprise, Burton Corporation représente une architecture créative où chaque idée peut devenir une branche autonome tout en restant liée à une même origine : la maison Burton. Chaque projet naît ainsi comme une extension naturelle de cette vision, prenant la forme d'une maison spécialisée — Burton Watch pour l'horlogerie, Burton Parfum pour l'univers olfactif, Burton Clothes pour le vêtement, Burton Chocolate pour la création gastronomique, ou encore la branche cinématographique dédiée à la production d'œuvres audiovisuelles.</p>
+                <p>Burton Corporation est une maison fondatrice — une entité unique réunissant des créations issues de domaines distincts, liées par une même vision d'excellence et d'ambition.</p>
+                <p style="margin-top:2rem">Chaque branche naît comme une extension naturelle de cette origine : horlogerie, parfum, mode, gastronomie, production, écriture. Des disciplines différentes, un seul nom.</p>
             </div>
         </div>
     </section>
@@ -361,10 +402,20 @@
             <button class="branch-tab-inline" data-panel="clothes">Clothes</button>
             <button class="branch-tab-inline" data-panel="chocolate">Chocolate</button>
             <button class="branch-tab-inline" data-panel="production">Production</button>
+            <button class="branch-tab-inline" data-panel="writing">Writing</button>
         </div>
         <div class="branches-panels">
 
             <div class="branch-panel-inline active" id="panel-watch">
+                </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="branch-soon" id="soon-watch">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-watch">
                 <div class="branch-inner">
                     <div class="production-sub-tabs vitrine-sub-tabs" id="watch-tabs">
                         <button class="prod-sub-tab vitrine-tab active" data-branch="watch" data-sub="apercu-watch">Aperçu</button>
@@ -384,57 +435,15 @@
                     </div>
                     <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-watch" style="padding-top:3rem">
                         <div class="vitrine-grid vitrine-grid-3">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — WATCH 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-watch-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-watch-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — WATCH 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-watch-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-watch-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — WATCH 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-watch-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-watch-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                        </div>
+                </div>
+                        </label>
                     </div>
                 </div>
-            </div>
-
-            <div class="branch-panel-inline" id="panel-parfum">
+                <div class="branch-soon" id="soon-parfum">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-parfum">
                 <div class="branch-inner">
                     <div class="production-sub-tabs vitrine-sub-tabs" id="parfum-tabs">
                         <button class="prod-sub-tab vitrine-tab active" data-branch="parfum" data-sub="apercu-parfum">Aperçu</button>
@@ -456,109 +465,15 @@
                         <div class="genre-tabs" id="genre-tabs-parfum"><button class="genre-tab active" data-branch="parfum" data-genre="homme">Homme</button><button class="genre-tab" data-branch="parfum" data-genre="femme">Femme</button><button class="genre-tab" data-branch="parfum" data-genre="enfant">Enfant</button></div>
                                                 <div class="genre-panel active" id="genre-parfum-homme">
                             <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — PARFUM HOMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-parfum-homme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-homme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — PARFUM HOMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-parfum-homme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-homme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            </div>
-                        </div>                        <div class="genre-panel " id="genre-parfum-femme">
-                            <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — PARFUM FEMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-parfum-femme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-femme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — PARFUM FEMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-parfum-femme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-femme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            </div>
-                        </div>                        <div class="genre-panel " id="genre-parfum-enfant">
-                            <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — PARFUM ENFANT
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-parfum-enfant-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-enfant-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — PARFUM ENFANT
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-parfum-enfant-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-enfant-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            </div>
-                        </div>
+                </div>
+                        </label>
                     </div>
                 </div>
-            </div>
-
-            <div class="branch-panel-inline" id="panel-clothes">
+                <div class="branch-soon" id="soon-clothes">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-clothes">
                 <div class="branch-inner">
                     <div class="production-sub-tabs vitrine-sub-tabs" id="clothes-tabs">
                         <button class="prod-sub-tab vitrine-tab active" data-branch="clothes" data-sub="apercu-clothes">Aperçu</button>
@@ -580,199 +495,15 @@
                         <div class="genre-tabs" id="genre-tabs-clothes"><button class="genre-tab active" data-branch="clothes" data-genre="homme">Homme</button><button class="genre-tab" data-branch="clothes" data-genre="femme">Femme</button><button class="genre-tab" data-branch="clothes" data-genre="enfant">Enfant</button></div>
                                                 <div class="genre-panel active" id="genre-clothes-homme">
                             <div class="vitrine-grid vitrine-grid-4">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CLOTHES HOMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-homme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CLOTHES HOMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-homme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — CLOTHES HOMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-homme-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 4 — CLOTHES HOMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-homme-4" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-4"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            </div>
-                        </div>                        <div class="genre-panel " id="genre-clothes-femme">
-                            <div class="vitrine-grid vitrine-grid-4">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CLOTHES FEMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-femme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CLOTHES FEMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-femme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — CLOTHES FEMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-femme-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 4 — CLOTHES FEMME
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-femme-4" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-4"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            </div>
-                        </div>                        <div class="genre-panel " id="genre-clothes-enfant">
-                            <div class="vitrine-grid vitrine-grid-4">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CLOTHES ENFANT
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-enfant-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CLOTHES ENFANT
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-enfant-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — CLOTHES ENFANT
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-enfant-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 4 — CLOTHES ENFANT
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-clothes-enfant-4" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-4"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            </div>
-                        </div>
+                </div>
+                        </label>
                     </div>
                 </div>
-            </div>
-
-            <div class="branch-panel-inline" id="panel-chocolate">
+                <div class="branch-soon" id="soon-chocolate">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-chocolate">
                 <div class="branch-inner">
                     <div class="production-sub-tabs vitrine-sub-tabs" id="choco-tabs">
                         <button class="prod-sub-tab vitrine-tab active" data-branch="choco" data-sub="apercu-choco">Aperçu</button>
@@ -792,42 +523,53 @@
                     </div>
                     <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-choco" style="padding-top:3rem">
                         <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CHOCO 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-choco-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-choco-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CHOCO 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/633981562_767647739299973_2051522727319170335_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=R0NyLTxb6lsQ7kNvwGfjmNK&_nc_oc=AdnpzfP9VZmgs07Fsd0_icmT3M1zmKNp6BoXOZuuxmUutaQ_Rj85OWK8CS6Jfku0vSzooptQnSRMDjmQkbE8QfB8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gGDaUvxiIeXOTgbYl7v4fUtDPo4pe2NlYKwir8FzZ8VuA&oe=69BE4752" alt="" id="vimg-choco-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-choco-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Aucun produit actuellement en vente.</div>
-                                <div class="vitrine-desc">Description du produit. Aucun produit actuellement en vente.</div>
-                            </div>
-                        </div>
+                </div>
+                        </label>
                     </div>
                 </div>
-            </div>
+                <div class="branch-soon" id="soon-writing">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-writing">
+                <div class="branch-inner">
+                    <div class="production-sub-tabs vitrine-sub-tabs" id="writing-tabs">
+                        <button class="prod-sub-tab vitrine-tab active" data-branch="writing" data-sub="apercu-writing">Aperçu</button>
+                        <button class="prod-sub-tab vitrine-tab" data-branch="writing" data-sub="affiche-writing">À l'Affiche</button>
+                    </div>
 
-            <div class="branch-panel-inline" id="panel-production">
+                    <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-writing" style="padding-top:4rem">
+                        <div class="branch-inner-grid">
+                            <div>
+                                <span class="branch-eyebrow-inline">Burton — Division Littéraire</span>
+                                <div class="branch-name-inline">Writing</div>
+                                <div class="branch-tagline-inline">Les mots comme architecture. Chaque texte, une fondation.</div>
+                                <div class="branch-desc-inline">Burton Writing est la voix écrite de l'organisation. Articles, récits, essais, manifestes — cette division transforme les idées en œuvres durables. L'écriture comme acte de précision, jamais comme ornement.</div>
+                            </div>
+                            <div>
+                                <div class="branch-detail-row"><span class="branch-detail-key">Formats</span><span class="branch-detail-val">Essais, nouvelles, articles, manifestes</span></div>
+                                <div class="branch-detail-row"><span class="branch-detail-key">Diffusion</span><span class="branch-detail-val">Interne et externe — selon validation de la direction</span></div>
+                                <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur sélection — recrutement interne uniquement</span></div>
+                            </div>
+                        </div>
+                        <div class="branch-products-inline-title">Domaines</div>
+                        <div class="branch-products-inline-grid">
+                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Fiction</div><div class="product-desc">Nouvelles et récits courts. L'imaginaire au service d'une vision singulière et exigeante.</div></div>
+                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Essais</div><div class="product-desc">Réflexions sur l'ambition, le progrès, l'excellence. La pensée Burton, mise en mots.</div></div>
+                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Manifestes</div><div class="product-desc">Textes fondateurs de l'organisation. Ce en quoi nous croyons, écrit pour durer.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="prod-sub-panel vitrine-panel" id="sub-affiche-writing" style="padding-top:3rem">
+                </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="branch-soon" id="soon-production">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-production">
                 <div class="branch-inner">
                     <div class="production-sub-tabs">
                         <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
@@ -942,7 +684,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div></div>
 
         </div>
     </section>
@@ -1055,6 +797,36 @@
 </div>
 
 <script>
+
+    /* ================================================================
+       🔧 CONFIGURATION DES BRANCHES — MODIFIE ICI UNIQUEMENT
+       ================================================================
+
+       Pour FERMER une branche → change  true  en  false
+       Pour OUVRIR une branche → change  false en  true
+
+       La branche fermée affichera "Bientôt — Soon" aux visiteurs.
+       ================================================================ */
+    const BRANCHES = {
+        watch      : false,   // ← true = ouvert  |  false = fermé
+        parfum     : false,   // ← true = ouvert  |  false = fermé
+        clothes    : false,   // ← true = ouvert  |  false = fermé
+        chocolate  : false,   // ← true = ouvert  |  false = fermé
+        production : true,   // ← true = ouvert  |  false = fermé
+        writing    : true,   // ← true = ouvert  |  false = fermé
+    };
+    /* ================================================================ */
+
+    (function applyBranchStates(){
+        Object.entries(BRANCHES).forEach(([id, open])=>{
+            const soon    = document.getElementById('soon-'+id);
+            const body    = document.getElementById('content-'+id);
+            if(!soon||!body) return;
+            if(open){ soon.classList.remove('visible'); body.classList.remove('hidden'); }
+            else    { soon.classList.add('visible');    body.classList.add('hidden');    }
+        });
+    })();
+
     // Loader
     window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
 
@@ -1074,6 +846,7 @@
     // Parallax hero
     let ticking=false;
     window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
+
 
 
     // Vitrine sub-tabs (watch / parfum / clothes / choco)
@@ -1131,6 +904,17 @@
             document.getElementById('sub-'+tab.dataset.sub).classList.add('active');
         });
     });
+
+    // Writing cover image
+    (function(){
+        const img=document.getElementById('writing-cover-img');
+        const ph=document.getElementById('writing-cover-ph');
+        if(img&&ph){
+            const src=img.getAttribute('src');
+            if(src&&src!==''){img.style.display='block';ph.style.display='none';}
+            else{img.style.display='none';ph.style.display='flex';}
+        }
+    })();
 
     // Affiche images — show img if src is set, else show placeholder
     ['cm','film'].forEach(id=>{
