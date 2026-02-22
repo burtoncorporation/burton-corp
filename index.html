@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         ✏️ TITRE DE L'ONGLET NAVIGATEUR
+         → Remplace "Burton Corporation" par ce que tu veux afficher
+            dans l'onglet du navigateur
+    ══════════════════════════════════════════════════════════════ -->
     <title>Burton Corporation</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -81,14 +88,12 @@
         .product-num{font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:rgba(255,255,255,0.06);margin-bottom:1.5rem}
         .product-name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;letter-spacing:0.08em;margin-bottom:0.8rem}
         .product-desc{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300}
-        /* PRODUCTION SUB-TABS */
         .production-sub-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:0}
         .prod-sub-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.2);font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px}
         .prod-sub-tab:hover{color:rgba(255,255,255,0.5)}
         .prod-sub-tab.active{color:rgba(255,255,255,0.85);border-bottom-color:rgba(255,255,255,0.3)}
         .prod-sub-panel{display:none}
         .prod-sub-panel.active{display:block;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
-        /* AFFICHE */
         .affiche-section{padding:5rem 0 2rem}
         .affiche-block{margin-bottom:6rem}
         .affiche-label{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem}
@@ -108,7 +113,6 @@
         .affiche-meta-key{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
         .affiche-meta-val{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300}
         .affiche-separator{border:none;border-top:1px solid rgba(255,255,255,0.04);margin:5rem 0}
-        /* PROGRESSION */
         .progression{background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface-alt) 50%,var(--color-bg) 100%)}
         .progression-timeline{max-width:850px;margin:6rem auto 0;position:relative}
         .progression-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.08),transparent)}
@@ -142,7 +146,6 @@
         @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-15px)}}
         .reveal-element{opacity:0;transform:translateY(60px);transition:all 1.4s cubic-bezier(0.4,0,0.2,1)}
         .reveal-element.reveal{opacity:1;transform:translateY(0)}
-        /* MODAL */
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px) saturate(180%);z-index:50000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s cubic-bezier(0.4,0,0.2,1);padding:2rem}
         .modal-overlay.open{opacity:1;visibility:visible}
         .modal{background:var(--color-surface);border:1px solid rgba(255,255,255,0.07);max-width:780px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(60px) scale(0.97);transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
@@ -209,79 +212,21 @@
         .analyzing-dots::after{content:'';animation:dots 1.5s steps(4,end) infinite}
         @keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
         body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.015;pointer-events:none;z-index:10000}
-        /* RESPONSIVE */
-        @media(max-width:1024px){
-            nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}
-            .nav-links{gap:2.5rem}.hero h1{font-size:4.5rem}
-            .vision-grid,.procedure-steps{grid-template-columns:1fr;gap:4rem}
-            .selection-stats{flex-direction:column;gap:5rem}
-            section{padding:8rem 3rem}.section-title h2{font-size:3.2rem}
-            .branch-inner{padding:4rem 3rem}.branch-inner-grid{gap:4rem}
-            .branches-tabs-inline{padding:0 3rem}
-            .branches-section .b-header{padding:0 3rem 4rem}
-            .affiche-cadre{grid-template-columns:1fr;gap:3rem}.affiche-poster{width:200px}
-        }
-        @media(max-width:768px){
-            .hero h1{font-size:3.5rem}.nav-links{display:none}
-            .cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}
-            section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}
-            .modal-header{padding:3rem 2.5rem 2.5rem}.modal-close{right:2rem;top:2.8rem}
-            .modal-title{font-size:1.9rem;padding-right:5rem}.modal-subtitle{font-size:0.78rem}
-            .form-step{padding:3rem 2.5rem}.form-grid-2{grid-template-columns:1fr}
-            .modal-footer{padding:1.5rem 2.5rem 2rem;flex-direction:column;gap:0;align-items:stretch}
-            .btn-next{order:1;width:100%;padding:1.1rem 1rem;font-size:0.68rem;letter-spacing:0.18em;text-align:center}
-            .btn-prev{order:2;width:100%;text-align:center;padding:0.9rem;font-size:0.62rem;border-top:1px solid rgba(255,255,255,0.04);margin-top:0}
-            .btn-prev:disabled{display:none}
-            .modal-success{padding:4rem 2.5rem}
-            .modal-success.active{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-            .success-mark{width:48px;height:48px;font-size:1rem;margin:0 auto 2.5rem}
-            .success-title{font-size:1.7rem;letter-spacing:0.05em;margin-bottom:1rem}
-            .success-text{font-size:0.82rem;letter-spacing:0.07em;line-height:1.85;max-width:100%;margin:0 0 2rem}
-            .success-ref{font-size:0.58rem;letter-spacing:0.18em}
-            .branch-inner{padding:3rem 2rem}.branch-inner-grid{grid-template-columns:1fr;gap:3rem}
-            .branch-products-inline-grid{grid-template-columns:1fr}.branch-name-inline{font-size:3rem}
-            .branches-section .b-header{padding:0 2rem 3rem}
-            .branches-tabs-inline{display:grid;grid-template-columns:repeat(3,1fr);padding:0;gap:0}
-            .branch-tab-inline{padding:1rem 0.4rem;font-size:0.55rem;letter-spacing:0.15em;text-align:center;border-bottom:2px solid transparent;border-right:1px solid rgba(255,255,255,0.04);width:100%;margin-bottom:0}
-            .branch-tab-inline:last-child{border-right:none}.branch-tab-inline.active{background:rgba(255,255,255,0.03)}
-            .affiche-titre{font-size:2.4rem}.affiche-poster{width:160px}
-            .vision-grid{grid-template-columns:1fr;gap:2rem;width:100%;padding:0}
-            .vision-card{width:100%;margin:0;padding:3rem 2rem}
-            .production-sub-tabs{flex-wrap:wrap}
-            .prod-sub-tab{flex:1 1 50%;white-space:normal;text-align:center;font-size:0.55rem;letter-spacing:0.12em;padding:0.9rem 0.5rem;line-height:1.4}
-        }
-        @media(max-width:480px){
-            .hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}
-            nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}
-            section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}
-            .intro-content p{font-size:0.95rem}.stat-number{font-size:3rem}
-            .cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}
-            .modal-header{padding:2.5rem 1.5rem 2rem}.modal-close{right:1.5rem;top:2.5rem}
-            .modal-title{font-size:1.5rem;padding-right:4.5rem}.form-step{padding:2.5rem 1.5rem}
-            .modal-footer{padding:1.2rem 1.5rem 1.8rem}
-            .btn-next{padding:1rem 0.8rem;font-size:0.62rem;letter-spacing:0.14em}
-            .btn-prev{font-size:0.56rem;padding:0.7rem}
-            .modal-success{padding:3rem 1.5rem}.success-title{font-size:1.35rem;letter-spacing:0.03em}
-            .success-text{font-size:0.76rem;letter-spacing:0.05em}.success-mark{width:42px;height:42px;margin-bottom:1.8rem}
-            .branch-tab-inline{font-size:0.48rem;padding:0.9rem 0.2rem}
-            .affiche-titre{font-size:1.8rem}.affiche-poster{width:130px}
-        }
-
-        /* VITRINE */
+        @media(max-width:1024px){nav{padding:1.8rem 3rem}nav.scrolled{padding:1.5rem 3rem}.nav-links{gap:2.5rem}.hero h1{font-size:4.5rem}.vision-grid,.procedure-steps{grid-template-columns:1fr;gap:4rem}.selection-stats{flex-direction:column;gap:5rem}section{padding:8rem 3rem}.section-title h2{font-size:3.2rem}.branch-inner{padding:4rem 3rem}.branch-inner-grid{gap:4rem}.branches-tabs-inline{padding:0 3rem}.branches-section .b-header{padding:0 3rem 4rem}.affiche-cadre{grid-template-columns:1fr;gap:3rem}.affiche-poster{width:200px}}
+        @media(max-width:768px){.hero h1{font-size:3.5rem}.nav-links{display:none}.cta h2{font-size:2.8rem}.stat-number{font-size:4.5rem}section{padding:6rem 2rem}nav{padding:1.5rem 2rem}nav.scrolled{padding:1.2rem 2rem}.modal-header{padding:3rem 2.5rem 2.5rem}.modal-close{right:2rem;top:2.8rem}.modal-title{font-size:1.9rem;padding-right:5rem}.modal-subtitle{font-size:0.78rem}.form-step{padding:3rem 2.5rem}.form-grid-2{grid-template-columns:1fr}.modal-footer{padding:1.5rem 2.5rem 2rem;flex-direction:column;gap:0;align-items:stretch}.btn-next{order:1;width:100%;padding:1.1rem 1rem;font-size:0.68rem;letter-spacing:0.18em;text-align:center}.btn-prev{order:2;width:100%;text-align:center;padding:0.9rem;font-size:0.62rem;border-top:1px solid rgba(255,255,255,0.04);margin-top:0}.btn-prev:disabled{display:none}.modal-success{padding:4rem 2.5rem}.modal-success.active{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.success-mark{width:48px;height:48px;font-size:1rem;margin:0 auto 2.5rem}.success-title{font-size:1.7rem;letter-spacing:0.05em;margin-bottom:1rem}.success-text{font-size:0.82rem;letter-spacing:0.07em;line-height:1.85;max-width:100%;margin:0 0 2rem}.success-ref{font-size:0.58rem;letter-spacing:0.18em}.branch-inner{padding:3rem 2rem}.branch-inner-grid{grid-template-columns:1fr;gap:3rem}.branch-products-inline-grid{grid-template-columns:1fr}.branch-name-inline{font-size:3rem}.branches-section .b-header{padding:0 2rem 3rem}.branches-tabs-inline{display:grid;grid-template-columns:repeat(3,1fr);padding:0;gap:0}.branch-tab-inline{padding:1rem 0.4rem;font-size:0.55rem;letter-spacing:0.15em;text-align:center;border-bottom:2px solid transparent;border-right:1px solid rgba(255,255,255,0.04);width:100%;margin-bottom:0}.branch-tab-inline:last-child{border-right:none}.branch-tab-inline.active{background:rgba(255,255,255,0.03)}.affiche-titre{font-size:2.4rem}.affiche-poster{width:160px}.vision-grid{grid-template-columns:1fr;gap:2rem;width:100%;padding:0}.vision-card{width:100%;margin:0;padding:3rem 2rem}.production-sub-tabs{flex-wrap:wrap}.prod-sub-tab{flex:1 1 50%;white-space:normal;text-align:center;font-size:0.55rem;letter-spacing:0.12em;padding:0.9rem 0.5rem;line-height:1.4}}
+        @media(max-width:480px){.hero h1{font-size:2.2rem;letter-spacing:0.1em}.logo{font-size:1.2rem}nav{padding:1.2rem 1.5rem}nav.scrolled{padding:1rem 1.5rem}section{padding:4rem 1.5rem;min-height:auto}.section-title h2{font-size:2rem}.intro-content p{font-size:0.95rem}.stat-number{font-size:3rem}.cta h2{font-size:2rem}.cta-button{padding:1.2rem 2.5rem;font-size:0.65rem}.modal-header{padding:2.5rem 1.5rem 2rem}.modal-close{right:1.5rem;top:2.5rem}.modal-title{font-size:1.5rem;padding-right:4.5rem}.form-step{padding:2.5rem 1.5rem}.modal-footer{padding:1.2rem 1.5rem 1.8rem}.btn-next{padding:1rem 0.8rem;font-size:0.62rem;letter-spacing:0.14em}.btn-prev{font-size:0.56rem;padding:0.7rem}.modal-success{padding:3rem 1.5rem}.success-title{font-size:1.35rem;letter-spacing:0.03em}.success-text{font-size:0.76rem;letter-spacing:0.05em}.success-mark{width:42px;height:42px;margin-bottom:1.8rem}.branch-tab-inline{font-size:0.48rem;padding:0.9rem 0.2rem}.affiche-titre{font-size:1.8rem}.affiche-poster{width:130px}}
         .vitrine-sub-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:0}
         .vitrine-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.2);font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;padding:1rem 2rem;cursor:pointer;transition:all 0.4s ease;white-space:nowrap;margin-bottom:-1px}
         .vitrine-tab:hover{color:rgba(255,255,255,0.5)}
         .vitrine-tab.active{color:rgba(255,255,255,0.85);border-bottom-color:rgba(255,255,255,0.3)}
         .vitrine-panel{display:none}
         .vitrine-panel.active{display:block;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
-        /* Genre sous-onglets */
         .genre-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.04);margin-bottom:3rem;padding-top:2rem}
         .genre-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.18);font-family:var(--font-body);font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;padding:0.8rem 1.8rem;cursor:pointer;transition:all 0.4s ease;margin-bottom:-1px}
         .genre-tab:hover{color:rgba(255,255,255,0.45)}
         .genre-tab.active{color:rgba(255,255,255,0.8);border-bottom-color:rgba(255,255,255,0.25)}
         .genre-panel{display:none}
         .genre-panel.active{display:block;animation:panelReveal 0.4s cubic-bezier(0.4,0,0.2,1) forwards}
-        /* Grille vitrines */
         .vitrine-grid{display:grid;gap:3rem;padding:3rem 0 2rem}
         .vitrine-grid-3{grid-template-columns:repeat(3,1fr)}
         .vitrine-grid-2{grid-template-columns:repeat(2,1fr)}
@@ -294,20 +239,8 @@
         .vitrine-placeholder span{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.1);text-align:center}
         .vitrine-titre{font-family:var(--font-display);font-size:1.4rem;font-weight:300;letter-spacing:0.08em;color:rgba(255,255,255,0.88)}
         .vitrine-desc{font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.9;font-weight:300}
-        @media(max-width:1024px){
-            .vitrine-grid-4{grid-template-columns:repeat(2,1fr)}
-            .vitrine-grid-3{grid-template-columns:repeat(2,1fr)}
-        }
-        @media(max-width:768px){
-            .vitrine-grid-3,.vitrine-grid-2,.vitrine-grid-4{grid-template-columns:1fr}
-            .vitrine-tab{flex:1 1 auto;white-space:normal;text-align:center;font-size:0.52rem;letter-spacing:0.15em;padding:0.8rem 0.5rem;line-height:1.4}
-            .vitrine-sub-tabs{flex-wrap:wrap}
-            .genre-tab{flex:1;text-align:center;font-size:0.5rem;padding:0.7rem 0.5rem}
-            .genre-tabs{flex-wrap:nowrap}
-        }
-
-        /* WRITING */
-        .writing-sortie{padding:3rem 0 2rem}
+        @media(max-width:1024px){.vitrine-grid-4{grid-template-columns:repeat(2,1fr)}.vitrine-grid-3{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.vitrine-grid-3,.vitrine-grid-2,.vitrine-grid-4{grid-template-columns:1fr}.vitrine-tab{flex:1 1 auto;white-space:normal;text-align:center;font-size:0.52rem;letter-spacing:0.15em;padding:0.8rem 0.5rem;line-height:1.4}.vitrine-sub-tabs{flex-wrap:wrap}.genre-tab{flex:1;text-align:center;font-size:0.5rem;padding:0.7rem 0.5rem}.genre-tabs{flex-wrap:nowrap}}
         .writing-card{display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:start;padding:4rem;background:linear-gradient(135deg,rgba(255,255,255,0.015) 0%,rgba(255,255,255,0) 100%);border:1px solid rgba(255,255,255,0.06);transition:border-color 0.6s}
         .writing-card:hover{border-color:rgba(255,255,255,0.1)}
         .writing-cover{position:relative;width:220px;aspect-ratio:2/3;overflow:hidden;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);flex-shrink:0}
@@ -320,24 +253,9 @@
         .writing-titre{font-family:var(--font-display);font-size:3.2rem;font-weight:300;letter-spacing:0.08em;line-height:1.1;margin-bottom:2rem;color:rgba(255,255,255,0.9)}
         .writing-description{font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:2.1;font-weight:300;max-width:650px;margin-bottom:0}
         .writing-meta{margin-top:3rem;display:flex;gap:3rem;flex-wrap:wrap}
-        @media(max-width:1024px){
-            .writing-card{grid-template-columns:180px 1fr;gap:3rem;padding:3rem}
-            .writing-cover{width:180px}
-        }
-        @media(max-width:768px){
-            .writing-card{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 2rem}
-            .writing-cover{width:160px;margin:0 auto}
-            .writing-titre{font-size:2.2rem}
-            .writing-meta{gap:2rem}
-            .writing-content{padding-top:0}
-        }
-        @media(max-width:480px){
-            .writing-titre{font-size:1.8rem}
-            .writing-card{padding:2rem 1.5rem}
-            .writing-cover{width:140px}
-        }
-
-        /* SOON SCREEN */
+        @media(max-width:1024px){.writing-card{grid-template-columns:180px 1fr;gap:3rem;padding:3rem}.writing-cover{width:180px}}
+        @media(max-width:768px){.writing-card{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 2rem}.writing-cover{width:160px;margin:0 auto}.writing-titre{font-size:2.2rem}.writing-meta{gap:2rem}.writing-content{padding-top:0}}
+        @media(max-width:480px){.writing-titre{font-size:1.8rem}.writing-card{padding:2rem 1.5rem}.writing-cover{width:140px}}
         .branch-soon{display:none;padding:8rem 5rem;text-align:center;flex-direction:column;align-items:center;gap:2rem}
         .branch-soon.visible{display:flex;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
         .branch-soon-title{font-family:var(--font-display);font-size:3.5rem;font-weight:300;letter-spacing:0.25em;color:rgba(255,255,255,0.08)}
@@ -345,8 +263,6 @@
         .branch-content-wrap{display:block}
         .branch-content-wrap.hidden{display:none}
         @media(max-width:480px){.branch-soon{padding:5rem 2rem}.branch-soon-title{font-size:2rem}}
-
-        /* ACTUALITÉS */
         .actu-grid{display:flex;flex-direction:column;gap:5rem;max-width:1100px;margin:4rem auto 0}
         .actu-card{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;padding:4rem;border:1px solid rgba(255,255,255,0.05);background:linear-gradient(135deg,rgba(255,255,255,0.012) 0%,rgba(255,255,255,0) 100%);transition:border-color 0.6s cubic-bezier(0.4,0,0.2,1)}
         .actu-card:hover{border-color:rgba(255,255,255,0.09)}
@@ -367,11 +283,34 @@
     </style>
 </head>
 <body class="loading">
-<div class="page-loader"><div class="loader-content"><div class="loader-logo">BURTON</div><div class="loader-line"></div></div></div>
+<div class="page-loader"><div class="loader-content">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         ✏️ NOM AFFICHÉ DANS L'ÉCRAN DE CHARGEMENT
+         → Remplace BURTON par le nom que tu veux voir apparaître
+            quand la page se charge (l'animation d'intro)
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="loader-logo">BURTON</div>
+
+    <div class="loader-line"></div>
+</div></div>
 
 <div class="main-content">
     <nav id="navbar">
+
+        <!-- ══════════════════════════════════════════════════════════
+             ✏️ NOM DANS LA BARRE DE NAVIGATION (en haut à gauche)
+             → Remplace BURTON par ce que tu veux
+        ══════════════════════════════════════════════════════════ -->
         <a href="#" class="logo">BURTON</a>
+
+        <!-- ══════════════════════════════════════════════════════════
+             ✏️ LIENS DE NAVIGATION (menu en haut à droite)
+             → Remplace les textes entre <a> et </a> pour renommer
+                les onglets du menu.
+             → NE PAS modifier les href="#..." ils pointent vers les
+                sections de la page
+        ══════════════════════════════════════════════════════════ -->
         <ul class="nav-links">
             <li><a href="#vision">Vision</a></li>
             <li><a href="#actualites">Actualités</a></li>
@@ -382,44 +321,95 @@
         </ul>
     </nav>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION HERO — GRANDE PAGE D'ACCUEIL
+    ════════════════════════════════════════════════════════════════ -->
     <section class="hero" id="hero">
         <div class="hero-content">
+
+            <!-- ✏️ TITRE PRINCIPAL (grand texte centré au milieu de la page) -->
             <h1>BURTON CORPORATION</h1>
+
+            <!-- ✏️ SLOGAN (petite phrase sous le titre principal) -->
             <p class="hero-tagline">Construire. Progresser. Réussir.</p>
+
         </div>
         <div class="scroll-indicator"><div class="scroll-line"></div></div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION INTRODUCTION
+    ════════════════════════════════════════════════════════════════ -->
     <section class="intro" id="intro">
         <div class="container">
             <span class="section-number reveal-element">01 — Introduction</span>
             <div class="intro-content reveal-element">
+
+                <!-- ✏️ PARAGRAPHE D'INTRODUCTION 1 -->
                 <p>Burton Corporation est une maison fondatrice — une entité unique réunissant des créations issues de domaines distincts, liées par une même vision d'excellence et d'ambition.</p>
+
+                <!-- ✏️ PARAGRAPHE D'INTRODUCTION 2 -->
                 <p style="margin-top:2rem">Chaque branche naît comme une extension naturelle de cette origine : horlogerie, parfum, mode, gastronomie, production, écriture. Des disciplines différentes, un seul nom.</p>
+
             </div>
         </div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION VISION — LES PILIERS
+    ════════════════════════════════════════════════════════════════ -->
     <section class="vision" id="vision">
         <div class="container">
             <span class="section-number reveal-element">02 — Vision</span>
+
+            <!-- ✏️ TITRE DE LA SECTION VISION -->
             <div class="section-title reveal-element"><h2>Nos Piliers</h2></div>
+
             <div class="vision-grid">
-                <div class="vision-card"><h3>Excellence</h3><p>Rechercher constamment le plus haut niveau de qualité dans chaque création. L'excellence chez Burton Corporation repose sur la précision, l'exigence et l'attention portée au détail. Elle guide chaque décision et garantit des réalisations durables, pensées pour dépasser les standards ordinaires.</p></div>
-                <div class="vision-card"><h3>Progrès</h3><p>Évoluer en permanence, individuellement et collectivement. Le progrès est le moteur de toute organisation qui aspire à l'excellence. Nous cultivons une culture de l'amélioration continue et de l'innovation.</p></div>
+
+                <!-- ✏️ PILIER 1 — Titre et texte du premier pilier -->
+                <div class="vision-card">
+                    <h3>Excellence</h3>
+                    <p>Rechercher constamment le plus haut niveau de qualité dans chaque création. L'excellence chez Burton Corporation repose sur la précision, l'exigence et l'attention portée au détail. Elle guide chaque décision et garantit des réalisations durables, pensées pour dépasser les standards ordinaires.</p>
+                </div>
+
+                <!-- ✏️ PILIER 2 — Titre et texte du deuxième pilier -->
+                <div class="vision-card">
+                    <h3>Progrès</h3>
+                    <p>Évoluer en permanence, individuellement et collectivement. Le progrès est le moteur de toute organisation qui aspire à l'excellence. Nous cultivons une culture de l'amélioration continue et de l'innovation.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION ACTUALITÉS
+    ════════════════════════════════════════════════════════════════ -->
     <section class="actualites" id="actualites" style="background:linear-gradient(to bottom,var(--color-bg) 0%,var(--color-surface) 50%,var(--color-bg) 100%)">
         <div class="container">
             <span class="section-number reveal-element">02bis — Actualités</span>
             <div class="section-title reveal-element">
+
+                <!-- ✏️ TITRE DE LA SECTION ACTUALITÉS -->
                 <h2>Actualités</h2>
+
+                <!-- ✏️ SOUS-TITRE DE LA SECTION ACTUALITÉS -->
                 <p class="subtitle">Les dernières nouvelles de Burton Corporation</p>
+
             </div>
             <div class="actu-grid">
-                <!-- ACTUALITÉ 1 -->
+
+                <!-- ════════════════════════════════════════════════
+                     📰 ACTUALITÉ N°1
+                     ════════════════════════════════════════════════
+                     ✏️ IMAGE 1   → colle l'URL de ta photo dans src="ICI"
+                     ✏️ IMAGE 2   → colle l'URL de ta photo dans src="ICI"
+                                    (laisse src="" si tu veux seulement 1 image)
+                     ✏️ DATE      → remplace le texte dans <span class="actu-date">
+                     ✏️ TITRE     → remplace le texte dans <div class="actu-titre">
+                     ✏️ TEXTE     → remplace le texte dans <div class="actu-desc">
+                ════════════════════════════════════════════════ -->
                 <div class="actu-card reveal-element">
                     <div class="actu-card-images">
                         <div class="actu-img-wrap">
@@ -432,38 +422,48 @@
                         </div>
                     </div>
                     <div class="actu-card-text">
-                        <span class="actu-date">Jeudi 19 Février 2026 13h30</span>
-                        <div class="actu-titre">Le Vengeur d'Or</div>
-                        <div class="actu-desc">Elliot Burton vient d'annoncer que son premier roman venait d'être terminé, vous le trouverez dans l'onglet Writing de ce site.</div>
+                        <span class="actu-date">Jeudi 19 Février 2026 13h30</span><!-- ✏️ DATE -->
+                        <div class="actu-titre">Le Vengeur d'Or</div><!-- ✏️ TITRE -->
+                        <div class="actu-desc">Elliot Burton vient d'annoncer que son premier roman venait d'être terminé, vous le trouverez dans l'onglet Writing de ce site.</div><!-- ✏️ TEXTE -->
                     </div>
                 </div>
+
                 <hr class="actu-separator">
-                <!-- ACTUALITÉ 2 -->
+
+                <!-- ════════════════════════════════════════════════
+                     📰 ACTUALITÉ N°2
+                     ════════════════════════════════════════════════
+                     ✏️ IMAGE 1   → colle l'URL de ta photo dans src="ICI"
+                     ✏️ IMAGE 2   → colle l'URL de ta photo dans src="ICI"
+                     ✏️ DATE      → remplace le texte dans <span class="actu-date">
+                     ✏️ TITRE     → remplace le texte dans <div class="actu-titre">
+                     ✏️ TEXTE     → remplace le texte dans <div class="actu-desc">
+                ════════════════════════════════════════════════ -->
                 <div class="actu-card reveal-element">
                     <div class="actu-card-images">
                         <div class="actu-img-wrap">
-                            <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="" id="actu-2-img-1" style="display:none">
+                            <img src="" alt="" id="actu-2-img-1" style="display:none"><!-- ✏️ URL IMAGE 1 dans src="" -->
                             <div class="actu-img-placeholder" id="actu-2-ph-1"><span>Image à venir</span></div>
                         </div>
                         <div class="actu-img-wrap">
-                            <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="" id="actu-2-img-2" style="display:none">
+                            <img src="" alt="" id="actu-2-img-2" style="display:none"><!-- ✏️ URL IMAGE 2 dans src="" -->
                             <div class="actu-img-placeholder" id="actu-2-ph-2"><span>Image à venir</span></div>
                         </div>
                     </div>
                     <div class="actu-card-text">
-                        <span class="actu-date">....</span>
-                        <div class="actu-titre">Aucune actualité disponible.</div>
-                        <div class="actu-desc">Aucune actualité disponible.</div>
+                        <span class="actu-date">....</span><!-- ✏️ DATE -->
+                        <div class="actu-titre">Aucune actualité disponible.</div><!-- ✏️ TITRE -->
+                        <div class="actu-desc">Aucune actualité disponible.</div><!-- ✏️ TEXTE -->
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- =============================================
-         SECTION BRANCHES — STRUCTURE CORRIGÉE
-         Chaque panel contient son propre soon + content
-    ============================================= -->
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION BRANCHES
+    ════════════════════════════════════════════════════════════════ -->
     <section class="branches-section" id="branches">
         <div class="b-header">
             <span class="section-number reveal-element">03 — Branches</span>
@@ -479,7 +479,9 @@
         </div>
         <div class="branches-panels">
 
-            <!-- ===== WATCH ===== -->
+            <!-- ════════════════════════════════════════════════════
+                 ⌚ BRANCHE : WATCH
+            ════════════════════════════════════════════════════ -->
             <div class="branch-panel-inline active" id="panel-watch">
                 <div class="branch-soon" id="soon-watch">
                     <div class="branch-soon-title">Bientôt</div>
@@ -491,30 +493,64 @@
                             <button class="prod-sub-tab vitrine-tab active" data-branch="watch" data-sub="apercu-watch">Aperçu</button>
                             <button class="prod-sub-tab vitrine-tab" data-branch="watch" data-sub="vitrine-watch">Vitrine</button>
                         </div>
+
+                        <!-- WATCH — APERÇU -->
                         <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-watch" style="padding-top:4rem">
                             <div class="branch-inner-grid">
-                                <div><span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><div class="branch-name-inline">Watch</div><div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div></div>
-                                <div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div>
+                                <div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><!-- ✏️ Sous-titre discret -->
+                                    <div class="branch-name-inline">Watch</div><!-- ✏️ Nom de la branche -->
+                                    <div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><!-- ✏️ Accroche -->
+                                    <div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div><!-- ✏️ Description longue -->
+                                </div>
+                                <div>
+                                    <!-- ✏️ INFOS TECHNIQUES : modifie chaque <span class="branch-detail-val"> -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div>
+                                </div>
                             </div>
-                            <div class="branch-products-inline-title">Collections</div>
+                            <div class="branch-products-inline-title">Collections</div><!-- ✏️ Titre du bloc produits -->
                             <div class="branch-products-inline-grid">
+                                <!-- ✏️ PRODUIT 1 : modifie .product-name et .product-desc -->
                                 <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div>
+                                <!-- ✏️ PRODUIT 2 -->
                                 <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div>
+                                <!-- ✏️ PRODUIT 3 -->
                                 <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div>
                             </div>
                         </div>
+
+                        <!-- WATCH — VITRINE -->
                         <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-watch" style="padding-top:3rem">
                             <div class="vitrine-grid vitrine-grid-3">
-                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-1" style="display:none"><div class="vitrine-placeholder" id="vph-watch-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-2" style="display:none"><div class="vitrine-placeholder" id="vph-watch-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-3" style="display:none"><div class="vitrine-placeholder" id="vph-watch-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                <!-- ✏️ VITRINE WATCH — ARTICLE 1 : src="URL" + titre + desc -->
+                                <div class="vitrine-card">
+                                    <div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-1" style="display:none"><div class="vitrine-placeholder" id="vph-watch-1"><span>Image à venir</span></div></div>
+                                    <div class="vitrine-titre">Titre du produit</div><!-- ✏️ -->
+                                    <div class="vitrine-desc">Description du produit.</div><!-- ✏️ -->
+                                </div>
+                                <!-- ✏️ VITRINE WATCH — ARTICLE 2 -->
+                                <div class="vitrine-card">
+                                    <div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-2" style="display:none"><div class="vitrine-placeholder" id="vph-watch-2"><span>Image à venir</span></div></div>
+                                    <div class="vitrine-titre">Titre du produit</div><!-- ✏️ -->
+                                    <div class="vitrine-desc">Description du produit.</div><!-- ✏️ -->
+                                </div>
+                                <!-- ✏️ VITRINE WATCH — ARTICLE 3 -->
+                                <div class="vitrine-card">
+                                    <div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-3" style="display:none"><div class="vitrine-placeholder" id="vph-watch-3"><span>Image à venir</span></div></div>
+                                    <div class="vitrine-titre">Titre du produit</div><!-- ✏️ -->
+                                    <div class="vitrine-desc">Description du produit.</div><!-- ✏️ -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== PARFUM ===== -->
+            <!-- ════════════════════════════════════════════════════
+                 🌸 BRANCHE : PARFUM
+            ════════════════════════════════════════════════════ -->
             <div class="branch-panel-inline" id="panel-parfum">
                 <div class="branch-soon" id="soon-parfum">
                     <div class="branch-soon-title">Bientôt</div>
@@ -526,18 +562,31 @@
                             <button class="prod-sub-tab vitrine-tab active" data-branch="parfum" data-sub="apercu-parfum">Aperçu</button>
                             <button class="prod-sub-tab vitrine-tab" data-branch="parfum" data-sub="vitrine-parfum">Vitrine</button>
                         </div>
+
+                        <!-- PARFUM — APERÇU -->
                         <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-parfum" style="padding-top:4rem">
                             <div class="branch-inner-grid">
-                                <div><span class="branch-eyebrow-inline">Burton — Division Olfactive</span><div class="branch-name-inline">Parfum</div><div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div></div>
-                                <div><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div>
+                                <div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Olfactive</span><!-- ✏️ -->
+                                    <div class="branch-name-inline">Parfum</div><!-- ✏️ -->
+                                    <div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><!-- ✏️ -->
+                                    <div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div><!-- ✏️ -->
+                                </div>
+                                <div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div><!-- ✏️ -->
+                                </div>
                             </div>
-                            <div class="branch-products-inline-title">Fragrances</div>
+                            <div class="branch-products-inline-title">Fragrances</div><!-- ✏️ -->
                             <div class="branch-products-inline-grid">
-                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div>
-                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div>
-                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div>
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div><!-- ✏️ -->
                             </div>
                         </div>
+
+                        <!-- PARFUM — VITRINE (onglets Homme / Femme / Enfant) -->
                         <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-parfum" style="padding-top:2rem">
                             <div class="genre-tabs" id="genre-tabs-parfum">
                                 <button class="genre-tab active" data-branch="parfum" data-genre="homme">Homme</button>
@@ -546,20 +595,26 @@
                             </div>
                             <div class="genre-panel active" id="genre-parfum-homme">
                                 <div class="vitrine-grid vitrine-grid-2">
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-homme-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-homme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-homme-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-homme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <!-- ✏️ PARFUM HOMME — ARTICLE 1 : src="URL" + titre + desc -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-homme-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-homme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
+                                    <!-- ✏️ PARFUM HOMME — ARTICLE 2 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-homme-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-homme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
                                 </div>
                             </div>
                             <div class="genre-panel" id="genre-parfum-femme">
                                 <div class="vitrine-grid vitrine-grid-2">
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-femme-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-femme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-femme-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-femme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <!-- ✏️ PARFUM FEMME — ARTICLE 1 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-femme-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-femme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
+                                    <!-- ✏️ PARFUM FEMME — ARTICLE 2 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-femme-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-femme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
                                 </div>
                             </div>
                             <div class="genre-panel" id="genre-parfum-enfant">
                                 <div class="vitrine-grid vitrine-grid-2">
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-enfant-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-enfant-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-enfant-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-enfant-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <!-- ✏️ PARFUM ENFANT — ARTICLE 1 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-enfant-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-enfant-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
+                                    <!-- ✏️ PARFUM ENFANT — ARTICLE 2 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-enfant-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-enfant-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
                                 </div>
                             </div>
                         </div>
@@ -567,7 +622,9 @@
                 </div>
             </div>
 
-            <!-- ===== CLOTHES ===== -->
+            <!-- ════════════════════════════════════════════════════
+                 👔 BRANCHE : CLOTHES
+            ════════════════════════════════════════════════════ -->
             <div class="branch-panel-inline" id="panel-clothes">
                 <div class="branch-soon" id="soon-clothes">
                     <div class="branch-soon-title">Bientôt</div>
@@ -579,18 +636,31 @@
                             <button class="prod-sub-tab vitrine-tab active" data-branch="clothes" data-sub="apercu-clothes">Aperçu</button>
                             <button class="prod-sub-tab vitrine-tab" data-branch="clothes" data-sub="vitrine-clothes">Vitrine</button>
                         </div>
+
+                        <!-- CLOTHES — APERÇU -->
                         <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-clothes" style="padding-top:4rem">
                             <div class="branch-inner-grid">
-                                <div><span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><div class="branch-name-inline">Clothes</div><div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div></div>
-                                <div><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div>
+                                <div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><!-- ✏️ -->
+                                    <div class="branch-name-inline">Clothes</div><!-- ✏️ -->
+                                    <div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><!-- ✏️ -->
+                                    <div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div><!-- ✏️ -->
+                                </div>
+                                <div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div><!-- ✏️ -->
+                                </div>
                             </div>
-                            <div class="branch-products-inline-title">Pièces Signature</div>
+                            <div class="branch-products-inline-title">Pièces Signature</div><!-- ✏️ -->
                             <div class="branch-products-inline-grid">
-                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div>
-                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div>
-                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div>
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div><!-- ✏️ -->
                             </div>
                         </div>
+
+                        <!-- CLOTHES — VITRINE -->
                         <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-clothes" style="padding-top:2rem">
                             <div class="genre-tabs" id="genre-tabs-clothes">
                                 <button class="genre-tab active" data-branch="clothes" data-genre="homme">Homme</button>
@@ -599,26 +669,29 @@
                             </div>
                             <div class="genre-panel active" id="genre-clothes-homme">
                                 <div class="vitrine-grid vitrine-grid-4">
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <!-- ✏️ CLOTHES HOMME — ARTICLES 1 à 4 : src="URL" + titre + desc -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
                                 </div>
                             </div>
                             <div class="genre-panel" id="genre-clothes-femme">
                                 <div class="vitrine-grid vitrine-grid-4">
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <!-- ✏️ CLOTHES FEMME — ARTICLES 1 à 4 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
                                 </div>
                             </div>
                             <div class="genre-panel" id="genre-clothes-enfant">
                                 <div class="vitrine-grid vitrine-grid-4">
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <!-- ✏️ CLOTHES ENFANT — ARTICLES 1 à 4 -->
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre</div><div class="vitrine-desc">Description.</div></div>
                                 </div>
                             </div>
                         </div>
@@ -626,7 +699,9 @@
                 </div>
             </div>
 
-            <!-- ===== CHOCOLATE ===== -->
+            <!-- ════════════════════════════════════════════════════
+                 🍫 BRANCHE : CHOCOLATE
+            ════════════════════════════════════════════════════ -->
             <div class="branch-panel-inline" id="panel-chocolate">
                 <div class="branch-soon" id="soon-chocolate">
                     <div class="branch-soon-title">Bientôt</div>
@@ -638,29 +713,46 @@
                             <button class="prod-sub-tab vitrine-tab active" data-branch="choco" data-sub="apercu-choco">Aperçu</button>
                             <button class="prod-sub-tab vitrine-tab" data-branch="choco" data-sub="vitrine-choco">Vitrine</button>
                         </div>
+
+                        <!-- CHOCOLATE — APERÇU -->
                         <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-choco" style="padding-top:4rem">
                             <div class="branch-inner-grid">
-                                <div><span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><div class="branch-name-inline">Chocolate</div><div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div></div>
-                                <div><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div></div>
+                                <div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><!-- ✏️ -->
+                                    <div class="branch-name-inline">Chocolate</div><!-- ✏️ -->
+                                    <div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><!-- ✏️ -->
+                                    <div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div><!-- ✏️ -->
+                                </div>
+                                <div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div><!-- ✏️ -->
+                                </div>
                             </div>
-                            <div class="branch-products-inline-title">Créations</div>
+                            <div class="branch-products-inline-title">Créations</div><!-- ✏️ -->
                             <div class="branch-products-inline-grid">
-                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div>
-                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div>
-                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div>
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div><!-- ✏️ -->
                             </div>
                         </div>
+
+                        <!-- CHOCOLATE — VITRINE -->
                         <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-choco" style="padding-top:3rem">
                             <div class="vitrine-grid vitrine-grid-2">
-                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-choco-1" style="display:none"><div class="vitrine-placeholder" id="vph-choco-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
-                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-choco-2" style="display:none"><div class="vitrine-placeholder" id="vph-choco-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                <!-- ✏️ CHOCOLATE — ARTICLE 1 : src="URL" + titre + desc -->
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-choco-1" style="display:none"><div class="vitrine-placeholder" id="vph-choco-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
+                                <!-- ✏️ CHOCOLATE — ARTICLE 2 -->
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-choco-2" style="display:none"><div class="vitrine-placeholder" id="vph-choco-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description.</div></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== PRODUCTION ===== -->
+            <!-- ════════════════════════════════════════════════════
+                 🎬 BRANCHE : PRODUCTION
+            ════════════════════════════════════════════════════ -->
             <div class="branch-panel-inline" id="panel-production">
                 <div class="branch-soon" id="soon-production">
                     <div class="branch-soon-title">Bientôt</div>
@@ -672,66 +764,105 @@
                             <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
                             <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
                         </div>
+
+                        <!-- PRODUCTION — APERÇU -->
                         <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
                             <div class="branch-inner-grid">
-                                <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
-                                <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+                                <div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Créative</span><!-- ✏️ -->
+                                    <div class="branch-name-inline">Production</div><!-- ✏️ -->
+                                    <div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><!-- ✏️ -->
+                                    <div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div><!-- ✏️ -->
+                                </div>
+                                <div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div><!-- ✏️ -->
+                                </div>
                             </div>
-                            <div class="branch-products-inline-title">Activités</div>
+                            <div class="branch-products-inline-title">Activités</div><!-- ✏️ -->
                             <div class="branch-products-inline-grid">
-                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
-                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
-                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div><!-- ✏️ -->
                             </div>
                         </div>
+
+                        <!-- PRODUCTION — À L'AFFICHE -->
                         <div class="prod-sub-panel" id="sub-affiche">
                             <div class="affiche-section">
+
+                                <!-- ════════════════════════════════════════
+                                     🎥 FILM DE L'ANNÉE
+                                     ════════════════════════════════════════
+                                     ✏️ AFFICHE  → colle l'URL dans src="ICI"
+                                     ✏️ TITRE    → remplace dans <div class="affiche-titre">
+                                     ✏️ SYNOPSIS → remplace dans <div class="affiche-description">
+                                     ✏️ DURÉE    → remplace le — dans la première affiche-meta-val
+                                     ✏️ RÉAL.    → remplace le — dans la deuxième affiche-meta-val
+                                     ✏️ ANNÉE    → remplace le — dans la troisième affiche-meta-val
+                                ════════════════════════════════════════ -->
                                 <div class="affiche-block">
                                     <div class="affiche-label">Film de l'Année</div>
                                     <div class="affiche-cadre">
                                         <div class="affiche-poster">
-                                            <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="Affiche film" id="film-img" style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
+                                            <img src="" alt="Affiche film" id="film-img" style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3"><!-- ✏️ URL AFFICHE FILM dans src="" -->
                                             <div class="affiche-poster-placeholder" id="film-placeholder"><span>Affiche à venir</span></div>
                                         </div>
                                         <div class="affiche-info">
-                                            <div class="affiche-categorie">Long Métrage</div>
-                                            <div class="affiche-titre">Aucune information pour le moment.</div>
-                                            <div class="affiche-description">Synopsys du Film : Aucune information pour le moment.</div>
+                                            <div class="affiche-categorie">Long Métrage</div><!-- ✏️ -->
+                                            <div class="affiche-titre">Aucune information pour le moment.</div><!-- ✏️ TITRE DU FILM -->
+                                            <div class="affiche-description">Synopsys du Film : Aucune information pour le moment.</div><!-- ✏️ SYNOPSIS -->
                                             <div class="affiche-meta">
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">—</span></div><!-- ✏️ ex: 1h 52min -->
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">—</span></div><!-- ✏️ ex: Elliot Burton -->
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val">—</span></div><!-- ✏️ ex: 2026 -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <hr class="affiche-separator">
+
+                                <!-- ════════════════════════════════════════
+                                     🎬 COURT MÉTRAGE DU MOIS
+                                     ════════════════════════════════════════
+                                     ✏️ AFFICHE  → colle l'URL dans src="ICI"
+                                     ✏️ TITRE    → remplace dans <div class="affiche-titre">
+                                     ✏️ SYNOPSIS → remplace dans <div class="affiche-description">
+                                     ✏️ DURÉE    → remplace le — dans la première affiche-meta-val
+                                     ✏️ RÉAL.    → remplace le — dans la deuxième affiche-meta-val
+                                     ✏️ MOIS     → remplace le — dans la troisième affiche-meta-val
+                                ════════════════════════════════════════ -->
                                 <div class="affiche-block">
                                     <div class="affiche-label">Court Métrage du Mois</div>
                                     <div class="affiche-cadre">
                                         <div class="affiche-poster">
-                                            <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="Affiche court métrage" id="cm-img" style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
+                                            <img src="" alt="Affiche court métrage" id="cm-img" style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3"><!-- ✏️ URL AFFICHE COURT MÉTRAGE dans src="" -->
                                             <div class="affiche-poster-placeholder" id="cm-placeholder"><span>Affiche à venir</span></div>
                                         </div>
                                         <div class="affiche-info">
-                                            <div class="affiche-categorie">Court Métrage</div>
-                                            <div class="affiche-titre">Aucune information pour le moment.</div>
-                                            <div class="affiche-description">Synopsis du court métrage. Aucune information pour le moment.</div>
+                                            <div class="affiche-categorie">Court Métrage</div><!-- ✏️ -->
+                                            <div class="affiche-titre">Aucune information pour le moment.</div><!-- ✏️ TITRE DU COURT MÉTRAGE -->
+                                            <div class="affiche-description">Synopsis du court métrage. Aucune information pour le moment.</div><!-- ✏️ SYNOPSIS -->
                                             <div class="affiche-meta">
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">—</span></div>
-                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">—</span></div><!-- ✏️ ex: 14 min -->
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">—</span></div><!-- ✏️ -->
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val">—</span></div><!-- ✏️ ex: Février 2026 -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== WRITING ===== -->
+            <!-- ════════════════════════════════════════════════════
+                 ✍️ BRANCHE : WRITING
+            ════════════════════════════════════════════════════ -->
             <div class="branch-panel-inline" id="panel-writing">
                 <div class="branch-soon" id="soon-writing">
                     <div class="branch-soon-title">Bientôt</div>
@@ -743,46 +874,69 @@
                             <button class="prod-sub-tab vitrine-tab active" data-branch="writing" data-sub="apercu-writing">Aperçu</button>
                             <button class="prod-sub-tab vitrine-tab" data-branch="writing" data-sub="affiche-writing">À l'Affiche</button>
                         </div>
+
+                        <!-- WRITING — APERÇU -->
                         <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-writing" style="padding-top:4rem">
                             <div class="branch-inner-grid">
                                 <div>
-                                    <span class="branch-eyebrow-inline">Burton — Division Littéraire</span>
-                                    <div class="branch-name-inline">Writing</div>
-                                    <div class="branch-tagline-inline">Les mots comme architecture. Chaque texte, une fondation.</div>
-                                    <div class="branch-desc-inline">Burton Writing est la voix écrite de l'organisation. Articles, récits, essais, manifestes — cette division transforme les idées en œuvres durables. L'écriture comme acte de précision, jamais comme ornement.</div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Littéraire</span><!-- ✏️ -->
+                                    <div class="branch-name-inline">Writing</div><!-- ✏️ -->
+                                    <div class="branch-tagline-inline">Les mots comme architecture. Chaque texte, une fondation.</div><!-- ✏️ -->
+                                    <div class="branch-desc-inline">Burton Writing est la voix écrite de l'organisation. Articles, récits, essais, manifestes — cette division transforme les idées en œuvres durables. L'écriture comme acte de précision, jamais comme ornement.</div><!-- ✏️ -->
                                 </div>
                                 <div>
-                                    <div class="branch-detail-row"><span class="branch-detail-key">Formats</span><span class="branch-detail-val">Essais, nouvelles, articles, manifestes</span></div>
-                                    <div class="branch-detail-row"><span class="branch-detail-key">Diffusion</span><span class="branch-detail-val">Interne et externe — selon validation de la direction</span></div>
-                                    <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur sélection — recrutement interne uniquement</span></div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Formats</span><span class="branch-detail-val">Essais, nouvelles, articles, manifestes</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Diffusion</span><span class="branch-detail-val">Interne et externe — selon validation de la direction</span></div><!-- ✏️ -->
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur sélection — recrutement interne uniquement</span></div><!-- ✏️ -->
                                 </div>
                             </div>
-                            <div class="branch-products-inline-title">Domaines</div>
+                            <div class="branch-products-inline-title">Domaines</div><!-- ✏️ -->
                             <div class="branch-products-inline-grid">
-                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Fiction</div><div class="product-desc">Nouvelles et récits courts. L'imaginaire au service d'une vision singulière et exigeante.</div></div>
-                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Essais</div><div class="product-desc">Réflexions sur l'ambition, le progrès, l'excellence. La pensée Burton, mise en mots.</div></div>
-                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Manifestes</div><div class="product-desc">Textes fondateurs de l'organisation. Ce en quoi nous croyons, écrit pour durer.</div></div>
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Fiction</div><div class="product-desc">Nouvelles et récits courts. L'imaginaire au service d'une vision singulière et exigeante.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Essais</div><div class="product-desc">Réflexions sur l'ambition, le progrès, l'excellence. La pensée Burton, mise en mots.</div></div><!-- ✏️ -->
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Manifestes</div><div class="product-desc">Textes fondateurs de l'organisation. Ce en quoi nous croyons, écrit pour durer.</div></div><!-- ✏️ -->
                             </div>
                         </div>
+
+                        <!-- ════════════════════════════════════════
+                             WRITING — À L'AFFICHE (SORTIE RÉCENTE)
+                             ════════════════════════════════════════
+                             ✏️ IMAGE COUVERTURE → colle l'URL dans src="ICI"
+                             ✏️ TITRE DU LIVRE   → remplace dans <div class="writing-titre">
+                             ✏️ DESCRIPTION      → remplace dans <div class="writing-description">
+                             ✏️ AUTEUR           → remplace dans la 1ère affiche-meta-val
+                             ✏️ GENRE            → remplace dans la 2ème affiche-meta-val
+                             ✏️ DATE             → remplace dans la 3ème affiche-meta-val
+                        ════════════════════════════════════════ -->
                         <div class="prod-sub-panel vitrine-panel" id="sub-affiche-writing" style="padding-top:3rem">
                             <div class="affiche-label">Sortie Récente</div>
                             <div class="writing-card">
                                 <div class="writing-cover">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/632507605_1264630585564581_7437641815022298419_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=PDCD5Dv2tM4Q7kNvwH1EuIo&_nc_oc=AdmhNjqgft9GrGYL4DqwQJlsIqXYja5I_SdQOJTK_yupBmflCUPtQK3rciNV6wRwJN7fOiVGvbPZRvbx0svTShLT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gH0t5Fw1FOhLluKbLR5CHqZs5AbW64YyUJclEm8jnjkOw&oe=69BE69DA" id="writing-cover-img" style="display:none;width:100%;height:100%;object-fit:cover">
+                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/632507605_1264630585564581_7437641815022298419_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=PDCD5Dv2tM4Q7kNvwH1EuIo&_nc_oc=AdmhNjqgft9GrGYL4DqwQJlsIqXYja5I_SdQOJTK_yupBmflCUPtQK3rciNV6wRwJN7fOiVGvbPZRvbx0svTShLT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gH0t5Fw1FOhLluKbLR5CHqZs5AbW64YyUJclEm8jnjkOw&oe=69BE69DA" id="writing-cover-img" style="display:none;width:100%;height:100%;object-fit:cover"><!-- ✏️ URL IMAGE COUVERTURE dans src="" -->
                                     <div class="writing-cover-placeholder" id="writing-cover-ph"><span>Image à venir</span></div>
                                 </div>
                                 <div class="writing-content">
-                                    <div class="writing-genre-tag">Sortie Récente</div>
-                                    <div class="writing-titre">Le Vengeur d'Or</div>
-                                    <div class="writing-description">Paolo, un homme marqué par les blessures du passé, se lance dans une quête périlleuse à la recherche d'un trésor légendaire. Avec Nicolas, son fidèle compagnon, ils affrontent des mers inconnues, des îles mystérieuses et des énigmes, guidés par des indices et des légendes. Mais sur leur chemin, la trahison, des révélations inattendues et des forces bien plus puissantes qu'ils ne l'imaginent mettent leur courage à l'épreuve.</div>
+                                    <div class="writing-genre-tag">Sortie Récente</div><!-- ✏️ tag discret ex: Roman / Essai / Nouvelle -->
+                                    <div class="writing-titre">Le Vengeur d'Or</div><!-- ✏️ TITRE DU LIVRE -->
+                                    <div class="writing-description">Paolo, un homme marqué par les blessures du passé, se lance dans une quête périlleuse à la recherche d'un trésor légendaire. Avec Nicolas, son fidèle compagnon, ils affrontent des mers inconnues, des îles mystérieuses et des énigmes, guidés par des indices et des légendes. Mais sur leur chemin, la trahison, des révélations inattendues et des forces bien plus puissantes qu'ils ne l'imaginent mettent leur courage à l'épreuve.</div><!-- ✏️ DESCRIPTION / RÉSUMÉ -->
                                     <div class="writing-meta">
-                                        <div class="affiche-meta-item"><span class="affiche-meta-key">Auteur</span><span class="affiche-meta-val">Elliot Burton</span></div>
-                                        <div class="affiche-meta-item"><span class="affiche-meta-key">Genre</span><span class="affiche-meta-val">Fantastique-Aventure</span></div>
-                                        <div class="affiche-meta-item"><span class="affiche-meta-key">Date de parution</span><span class="affiche-meta-val">Bientôt disponible — Soon..</span></div>
+                                        <div class="affiche-meta-item">
+                                            <span class="affiche-meta-key">Auteur</span>
+                                            <span class="affiche-meta-val">Elliot Burton</span><!-- ✏️ NOM DE L'AUTEUR -->
+                                        </div>
+                                        <div class="affiche-meta-item">
+                                            <span class="affiche-meta-key">Genre</span>
+                                            <span class="affiche-meta-val">Fantastique-Aventure</span><!-- ✏️ GENRE LITTÉRAIRE -->
+                                        </div>
+                                        <div class="affiche-meta-item">
+                                            <span class="affiche-meta-key">Date de parution</span>
+                                            <span class="affiche-meta-val">Bientôt disponible — Soon..</span><!-- ✏️ DATE DE SORTIE -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -790,48 +944,93 @@
         </div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION PROGRESSION — PARCOURS INTERNE
+    ════════════════════════════════════════════════════════════════ -->
     <section class="progression" id="progression">
         <div class="container">
             <span class="section-number reveal-element">04 — Progression</span>
-            <div class="section-title reveal-element"><h2>Parcours Interne</h2><p class="subtitle">Une trajectoire définie par le mérite</p></div>
+            <div class="section-title reveal-element">
+                <!-- ✏️ TITRE SECTION PROGRESSION -->
+                <h2>Parcours Interne</h2>
+                <!-- ✏️ SOUS-TITRE SECTION PROGRESSION -->
+                <p class="subtitle">Une trajectoire définie par le mérite</p>
+            </div>
             <div class="progression-timeline">
+
+                <!-- ✏️ ÉCHELONS — modifie chaque <h4> (nom) et <p> (description) -->
                 <div class="progression-step"><h4>Stagiaire</h4><p>Point d'entrée initial, période d'observation et d'apprentissage des fondamentaux de l'organisation.</p></div>
                 <div class="progression-step"><h4>Employé</h4><p>Intégration complète aux équipes opérationnelles avec responsabilités définies et objectifs mesurables.</p></div>
                 <div class="progression-step"><h4>Employé Installé</h4><p>Expertise confirmée, autonomie complète et contribution significative aux projets stratégiques.</p></div>
                 <div class="progression-step"><h4>Co-directeur</h4><p>Leadership partagé sur des départements clés, participation aux décisions stratégiques majeures.</p></div>
                 <div class="progression-step"><h4>Directeur</h4><p>Responsabilité totale d'un département, vision stratégique et influence directe sur l'avenir de l'organisation.</p></div>
+
             </div>
         </div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION SÉLECTION — STATISTIQUES + PROCÉDURE
+    ════════════════════════════════════════════════════════════════ -->
     <section class="selection" id="selection">
         <div class="container">
             <span class="section-number reveal-element">05 — Sélection</span>
-            <div class="section-title reveal-element"><h2>L'Excellence par la Sélectivité</h2><p class="subtitle">Nous n'acceptons que ceux qui se démarquent vraiment</p></div>
+            <div class="section-title reveal-element">
+                <!-- ✏️ TITRE SECTION SÉLECTION -->
+                <h2>L'Excellence par la Sélectivité</h2>
+                <!-- ✏️ SOUS-TITRE -->
+                <p class="subtitle">Nous n'acceptons que ceux qui se démarquent vraiment</p>
+            </div>
             <div class="selection-stats">
+
+                <!-- ✏️ STATISTIQUE 1 — chiffre et libellé -->
                 <div class="stat"><span class="stat-number">Max. 1000</span><span class="stat-label">Candidatures acceptées par an</span></div>
+
+                <!-- ✏️ STATISTIQUE 2 — chiffre et libellé -->
                 <div class="stat"><span class="stat-number">24</span><span class="stat-label">Candidats retenus</span></div>
+
             </div>
             <div class="procedure-steps">
+
+                <!-- ✏️ ÉTAPE 1 — titre et description -->
                 <div class="procedure-step"><div class="step-number">01</div><h4>Questionnaire de Sélection</h4><p>Évaluation initiale des compétences, motivations et alignement avec les valeurs de Burton Corporation.</p></div>
+
+                <!-- ✏️ ÉTAPE 2 — titre et description -->
                 <div class="procedure-step"><div class="step-number">02</div><h4>Entretien avec le Fondateur</h4><p>Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression.</p></div>
+
+                <!-- ✏️ ÉTAPE 3 — titre et description -->
                 <div class="procedure-step"><div class="step-number">03</div><h4>Décision Finale</h4><p>La direction collégiale examine votre candidature et prend la décision d'intégration définitive.</p></div>
+
             </div>
         </div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════════════
+         SECTION REJOINDRE — BOUTON DE CANDIDATURE
+    ════════════════════════════════════════════════════════════════ -->
     <section class="cta" id="rejoindre">
         <div class="container">
             <div class="cta-content reveal-element">
+
+                <!-- ✏️ TITRE DE L'APPEL À L'ACTION -->
                 <h2>Rejoindre Burton Corporation</h2>
+
+                <!-- ✏️ TEXTE DU BOUTON DE CANDIDATURE -->
                 <button class="cta-button" id="openApplication">Commencer la Candidature</button>
+
+                <!-- ✏️ PETITE MENTION SOUS LE BOUTON -->
                 <p class="cta-disclaimer">Les candidatures sont examinées sur une base mensuelle</p>
+
             </div>
         </div>
     </section>
 </div>
 
-<!-- MODAL CANDIDATURE -->
+<!-- ════════════════════════════════════════════════════════════════════
+     MODAL — FORMULAIRE DE CANDIDATURE (4 étapes)
+     Les textes du formulaire peuvent être modifiés mais attention à ne
+     pas toucher les id="..." ni les attributs techniques
+════════════════════════════════════════════════════════════════════ -->
 <div class="modal-overlay" id="applicationModal" role="dialog" aria-modal="true">
     <div class="modal">
         <div class="modal-progress"><div class="modal-progress-bar" id="progressBar"></div></div>
@@ -885,7 +1084,9 @@
             </div>
             <div id="success-final" style="display:none;flex-direction:column;align-items:center;width:100%;text-align:center">
                 <div class="success-mark">✦</div>
+                <!-- ✏️ TITRE CONFIRMATION CANDIDATURE -->
                 <h2 class="success-title">Candidature Transmise</h2>
+                <!-- ✏️ MESSAGE DE CONFIRMATION -->
                 <p class="success-text">Votre dossier a bien été reçu par Burton Corporation. Il sera examiné lors de notre prochaine session mensuelle de sélection.</p>
                 <p class="success-ref" id="success-ref">Référence — —</p>
             </div>
@@ -899,48 +1100,46 @@
 
 <script>
 
-    /* ================================================================
-       🔧 CONFIGURATION DES BRANCHES — MODIFIE ICI UNIQUEMENT
-       ================================================================
+    /* ════════════════════════════════════════════════════════════════
+       🔧 INTERRUPTEURS BRANCHES — LE SEUL ENDROIT À MODIFIER
+       ════════════════════════════════════════════════════════════════
 
-       Pour FERMER une branche → change  true  en  false
-       Pour OUVRIR une branche → change  false en  true
+       Pour OUVRIR une branche  → change  false  en  true
+       Pour FERMER une branche  → change  true   en  false
 
-       La branche fermée affichera "Bientôt — Soon" aux visiteurs.
-       ================================================================ */
+       Quand une branche est fermée (false), les visiteurs voient
+       seulement "Bientôt — Soon" à la place du contenu.
+
+       EXEMPLE : pour ouvrir Watch et fermer Writing :
+           watch   : true,
+           writing : false,
+
+    ════════════════════════════════════════════════════════════════ */
     const BRANCHES = {
         watch      : false,   // ← true = ouvert  |  false = fermé
         parfum     : false,   // ← true = ouvert  |  false = fermé
         clothes    : false,   // ← true = ouvert  |  false = fermé
         chocolate  : false,   // ← true = ouvert  |  false = fermé
-        production : true,   // ← true = ouvert  |  false = fermé
-        writing    : false,    // ← true = ouvert  |  false = fermé
+        production : false,   // ← true = ouvert  |  false = fermé
+        writing    : true,    // ← true = ouvert  |  false = fermé
     };
-    /* ================================================================ */
+    /* ════════════════════════════════════════════════════════════════
+       ⚠️  NE PAS MODIFIER CE QUI EST EN DESSOUS DE CETTE LIGNE
+    ════════════════════════════════════════════════════════════════ */
 
     (function applyBranchStates(){
         Object.entries(BRANCHES).forEach(([id, open])=>{
             const soon = document.getElementById('soon-'+id);
             const body = document.getElementById('content-'+id);
             if(!soon || !body) return;
-            if(open){
-                soon.classList.remove('visible');
-                body.classList.remove('hidden');
-            } else {
-                soon.classList.add('visible');
-                body.classList.add('hidden');
-            }
+            if(open){ soon.classList.remove('visible'); body.classList.remove('hidden'); }
+            else    { soon.classList.add('visible');    body.classList.add('hidden');    }
         });
     })();
 
-    // Loader
     window.addEventListener('load',()=>{setTimeout(()=>{const l=document.querySelector('.page-loader');l.classList.add('hidden');document.body.classList.remove('loading');setTimeout(()=>l.style.display='none',1500)},2000)});
-
-    // Nav scroll
     const navbar=document.getElementById('navbar');
     window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>100));
-
-    // Reveal on scroll
     const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal')}),{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
     document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el=>obs.observe(el));
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
@@ -948,21 +1147,14 @@
     document.querySelectorAll('.procedure-step').forEach((el,i)=>el.style.transitionDelay=`${i*0.25}s`);
     document.querySelectorAll('.vision-card').forEach((el,i)=>el.style.transitionDelay=`${i*0.3}s`);
     document.querySelectorAll('.stat').forEach((el,i)=>el.style.transitionDelay=`${i*0.4}s`);
-
-    // Parallax hero
     let ticking=false;
     window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
-
-    // Vitrine sub-tabs (watch / parfum / clothes / choco / writing)
     document.querySelectorAll('.vitrine-tab').forEach(tab=>{
         tab.addEventListener('click',()=>{
             const branch=tab.dataset.branch;
             const subId='sub-'+tab.dataset.sub;
             const tabContainer=document.getElementById(branch+'-tabs');
-            if(tabContainer){
-                tabContainer.querySelectorAll('.vitrine-tab').forEach(t=>t.classList.remove('active'));
-            }
-            // hide panels belonging to this branch
+            if(tabContainer) tabContainer.querySelectorAll('.vitrine-tab').forEach(t=>t.classList.remove('active'));
             const allPanels=document.querySelectorAll(`[id^="sub-"][id$="-${branch}"], [id^="sub-${branch}-"], #sub-apercu-${branch}, #sub-vitrine-${branch}, #sub-affiche-${branch}`);
             allPanels.forEach(p=>p.classList.remove('active'));
             tab.classList.add('active');
@@ -970,12 +1162,9 @@
             if(panel) panel.classList.add('active');
         });
     });
-
-    // Genre tabs (parfum / clothes)
     document.querySelectorAll('.genre-tab').forEach(tab=>{
         tab.addEventListener('click',()=>{
-            const branch=tab.dataset.branch;
-            const genre=tab.dataset.genre;
+            const branch=tab.dataset.branch, genre=tab.dataset.genre;
             document.querySelectorAll(`#genre-tabs-${branch} .genre-tab`).forEach(t=>t.classList.remove('active'));
             document.querySelectorAll(`[id^="genre-${branch}-"]`).forEach(p=>p.classList.remove('active'));
             tab.classList.add('active');
@@ -983,19 +1172,10 @@
             if(panel) panel.classList.add('active');
         });
     });
-
-    // Vitrine images — show img if src set
     document.querySelectorAll('.vitrine-img-wrap img').forEach(img=>{
-        const id=img.id.replace('vimg-','vph-');
-        const ph=document.getElementById(id);
-        const src=img.getAttribute('src');
-        if(src && src !== ''){
-            img.style.display='block';
-            if(ph) ph.style.display='none';
-        }
+        const id=img.id.replace('vimg-','vph-'), ph=document.getElementById(id), src=img.getAttribute('src');
+        if(src && src!==''){img.style.display='block'; if(ph) ph.style.display='none';}
     });
-
-    // Branch tabs
     document.querySelectorAll('.branch-tab-inline').forEach(tab=>{
         tab.addEventListener('click',()=>{
             document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));
@@ -1005,8 +1185,6 @@
             if(panel) panel.classList.add('active');
         });
     });
-
-    // Production sub-tabs (only for production panel, not vitrine tabs)
     document.querySelectorAll('#content-production .prod-sub-tab:not(.vitrine-tab)').forEach(tab=>{
         tab.addEventListener('click',()=>{
             document.querySelectorAll('#content-production .prod-sub-tab:not(.vitrine-tab)').forEach(t=>t.classList.remove('active'));
@@ -1016,44 +1194,19 @@
             if(panel) panel.classList.add('active');
         });
     });
-
-    // Actualités images
     ['actu-1-img-1','actu-1-img-2','actu-2-img-1','actu-2-img-2'].forEach(imgId=>{
-        const img=document.getElementById(imgId);
-        const ph=document.getElementById(imgId.replace('img','ph'));
-        if(img && ph){
-            const src=img.getAttribute('src');
-            if(src && src!==''){img.style.display='block';ph.style.display='none';}
-        }
+        const img=document.getElementById(imgId), ph=document.getElementById(imgId.replace('img','ph'));
+        if(img&&ph){const src=img.getAttribute('src'); if(src&&src!==''){img.style.display='block';ph.style.display='none';}}
     });
-
-    // Writing cover image
     (function(){
-        const img=document.getElementById('writing-cover-img');
-        const ph=document.getElementById('writing-cover-ph');
-        if(img && ph){
-            const src=img.getAttribute('src');
-            if(src && src!==''){img.style.display='block';ph.style.display='none';}
-            else{img.style.display='none';ph.style.display='flex';}
-        }
+        const img=document.getElementById('writing-cover-img'), ph=document.getElementById('writing-cover-ph');
+        if(img&&ph){const src=img.getAttribute('src'); if(src&&src!==''){img.style.display='block';ph.style.display='none';} else{img.style.display='none';ph.style.display='flex';}}
     })();
-
-    // Affiche images
     ['cm','film'].forEach(id=>{
-        const img=document.getElementById(id+'-img');
-        const ph=document.getElementById(id+'-placeholder');
-        if(img && ph){
-            const src=img.getAttribute('src');
-            if(src && src!==window.location.href && src!==''){
-                img.style.display='block';ph.style.display='none';
-            } else {
-                img.style.display='none';ph.style.display='flex';
-            }
-        }
+        const img=document.getElementById(id+'-img'), ph=document.getElementById(id+'-placeholder');
+        if(img&&ph){const src=img.getAttribute('src'); if(src&&src!==window.location.href&&src!==''){img.style.display='block';ph.style.display='none';} else{img.style.display='none';ph.style.display='flex';}}
     });
-
-    // Modal
-    const TOTAL_STEPS=4;let currentStep=1;
+    const TOTAL_STEPS=4; let currentStep=1;
     const modal=document.getElementById('applicationModal'),progressBar=document.getElementById('progressBar'),stepIndicator=document.getElementById('stepIndicator'),modalTitle=document.getElementById('modalTitle'),modalSubtitle=document.getElementById('modalSubtitle'),modalFooter=document.getElementById('modal-footer'),successScreen=document.getElementById('modal-success');
     const stepMeta=[{title:'Informations Personnelles',subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},{title:'Motivation & Valeurs',subtitle:'Exprimez ce qui vous anime et votre adéquation avec notre culture.'},{title:'Expérience & Aptitudes',subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},{title:'Engagement & Finalisation',subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'}];
     function buildRating(id){const c=document.getElementById(id);for(let i=1;i<=10;i++){const b=document.createElement('button');b.type='button';b.classList.add('rating-btn');b.textContent=i;b.dataset.value=i;b.addEventListener('click',()=>{c.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});c.appendChild(b)}}
@@ -1066,26 +1219,26 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
     function goToStep(n){
         document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
-        successScreen.classList.remove('active');currentStep=n;
+        successScreen.classList.remove('active'); currentStep=n;
         if(n<=TOTAL_STEPS){
             document.getElementById(`step-${n}`).classList.add('active');
             stepIndicator.textContent=`Étape ${n} sur ${TOTAL_STEPS}`;
-            modalTitle.textContent=stepMeta[n-1].title;modalSubtitle.textContent=stepMeta[n-1].subtitle;
+            modalTitle.textContent=stepMeta[n-1].title; modalSubtitle.textContent=stepMeta[n-1].subtitle;
             progressBar.style.width=`${((n-1)/TOTAL_STEPS)*100}%`;
             document.getElementById('btnPrev').disabled=(n===1);
             document.getElementById('btnNext').textContent=(n===TOTAL_STEPS)?'Soumettre ma candidature →':'Continuer →';
             modalFooter.style.display='flex';
         } else {
-            progressBar.style.width='100%';successScreen.classList.add('active');modalFooter.style.display='none';
-            stepIndicator.textContent='Traitement en cours…';modalTitle.textContent='';modalSubtitle.textContent='';
+            progressBar.style.width='100%'; successScreen.classList.add('active'); modalFooter.style.display='none';
+            stepIndicator.textContent='Traitement en cours…'; modalTitle.textContent=''; modalSubtitle.textContent='';
             document.getElementById('success-analyzing').style.display='block';
             document.getElementById('success-final').style.display='none';
         }
         modal.querySelector('.modal').scrollTo({top:0,behavior:'smooth'});
     }
     function validateStep(n){
-        const step=document.getElementById(`step-${n}`);let valid=true;
-        step.querySelectorAll('[required]').forEach(f=>{f.style.borderColor='';if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false}});
+        const step=document.getElementById(`step-${n}`); let valid=true;
+        step.querySelectorAll('[required]').forEach(f=>{f.style.borderColor=''; if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false}});
         if(n===2&&!document.querySelector('input[name="valeur"]:checked')){valid=false;const r=step.querySelectorAll('.radio-option');r.forEach(x=>x.style.borderColor='rgba(255,80,80,0.3)');setTimeout(()=>r.forEach(x=>x.style.borderColor=''),2000)}
         if(n===4){['cb-regles','cb-sincere','cb-dispo'].forEach(id=>{const cb=document.getElementById(id);if(cb&&!cb.checked){valid=false;const w=cb.closest('.checkbox-option');if(w){w.style.borderColor='rgba(255,80,80,0.3)';setTimeout(()=>w.style.borderColor='',2000)}}})}
         if(!valid){const m=modal.querySelector('.modal');m.style.transform='translateX(-8px)';setTimeout(()=>{m.style.transition='transform 0.4s ease';m.style.transform=''},100)}
@@ -1124,7 +1277,7 @@
     }
     function showSuccess(ref){
         document.getElementById('success-analyzing').style.display='none';
-        const sf=document.getElementById('success-final');sf.style.display='flex';
+        const sf=document.getElementById('success-final'); sf.style.display='flex';
         document.getElementById('success-ref').textContent=`Référence — ${ref}`;
         stepIndicator.textContent='Candidature envoyée';
     }
