@@ -274,7 +274,7 @@
         .vitrine-tab.active{color:rgba(255,255,255,0.85);border-bottom-color:rgba(255,255,255,0.3)}
         .vitrine-panel{display:none}
         .vitrine-panel.active{display:block;animation:panelReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards}
-        /* Genre sous-onglets (parfum/clothes) */
+        /* Genre sous-onglets */
         .genre-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.04);margin-bottom:3rem;padding-top:2rem}
         .genre-tab{background:none;border:none;border-bottom:1px solid transparent;color:rgba(255,255,255,0.18);font-family:var(--font-body);font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;padding:0.8rem 1.8rem;cursor:pointer;transition:all 0.4s ease;margin-bottom:-1px}
         .genre-tab:hover{color:rgba(255,255,255,0.45)}
@@ -361,20 +361,9 @@
         .actu-titre{font-family:var(--font-display);font-size:2.2rem;font-weight:300;letter-spacing:0.08em;line-height:1.2;color:rgba(255,255,255,0.9)}
         .actu-desc{font-size:0.88rem;color:rgba(255,255,255,0.38);line-height:2;font-weight:300}
         .actu-separator{border:none;border-top:1px solid rgba(255,255,255,0.04);margin:0}
-        @media(max-width:1024px){
-            .actu-card{grid-template-columns:1fr;gap:3rem;padding:3rem}
-        }
-        @media(max-width:768px){
-            .actu-card{padding:2.5rem 2rem;gap:2.5rem}
-            .actu-titre{font-size:1.7rem}
-            .actu-grid{gap:3.5rem;margin:3rem auto 0}
-        }
-        @media(max-width:480px){
-            .actu-card{padding:2rem 1.5rem;gap:2rem}
-            .actu-card-images{grid-template-columns:1fr 1fr;gap:0.7rem}
-            .actu-titre{font-size:1.4rem}
-            .actu-desc{font-size:0.82rem}
-        }
+        @media(max-width:1024px){.actu-card{grid-template-columns:1fr;gap:3rem;padding:3rem}}
+        @media(max-width:768px){.actu-card{padding:2.5rem 2rem;gap:2.5rem}.actu-titre{font-size:1.7rem}.actu-grid{gap:3.5rem;margin:3rem auto 0}}
+        @media(max-width:480px){.actu-card{padding:2rem 1.5rem;gap:2rem}.actu-card-images{grid-template-columns:1fr 1fr;gap:0.7rem}.actu-titre{font-size:1.4rem}.actu-desc{font-size:0.82rem}}
     </style>
 </head>
 <body class="loading">
@@ -429,19 +418,8 @@
                 <h2>Actualités</h2>
                 <p class="subtitle">Les dernières nouvelles de Burton Corporation</p>
             </div>
-
             <div class="actu-grid">
-
-                <!-- ============================================================
-                     📰 ACTUALITÉ 1 — À MODIFIER
-                     ============================================================
-                     ✏️ IMAGE 1  → colle l'URL dans src="" du 1er img ci-dessous
-                     ✏️ IMAGE 2  → colle l'URL dans src="" du 2ème img ci-dessous
-                     ✏️ DATE     → remplace le tiret dans .actu-date
-                     ✏️ TITRE    → remplace "Titre de l'actualité"
-                     ✏️ DESC     → remplace le texte de description
-                     → Pour n'afficher qu'une seule image : laisse le 2ème src="" vide
-                ============================================================ -->
+                <!-- ACTUALITÉ 1 -->
                 <div class="actu-card reveal-element">
                     <div class="actu-card-images">
                         <div class="actu-img-wrap">
@@ -459,19 +437,8 @@
                         <div class="actu-desc">Elliot Burton vient d'annoncer que son premier roman venait d'être terminé, vous le trouverez dans l'onglet Writing de ce site.</div>
                     </div>
                 </div>
-                <!-- FIN ACTUALITÉ 1 -->
-
                 <hr class="actu-separator">
-
-                <!-- ============================================================
-                     📰 ACTUALITÉ 2 — À MODIFIER
-                     ============================================================
-                     ✏️ IMAGE 1  → colle l'URL dans src="" du 1er img ci-dessous
-                     ✏️ IMAGE 2  → colle l'URL dans src="" du 2ème img ci-dessous
-                     ✏️ DATE     → remplace le tiret dans .actu-date
-                     ✏️ TITRE    → remplace "Titre de l'actualité"
-                     ✏️ DESC     → remplace le texte de description
-                ============================================================ -->
+                <!-- ACTUALITÉ 2 -->
                 <div class="actu-card reveal-element">
                     <div class="actu-card-images">
                         <div class="actu-img-wrap">
@@ -489,12 +456,14 @@
                         <div class="actu-desc">Aucune actualité disponible.</div>
                     </div>
                 </div>
-                <!-- FIN ACTUALITÉ 2 -->
-
             </div>
         </div>
     </section>
 
+    <!-- =============================================
+         SECTION BRANCHES — STRUCTURE CORRIGÉE
+         Chaque panel contient son propre soon + content
+    ============================================= -->
     <section class="branches-section" id="branches">
         <div class="b-header">
             <span class="section-number reveal-element">03 — Branches</span>
@@ -510,684 +479,313 @@
         </div>
         <div class="branches-panels">
 
+            <!-- ===== WATCH ===== -->
             <div class="branch-panel-inline active" id="panel-watch">
-                </div>
-                        </label>
-                    </div>
-                </div>
                 <div class="branch-soon" id="soon-watch">
                     <div class="branch-soon-title">Bientôt</div>
                     <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
                 </div>
                 <div class="branch-content-wrap" id="content-watch">
-                <div class="branch-inner">
-                    <div class="production-sub-tabs vitrine-sub-tabs" id="watch-tabs">
-                        <button class="prod-sub-tab vitrine-tab active" data-branch="watch" data-sub="apercu-watch">Aperçu</button>
-                        <button class="prod-sub-tab vitrine-tab" data-branch="watch" data-sub="vitrine-watch">Vitrine</button>
-                    </div>
-                    <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-watch" style="padding-top:4rem">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><div class="branch-name-inline">Watch</div><div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div>
+                    <div class="branch-inner">
+                        <div class="production-sub-tabs vitrine-sub-tabs" id="watch-tabs">
+                            <button class="prod-sub-tab vitrine-tab active" data-branch="watch" data-sub="apercu-watch">Aperçu</button>
+                            <button class="prod-sub-tab vitrine-tab" data-branch="watch" data-sub="vitrine-watch">Vitrine</button>
                         </div>
-                        <div class="branch-products-inline-title">Collections</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div>
-                        </div>
-                    </div>
-                    <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-watch" style="padding-top:3rem">
-                        <div class="vitrine-grid vitrine-grid-3">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — WATCH 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-watch-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-watch-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
+                        <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-watch" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div><span class="branch-eyebrow-inline">Burton — Division Horlogerie</span><div class="branch-name-inline">Watch</div><div class="branch-tagline-inline">Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.</div><div class="branch-desc-inline">Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale. Nos pièces ne se portent pas — elles se méritent. Chaque montre est conçue comme un manifeste silencieux de l'ambition de celui qui la porte.</div></div>
+                                <div><div class="branch-detail-row"><span class="branch-detail-key">Positionnement</span><span class="branch-detail-val">Ultra-premium — production limitée à 50 pièces par collection</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matériaux</span><span class="branch-detail-val">Titane grade 5, saphir, acier 316L traité PVD noir</span></div><div class="branch-detail-row"><span class="branch-detail-key">Distribution</span><span class="branch-detail-val">Exclusive — réservée aux membres Burton Corporation</span></div></div>
                             </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — WATCH 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-watch-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-watch-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — WATCH 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-watch-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-watch-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
+                            <div class="branch-products-inline-title">Collections</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Noir Absolu</div><div class="product-desc">Cadran onyx, mouvement squelette. L'obscurité comme philosophie. Édition de 12 pièces.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Meridian</div><div class="product-desc">Complication GMT double fuseau. Pour ceux dont l'ambition ne connaît pas de fuseau horaire.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Founder's Edition</div><div class="product-desc">Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.</div></div>
                             </div>
                         </div>
-                        </label>
+                        <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-watch" style="padding-top:3rem">
+                            <div class="vitrine-grid vitrine-grid-3">
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-1" style="display:none"><div class="vitrine-placeholder" id="vph-watch-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-2" style="display:none"><div class="vitrine-placeholder" id="vph-watch-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-watch-3" style="display:none"><div class="vitrine-placeholder" id="vph-watch-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- ===== PARFUM ===== -->
+            <div class="branch-panel-inline" id="panel-parfum">
                 <div class="branch-soon" id="soon-parfum">
                     <div class="branch-soon-title">Bientôt</div>
                     <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
                 </div>
                 <div class="branch-content-wrap" id="content-parfum">
-                <div class="branch-inner">
-                    <div class="production-sub-tabs vitrine-sub-tabs" id="parfum-tabs">
-                        <button class="prod-sub-tab vitrine-tab active" data-branch="parfum" data-sub="apercu-parfum">Aperçu</button>
-                        <button class="prod-sub-tab vitrine-tab" data-branch="parfum" data-sub="vitrine-parfum">Vitrine</button>
+                    <div class="branch-inner">
+                        <div class="production-sub-tabs vitrine-sub-tabs" id="parfum-tabs">
+                            <button class="prod-sub-tab vitrine-tab active" data-branch="parfum" data-sub="apercu-parfum">Aperçu</button>
+                            <button class="prod-sub-tab vitrine-tab" data-branch="parfum" data-sub="vitrine-parfum">Vitrine</button>
+                        </div>
+                        <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-parfum" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div><span class="branch-eyebrow-inline">Burton — Division Olfactive</span><div class="branch-name-inline">Parfum</div><div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div></div>
+                                <div><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div>
+                            </div>
+                            <div class="branch-products-inline-title">Fragrances</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div>
+                            </div>
+                        </div>
+                        <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-parfum" style="padding-top:2rem">
+                            <div class="genre-tabs" id="genre-tabs-parfum">
+                                <button class="genre-tab active" data-branch="parfum" data-genre="homme">Homme</button>
+                                <button class="genre-tab" data-branch="parfum" data-genre="femme">Femme</button>
+                                <button class="genre-tab" data-branch="parfum" data-genre="enfant">Enfant</button>
+                            </div>
+                            <div class="genre-panel active" id="genre-parfum-homme">
+                                <div class="vitrine-grid vitrine-grid-2">
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-homme-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-homme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-homme-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-homme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                </div>
+                            </div>
+                            <div class="genre-panel" id="genre-parfum-femme">
+                                <div class="vitrine-grid vitrine-grid-2">
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-femme-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-femme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-femme-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-femme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                </div>
+                            </div>
+                            <div class="genre-panel" id="genre-parfum-enfant">
+                                <div class="vitrine-grid vitrine-grid-2">
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-enfant-1" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-enfant-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-parfum-enfant-2" style="display:none"><div class="vitrine-placeholder" id="vph-parfum-enfant-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-parfum" style="padding-top:4rem">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Olfactive</span><div class="branch-name-inline">Parfum</div><div class="branch-tagline-inline">Une présence que l'on ressent avant même de vous voir.</div><div class="branch-desc-inline">Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ. Nos compositions olfactives sont des déclarations d'intention — jamais conventionnelles, toujours mémorables.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Philosophie</span><span class="branch-detail-val">Niche absolue — aucune note commune avec le marché de masse</span></div><div class="branch-detail-row"><span class="branch-detail-key">Format</span><span class="branch-detail-val">Flacons 50ml numérotés, bouchon laqué noir mat</span></div><div class="branch-detail-row"><span class="branch-detail-key">Tirage</span><span class="branch-detail-val">100 flacons maximum par fragrance — sans réassort</span></div></div>
-                        </div>
-                        <div class="branch-products-inline-title">Fragrances</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Cendre</div><div class="product-desc">Bois brûlé, vétiver fumé, musc blanc. Ce qui reste après que tout a été consumé.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Ambition</div><div class="product-desc">Poivre noir, cuir tanné, ambre chaud. La fragrance des décisions difficiles et des victoires silencieuses.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Protocole</div><div class="product-desc">Cèdre de l'Atlas, iris, encens. Pour les salles de réunion où l'on ne parle qu'une fois.</div></div>
-                        </div>
-                    </div>
-                    <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-parfum" style="padding-top:2rem">
-                        <div class="genre-tabs" id="genre-tabs-parfum"><button class="genre-tab active" data-branch="parfum" data-genre="homme">Homme</button><button class="genre-tab" data-branch="parfum" data-genre="femme">Femme</button><button class="genre-tab" data-branch="parfum" data-genre="enfant">Enfant</button></div>
-                                                <div class="genre-panel active" id="genre-parfum-homme">
-                            <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — PARFUM HOMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-parfum-homme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-homme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — PARFUM HOMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-parfum-homme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-homme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            </div>
-                        </label>
-                    </div>
-                        <div class="genre-panel" id="genre-parfum-femme">
-                            <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — PARFUM FEMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-parfum-femme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-femme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — PARFUM FEMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-parfum-femme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-femme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="genre-panel" id="genre-parfum-enfant">
-                            <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — PARFUM ENFANT 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-parfum-enfant-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-enfant-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — PARFUM ENFANT 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-parfum-enfant-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-parfum-enfant-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            </div>
-                        </div>
                 </div>
+            </div>
+
+            <!-- ===== CLOTHES ===== -->
+            <div class="branch-panel-inline" id="panel-clothes">
                 <div class="branch-soon" id="soon-clothes">
                     <div class="branch-soon-title">Bientôt</div>
                     <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
                 </div>
                 <div class="branch-content-wrap" id="content-clothes">
-                <div class="branch-inner">
-                    <div class="production-sub-tabs vitrine-sub-tabs" id="clothes-tabs">
-                        <button class="prod-sub-tab vitrine-tab active" data-branch="clothes" data-sub="apercu-clothes">Aperçu</button>
-                        <button class="prod-sub-tab vitrine-tab" data-branch="clothes" data-sub="vitrine-clothes">Vitrine</button>
+                    <div class="branch-inner">
+                        <div class="production-sub-tabs vitrine-sub-tabs" id="clothes-tabs">
+                            <button class="prod-sub-tab vitrine-tab active" data-branch="clothes" data-sub="apercu-clothes">Aperçu</button>
+                            <button class="prod-sub-tab vitrine-tab" data-branch="clothes" data-sub="vitrine-clothes">Vitrine</button>
+                        </div>
+                        <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-clothes" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div><span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><div class="branch-name-inline">Clothes</div><div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div></div>
+                                <div><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div>
+                            </div>
+                            <div class="branch-products-inline-title">Pièces Signature</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div>
+                            </div>
+                        </div>
+                        <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-clothes" style="padding-top:2rem">
+                            <div class="genre-tabs" id="genre-tabs-clothes">
+                                <button class="genre-tab active" data-branch="clothes" data-genre="homme">Homme</button>
+                                <button class="genre-tab" data-branch="clothes" data-genre="femme">Femme</button>
+                                <button class="genre-tab" data-branch="clothes" data-genre="enfant">Enfant</button>
+                            </div>
+                            <div class="genre-panel active" id="genre-clothes-homme">
+                                <div class="vitrine-grid vitrine-grid-4">
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-homme-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-homme-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                </div>
+                            </div>
+                            <div class="genre-panel" id="genre-clothes-femme">
+                                <div class="vitrine-grid vitrine-grid-4">
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-femme-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-femme-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                </div>
+                            </div>
+                            <div class="genre-panel" id="genre-clothes-enfant">
+                                <div class="vitrine-grid vitrine-grid-4">
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-1" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-2" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-3" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-3"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                    <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-clothes-enfant-4" style="display:none"><div class="vitrine-placeholder" id="vph-clothes-enfant-4"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-clothes" style="padding-top:4rem">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Vestimentaire</span><div class="branch-name-inline">Clothes</div><div class="branch-tagline-inline">L'uniforme de ceux qui n'ont pas besoin de se justifier.</div><div class="branch-desc-inline">Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie et traverser les saisons sans vieillir. Coupe architecturale, matières nobles, absence totale de logo visible. L'élégance n'a pas besoin de signature.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Esthétique</span><span class="branch-detail-val">Minimalisme radical — palette monochrome noir, anthracite, ivoire</span></div><div class="branch-detail-row"><span class="branch-detail-key">Matières</span><span class="branch-detail-val">Laine mérinos, cachemire double face, lin technique japonais</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur commande — délai de 6 à 8 semaines</span></div></div>
-                        </div>
-                        <div class="branch-products-inline-title">Pièces Signature</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Le Manteau</div><div class="product-desc">Laine bouillie noire, coupe droite oversize. La pièce fondatrice de la collection.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Chemise Architecte</div><div class="product-desc">Col officier, lin technique froissé à froid. Pour ceux qui construisent sans faire de bruit.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Ensemble Directeur</div><div class="product-desc">Veste et pantalon cachemire anthracite. Réservé aux membres Co-directeur et au-delà.</div></div>
-                        </div>
-                    </div>
-                    <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-clothes" style="padding-top:2rem">
-                        <div class="genre-tabs" id="genre-tabs-clothes"><button class="genre-tab active" data-branch="clothes" data-genre="homme">Homme</button><button class="genre-tab" data-branch="clothes" data-genre="femme">Femme</button><button class="genre-tab" data-branch="clothes" data-genre="enfant">Enfant</button></div>
-                                                <div class="genre-panel active" id="genre-clothes-homme">
-                            <div class="vitrine-grid vitrine-grid-4">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CLOTHES HOMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-homme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CLOTHES HOMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-homme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — CLOTHES HOMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-homme-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 4 — CLOTHES HOMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-homme-4" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-homme-4"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            </div>
-                        </label>
-                    </div>
-                        <div class="genre-panel" id="genre-clothes-femme">
-                            <div class="vitrine-grid vitrine-grid-4">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CLOTHES FEMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-femme-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CLOTHES FEMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-femme-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — CLOTHES FEMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-femme-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 4 — CLOTHES FEMME 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-femme-4" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-femme-4"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="genre-panel" id="genre-clothes-enfant">
-                            <div class="vitrine-grid vitrine-grid-4">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CLOTHES ENFANT 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-enfant-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CLOTHES ENFANT 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-enfant-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 3 — CLOTHES ENFANT 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-enfant-3" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-3"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 4 — CLOTHES ENFANT 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-clothes-enfant-4" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-clothes-enfant-4"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
-                            </div>
-                            </div>
-                        </div>
                 </div>
+            </div>
+
+            <!-- ===== CHOCOLATE ===== -->
+            <div class="branch-panel-inline" id="panel-chocolate">
                 <div class="branch-soon" id="soon-chocolate">
                     <div class="branch-soon-title">Bientôt</div>
                     <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
                 </div>
                 <div class="branch-content-wrap" id="content-chocolate">
-                <div class="branch-inner">
-                    <div class="production-sub-tabs vitrine-sub-tabs" id="choco-tabs">
-                        <button class="prod-sub-tab vitrine-tab active" data-branch="choco" data-sub="apercu-choco">Aperçu</button>
-                        <button class="prod-sub-tab vitrine-tab" data-branch="choco" data-sub="vitrine-choco">Vitrine</button>
-                    </div>
-                    <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-choco" style="padding-top:4rem">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><div class="branch-name-inline">Chocolate</div><div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div></div>
+                    <div class="branch-inner">
+                        <div class="production-sub-tabs vitrine-sub-tabs" id="choco-tabs">
+                            <button class="prod-sub-tab vitrine-tab active" data-branch="choco" data-sub="apercu-choco">Aperçu</button>
+                            <button class="prod-sub-tab vitrine-tab" data-branch="choco" data-sub="vitrine-choco">Vitrine</button>
                         </div>
-                        <div class="branch-products-inline-title">Créations</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div>
-                        </div>
-                    </div>
-                    <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-choco" style="padding-top:3rem">
-                        <div class="vitrine-grid vitrine-grid-2">
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 1 — CHOCO 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-choco-1" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-choco-1"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
+                        <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-choco" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div><span class="branch-eyebrow-inline">Burton — Division Gastronomique</span><div class="branch-name-inline">Chocolate</div><div class="branch-tagline-inline">Le luxe qui se consomme. La perfection, éphémère par design.</div><div class="branch-desc-inline">Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître. Nos tablettes sont élaborées à partir de cacao grand cru, source unique, récolte manuelle.</div></div>
+                                <div><div class="branch-detail-row"><span class="branch-detail-key">Origines</span><span class="branch-detail-val">Cacao Criollo — Venezuela, Madagascar, São Tomé</span></div><div class="branch-detail-row"><span class="branch-detail-key">Process</span><span class="branch-detail-val">Bean-to-bar intégral, torréfaction à la pièce</span></div><div class="branch-detail-row"><span class="branch-detail-key">Teneur</span><span class="branch-detail-val">72% minimum — aucun ajout de vanilline de synthèse</span></div></div>
                             </div>
-                            <!-- ============================================================
-                                 🖼️ EMPLACEMENT 2 — CHOCO 
-                                 ============================================================
-                                 ✏️ IMAGE  → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE  → remplace "Titre du produit"
-                                 ✏️ DESC   → remplace la description
-                            ============================================================ -->
-                            <div class="vitrine-card">
-                                <div class="vitrine-img-wrap">
-                                    <img src="" alt="" id="vimg-choco-2" style="display:none">
-                                    <div class="vitrine-placeholder" id="vph-choco-2"><span>Image à venir</span></div>
-                                </div>
-                                <div class="vitrine-titre">Titre du produit</div>
-                                <div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div>
+                            <div class="branch-products-inline-title">Créations</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Origine Noir</div><div class="product-desc">85% Criollo vénézuélien. Amer, complexe, long en bouche. Le goût de la discipline.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Collection Épices</div><div class="product-desc">Poivre long de Java, cardamome noire, fleur de sel de Guérande. Pour les palais exigeants.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Coffret Fondateur</div><div class="product-desc">12 ganaches, 3 origines, 1 tablette grand cru. Offert aux membres lors de leur intégration.</div></div>
                             </div>
                         </div>
-                        </label>
+                        <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-choco" style="padding-top:3rem">
+                            <div class="vitrine-grid vitrine-grid-2">
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-choco-1" style="display:none"><div class="vitrine-placeholder" id="vph-choco-1"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                                <div class="vitrine-card"><div class="vitrine-img-wrap"><img src="" alt="" id="vimg-choco-2" style="display:none"><div class="vitrine-placeholder" id="vph-choco-2"><span>Image à venir</span></div></div><div class="vitrine-titre">Titre du produit</div><div class="vitrine-desc">Description du produit. Remplace ce texte par les détails de la pièce.</div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="branch-soon" id="soon-writing">
-                    <div class="branch-soon-title">Bientôt</div>
-                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
-                </div>
-                <div class="branch-content-wrap" id="content-writing">
-                <div class="branch-inner">
-                    <div class="production-sub-tabs vitrine-sub-tabs" id="writing-tabs">
-                        <button class="prod-sub-tab vitrine-tab active" data-branch="writing" data-sub="apercu-writing">Aperçu</button>
-                        <button class="prod-sub-tab vitrine-tab" data-branch="writing" data-sub="affiche-writing">À l'Affiche</button>
-                    </div>
+            </div>
 
-                    <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-writing" style="padding-top:4rem">
-                        <div class="branch-inner-grid">
-                            <div>
-                                <span class="branch-eyebrow-inline">Burton — Division Littéraire</span>
-                                <div class="branch-name-inline">Writing</div>
-                                <div class="branch-tagline-inline">Les mots comme architecture. Chaque texte, une fondation.</div>
-                                <div class="branch-desc-inline">Burton Writing est la voix écrite de l'organisation. Articles, récits, essais, manifestes — cette division transforme les idées en œuvres durables. L'écriture comme acte de précision, jamais comme ornement.</div>
-                            </div>
-                            <div>
-                                <div class="branch-detail-row"><span class="branch-detail-key">Formats</span><span class="branch-detail-val">Essais, nouvelles, articles, manifestes</span></div>
-                                <div class="branch-detail-row"><span class="branch-detail-key">Diffusion</span><span class="branch-detail-val">Interne et externe — selon validation de la direction</span></div>
-                                <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur sélection — recrutement interne uniquement</span></div>
-                            </div>
-                        </div>
-                        <div class="branch-products-inline-title">Domaines</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Fiction</div><div class="product-desc">Nouvelles et récits courts. L'imaginaire au service d'une vision singulière et exigeante.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Essais</div><div class="product-desc">Réflexions sur l'ambition, le progrès, l'excellence. La pensée Burton, mise en mots.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Manifestes</div><div class="product-desc">Textes fondateurs de l'organisation. Ce en quoi nous croyons, écrit pour durer.</div></div>
-                        </div>
-                    </div>
-
-                    <div class="prod-sub-panel vitrine-panel" id="sub-affiche-writing" style="padding-top:3rem">
-                            <!-- ============================================================
-                                 📖 SORTIE RÉCENTE — À MODIFIER À CHAQUE NOUVELLE PARUTION
-                                 ============================================================
-                                 ✏️ IMAGE       → colle l'URL dans src="" ci-dessous
-                                 ✏️ TITRE       → remplace "Titre de l'œuvre"
-                                 ✏️ DESCRIPTION → remplace le texte de description
-                                 ✏️ AUTEUR      → remplace le tiret après Auteur
-                                 ✏️ GENRE       → remplace le tiret après Genre
-                                 ✏️ DATE        → remplace le tiret après Date de parution
-                            ============================================================ -->
-                            <div class="affiche-label">Sortie Récente</div>
-                            <div class="writing-card">
-                                <div class="writing-cover">
-                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/632507605_1264630585564581_7437641815022298419_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=PDCD5Dv2tM4Q7kNvwH1EuIo&_nc_oc=AdmhNjqgft9GrGYL4DqwQJlsIqXYja5I_SdQOJTK_yupBmflCUPtQK3rciNV6wRwJN7fOiVGvbPZRvbx0svTShLT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gH0t5Fw1FOhLluKbLR5CHqZs5AbW64YyUJclEm8jnjkOw&oe=69BE69DA" style="display:none;width:100%;height:100%;object-fit:cover">
-                                    <div class="writing-cover-placeholder" id="writing-cover-ph">
-                                        <span>Image à venir</span>
-                                    </div>
-                                </div>
-                                <div class="writing-content">
-                                    <div class="writing-genre-tag">Sortie Récente</div>
-                                    <div class="writing-titre">Le Vengeur d'Or</div>
-                                    <div class="writing-description">Description de l'œuvre. Paolo, un homme marqué par les blessures du passé, se lance dans une quête périlleuse à la recherche d'un trésor légendaire. Avec Nicolas, son fidèle compagnon, ils affrontent des mers inconnues, des îles mystérieuses et des énigmes, guidés par des indices et des légendes. Mais sur leur chemin, la trahison, des révélations inattendues et des forces bien plus puissantes qu'ils ne l'imaginent mettent leur courage à l'épreuve.</div>
-                                    <div class="writing-meta">
-                                        <div class="affiche-meta-item">
-                                            <span class="affiche-meta-key">Auteur</span>
-                                            <span class="affiche-meta-val">Elliot Burton</span>
-                                        </div>
-                                        <div class="affiche-meta-item">
-                                            <span class="affiche-meta-key">Genre</span>
-                                            <span class="affiche-meta-val">Fantastique-Aventure</span>
-                                        </div>
-                                        <div class="affiche-meta-item">
-                                            <span class="affiche-meta-key">Date de parution</span>
-                                            <span class="affiche-meta-val">Bientôt disponible-Soon..</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                        </label>
-                    </div>
-                </div>
+            <!-- ===== PRODUCTION ===== -->
+            <div class="branch-panel-inline" id="panel-production">
                 <div class="branch-soon" id="soon-production">
                     <div class="branch-soon-title">Bientôt</div>
                     <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
                 </div>
                 <div class="branch-content-wrap" id="content-production">
-                <div class="branch-inner">
-                    <div class="production-sub-tabs">
-                        <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
-                        <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
-                    </div>
-
-                    <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
-                        <div class="branch-inner-grid">
-                            <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
-                            <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+                    <div class="branch-inner">
+                        <div class="production-sub-tabs">
+                            <button class="prod-sub-tab active" data-sub="apercu">Aperçu</button>
+                            <button class="prod-sub-tab" data-sub="affiche">À l'Affiche chez Burton Corporation</button>
                         </div>
-                        <div class="branch-products-inline-title">Activités</div>
-                        <div class="branch-products-inline-grid">
-                            <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
-                            <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
-                            <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+                        <div class="prod-sub-panel active" id="sub-apercu" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div><span class="branch-eyebrow-inline">Burton — Division Créative</span><div class="branch-name-inline">Production</div><div class="branch-tagline-inline">Derrière chaque grand projet, une infrastructure invisible et redoutable.</div><div class="branch-desc-inline">Burton Production est le moteur créatif et opérationnel de l'organisation. Audiovisuel, direction artistique, stratégie de contenu, événementiel interne — cette division transforme les ambitions de Burton Corporation en réalisations concrètes et mémorables.</div></div>
+                                <div><div class="branch-detail-row"><span class="branch-detail-key">Périmètre</span><span class="branch-detail-val">Audiovisuel, direction artistique, stratégie éditoriale</span></div><div class="branch-detail-row"><span class="branch-detail-key">Rôle interne</span><span class="branch-detail-val">Soutien créatif de toutes les autres branches Burton</span></div><div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Division fermée — recrutement interne uniquement</span></div></div>
+                            </div>
+                            <div class="branch-products-inline-title">Activités</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Burton Archives</div><div class="product-desc">Documentation visuelle de l'histoire de l'organisation. Chaque moment important, capturé et préservé.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Contenu Stratégique</div><div class="product-desc">Production de supports de communication internes et externes. L'image Burton, contrôlée à chaque pixel.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Événementiel</div><div class="product-desc">Organisation des cérémonies d'intégration et rencontres annuelles de Burton Corp.</div></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="prod-sub-panel" id="sub-affiche">
-                        <div class="affiche-section">
-
-                            <!-- ============================================================
-                                 🎥 FILM DE L'ANNÉE — À MODIFIER CHAQUE ANNÉE
-                                 ============================================================
-                                 ✏️ AFFICHE  → colle l'URL de l'image dans src="" ci-dessous
-                                 ✏️ TITRE    → remplace le texte "Titre du film"
-                                 ✏️ SYNOPSIS → remplace le texte du synopsis
-                                 ✏️ DURÉE    → remplace le tiret après Durée  (ex: 1h 52 min)
-                                 ✏️ RÉAL.    → remplace le tiret après Réalisation
-                                 ✏️ ANNÉE    → remplace le tiret après Année (ex: 2026)
-                            ============================================================ -->
-                            <div class="affiche-block">
-                                <div class="affiche-label">Film de l'Année</div>
-                                <div class="affiche-cadre">
-                                    <div class="affiche-poster">
-                                        <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="Affiche film" id="film-img"
-                                            style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
-                                        <div class="affiche-poster-placeholder" id="film-placeholder">
-                                            <span>Affiche à venir</span>
+                        <div class="prod-sub-panel" id="sub-affiche">
+                            <div class="affiche-section">
+                                <div class="affiche-block">
+                                    <div class="affiche-label">Film de l'Année</div>
+                                    <div class="affiche-cadre">
+                                        <div class="affiche-poster">
+                                            <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="Affiche film" id="film-img" style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
+                                            <div class="affiche-poster-placeholder" id="film-placeholder"><span>Affiche à venir</span></div>
+                                        </div>
+                                        <div class="affiche-info">
+                                            <div class="affiche-categorie">Long Métrage</div>
+                                            <div class="affiche-titre">Aucune information pour le moment.</div>
+                                            <div class="affiche-description">Synopsys du Film : Aucune information pour le moment.</div>
+                                            <div class="affiche-meta">
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val">—</span></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="affiche-info">
-                                        <div class="affiche-categorie">Long Métrage</div>
-                                        <div class="affiche-titre">Aucune information pour le moment.</div>
-                                        <div class="affiche-description">Synopsys du Film : Aucune information pour le moment.</div>
-                                        <div class="affiche-meta">
-                                            <div class="affiche-meta-item">
-                                                <span class="affiche-meta-key">Durée</span>
-                                                <span class="affiche-meta-val">—</span>
-                                            </div>
-                                            <div class="affiche-meta-item">
-                                                <span class="affiche-meta-key">Réalisation</span>
-                                                <span class="affiche-meta-val">—</span>
-                                            </div>
-                                            <div class="affiche-meta-item">
-                                                <span class="affiche-meta-key">Année</span>
-                                                <span class="affiche-meta-val">—</span>
+                                </div>
+                                <hr class="affiche-separator">
+                                <div class="affiche-block">
+                                    <div class="affiche-label">Court Métrage du Mois</div>
+                                    <div class="affiche-cadre">
+                                        <div class="affiche-poster">
+                                            <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="Affiche court métrage" id="cm-img" style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
+                                            <div class="affiche-poster-placeholder" id="cm-placeholder"><span>Affiche à venir</span></div>
+                                        </div>
+                                        <div class="affiche-info">
+                                            <div class="affiche-categorie">Court Métrage</div>
+                                            <div class="affiche-titre">Aucune information pour le moment.</div>
+                                            <div class="affiche-description">Synopsis du court métrage. Aucune information pour le moment.</div>
+                                            <div class="affiche-meta">
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">—</span></div>
+                                                <div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val">—</span></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- FIN FILM DE L'ANNÉE -->
-
-                            <hr class="affiche-separator">
-
-                            <!-- ============================================================
-                                 🎬 COURT MÉTRAGE DU MOIS — À MODIFIER CHAQUE MOIS
-                                 ============================================================
-                                 ✏️ AFFICHE  → colle l'URL de l'image dans src="" ci-dessous
-                                 ✏️ TITRE    → remplace le texte "Titre du court métrage"
-                                 ✏️ SYNOPSIS → remplace le texte du synopsis
-                                 ✏️ DURÉE    → remplace le tiret après Durée  (ex: 14 min)
-                                 ✏️ RÉAL.    → remplace le tiret après Réalisation
-                                 ✏️ MOIS     → remplace le tiret après Mois (ex: Février 2026)
-                            ============================================================ -->
-                            <div class="affiche-block">
-                                <div class="affiche-label">Court Métrage du Mois</div>
-                                <div class="affiche-cadre">
-                                    <div class="affiche-poster">
-                                        <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/630770969_3094993464025013_6585174069698263976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=0itWe05DhhcQ7kNvwF-9xlu&_nc_oc=AdmdRdlxESMfzWZJD0U8QGQnBl5kwlkHsriXQNjqzHjMbYr8qBMAKVh171UzbZHTxS0CzxTm4RICR9XrlhCqa19I&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD4gHEoN7L6ij3d3zI0FegwC9RkpLb81JdD_a8KZmqgK34hQ&oe=69BD9AC6" alt="Affiche court métrage" id="cm-img"
-                                            style="display:none;width:100%;object-fit:cover;aspect-ratio:2/3">
-                                        <div class="affiche-poster-placeholder" id="cm-placeholder">
-                                            <span>Affiche à venir</span>
-                                        </div>
-                                    </div>
-                                    <div class="affiche-info">
-                                        <div class="affiche-categorie">Court Métrage</div>
-                                        <div class="affiche-titre">Aucune information pour le moment.</div>
-                                        <div class="affiche-description">Synopsis du court métrage. Aucune information pour le moment.</div>
-                                        <div class="affiche-meta">
-                                            <div class="affiche-meta-item">
-                                                <span class="affiche-meta-key">Durée</span>
-                                                <span class="affiche-meta-val">—</span>
-                                            </div>
-                                            <div class="affiche-meta-item">
-                                                <span class="affiche-meta-key">Réalisation</span>
-                                                <span class="affiche-meta-val">—</span>
-                                            </div>
-                                            <div class="affiche-meta-item">
-                                                <span class="affiche-meta-key">Mois</span>
-                                                <span class="affiche-meta-val">—</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FIN COURT MÉTRAGE -->
-
                         </div>
                     </div>
-
                 </div>
-            </div></div>
+            </div>
+
+            <!-- ===== WRITING ===== -->
+            <div class="branch-panel-inline" id="panel-writing">
+                <div class="branch-soon" id="soon-writing">
+                    <div class="branch-soon-title">Bientôt</div>
+                    <div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div>
+                </div>
+                <div class="branch-content-wrap" id="content-writing">
+                    <div class="branch-inner">
+                        <div class="production-sub-tabs vitrine-sub-tabs" id="writing-tabs">
+                            <button class="prod-sub-tab vitrine-tab active" data-branch="writing" data-sub="apercu-writing">Aperçu</button>
+                            <button class="prod-sub-tab vitrine-tab" data-branch="writing" data-sub="affiche-writing">À l'Affiche</button>
+                        </div>
+                        <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-writing" style="padding-top:4rem">
+                            <div class="branch-inner-grid">
+                                <div>
+                                    <span class="branch-eyebrow-inline">Burton — Division Littéraire</span>
+                                    <div class="branch-name-inline">Writing</div>
+                                    <div class="branch-tagline-inline">Les mots comme architecture. Chaque texte, une fondation.</div>
+                                    <div class="branch-desc-inline">Burton Writing est la voix écrite de l'organisation. Articles, récits, essais, manifestes — cette division transforme les idées en œuvres durables. L'écriture comme acte de précision, jamais comme ornement.</div>
+                                </div>
+                                <div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Formats</span><span class="branch-detail-val">Essais, nouvelles, articles, manifestes</span></div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Diffusion</span><span class="branch-detail-val">Interne et externe — selon validation de la direction</span></div>
+                                    <div class="branch-detail-row"><span class="branch-detail-key">Accès</span><span class="branch-detail-val">Sur sélection — recrutement interne uniquement</span></div>
+                                </div>
+                            </div>
+                            <div class="branch-products-inline-title">Domaines</div>
+                            <div class="branch-products-inline-grid">
+                                <div class="branch-product-card"><div class="product-num">01</div><div class="product-name">Fiction</div><div class="product-desc">Nouvelles et récits courts. L'imaginaire au service d'une vision singulière et exigeante.</div></div>
+                                <div class="branch-product-card"><div class="product-num">02</div><div class="product-name">Essais</div><div class="product-desc">Réflexions sur l'ambition, le progrès, l'excellence. La pensée Burton, mise en mots.</div></div>
+                                <div class="branch-product-card"><div class="product-num">03</div><div class="product-name">Manifestes</div><div class="product-desc">Textes fondateurs de l'organisation. Ce en quoi nous croyons, écrit pour durer.</div></div>
+                            </div>
+                        </div>
+                        <div class="prod-sub-panel vitrine-panel" id="sub-affiche-writing" style="padding-top:3rem">
+                            <div class="affiche-label">Sortie Récente</div>
+                            <div class="writing-card">
+                                <div class="writing-cover">
+                                    <img src="https://scontent-atl3-3.xx.fbcdn.net/v/t1.15752-9/632507605_1264630585564581_7437641815022298419_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=PDCD5Dv2tM4Q7kNvwH1EuIo&_nc_oc=AdmhNjqgft9GrGYL4DqwQJlsIqXYja5I_SdQOJTK_yupBmflCUPtQK3rciNV6wRwJN7fOiVGvbPZRvbx0svTShLT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-3.xx&oh=03_Q7cD4gH0t5Fw1FOhLluKbLR5CHqZs5AbW64YyUJclEm8jnjkOw&oe=69BE69DA" id="writing-cover-img" style="display:none;width:100%;height:100%;object-fit:cover">
+                                    <div class="writing-cover-placeholder" id="writing-cover-ph"><span>Image à venir</span></div>
+                                </div>
+                                <div class="writing-content">
+                                    <div class="writing-genre-tag">Sortie Récente</div>
+                                    <div class="writing-titre">Le Vengeur d'Or</div>
+                                    <div class="writing-description">Paolo, un homme marqué par les blessures du passé, se lance dans une quête périlleuse à la recherche d'un trésor légendaire. Avec Nicolas, son fidèle compagnon, ils affrontent des mers inconnues, des îles mystérieuses et des énigmes, guidés par des indices et des légendes. Mais sur leur chemin, la trahison, des révélations inattendues et des forces bien plus puissantes qu'ils ne l'imaginent mettent leur courage à l'épreuve.</div>
+                                    <div class="writing-meta">
+                                        <div class="affiche-meta-item"><span class="affiche-meta-key">Auteur</span><span class="affiche-meta-val">Elliot Burton</span></div>
+                                        <div class="affiche-meta-item"><span class="affiche-meta-key">Genre</span><span class="affiche-meta-val">Fantastique-Aventure</span></div>
+                                        <div class="affiche-meta-item"><span class="affiche-meta-key">Date de parution</span><span class="affiche-meta-val">Bientôt disponible — Soon..</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -1316,17 +914,22 @@
         clothes    : false,   // ← true = ouvert  |  false = fermé
         chocolate  : false,   // ← true = ouvert  |  false = fermé
         production : false,   // ← true = ouvert  |  false = fermé
-        writing    : true,   // ← true = ouvert  |  false = fermé
+        writing    : true,    // ← true = ouvert  |  false = fermé
     };
     /* ================================================================ */
 
     (function applyBranchStates(){
         Object.entries(BRANCHES).forEach(([id, open])=>{
-            const soon    = document.getElementById('soon-'+id);
-            const body    = document.getElementById('content-'+id);
-            if(!soon||!body) return;
-            if(open){ soon.classList.remove('visible'); body.classList.remove('hidden'); }
-            else    { soon.classList.add('visible');    body.classList.add('hidden');    }
+            const soon = document.getElementById('soon-'+id);
+            const body = document.getElementById('content-'+id);
+            if(!soon || !body) return;
+            if(open){
+                soon.classList.remove('visible');
+                body.classList.remove('hidden');
+            } else {
+                soon.classList.add('visible');
+                body.classList.add('hidden');
+            }
         });
     })();
 
@@ -1350,16 +953,18 @@
     let ticking=false;
     window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2)}ticking=false});ticking=true}});
 
-
-
-    // Vitrine sub-tabs (watch / parfum / clothes / choco)
+    // Vitrine sub-tabs (watch / parfum / clothes / choco / writing)
     document.querySelectorAll('.vitrine-tab').forEach(tab=>{
         tab.addEventListener('click',()=>{
             const branch=tab.dataset.branch;
             const subId='sub-'+tab.dataset.sub;
-            document.querySelectorAll(`#${branch}-tabs .vitrine-tab`).forEach(t=>t.classList.remove('active'));
-            // hide all panels belonging to this branch
-            document.querySelectorAll(`[id^="sub-apercu-${branch}"], [id^="sub-vitrine-${branch}"]`).forEach(p=>p.classList.remove('active'));
+            const tabContainer=document.getElementById(branch+'-tabs');
+            if(tabContainer){
+                tabContainer.querySelectorAll('.vitrine-tab').forEach(t=>t.classList.remove('active'));
+            }
+            // hide panels belonging to this branch
+            const allPanels=document.querySelectorAll(`[id^="sub-"][id$="-${branch}"], [id^="sub-${branch}-"], #sub-apercu-${branch}, #sub-vitrine-${branch}, #sub-affiche-${branch}`);
+            allPanels.forEach(p=>p.classList.remove('active'));
             tab.classList.add('active');
             const panel=document.getElementById(subId);
             if(panel) panel.classList.add('active');
@@ -1383,8 +988,10 @@
     document.querySelectorAll('.vitrine-img-wrap img').forEach(img=>{
         const id=img.id.replace('vimg-','vph-');
         const ph=document.getElementById(id);
-        if(img.src && img.src!==window.location.href && img.getAttribute('src')){
-            img.style.display='block';if(ph)ph.style.display='none';
+        const src=img.getAttribute('src');
+        if(src && src !== ''){
+            img.style.display='block';
+            if(ph) ph.style.display='none';
         }
     });
 
@@ -1394,28 +1001,29 @@
             document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));
             document.querySelectorAll('.branch-panel-inline').forEach(p=>p.classList.remove('active'));
             tab.classList.add('active');
-            document.getElementById('panel-'+tab.dataset.panel).classList.add('active');
+            const panel=document.getElementById('panel-'+tab.dataset.panel);
+            if(panel) panel.classList.add('active');
         });
     });
 
-    // Production sub-tabs
-    document.querySelectorAll('.prod-sub-tab').forEach(tab=>{
+    // Production sub-tabs (only for production panel, not vitrine tabs)
+    document.querySelectorAll('#content-production .prod-sub-tab:not(.vitrine-tab)').forEach(tab=>{
         tab.addEventListener('click',()=>{
-            document.querySelectorAll('.prod-sub-tab').forEach(t=>t.classList.remove('active'));
-            document.querySelectorAll('.prod-sub-panel').forEach(p=>p.classList.remove('active'));
+            document.querySelectorAll('#content-production .prod-sub-tab:not(.vitrine-tab)').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('#content-production .prod-sub-panel').forEach(p=>p.classList.remove('active'));
             tab.classList.add('active');
-            document.getElementById('sub-'+tab.dataset.sub).classList.add('active');
+            const panel=document.getElementById('sub-'+tab.dataset.sub);
+            if(panel) panel.classList.add('active');
         });
     });
-
 
     // Actualités images
     ['actu-1-img-1','actu-1-img-2','actu-2-img-1','actu-2-img-2'].forEach(imgId=>{
         const img=document.getElementById(imgId);
         const ph=document.getElementById(imgId.replace('img','ph'));
-        if(img&&ph){
+        if(img && ph){
             const src=img.getAttribute('src');
-            if(src&&src!==''){img.style.display='block';ph.style.display='none';}
+            if(src && src!==''){img.style.display='block';ph.style.display='none';}
         }
     });
 
@@ -1423,19 +1031,20 @@
     (function(){
         const img=document.getElementById('writing-cover-img');
         const ph=document.getElementById('writing-cover-ph');
-        if(img&&ph){
+        if(img && ph){
             const src=img.getAttribute('src');
-            if(src&&src!==''){img.style.display='block';ph.style.display='none';}
+            if(src && src!==''){img.style.display='block';ph.style.display='none';}
             else{img.style.display='none';ph.style.display='flex';}
         }
     })();
 
-    // Affiche images — show img if src is set, else show placeholder
+    // Affiche images
     ['cm','film'].forEach(id=>{
         const img=document.getElementById(id+'-img');
         const ph=document.getElementById(id+'-placeholder');
-        if(img&&ph){
-            if(img.src&&img.src!==window.location.href){
+        if(img && ph){
+            const src=img.getAttribute('src');
+            if(src && src!==window.location.href && src!==''){
                 img.style.display='block';ph.style.display='none';
             } else {
                 img.style.display='none';ph.style.display='flex';
