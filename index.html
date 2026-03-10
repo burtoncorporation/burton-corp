@@ -1828,6 +1828,7 @@ async function refreshCandidatures(filter) {
             <button class="adm-btn-sm" onclick="changeStatus('${escHtml(c.id)}','pending')">⟳</button>
             <button class="adm-btn-sm adm-btn-danger" onclick="changeStatus('${escHtml(c.id)}','rejected')">✗</button>
             <button class="adm-btn-sm" onclick="viewCand('${escHtml(c.id)}')">👁</button>
+            <button class="adm-btn-sm adm-btn-danger" onclick="deleteCand('${escHtml(c.id)}','${escHtml(c.prenom||'')} ${escHtml(c.nom||'')}')">🗑</button>
         </td>
     </tr>`).join('');
 }
@@ -1856,6 +1857,13 @@ async function viewCand(id) {
     const {data}=await sb.from('candidatures').select('*').eq('id',id).single();
     if(!data) return;
     alert(`CANDIDATURE ${data.ref}\n\nNom : ${data.prenom} ${data.nom}\nEmail : ${data.email}\nÂge : ${data.age}\nNationalité : ${data.nat}\nDisponibilité : ${data.dispo}\nDivision souhaitée : ${data.branche||'—'}\nValeur : ${data.valeur}\nExpérience : ${data.experience}\n\nMOTIVATION :\n${data.motivation}\n\nAPPORT :\n${data.apport}\n\nOBJECTIF :\n${data.objectif}\n\nDÉFI :\n${data.defi}\n\nCompétences : ${data.competences}\nÉquipe : ${data.rating_equipe}/10  Pression : ${data.rating_pression}/10\nSource : ${data.comment}`);
+}
+
+async function deleteCand(id, nom) {
+    if (!confirm(`Supprimer la candidature de ${nom} ? Cette action est irréversible.`)) return;
+    await sb.from('candidatures').delete().eq('id', id);
+    await refreshCandidatures();
+    await refreshDashboard();
 }
 
 async function refreshDashboard() {
