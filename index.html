@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.brevo.com;">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <title id="site-title">Burton Corporation</title>
@@ -835,23 +834,86 @@ const SUPABASE_KEY = 'sb_publishable_-KnMY5pKd5odPFD2tofmIA_bhjefD0J';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* ═══════════════════════════════════════════════════════════
-   EMAILJS CONFIG
+   BREVO — EMAILS AUTOMATIQUES
 ═══════════════════════════════════════════════════════════ */
-const EJS_SERVICE = 'service_dsu5p33';
-const EJS_KEY = 'cI12kdK1EJZEsQQRO';
-const EJS_TPL_POSITIF = 'template_burtcorpservsél';
-const EJS_TPL_NEGATIF = 'template_pkmqn4n';
+let BREVO_KEY = null;
+const BREVO_SENDER = { name: 'Burton Corporation', email: 'noreply@burton-corporation.com' };
+
+async function getBrevoKey() {
+    if (BREVO_KEY) return BREVO_KEY;
+    try {
+        const {data} = await sb.from('site_configuration').select('valeur').eq('cle','brevo.api_key').single();
+        BREVO_KEY = data?.valeur || null;
+    } catch(e) { BREVO_KEY = null; }
+    return BREVO_KEY;
+}
+
+const BREVO_TPL_POSITIF = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px">
+<p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
+<p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Confirmation de Candidature</p>
+<p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
+<p style="font-size:14px;margin-bottom:20px">Nous avons bien reçu votre candidature au sein de <em>Burton Corporation</em>. Votre dossier a été enregistré et sera examiné avec attention lors de notre prochaine session mensuelle de sélection.</p>
+<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center">
+<span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span>
+<strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
+<p style="font-family:Georgia,serif;font-size:15px;font-weight:bold;margin:30px 0 15px 0">Notre processus de sélection se déroule en trois étapes :</p>
+<p style="font-size:14px;margin-bottom:15px"><strong style="font-size:13px;text-transform:uppercase">► Étape 1 — Questionnaire de Sélection</strong><br>
+<span style="font-size:13px">Pour des raisons techniques, Burton Corporation ne prévient <em>uniquement</em> le ou la candidat(e) que lorsque celui-ci ou celle-ci est <strong>sélectionné(e)</strong>.<br><br>
+Si vous ne recevez pas de réponse <strong>1 mois</strong> après avoir envoyé le questionnaire, c'est que votre candidature a malheureusement été <em>déclinée</em> par nos équipes de sélection.</span></p>
+<p style="font-size:14px;margin-bottom:15px"><strong style="font-size:13px;text-transform:uppercase">► Étape 2 — Entretien avec le Fondateur</strong><br>
+<span style="font-size:13px">Si votre profil est retenu, vous serez contacté pour un <em>entretien approfondi</em>.</span></p>
+<p style="font-size:14px;margin-bottom:25px"><strong style="font-size:13px;text-transform:uppercase">► Étape 3 — Décision Finale</strong><br>
+<span style="font-size:13px">Peu importe notre décision, à ce stade de la sélection, vous serez <strong>prévenu(e)</strong> de notre décision <strong>1 semaine</strong> après avoir passé l'entretien.</span></p>
+<hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
+<p style="font-size:13px;font-style:italic;margin-bottom:25px">Les candidatures sont examinées sur une base mensuelle. Nous vous remercions de votre patience et de l'intérêt que vous portez à Burton Corporation.</p>
+<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br>
+<span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
+</body></html>`;
+
+const BREVO_TPL_NEGATIF = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px">
+<p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
+<p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Décision de Candidature</p>
+<p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
+<p style="font-size:14px;margin-bottom:20px">Nous accusons réception de votre candidature au sein de <em>Burton Corporation</em> et vous remercions sincèrement de l'intérêt que vous portez à notre organisation.</p>
+<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center">
+<span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span>
+<strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
+<p style="font-size:14px;margin-bottom:20px">Après examen approfondi de votre dossier, nous sommes au regret de vous informer que <strong>votre candidature n'a pas été retenue</strong> à ce stade du processus de sélection.</p>
+<p style="font-size:13px;margin-bottom:20px">Cette décision fait suite à une analyse rigoureuse de l'ensemble des candidatures reçues. Bien que votre profil présente des qualités certaines, <em>certaines aptitudes spécifiques requises par Burton Corporation</em> ne correspondent pas entièrement aux critères d'éligibilité actuels de notre structure.</p>
+<p style="font-size:13px;margin-bottom:25px">Nous vous encourageons néanmoins à poursuivre votre développement personnel et professionnel. Les standards de Burton Corporation évoluent, et nous serions honorés de revoir votre candidature dans le futur si vos compétences venaient à correspondre davantage à nos exigences.</p>
+<hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
+<p style="font-size:13px;font-style:italic;margin-bottom:25px">Nous vous souhaitons le meilleur dans vos projets futurs et vous remercions à nouveau pour l'attention que vous avez accordée à Burton Corporation.</p>
+<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br>
+<span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
+</body></html>`;
 
 async function sendAutoReply(email, prenom, nom, ref, isRejected) {
     try {
-        emailjs.init(EJS_KEY);
-        const templateId = isRejected ? EJS_TPL_NEGATIF : EJS_TPL_POSITIF;
-        await emailjs.send(EJS_SERVICE, templateId, {
-            to_email: email,
-            candidat_nom: prenom + ' ' + nom,
-            prenom: prenom,
-            nom: nom,
-            ref: ref,
+        const key = await getBrevoKey();
+        if (!key) return;
+        const candidat_nom = prenom + ' ' + nom;
+        const htmlContent = (isRejected ? BREVO_TPL_NEGATIF : BREVO_TPL_POSITIF)
+            .replace(/{{candidat_nom}}/g, candidat_nom)
+            .replace(/{{ref}}/g, ref);
+        const subject = isRejected
+            ? 'Burton Corporation — Décision de Candidature'
+            : 'Burton Corporation — Confirmation de Candidature';
+        await fetch('https://api.brevo.com/v3/smtp/email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'api-key': key,
+            },
+            body: JSON.stringify({
+                sender: BREVO_SENDER,
+                to: [{ email: email, name: candidat_nom }],
+                subject: subject,
+                htmlContent: htmlContent,
+            })
         });
     } catch(e) { /* silencieux — ne bloque pas la candidature */ }
 }
