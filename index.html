@@ -304,6 +304,8 @@
         .adm-error{font-size:0.72rem;color:rgba(220,80,80,0.8);letter-spacing:0.1em;margin-top:1rem;text-align:center}
         /* Admin layout */
         .adm-layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+        #admin-panel{max-width:100vw;overflow-x:hidden}
+        #admin-panel *{box-sizing:border-box}
         .adm-sidebar{background:#0c0c0c;border-right:1px solid rgba(255,255,255,0.05);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto}
         .adm-logo{padding:1rem 2rem 2.5rem;font-family:var(--font-display);font-size:1.2rem;font-weight:300;letter-spacing:0.2em;border-bottom:1px solid rgba(255,255,255,0.05)}
         .adm-logo span{display:block;font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:0.4rem;font-family:var(--font-body)}
@@ -313,8 +315,8 @@
         .adm-nav-sep{height:1px;background:rgba(255,255,255,0.04);margin:1rem 2rem}
         .adm-logout{display:block;width:calc(100% - 4rem);margin:2rem;background:none;border:1px solid rgba(255,80,80,0.15);color:rgba(255,80,80,0.4);font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.7rem;cursor:pointer;transition:all 0.3s}
         .adm-logout:hover{border-color:rgba(255,80,80,0.4);color:rgba(255,80,80,0.7)}
-        .adm-main{padding:3rem 4rem;background:#080808}
-        .adm-section{display:none}
+        .adm-main{padding:3rem 4rem;background:#080808;min-width:0;overflow-x:hidden}
+        .adm-section{display:none;min-width:0;max-width:100%}
         .adm-section.active{display:block}
         .adm-page-title{font-family:var(--font-display);font-size:2.2rem;font-weight:300;letter-spacing:0.1em;margin-bottom:0.5rem}
         .adm-page-sub{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:3rem}
@@ -323,7 +325,7 @@
         .adm-block-title{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.05)}
         .adm-field{margin-bottom:1.5rem}
         .adm-field label{display:block;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.6rem}
-        .adm-field input,.adm-field textarea,.adm-field select{width:100%;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);color:#fff;font-family:var(--font-body);font-size:0.85rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.3s}
+        .adm-field input,.adm-field textarea,.adm-field select{width:100%;max-width:100%;box-sizing:border-box;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);color:#fff;font-family:var(--font-body);font-size:0.85rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.3s}
         .adm-field input:focus,.adm-field textarea:focus,.adm-field select:focus{border-color:rgba(255,255,255,0.2)}
         .adm-field textarea{resize:vertical;min-height:80px;line-height:1.7}
         .adm-field select option{background:#111}
