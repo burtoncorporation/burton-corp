@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co;">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <title id="site-title">Burton Corporation</title>
@@ -834,6 +835,28 @@ const SUPABASE_KEY = 'sb_publishable_-KnMY5pKd5odPFD2tofmIA_bhjefD0J';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* ═══════════════════════════════════════════════════════════
+   EMAILJS CONFIG
+═══════════════════════════════════════════════════════════ */
+const EJS_SERVICE = 'service_dsu5p33';
+const EJS_KEY = 'cI12kdK1EJZEsQQRO';
+const EJS_TPL_POSITIF = 'template_burtcorpservsél';
+const EJS_TPL_NEGATIF = 'template_pkmqn4n';
+
+async function sendAutoReply(email, prenom, nom, ref, isRejected) {
+    try {
+        emailjs.init(EJS_KEY);
+        const templateId = isRejected ? EJS_TPL_NEGATIF : EJS_TPL_POSITIF;
+        await emailjs.send(EJS_SERVICE, templateId, {
+            to_email: email,
+            candidat_nom: prenom + ' ' + nom,
+            prenom: prenom,
+            nom: nom,
+            ref: ref,
+        });
+    } catch(e) { /* silencieux — ne bloque pas la candidature */ }
+}
+
+/* ═══════════════════════════════════════════════════════════
    DONNÉES PAR DÉFAUT (fallback si Supabase vide)
 ═══════════════════════════════════════════════════════════ */
 const DEFAULT_DATA = {
@@ -1259,6 +1282,9 @@ async function submitApplication() {
         await sb.from('candidatures').insert([candidature]);
     } catch(e) { /* silencieux */ }
 
+    // Auto-reply EmailJS
+    await sendAutoReply(email, prenom, nom, ref, isRejected);
+
     localStorage.setItem('bc_rate_v3', Date.now().toString());
     showSuccess(ref);
 }
@@ -1524,6 +1550,11 @@ async function refreshCandidatures(filter) {
 
 async function changeStatus(id,statut) {
     await sb.from('candidatures').update({statut}).eq('id',id);
+    // Envoyer email de refus si rejeté manuellement
+    if(statut==='rejected'){
+        const {data:c}=await sb.from('candidatures').select('email,prenom,nom,ref').eq('id',id).single();
+        if(c) await sendAutoReply(c.email, c.prenom, c.nom, c.ref, true);
+    }
     await refreshCandidatures();
     await refreshDashboard();
 }
