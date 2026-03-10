@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://script.google.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co;">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <title id="site-title">Burton Corporation</title>
@@ -813,164 +814,175 @@
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   DONNÉES PAR DÉFAUT
+   SUPABASE
+═══════════════════════════════════════════════════════════ */
+const SUPABASE_URL = 'https://jfuysriguonmwzemoolk.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_-KnMY5pKd5odPFD2tofmIA_bhjefD0J';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* ═══════════════════════════════════════════════════════════
+   DONNÉES PAR DÉFAUT (fallback si Supabase vide)
 ═══════════════════════════════════════════════════════════ */
 const DEFAULT_DATA = {
     site: {
-        title: 'Burton Corporation',
-        navLogo: 'BURTON',
-        loader: 'BURTON',
-        heroTitle: 'BURTON CORPORATION',
-        heroTagline: 'Construire. Progresser. Réussir.',
-        introP1: "Burton Corporation est une maison fondatrice — une entité unique réunissant des créations issues de domaines distincts, liées par une même vision d'excellence et d'ambition.",
-        introP2: "Chaque branche naît comme une extension naturelle de cette origine : horlogerie, parfum, mode, gastronomie, production, écriture. Des disciplines différentes, un seul nom.",
-        visionTitre: 'Nos Piliers',
-        p1Titre: 'Excellence', p1Texte: "Rechercher constamment le plus haut niveau de qualité dans chaque création. L'excellence chez Burton Corporation repose sur la précision, l'exigence et l'attention portée au détail.",
-        p2Titre: 'Progrès', p2Texte: "Évoluer en permanence, individuellement et collectivement. Le progrès est le moteur de toute organisation qui aspire à l'excellence.",
-        ctaTitre: 'Rejoindre Burton Corporation',
-        ctaDisclaimer: 'Les candidatures sont examinées sur une base mensuelle',
-        progTitre: 'Parcours Interne', progSous: 'Une trajectoire définie par le mérite',
-        selTitre: "L'Excellence par la Sélectivité", selSous: "Nous n'acceptons que ceux qui se démarquent vraiment",
+        title:'Burton Corporation', navLogo:'BURTON', loader:'BURTON',
+        heroTitle:'BURTON CORPORATION', heroTagline:'Construire. Progresser. Réussir.',
+        introP1:"Burton Corporation est une maison fondatrice — une entité unique réunissant des créations issues de domaines distincts, liées par une même vision d'excellence et d'ambition.",
+        introP2:"Chaque branche naît comme une extension naturelle de cette origine : horlogerie, parfum, mode, gastronomie, production, écriture. Des disciplines différentes, un seul nom.",
+        visionTitre:'Nos Piliers',
+        p1Titre:'Excellence', p1Texte:"Rechercher constamment le plus haut niveau de qualité dans chaque création. L'excellence chez Burton Corporation repose sur la précision, l'exigence et l'attention portée au détail.",
+        p2Titre:'Progrès', p2Texte:"Évoluer en permanence, individuellement et collectivement. Le progrès est le moteur de toute organisation qui aspire à l'excellence.",
+        ctaTitre:'Rejoindre Burton Corporation', ctaDisclaimer:'Les candidatures sont examinées sur une base mensuelle',
+        progTitre:'Parcours Interne', progSous:'Une trajectoire définie par le mérite',
+        selTitre:"L'Excellence par la Sélectivité", selSous:"Nous n'acceptons que ceux qui se démarquent vraiment",
     },
-    actualites: [
-        { id:1, date:'', titre:'Aucune actualité disponible.', texte:'Aucune actualité disponible.', img1:'', img2:'' },
-        { id:2, date:'', titre:'Aucune actualité disponible.', texte:'Aucune actualité disponible.', img1:'', img2:'' },
+    actualites:[
+        {id:1,date:'',titre:'Aucune actualité disponible.',texte:'Aucune actualité disponible.',img1:'',img2:''},
+        {id:2,date:'',titre:'Aucune actualité disponible.',texte:'Aucune actualité disponible.',img1:'',img2:''},
     ],
-    branches: {
-        watch:      { open:false, eyebrow:'Burton — Division Horlogerie', name:'Watch', tagline:'Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.', desc:"Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale.", details:[{k:'Positionnement',v:'Ultra-premium — production limitée à 50 pièces par collection'},{k:'Matériaux',v:'Titane grade 5, saphir, acier 316L traité PVD noir'},{k:'Distribution',v:'Exclusive — réservée aux membres Burton Corporation'}], prodTitle:'Collections', products:[{n:'Noir Absolu',d:'Cadran onyx, mouvement squelette. L\'obscurité comme philosophie. Édition de 12 pièces.'},{n:'Meridian',d:'Complication GMT double fuseau. Pour ceux dont l\'ambition ne connaît pas de fuseau horaire.'},{n:'Founder\'s Edition',d:'Réservée aux directeurs Burton. Numérotée, gravée, intransmissible. La réussite, au poignet.'}], type:'standard' },
-        parfum:     { open:false, eyebrow:'Burton — Division Olfactive', name:'Parfum', tagline:'Une présence que l\'on ressent avant même de vous voir.', desc:"Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ.", details:[{k:'Philosophie',v:'Niche absolue — aucune note commune avec le marché de masse'},{k:'Format',v:'Flacons 50ml numérotés, bouchon laqué noir mat'},{k:'Tirage',v:'100 flacons maximum par fragrance — sans réassort'}], prodTitle:'Fragrances', products:[{n:'Cendre',d:'Bois brûlé, vétiver fumé, musc blanc.'},{n:'Ambition',d:'Poivre noir, cuir tanné, ambre chaud.'},{n:'Protocole',d:'Cèdre de l\'Atlas, iris, encens.'}], type:'genre' },
-        clothes:    { open:false, eyebrow:'Burton — Division Vestimentaire', name:'Clothes', tagline:"L'uniforme de ceux qui n'ont pas besoin de se justifier.", desc:'Burton Clothes rejette l\'éphémère. Chaque pièce est conçue pour durer une décennie.', details:[{k:'Esthétique',v:'Minimalisme radical — palette monochrome noir, anthracite, ivoire'},{k:'Matières',v:'Laine mérinos, cachemire double face, lin technique japonais'},{k:'Accès',v:'Sur commande — délai de 6 à 8 semaines'}], prodTitle:'Pièces Signature', products:[{n:'Le Manteau',d:'Laine bouillie noire, coupe droite oversize.'},{n:'Chemise Architecte',d:'Col officier, lin technique froissé à froid.'},{n:'Ensemble Directeur',d:'Veste et pantalon cachemire anthracite.'}], type:'genre' },
-        chocolate:  { open:false, eyebrow:'Burton — Division Gastronomique', name:'Chocolate', tagline:'Le luxe qui se consomme. La perfection, éphémère par design.', desc:"Burton Chocolate explore le paradoxe du luxe consommable — créer quelque chose d'irremplaçable destiné à disparaître.", details:[{k:'Origines',v:'Cacao Criollo — Venezuela, Madagascar, São Tomé'},{k:'Process',v:'Bean-to-bar intégral, torréfaction à la pièce'},{k:'Teneur',v:'72% minimum — aucun ajout de vanilline de synthèse'}], prodTitle:'Créations', products:[{n:'Origine Noir',d:'85% Criollo vénézuélien. Amer, complexe, long en bouche.'},{n:'Collection Épices',d:'Poivre long de Java, cardamome noire, fleur de sel de Guérande.'},{n:'Coffret Fondateur',d:'12 ganaches, 3 origines, 1 tablette grand cru.'}], type:'standard' },
-        production: { open:false, eyebrow:'Burton — Division Créative', name:'Production', tagline:'Derrière chaque grand projet, une infrastructure invisible et redoutable.', desc:"Burton Production est le moteur créatif et opérationnel de l'organisation.", details:[{k:'Périmètre',v:'Audiovisuel, direction artistique, stratégie éditoriale'},{k:'Rôle interne',v:'Soutien créatif de toutes les autres branches Burton'},{k:'Accès',v:'Division fermée — recrutement interne uniquement'}], prodTitle:'Activités', products:[{n:'Burton Archives',d:'Documentation visuelle de l\'histoire de l\'organisation.'},{n:'Contenu Stratégique',d:'Production de supports de communication internes et externes.'},{n:'Événementiel',d:'Organisation des cérémonies d\'intégration et rencontres annuelles.'}], type:'production', filmTitre:'Aucune information pour le moment.', filmSynopsis:'Synopsys du Film : Aucune information pour le moment.', filmDuree:'—', filmReal:'—', filmAnnee:'—', filmImg:'', cmTitre:'Aucune information pour le moment.', cmSynopsis:'Synopsis : Aucune information pour le moment.', cmDuree:'—', cmReal:'—', cmMois:'—', cmImg:'' },
-        writing:    { open:false, eyebrow:'Burton — Division Littéraire', name:'Writing', tagline:'Les mots comme architecture. Chaque texte, une fondation.', desc:"Burton Writing est la voix écrite de l'organisation. Articles, récits, essais, manifestes.", details:[{k:'Formats',v:'Essais, nouvelles, articles, manifestes'},{k:'Diffusion',v:'Interne et externe — selon validation de la direction'},{k:'Accès',v:'Sur sélection — recrutement interne uniquement'}], prodTitle:'Domaines', products:[{n:'Fiction',d:'Nouvelles et récits courts.'},{n:'Essais',d:'Réflexions sur l\'ambition, le progrès, l\'excellence.'},{n:'Manifestes',d:'Textes fondateurs de l\'organisation.'}], type:'writing', livreTitre:'Le Vengeur d\'Or', livreDescription:"Paolo, un homme marqué par les blessures du passé, se lance dans une quête périlleuse à la recherche d'un trésor légendaire...", livreAuteur:'Elliot Burton', livreGenre:'Fantastique-Aventure', livreDateSortie:'Bientôt disponible — Soon..', livreCoverImg:'' },
+    branches:{
+        watch:{open:false,eyebrow:'Burton — Division Horlogerie',name:'Watch',tagline:'Le temps, maîtrisé. Chaque seconde, une affirmation de caractère.',desc:"Burton Watch incarne l'alliance entre mécanique de précision et esthétique radicale.",details:[{k:'Positionnement',v:'Ultra-premium — production limitée à 50 pièces par collection'},{k:'Matériaux',v:'Titane grade 5, saphir, acier 316L traité PVD noir'},{k:'Distribution',v:'Exclusive — réservée aux membres Burton Corporation'}],prodTitle:'Collections',products:[{n:'Noir Absolu',d:"Cadran onyx, mouvement squelette. L'obscurité comme philosophie."},{n:'Meridian',d:"Complication GMT double fuseau."},{n:"Founder's Edition",d:"Réservée aux directeurs Burton. Numérotée, gravée, intransmissible."}],type:'standard'},
+        parfum:{open:false,eyebrow:'Burton — Division Olfactive',name:'Parfum',tagline:"Une présence que l'on ressent avant même de vous voir.",desc:"Burton Parfum est né d'une conviction : le parfum est le seul accessoire que vous laissez dans chaque pièce après votre départ.",details:[{k:'Philosophie',v:'Niche absolue — aucune note commune avec le marché de masse'},{k:'Format',v:'Flacons 50ml numérotés, bouchon laqué noir mat'},{k:'Tirage',v:'100 flacons maximum par fragrance — sans réassort'}],prodTitle:'Fragrances',products:[{n:'Cendre',d:'Bois brûlé, vétiver fumé, musc blanc.'},{n:'Ambition',d:"Poivre noir, cuir tanné, ambre chaud."},{n:'Protocole',d:"Cèdre de l'Atlas, iris, encens."}],type:'genre'},
+        clothes:{open:false,eyebrow:'Burton — Division Vestimentaire',name:'Clothes',tagline:"L'uniforme de ceux qui n'ont pas besoin de se justifier.",desc:"Burton Clothes rejette l'éphémère. Chaque pièce est conçue pour durer une décennie.",details:[{k:'Esthétique',v:'Minimalisme radical — palette monochrome noir, anthracite, ivoire'},{k:'Matières',v:'Laine mérinos, cachemire double face, lin technique japonais'},{k:'Accès',v:'Sur commande — délai de 6 à 8 semaines'}],prodTitle:'Pièces Signature',products:[{n:'Le Manteau',d:'Laine bouillie noire, coupe droite oversize.'},{n:'Chemise Architecte',d:'Col officier, lin technique froissé à froid.'},{n:'Ensemble Directeur',d:'Veste et pantalon cachemire anthracite.'}],type:'genre'},
+        chocolate:{open:false,eyebrow:'Burton — Division Gastronomique',name:'Chocolate',tagline:'Le luxe qui se consomme. La perfection, éphémère par design.',desc:"Burton Chocolate explore le paradoxe du luxe consommable.",details:[{k:'Origines',v:'Cacao Criollo — Venezuela, Madagascar, São Tomé'},{k:'Process',v:'Bean-to-bar intégral, torréfaction à la pièce'},{k:'Teneur',v:'72% minimum — aucun ajout de vanilline de synthèse'}],prodTitle:'Créations',products:[{n:'Origine Noir',d:'85% Criollo vénézuélien. Amer, complexe, long en bouche.'},{n:'Collection Épices',d:'Poivre long de Java, cardamome noire, fleur de sel de Guérande.'},{n:'Coffret Fondateur',d:'12 ganaches, 3 origines, 1 tablette grand cru.'}],type:'standard'},
+        production:{open:false,eyebrow:'Burton — Division Créative',name:'Production',tagline:'Derrière chaque grand projet, une infrastructure invisible et redoutable.',desc:"Burton Production est le moteur créatif et opérationnel de l'organisation.",details:[{k:'Périmètre',v:'Audiovisuel, direction artistique, stratégie éditoriale'},{k:'Rôle interne',v:'Soutien créatif de toutes les autres branches Burton'},{k:'Accès',v:'Division fermée — recrutement interne uniquement'}],prodTitle:'Activités',products:[{n:'Burton Archives',d:"Documentation visuelle de l'histoire de l'organisation."},{n:'Contenu Stratégique',d:"Production de supports de communication internes et externes."},{n:'Événementiel',d:"Organisation des cérémonies d'intégration et rencontres annuelles."}],type:'production',filmTitre:'Aucune information pour le moment.',filmSynopsis:'Aucune information pour le moment.',filmDuree:'—',filmReal:'—',filmAnnee:'—',filmImg:'',cmTitre:'Aucune information pour le moment.',cmSynopsis:'Aucune information pour le moment.',cmDuree:'—',cmReal:'—',cmMois:'—',cmImg:''},
+        writing:{open:false,eyebrow:'Burton — Division Littéraire',name:'Writing',tagline:'Les mots comme architecture. Chaque texte, une fondation.',desc:"Burton Writing est la voix écrite de l'organisation.",details:[{k:'Formats',v:'Essais, nouvelles, articles, manifestes'},{k:'Diffusion',v:'Interne et externe — selon validation de la direction'},{k:'Accès',v:'Sur sélection — recrutement interne uniquement'}],prodTitle:'Domaines',products:[{n:'Fiction',d:'Nouvelles et récits courts.'},{n:'Essais',d:"Réflexions sur l'ambition, le progrès, l'excellence."},{n:'Manifestes',d:"Textes fondateurs de l'organisation."}],type:'writing',livreTitre:"Le Vengeur d'Or",livreDescription:"Paolo, un homme marqué par les blessures du passé, se lance dans une quête périlleuse à la recherche d'un trésor légendaire...",livreAuteur:'Elliot Burton',livreGenre:'Fantastique-Aventure',livreDateSortie:'Bientôt disponible — Soon..',livreCoverImg:''},
     },
-    echelons: [
-        { titre:'Stagiaire', texte:"Point d'entrée initial, période d'observation et d'apprentissage des fondamentaux de l'organisation." },
-        { titre:'Employé', texte:"Intégration complète aux équipes opérationnelles avec responsabilités définies et objectifs mesurables." },
-        { titre:'Employé Installé', texte:"Expertise confirmée, autonomie complète et contribution significative aux projets stratégiques." },
-        { titre:'Co-directeur', texte:"Leadership partagé sur des départements clés, participation aux décisions stratégiques majeures." },
-        { titre:'Directeur', texte:"Responsabilité totale d'un département, vision stratégique et influence directe sur l'avenir de l'organisation." },
+    echelons:[
+        {titre:'Stagiaire',texte:"Point d'entrée initial, période d'observation et d'apprentissage des fondamentaux de l'organisation."},
+        {titre:'Employé',texte:"Intégration complète aux équipes opérationnelles avec responsabilités définies et objectifs mesurables."},
+        {titre:'Employé Installé',texte:"Expertise confirmée, autonomie complète et contribution significative aux projets stratégiques."},
+        {titre:'Co-directeur',texte:"Leadership partagé sur des départements clés, participation aux décisions stratégiques majeures."},
+        {titre:'Directeur',texte:"Responsabilité totale d'un département, vision stratégique et influence directe sur l'avenir de l'organisation."},
     ],
-    stats: [
-        { nombre:'Max. 1000', label:'Candidatures acceptées par an' },
-        { nombre:'24', label:'Candidats retenus' },
+    stats:[
+        {nombre:'Max. 1000',label:'Candidatures acceptées par an'},
+        {nombre:'24',label:'Candidats retenus'},
     ],
-    etapes: [
-        { titre:'Questionnaire de Sélection', texte:"Évaluation initiale des compétences, motivations et alignement avec les valeurs de Burton Corporation." },
-        { titre:'Entretien avec le Fondateur', texte:"Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression." },
-        { titre:'Décision Finale', texte:"La direction collégiale examine votre candidature et prend la décision d'intégration définitive." },
+    etapes:[
+        {titre:'Questionnaire de Sélection',texte:"Évaluation initiale des compétences, motivations et alignement avec les valeurs de Burton Corporation."},
+        {titre:'Entretien avec le Fondateur',texte:"Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression."},
+        {titre:'Décision Finale',texte:"La direction collégiale examine votre candidature et prend la décision d'intégration définitive."},
     ],
 };
 
 /* ═══════════════════════════════════════════════════════════
-   STOCKAGE SÉCURISÉ
-   - Contenu éditorial → localStorage (pas sensible)
-   - URLs Google Sheets → obfuscation + sessionStorage admin
-   - Mot de passe → hash simple (pas bcrypt en JS pur = ok pour site statique)
+   ÉTAT GLOBAL
 ═══════════════════════════════════════════════════════════ */
-const STORAGE_KEYS = {
-    DATA: 'bc_data_v2',
-    CANDIDATURES: 'bc_cands_v2',
-    CONFIG: 'bc_cfg_v2',   // URLs encodées, non visibles dans code source
-    PW_HASH: 'bc_auth_v2',
-    SESSION: 'bc_sess_v2',
-    RATE: 'bc_rate_v2',
-};
+let SITE_DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+let adminLoggedIn = false;
+let adminLoginAttempts = 0;
+let adminLockUntil = 0;
+let currentFilter = 'all';
+let formOpenTime = 0;
+let sessionToken = '';
+const TOTAL_STEPS = 4;
+let currentStep = 1;
 
-// Hash simple (FNV-1a like) — suffisant pour site statique sans backend
+/* ═══════════════════════════════════════════════════════════
+   HASH SIMPLE (auth admin côté client)
+═══════════════════════════════════════════════════════════ */
 function simpleHash(str) {
     let h = 2166136261;
-    for (let i = 0; i < str.length; i++) {
-        h ^= str.charCodeAt(i);
-        h = (h * 16777619) >>> 0;
-    }
-    return h.toString(16).padStart(8, '0');
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = (h * 16777619) >>> 0; }
+    return h.toString(16).padStart(8,'0');
 }
+function getPwHash() { return localStorage.getItem('bc_pw_v3') || simpleHash('burton2024admin'); }
 
-// Obfuscation basique pour URLs sensibles (pas de true crypto en statique)
-function obfuscate(str) {
-    if (!str) return '';
-    return btoa(str.split('').map((c,i) => String.fromCharCode(c.charCodeAt(0) ^ (42 + i % 17))).join(''));
-}
-function deobfuscate(str) {
-    if (!str) return '';
+/* ═══════════════════════════════════════════════════════════
+   SUPABASE — CHARGEMENT CONFIG SITE
+═══════════════════════════════════════════════════════════ */
+async function loadSiteConfig() {
     try {
-        const decoded = atob(str);
-        return decoded.split('').map((c,i) => String.fromCharCode(c.charCodeAt(0) ^ (42 + i % 17))).join('');
-    } catch { return ''; }
+        const {data, error} = await sb.from('site_configuration').select('cle,valeur');
+        if (error || !data || data.length === 0) return;
+        // Reconstruire SITE_DATA depuis les clés Supabase
+        data.forEach(row => {
+            try {
+                const parsed = JSON.parse(row.valeur);
+                // Navigation par clé composée ex: "site.heroTitle", "branches.watch", "echelons", etc.
+                const parts = row.cle.split('.');
+                if (parts.length === 1) {
+                    SITE_DATA[parts[0]] = parsed;
+                } else if (parts.length === 2) {
+                    if (!SITE_DATA[parts[0]]) SITE_DATA[parts[0]] = {};
+                    SITE_DATA[parts[0]][parts[1]] = parsed;
+                }
+            } catch(e) {
+                // Valeur non-JSON, utiliser comme string
+                const parts = row.cle.split('.');
+                if (parts.length === 2) {
+                    if (!SITE_DATA[parts[0]]) SITE_DATA[parts[0]] = {};
+                    SITE_DATA[parts[0]][parts[1]] = row.valeur;
+                }
+            }
+        });
+    } catch(e) { /* fallback sur DEFAULT_DATA */ }
 }
 
-function getData() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.DATA)) || JSON.parse(JSON.stringify(DEFAULT_DATA)); }
-    catch { return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+async function saveSiteConfigToSupabase() {
+    // Sauvegarder chaque section comme une ligne clé/valeur
+    const rows = [
+        {cle:'site.general', valeur: JSON.stringify(SITE_DATA.site)},
+        {cle:'actualites.list', valeur: JSON.stringify(SITE_DATA.actualites)},
+        {cle:'branches.all', valeur: JSON.stringify(SITE_DATA.branches)},
+        {cle:'echelons.list', valeur: JSON.stringify(SITE_DATA.echelons)},
+        {cle:'stats.list', valeur: JSON.stringify(SITE_DATA.stats)},
+        {cle:'etapes.list', valeur: JSON.stringify(SITE_DATA.etapes)},
+    ];
+    for (const row of rows) {
+        await sb.from('site_configuration').upsert({cle: row.cle, valeur: row.valeur, updated_at: new Date().toISOString()}, {onConflict:'cle'});
+    }
 }
-function saveData(d) { localStorage.setItem(STORAGE_KEYS.DATA, JSON.stringify(d)); }
 
-function getCands() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.CANDIDATURES)) || []; }
-    catch { return []; }
-}
-function saveCands(c) { localStorage.setItem(STORAGE_KEYS.CANDIDATURES, JSON.stringify(c)); }
-
-function getConfig() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.CONFIG)) || {}; }
-    catch { return {}; }
-}
-function saveConfig(c) { localStorage.setItem(STORAGE_KEYS.CONFIG, JSON.stringify(c)); }
-
-function getPwHash() {
-    return localStorage.getItem(STORAGE_KEYS.PW_HASH) || simpleHash('burton2024admin');
+async function loadSiteConfigV2() {
+    try {
+        const {data, error} = await sb.from('site_configuration').select('cle,valeur');
+        if (error || !data || data.length === 0) return;
+        data.forEach(row => {
+            try {
+                const parsed = JSON.parse(row.valeur);
+                if (row.cle === 'site.general') SITE_DATA.site = parsed;
+                else if (row.cle === 'actualites.list') SITE_DATA.actualites = parsed;
+                else if (row.cle === 'branches.all') SITE_DATA.branches = parsed;
+                else if (row.cle === 'echelons.list') SITE_DATA.echelons = parsed;
+                else if (row.cle === 'stats.list') SITE_DATA.stats = parsed;
+                else if (row.cle === 'etapes.list') SITE_DATA.etapes = parsed;
+            } catch(e) {}
+        });
+    } catch(e) {}
 }
 
 /* ═══════════════════════════════════════════════════════════
-   RENDU DU SITE PUBLIC
+   UTILITAIRES
+═══════════════════════════════════════════════════════════ */
+function escHtml(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function setText(id, val) { const el = document.getElementById(id); if (el && val !== undefined) el.textContent = val; }
+function setVal(id) { const el = document.getElementById(id); return el ? (el.value||'').trim() : ''; }
+function setField(id, val) { const el = document.getElementById(id); if (el) el.value = val || ''; }
+function validateEmail(email) { return /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email.trim()) && email.trim().length <= 120; }
+
+/* ═══════════════════════════════════════════════════════════
+   RENDU SITE PUBLIC
 ═══════════════════════════════════════════════════════════ */
 function renderSite() {
-    const d = getData();
-    const s = d.site;
-
-    // Titres & textes
+    const s = SITE_DATA.site;
     document.title = s.title || 'Burton Corporation';
-    setText('site-title', s.title);
-    setText('loader-name', s.loader);
-    setText('nav-logo', s.navLogo);
-    setText('hero-title', s.heroTitle);
-    setText('hero-tagline', s.heroTagline);
-    setText('intro-p1', s.introP1);
-    setText('intro-p2', s.introP2);
-    setText('vision-titre', s.visionTitre);
-    setText('pilier1-titre', s.p1Titre);
-    setText('pilier1-texte', s.p1Texte);
-    setText('pilier2-titre', s.p2Titre);
-    setText('pilier2-texte', s.p2Texte);
-    setText('cta-titre', s.ctaTitre);
-    setText('cta-disclaimer', s.ctaDisclaimer);
-    setText('prog-titre', s.progTitre);
-    setText('prog-sous', s.progSous);
-    setText('sel-titre', s.selTitre);
-    setText('sel-sous', s.selSous);
-
-    renderActualites(d.actualites);
-    renderBranches(d.branches);
-    renderProgression(d.echelons);
-    renderSelection(d.stats, d.etapes);
-}
-
-function setText(id, val) {
-    const el = document.getElementById(id);
-    if (el && val !== undefined) el.textContent = val;
-}
-function setImg(id, src) {
-    const el = document.getElementById(id);
-    const ph = document.getElementById(id.replace('-img','-ph').replace('-cover','-cover-ph'));
-    if (!el) return;
-    if (src && src.trim() && src.startsWith('http')) {
-        el.src = src; el.style.display = 'block';
-        if (ph) ph.style.display = 'none';
-    } else {
-        el.style.display = 'none';
-        if (ph) ph.style.display = 'flex';
-    }
+    setText('site-title', s.title); setText('loader-name', s.loader);
+    setText('nav-logo', s.navLogo); setText('hero-title', s.heroTitle);
+    setText('hero-tagline', s.heroTagline); setText('intro-p1', s.introP1);
+    setText('intro-p2', s.introP2); setText('vision-titre', s.visionTitre);
+    setText('pilier1-titre', s.p1Titre); setText('pilier1-texte', s.p1Texte);
+    setText('pilier2-titre', s.p2Titre); setText('pilier2-texte', s.p2Texte);
+    setText('cta-titre', s.ctaTitre); setText('cta-disclaimer', s.ctaDisclaimer);
+    setText('prog-titre', s.progTitre); setText('prog-sous', s.progSous);
+    setText('sel-titre', s.selTitre); setText('sel-sous', s.selSous);
+    renderActualites(SITE_DATA.actualites);
+    renderBranches(SITE_DATA.branches);
+    renderProgression(SITE_DATA.echelons);
+    renderSelection(SITE_DATA.stats, SITE_DATA.etapes);
 }
 
 function renderActualites(actus) {
@@ -978,15 +990,15 @@ function renderActualites(actus) {
     if (!grid) return;
     grid.innerHTML = '';
     actus.forEach((a, i) => {
-        if (i > 0) grid.insertAdjacentHTML('beforeend', '<hr class="actu-separator">');
-        grid.insertAdjacentHTML('beforeend', `
+        if (i > 0) grid.insertAdjacentHTML('beforeend','<hr class="actu-separator">');
+        grid.insertAdjacentHTML('beforeend',`
         <div class="actu-card reveal-element">
             <div class="actu-card-images">
                 <div class="actu-img-wrap">
-                    ${a.img1 && a.img1.startsWith('http') ? `<img src="${escHtml(a.img1)}" alt="" style="width:100%;height:100%;object-fit:cover">` : '<div class="actu-img-placeholder"><span>Image à venir</span></div>'}
+                    ${a.img1&&a.img1.startsWith('http')?`<img src="${escHtml(a.img1)}" alt="" style="width:100%;height:100%;object-fit:cover">`:'<div class="actu-img-placeholder"><span>Image à venir</span></div>'}
                 </div>
                 <div class="actu-img-wrap">
-                    ${a.img2 && a.img2.startsWith('http') ? `<img src="${escHtml(a.img2)}" alt="" style="width:100%;height:100%;object-fit:cover">` : '<div class="actu-img-placeholder"><span>Image à venir</span></div>'}
+                    ${a.img2&&a.img2.startsWith('http')?`<img src="${escHtml(a.img2)}" alt="" style="width:100%;height:100%;object-fit:cover">`:'<div class="actu-img-placeholder"><span>Image à venir</span></div>'}
                 </div>
             </div>
             <div class="actu-card-text">
@@ -1001,564 +1013,314 @@ function renderActualites(actus) {
 function renderBranches(branches) {
     const tabsEl = document.getElementById('branches-tabs');
     const panelsEl = document.getElementById('branches-panels');
-    if (!tabsEl || !panelsEl) return;
-    tabsEl.innerHTML = '';
-    panelsEl.innerHTML = '';
+    if (!tabsEl||!panelsEl) return;
+    tabsEl.innerHTML = ''; panelsEl.innerHTML = '';
     let first = true;
-    Object.entries(branches).forEach(([key, b]) => {
-        const isActive = first;
-        tabsEl.insertAdjacentHTML('beforeend',
-            `<button class="branch-tab-inline${isActive?' active':''}" data-panel="${key}">${escHtml(b.name)}</button>`);
-        panelsEl.insertAdjacentHTML('beforeend', buildBranchPanel(key, b, isActive));
+    Object.entries(branches).forEach(([key,b]) => {
+        tabsEl.insertAdjacentHTML('beforeend',`<button class="branch-tab-inline${first?' active':''}" data-panel="${key}">${escHtml(b.name)}</button>`);
+        panelsEl.insertAdjacentHTML('beforeend', buildBranchPanel(key,b,first));
         first = false;
     });
-    // Rebind tab events
     document.querySelectorAll('.branch-tab-inline').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.branch-tab-inline').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.branch-panel-inline').forEach(p => p.classList.remove('active'));
+        tab.addEventListener('click',()=>{
+            document.querySelectorAll('.branch-tab-inline').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('.branch-panel-inline').forEach(p=>p.classList.remove('active'));
             tab.classList.add('active');
-            const panel = document.getElementById('panel-' + tab.dataset.panel);
-            if (panel) panel.classList.add('active');
+            const panel = document.getElementById('panel-'+tab.dataset.panel);
+            if(panel) panel.classList.add('active');
         });
     });
     initSubTabs();
 }
 
-function buildBranchPanel(key, b, isActive) {
+function buildBranchPanel(key,b,isActive) {
     const soonHtml = `<div class="branch-soon${!b.open?' visible':''}" id="soon-${key}"><div class="branch-soon-title">Bientôt</div><div class="branch-soon-sub">Cette branche n'est pas encore ouverte — Soon</div></div>`;
-    const detailsHtml = b.details.map(d=>`<div class="branch-detail-row"><span class="branch-detail-key">${escHtml(d.k)}</span><span class="branch-detail-val">${escHtml(d.v)}</span></div>`).join('');
-    const productsHtml = b.products.map((p,i)=>`<div class="branch-product-card"><div class="product-num">0${i+1}</div><div class="product-name">${escHtml(p.n)}</div><div class="product-desc">${escHtml(p.d)}</div></div>`).join('');
-    const apercu = `
-        <div class="prod-sub-panel vitrine-panel active" id="sub-apercu-${key}" style="padding-top:4rem">
-            <div class="branch-inner-grid">
-                <div>
-                    <span class="branch-eyebrow-inline">${escHtml(b.eyebrow)}</span>
-                    <div class="branch-name-inline">${escHtml(b.name)}</div>
-                    <div class="branch-tagline-inline">${escHtml(b.tagline)}</div>
-                    <div class="branch-desc-inline">${escHtml(b.desc)}</div>
-                </div>
-                <div>${detailsHtml}</div>
-            </div>
-            <div class="branch-products-inline-title">${escHtml(b.prodTitle)}</div>
-            <div class="branch-products-inline-grid">${productsHtml}</div>
-        </div>`;
-
+    const detailsHtml = (b.details||[]).map(d=>`<div class="branch-detail-row"><span class="branch-detail-key">${escHtml(d.k)}</span><span class="branch-detail-val">${escHtml(d.v)}</span></div>`).join('');
+    const productsHtml = (b.products||[]).map((p,i)=>`<div class="branch-product-card"><div class="product-num">0${i+1}</div><div class="product-name">${escHtml(p.n)}</div><div class="product-desc">${escHtml(p.d)}</div></div>`).join('');
+    const apercu = `<div class="prod-sub-panel vitrine-panel active" id="sub-apercu-${key}" style="padding-top:4rem">
+        <div class="branch-inner-grid">
+            <div><span class="branch-eyebrow-inline">${escHtml(b.eyebrow)}</span><div class="branch-name-inline">${escHtml(b.name)}</div><div class="branch-tagline-inline">${escHtml(b.tagline)}</div><div class="branch-desc-inline">${escHtml(b.desc)}</div></div>
+            <div>${detailsHtml}</div>
+        </div>
+        <div class="branch-products-inline-title">${escHtml(b.prodTitle)}</div>
+        <div class="branch-products-inline-grid">${productsHtml}</div>
+    </div>`;
     let extraPanels = '';
-    if (b.type === 'production') {
-        extraPanels = `
-        <div class="prod-sub-panel" id="sub-affiche-${key}">
-            <div class="affiche-section">
-                <div class="affiche-block">
-                    <div class="affiche-label">Film de l'Année</div>
-                    <div class="affiche-cadre">
-                        <div class="affiche-poster">
-                            ${b.filmImg && b.filmImg.startsWith('http') ? `<img src="${escHtml(b.filmImg)}" alt="Affiche film" style="width:100%;object-fit:cover;aspect-ratio:2/3;display:block">` : '<div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>'}
-                        </div>
-                        <div class="affiche-info">
-                            <div class="affiche-categorie">Long Métrage</div>
-                            <div class="affiche-titre">${escHtml(b.filmTitre)}</div>
-                            <div class="affiche-description">${escHtml(b.filmSynopsis)}</div>
-                            <div class="affiche-meta">
-                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">${escHtml(b.filmDuree)}</span></div>
-                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">${escHtml(b.filmReal)}</span></div>
-                                <div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val">${escHtml(b.filmAnnee)}</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="affiche-separator">
-                <div class="affiche-block">
-                    <div class="affiche-label">Court Métrage du Mois</div>
-                    <div class="affiche-cadre">
-                        <div class="affiche-poster">
-                            ${b.cmImg && b.cmImg.startsWith('http') ? `<img src="${escHtml(b.cmImg)}" alt="Affiche court métrage" style="width:100%;object-fit:cover;aspect-ratio:2/3;display:block">` : '<div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>'}
-                        </div>
-                        <div class="affiche-info">
-                            <div class="affiche-categorie">Court Métrage</div>
-                            <div class="affiche-titre">${escHtml(b.cmTitre)}</div>
-                            <div class="affiche-description">${escHtml(b.cmSynopsis)}</div>
-                            <div class="affiche-meta">
-                                <div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">${escHtml(b.cmDuree)}</span></div>
-                                <div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">${escHtml(b.cmReal)}</span></div>
-                                <div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val">${escHtml(b.cmMois)}</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    if (b.type==='production') {
+        extraPanels = `<div class="prod-sub-panel" id="sub-affiche-${key}"><div class="affiche-section">
+        <div class="affiche-block"><div class="affiche-label">Film de l'Année</div><div class="affiche-cadre">
+            <div class="affiche-poster">${b.filmImg&&b.filmImg.startsWith('http')?`<img src="${escHtml(b.filmImg)}" style="width:100%;object-fit:cover;aspect-ratio:2/3;display:block" alt="">`:'<div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>'}</div>
+            <div class="affiche-info"><div class="affiche-categorie">Long Métrage</div><div class="affiche-titre">${escHtml(b.filmTitre)}</div><div class="affiche-description">${escHtml(b.filmSynopsis)}</div>
+            <div class="affiche-meta"><div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">${escHtml(b.filmDuree)}</span></div><div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">${escHtml(b.filmReal)}</span></div><div class="affiche-meta-item"><span class="affiche-meta-key">Année</span><span class="affiche-meta-val">${escHtml(b.filmAnnee)}</span></div></div></div>
+        </div></div>
+        <hr class="affiche-separator">
+        <div class="affiche-block"><div class="affiche-label">Court Métrage du Mois</div><div class="affiche-cadre">
+            <div class="affiche-poster">${b.cmImg&&b.cmImg.startsWith('http')?`<img src="${escHtml(b.cmImg)}" style="width:100%;object-fit:cover;aspect-ratio:2/3;display:block" alt="">`:'<div class="affiche-poster-placeholder"><span>Affiche à venir</span></div>'}</div>
+            <div class="affiche-info"><div class="affiche-categorie">Court Métrage</div><div class="affiche-titre">${escHtml(b.cmTitre)}</div><div class="affiche-description">${escHtml(b.cmSynopsis)}</div>
+            <div class="affiche-meta"><div class="affiche-meta-item"><span class="affiche-meta-key">Durée</span><span class="affiche-meta-val">${escHtml(b.cmDuree)}</span></div><div class="affiche-meta-item"><span class="affiche-meta-key">Réalisation</span><span class="affiche-meta-val">${escHtml(b.cmReal)}</span></div><div class="affiche-meta-item"><span class="affiche-meta-key">Mois</span><span class="affiche-meta-val">${escHtml(b.cmMois)}</span></div></div></div>
+        </div></div>
+        </div></div>`;
+    } else if (b.type==='writing') {
+        extraPanels = `<div class="prod-sub-panel vitrine-panel" id="sub-affiche-${key}" style="padding-top:3rem">
+        <div class="affiche-label">Sortie Récente</div>
+        <div class="writing-card">
+            <div class="writing-cover" style="position:relative">${b.livreCoverImg&&b.livreCoverImg.startsWith('http')?`<img src="${escHtml(b.livreCoverImg)}" style="width:100%;height:100%;object-fit:cover" alt="">`:'<div class="writing-cover-placeholder"><span>Image à venir</span></div>'}</div>
+            <div class="writing-content"><div class="writing-genre-tag">Sortie Récente</div><div class="writing-titre">${escHtml(b.livreTitre)}</div><div class="writing-description">${escHtml(b.livreDescription)}</div>
+            <div class="writing-meta"><div class="affiche-meta-item"><span class="affiche-meta-key">Auteur</span><span class="affiche-meta-val">${escHtml(b.livreAuteur)}</span></div><div class="affiche-meta-item"><span class="affiche-meta-key">Genre</span><span class="affiche-meta-val">${escHtml(b.livreGenre)}</span></div><div class="affiche-meta-item"><span class="affiche-meta-key">Date de parution</span><span class="affiche-meta-val">${escHtml(b.livreDateSortie)}</span></div></div>
             </div>
-        </div>`;
-    } else if (b.type === 'writing') {
-        extraPanels = `
-        <div class="prod-sub-panel vitrine-panel" id="sub-affiche-${key}" style="padding-top:3rem">
-            <div class="affiche-label">Sortie Récente</div>
-            <div class="writing-card">
-                <div class="writing-cover" style="position:relative">
-                    ${b.livreCoverImg && b.livreCoverImg.startsWith('http')
-                        ? `<img src="${escHtml(b.livreCoverImg)}" style="width:100%;height:100%;object-fit:cover" alt="Couverture">`
-                        : '<div class="writing-cover-placeholder"><span>Image à venir</span></div>'}
-                </div>
-                <div class="writing-content">
-                    <div class="writing-genre-tag">Sortie Récente</div>
-                    <div class="writing-titre">${escHtml(b.livreTitre)}</div>
-                    <div class="writing-description">${escHtml(b.livreDescription)}</div>
-                    <div class="writing-meta">
-                        <div class="affiche-meta-item"><span class="affiche-meta-key">Auteur</span><span class="affiche-meta-val">${escHtml(b.livreAuteur)}</span></div>
-                        <div class="affiche-meta-item"><span class="affiche-meta-key">Genre</span><span class="affiche-meta-val">${escHtml(b.livreGenre)}</span></div>
-                        <div class="affiche-meta-item"><span class="affiche-meta-key">Date de parution</span><span class="affiche-meta-val">${escHtml(b.livreDateSortie)}</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>`;
+        </div></div>`;
     }
-
-    const secondTabLabel = b.type === 'production' ? "À l'Affiche" : b.type === 'writing' ? "À l'Affiche" : 'Vitrine';
-    const secondTabId = b.type === 'production' || b.type === 'writing' ? `affiche-${key}` : `vitrine-${key}`;
-
-    const tabs = `
-    <div class="production-sub-tabs vitrine-sub-tabs" id="${key}-tabs">
+    const secondTabLabel = (b.type==='production'||b.type==='writing') ? "À l'Affiche" : 'Vitrine';
+    const secondTabId = (b.type==='production'||b.type==='writing') ? `affiche-${key}` : `vitrine-${key}`;
+    const tabs = `<div class="production-sub-tabs vitrine-sub-tabs" id="${key}-tabs">
         <button class="prod-sub-tab vitrine-tab active" data-branch="${key}" data-sub="apercu-${key}">Aperçu</button>
         <button class="prod-sub-tab vitrine-tab" data-branch="${key}" data-sub="${secondTabId}">${secondTabLabel}</button>
     </div>`;
-
-    const vitrine = (b.type !== 'production' && b.type !== 'writing') ? `
-        <div class="prod-sub-panel vitrine-panel" id="sub-vitrine-${key}" style="padding-top:3rem">
-            <div class="vitrine-grid vitrine-grid-3">
-                <div class="vitrine-card"><div class="vitrine-img-wrap"><div class="vitrine-placeholder"><span>Image à venir</span></div></div><div class="vitrine-titre">—</div><div class="vitrine-desc">—</div></div>
-                <div class="vitrine-card"><div class="vitrine-img-wrap"><div class="vitrine-placeholder"><span>Image à venir</span></div></div><div class="vitrine-titre">—</div><div class="vitrine-desc">—</div></div>
-                <div class="vitrine-card"><div class="vitrine-img-wrap"><div class="vitrine-placeholder"><span>Image à venir</span></div></div><div class="vitrine-titre">—</div><div class="vitrine-desc">—</div></div>
-            </div>
-        </div>` : '';
-
-    return `
-    <div class="branch-panel-inline${isActive?' active':''}" id="panel-${key}">
-        ${soonHtml}
-        <div class="branch-content-wrap${!b.open?' hidden':''}" id="content-${key}">
-            <div class="branch-inner">
-                ${tabs}
-                ${apercu}
-                ${extraPanels}
-                ${vitrine}
-            </div>
-        </div>
-    </div>`;
+    const vitrine = (b.type!=='production'&&b.type!=='writing') ? `<div class="prod-sub-panel vitrine-panel" id="sub-vitrine-${key}" style="padding-top:3rem"><div class="vitrine-grid vitrine-grid-3">
+        <div class="vitrine-card"><div class="vitrine-img-wrap"><div class="vitrine-placeholder"><span>Image à venir</span></div></div><div class="vitrine-titre">—</div><div class="vitrine-desc">—</div></div>
+        <div class="vitrine-card"><div class="vitrine-img-wrap"><div class="vitrine-placeholder"><span>Image à venir</span></div></div><div class="vitrine-titre">—</div><div class="vitrine-desc">—</div></div>
+        <div class="vitrine-card"><div class="vitrine-img-wrap"><div class="vitrine-placeholder"><span>Image à venir</span></div></div><div class="vitrine-titre">—</div><div class="vitrine-desc">—</div></div>
+    </div></div>` : '';
+    return `<div class="branch-panel-inline${isActive?' active':''}" id="panel-${key}">${soonHtml}<div class="branch-content-wrap${!b.open?' hidden':''}" id="content-${key}"><div class="branch-inner">${tabs}${apercu}${extraPanels}${vitrine}</div></div></div>`;
 }
 
 function renderProgression(echelons) {
     const el = document.getElementById('progression-timeline');
     if (!el) return;
-    el.innerHTML = echelons.map((e,i) =>
-        `<div class="progression-step" style="transition-delay:${i*0.2}s"><h4>${escHtml(e.titre)}</h4><p>${escHtml(e.texte)}</p></div>`
-    ).join('');
-    // Rebind observer
-    document.querySelectorAll('.progression-step').forEach(el => observer.observe(el));
+    el.innerHTML = echelons.map((e,i)=>`<div class="progression-step" style="transition-delay:${i*0.2}s"><h4>${escHtml(e.titre)}</h4><p>${escHtml(e.texte)}</p></div>`).join('');
+    document.querySelectorAll('.progression-step').forEach(el=>observer.observe(el));
 }
 
-function renderSelection(stats, etapes) {
+function renderSelection(stats,etapes) {
     const statsEl = document.getElementById('sel-stats');
     const etapesEl = document.getElementById('procedure-steps');
-    if (statsEl) statsEl.innerHTML = stats.map((s,i) =>
-        `<div class="stat" style="transition-delay:${i*0.4}s"><span class="stat-number">${escHtml(s.nombre)}</span><span class="stat-label">${escHtml(s.label)}</span></div>`
-    ).join('');
-    if (etapesEl) etapesEl.innerHTML = etapes.map((e,i) =>
-        `<div class="procedure-step" style="transition-delay:${i*0.25}s"><div class="step-number">0${i+1}</div><h4>${escHtml(e.titre)}</h4><p>${escHtml(e.texte)}</p></div>`
-    ).join('');
-    document.querySelectorAll('.stat, .procedure-step').forEach(el => observer.observe(el));
-}
-
-function escHtml(s) {
-    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    if (statsEl) statsEl.innerHTML = stats.map((s,i)=>`<div class="stat" style="transition-delay:${i*0.4}s"><span class="stat-number">${escHtml(s.nombre)}</span><span class="stat-label">${escHtml(s.label)}</span></div>`).join('');
+    if (etapesEl) etapesEl.innerHTML = etapes.map((e,i)=>`<div class="procedure-step" style="transition-delay:${i*0.25}s"><div class="step-number">0${i+1}</div><h4>${escHtml(e.titre)}</h4><p>${escHtml(e.texte)}</p></div>`).join('');
+    document.querySelectorAll('.stat,.procedure-step').forEach(el=>observer.observe(el));
 }
 
 /* ═══════════════════════════════════════════════════════════
    SOUS-ONGLETS
 ═══════════════════════════════════════════════════════════ */
 function initSubTabs() {
-    document.querySelectorAll('.vitrine-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            const branch = tab.dataset.branch;
-            const subId = 'sub-' + tab.dataset.sub;
-            const tabContainer = document.getElementById(branch + '-tabs');
-            if (tabContainer) tabContainer.querySelectorAll('.vitrine-tab').forEach(t => t.classList.remove('active'));
-            const panel = document.getElementById(subId);
-            if (!panel) return;
-            // hide siblings
-            panel.parentElement.querySelectorAll('.prod-sub-panel, .vitrine-panel').forEach(p => p.classList.remove('active'));
-            tab.classList.add('active');
-            panel.classList.add('active');
-        });
-    });
-    document.querySelectorAll('.genre-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            const branch = tab.dataset.branch, genre = tab.dataset.genre;
-            document.querySelectorAll(`#genre-tabs-${branch} .genre-tab`).forEach(t => t.classList.remove('active'));
-            document.querySelectorAll(`[id^="genre-${branch}-"]`).forEach(p => p.classList.remove('active'));
-            tab.classList.add('active');
-            const panel = document.getElementById(`genre-${branch}-${genre}`);
-            if (panel) panel.classList.add('active');
-        });
-    });
-    // Production-specific tabs
-    document.querySelectorAll('#content-production .prod-sub-tab:not(.vitrine-tab)').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('#content-production .prod-sub-tab:not(.vitrine-tab)').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('#content-production .prod-sub-panel').forEach(p => p.classList.remove('active'));
-            tab.classList.add('active');
-            const panel = document.getElementById('sub-' + tab.dataset.sub);
-            if (panel) panel.classList.add('active');
+    document.querySelectorAll('.vitrine-tab').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+            const branch=tab.dataset.branch, subId='sub-'+tab.dataset.sub;
+            const tabContainer=document.getElementById(branch+'-tabs');
+            if(tabContainer) tabContainer.querySelectorAll('.vitrine-tab').forEach(t=>t.classList.remove('active'));
+            const panel=document.getElementById(subId);
+            if(!panel) return;
+            panel.parentElement.querySelectorAll('.prod-sub-panel,.vitrine-panel').forEach(p=>p.classList.remove('active'));
+            tab.classList.add('active'); panel.classList.add('active');
         });
     });
 }
 
 /* ═══════════════════════════════════════════════════════════
-   INTERSECTION OBSERVER + SCROLL
+   OBSERVER
 ═══════════════════════════════════════════════════════════ */
-const observer = new IntersectionObserver(entries =>
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal'); }),
-    { threshold: 0.1, rootMargin: '0px 0px -80px 0px' }
-);
-
-function bindObserver() {
-    document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el => observer.observe(el));
-}
+const observer = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('reveal');}),{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
+function bindObserver() { document.querySelectorAll('.reveal-element,.vision-card,.progression-step,.stat,.procedure-step').forEach(el=>observer.observe(el)); }
 
 /* ═══════════════════════════════════════════════════════════
-   FORMULAIRE DE CANDIDATURE — SÉCURISÉ
+   FORMULAIRE CANDIDATURE — SÉCURISÉ + SUPABASE
 ═══════════════════════════════════════════════════════════ */
-const TOTAL_STEPS = 4;
-let currentStep = 1;
-let sessionToken = '';
-let formOpenTime = 0;
-
-const stepMeta = [
-    {title:'Informations Personnelles', subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},
-    {title:'Motivation & Valeurs', subtitle:"Exprimez ce qui vous anime et votre adéquation avec notre culture."},
-    {title:'Expérience & Aptitudes', subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},
-    {title:'Engagement & Finalisation', subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'},
+const stepMeta=[
+    {title:'Informations Personnelles',subtitle:'Renseignez vos coordonnées pour débuter votre dossier de candidature.'},
+    {title:'Motivation & Valeurs',subtitle:"Exprimez ce qui vous anime et votre adéquation avec notre culture."},
+    {title:'Expérience & Aptitudes',subtitle:'Évaluez vos compétences et décrivez votre parcours professionnel.'},
+    {title:'Engagement & Finalisation',subtitle:'Définissez vos ambitions et confirmez vos engagements avant envoi.'},
 ];
 
 function buildRating(id) {
-    const c = document.getElementById(id);
-    if (!c) return;
-    c.innerHTML = '';
-    for (let i = 1; i <= 10; i++) {
-        const b = document.createElement('button');
-        b.type = 'button'; b.classList.add('rating-btn'); b.textContent = i; b.dataset.value = i;
-        b.addEventListener('click', () => {
-            c.querySelectorAll('.rating-btn').forEach(x => x.classList.remove('selected'));
-            b.classList.add('selected');
-        });
-        c.appendChild(b);
-    }
-}
-
-function validateEmail(email) {
-    return /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email.trim()) && email.trim().length <= 120;
+    const c = document.getElementById(id); if(!c) return; c.innerHTML='';
+    for(let i=1;i<=10;i++){const b=document.createElement('button');b.type='button';b.classList.add('rating-btn');b.textContent=i;b.dataset.value=i;b.addEventListener('click',()=>{c.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});c.appendChild(b);}
 }
 
 function openModal() {
-    // Rate limiting
-    const cfg = getConfig();
-    const rateLimit = parseInt(cfg.rateLimit || 120);
-    const lastSubmit = parseInt(localStorage.getItem(STORAGE_KEYS.RATE) || '0');
-    const now = Date.now();
-    if (lastSubmit && (now - lastSubmit) < rateLimit * 1000) {
-        const wait = Math.ceil((rateLimit * 1000 - (now - lastSubmit)) / 1000);
+    const lastSubmit = parseInt(localStorage.getItem('bc_rate_v3')||'0');
+    const rateLimit = 120;
+    if (lastSubmit && (Date.now()-lastSubmit) < rateLimit*1000) {
+        const wait = Math.ceil((rateLimit*1000-(Date.now()-lastSubmit))/1000);
         alert(`Veuillez patienter ${wait} secondes avant de soumettre une nouvelle candidature.`);
         return;
     }
-    // Generate session token
-    sessionToken = simpleHash(Date.now().toString() + Math.random().toString());
+    sessionToken = simpleHash(Date.now().toString()+Math.random().toString());
     formOpenTime = Date.now();
     document.getElementById('applicationModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow='hidden';
     goToStep(1);
 }
-function closeModal() {
-    document.getElementById('applicationModal').classList.remove('open');
-    document.body.style.overflow = '';
-}
+function closeModal() { document.getElementById('applicationModal').classList.remove('open'); document.body.style.overflow=''; }
 
 function goToStep(n) {
-    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-    const successScreen = document.getElementById('modal-success');
-    successScreen.classList.remove('active');
-    currentStep = n;
-    const modalFooter = document.getElementById('modal-footer');
-    const progressBar = document.getElementById('progressBar');
-    if (n <= TOTAL_STEPS) {
+    document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+    document.getElementById('modal-success').classList.remove('active');
+    currentStep=n;
+    const footer=document.getElementById('modal-footer');
+    const bar=document.getElementById('progressBar');
+    if(n<=TOTAL_STEPS){
         document.getElementById(`step-${n}`).classList.add('active');
-        document.getElementById('stepIndicator').textContent = `Étape ${n} sur ${TOTAL_STEPS}`;
-        document.getElementById('modalTitle').textContent = stepMeta[n-1].title;
-        document.getElementById('modalSubtitle').textContent = stepMeta[n-1].subtitle;
-        progressBar.style.width = `${((n-1)/TOTAL_STEPS)*100}%`;
-        document.getElementById('btnPrev').disabled = (n === 1);
-        document.getElementById('btnNext').textContent = (n === TOTAL_STEPS) ? 'Soumettre ma candidature →' : 'Continuer →';
-        modalFooter.style.display = 'flex';
+        document.getElementById('stepIndicator').textContent=`Étape ${n} sur ${TOTAL_STEPS}`;
+        document.getElementById('modalTitle').textContent=stepMeta[n-1].title;
+        document.getElementById('modalSubtitle').textContent=stepMeta[n-1].subtitle;
+        bar.style.width=`${((n-1)/TOTAL_STEPS)*100}%`;
+        document.getElementById('btnPrev').disabled=(n===1);
+        document.getElementById('btnNext').textContent=(n===TOTAL_STEPS)?'Soumettre ma candidature →':'Continuer →';
+        footer.style.display='flex';
     } else {
-        progressBar.style.width = '100%';
-        successScreen.classList.add('active');
-        modalFooter.style.display = 'none';
-        document.getElementById('stepIndicator').textContent = 'Traitement en cours…';
-        document.getElementById('modalTitle').textContent = '';
-        document.getElementById('modalSubtitle').textContent = '';
-        document.getElementById('success-analyzing').style.display = 'block';
-        document.getElementById('success-final').style.display = 'none';
+        bar.style.width='100%';
+        document.getElementById('modal-success').classList.add('active');
+        footer.style.display='none';
+        document.getElementById('stepIndicator').textContent='Traitement en cours…';
+        document.getElementById('modalTitle').textContent='';
+        document.getElementById('modalSubtitle').textContent='';
+        document.getElementById('success-analyzing').style.display='block';
+        document.getElementById('success-final').style.display='none';
     }
     document.querySelector('#applicationModal .modal').scrollTo({top:0,behavior:'smooth'});
 }
 
 function validateStep(n) {
-    const step = document.getElementById(`step-${n}`);
-    let valid = true;
-    step.querySelectorAll('[required]').forEach(f => {
-        f.style.borderColor = '';
-        if (f.type === 'checkbox') {
-            if (!f.checked) { f.closest('.checkbox-option').style.borderColor = 'rgba(255,80,80,0.4)'; valid = false; }
-        } else if (!f.value.trim()) {
-            f.style.borderColor = 'rgba(255,80,80,0.4)'; valid = false;
-        }
+    const step=document.getElementById(`step-${n}`); let valid=true;
+    step.querySelectorAll('[required]').forEach(f=>{
+        f.style.borderColor='';
+        if(f.type==='checkbox'){if(!f.checked){f.closest('.checkbox-option').style.borderColor='rgba(255,80,80,0.4)';valid=false;}}
+        else if(!f.value.trim()){f.style.borderColor='rgba(255,80,80,0.4)';valid=false;}
     });
-    if (n === 1) {
-        const email = document.getElementById('f-email').value;
-        if (!validateEmail(email)) {
-            document.getElementById('f-email').style.borderColor = 'rgba(255,80,80,0.4)';
-            valid = false;
-        }
-    }
-    if (n === 2 && !document.querySelector('input[name="valeur"]:checked')) {
-        valid = false;
-        step.querySelectorAll('.radio-option').forEach(x => { x.style.borderColor = 'rgba(255,80,80,0.3)'; setTimeout(() => x.style.borderColor = '', 2000); });
-    }
-    if (!valid) {
-        const m = document.querySelector('#applicationModal .modal');
-        m.style.transition = 'none'; m.style.transform = 'translateX(-8px)';
-        setTimeout(() => { m.style.transition = 'transform 0.4s ease'; m.style.transform = ''; }, 100);
-    }
+    if(n===1){const email=document.getElementById('f-email').value;if(!validateEmail(email)){document.getElementById('f-email').style.borderColor='rgba(255,80,80,0.4)';valid=false;}}
+    if(n===2&&!document.querySelector('input[name="valeur"]:checked')){valid=false;step.querySelectorAll('.radio-option').forEach(x=>{x.style.borderColor='rgba(255,80,80,0.3)';setTimeout(()=>x.style.borderColor='',2000)});}
+    if(!valid){const m=document.querySelector('#applicationModal .modal');m.style.transition='none';m.style.transform='translateX(-8px)';setTimeout(()=>{m.style.transition='transform 0.4s ease';m.style.transform='';},100);}
     return valid;
 }
 
 async function submitApplication() {
-    // ANTI-BOT : honeypot check
-    const hp1 = document.getElementById('hp-website').value;
-    const hp2 = document.getElementById('hp-email2').value;
-    if (hp1 || hp2) { showSuccess('BC-BOT-' + simpleHash(Date.now().toString())); return; }
+    // Anti-bot honeypot
+    if(document.getElementById('hp-website').value||document.getElementById('hp-email2').value){showSuccess('BC-BOT');return;}
+    // Anti-bot temps min
+    if(Date.now()-formOpenTime<5000){showSuccess('BC-'+simpleHash(Date.now().toString()));return;}
 
-    // ANTI-BOT : temps minimum de remplissage (5 secondes)
-    if (Date.now() - formOpenTime < 5000) { showSuccess('BC-' + simpleHash(Date.now().toString())); return; }
+    const age=parseInt(document.getElementById('f-age').value||0);
+    const nat=document.getElementById('f-nationalite').value||'';
+    const dispo=document.getElementById('f-disponibilite').value||'';
+    const prenom=document.getElementById('f-prenom').value.trim();
+    const nom=document.getElementById('f-nom').value.trim();
+    const email=document.getElementById('f-email').value.trim();
+    const ref='BC-'+Date.now().toString(36).toUpperCase().slice(-6);
 
-    const cfg = getConfig();
-    const minAge = parseInt(cfg.minAge || 18);
-    const minDispo = cfg.minDispo || '>20';
-    const dispoOrder = {'<5':0,'5-10':1,'10-20':2,'>20':3};
-    const allowedNat = ['fr','be','ch','ca','lu','ma','dz','tn','sn','ci','cm','ml','gn','cd','ga','de','es','it','pt','nl','gb','pl','ro'];
+    const allowedNat=['fr','be','ch','ca','lu','ma','dz','tn','sn','ci','cm','ml','gn','cd','ga','de','es','it','pt','nl','gb','pl','ro'];
+    const dispoOrder={'<5':0,'5-10':1,'10-20':2,'>20':3};
+    const isRejected = age<18 || !allowedNat.includes(nat) || (dispoOrder[dispo]||0)<3;
 
-    const age = parseInt(document.getElementById('f-age').value || 0);
-    const nat = document.getElementById('f-nationalite').value || '';
-    const dispo = document.getElementById('f-disponibilite').value || '';
-    const prenom = document.getElementById('f-prenom').value.trim();
-    const nom = document.getElementById('f-nom').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    const ref = 'BC-' + Date.now().toString(36).toUpperCase().slice(-6);
-
-    const isRejected = age < minAge || !allowedNat.includes(nat) || (dispoOrder[dispo] || 0) < (dispoOrder[minDispo] || 3);
-
-    // Sauvegarder localement
-    const cands = getCands();
-    const newCand = {
+    const candidature = {
         ref, prenom, nom, email, age, nat, dispo,
+        valeur: document.querySelector('input[name="valeur"]:checked')?.value||'—',
         motivation: document.getElementById('f-motivation').value.trim(),
         apport: document.getElementById('f-apport').value.trim(),
-        valeur: document.querySelector('input[name="valeur"]:checked')?.value || '—',
         objectif: document.getElementById('f-objectif').value.trim(),
         defi: document.getElementById('f-defi').value.trim(),
-        experience: document.getElementById('f-experience').value || '—',
-        detailExp: document.getElementById('f-detail-exp').value.trim(),
-        ratingEquipe: document.querySelector('#rating-equipe .rating-btn.selected')?.dataset.value || '—',
-        ratingPression: document.querySelector('#rating-pression .rating-btn.selected')?.dataset.value || '—',
-        competences: [...document.querySelectorAll('input[name="competence"]:checked')].map(c=>c.value).join(', ') || '—',
-        comment: document.getElementById('f-comment').value || '—',
+        experience: document.getElementById('f-experience').value||'—',
+        detail_exp: document.getElementById('f-detail-exp').value.trim(),
+        rating_equipe: document.querySelector('#rating-equipe .rating-btn.selected')?.dataset.value||'—',
+        rating_pression: document.querySelector('#rating-pression .rating-btn.selected')?.dataset.value||'—',
+        competences: [...document.querySelectorAll('input[name="competence"]:checked')].map(c=>c.value).join(', ')||'—',
+        comment: document.getElementById('f-comment').value||'—',
         statut: isRejected ? 'auto-rejected' : 'new',
-        date: new Date().toLocaleString('fr-FR'),
-        token: sessionToken,
     };
-    cands.push(newCand);
-    saveCands(cands);
-    localStorage.setItem(STORAGE_KEYS.RATE, Date.now().toString());
 
-    // Envoi Google Sheets via URL stockée chiffrée
-    const natL={fr:'Française',be:'Belge',ch:'Suisse',ca:'Canadienne',lu:'Luxembourgeoise',ma:'Marocaine',dz:'Algérienne',tn:'Tunisienne',sn:'Sénégalaise',ci:'Ivoirienne',cm:'Camerounaise',ml:'Malienne',gn:'Guinéenne',cd:'Congolaise (RDC)',ga:'Gabonaise',de:'Allemande',es:'Espagnole',it:'Italienne',pt:'Portugaise',nl:'Néerlandaise',gb:'Britannique',pl:'Polonaise',ro:'Roumaine',us:'Américaine',br:'Brésilienne',other:'Autre'};
-    const dispoL={'<5':'< 5h / sem','5-10':'5–10h / sem','10-20':'10–20h / sem','>20':'20h+ / sem'};
-    const valeurL={reussite:'Réussite',progres:'Progrès',excellence:'Excellence',loyaute:'Loyauté'};
+    // Envoi Supabase
+    try {
+        await sb.from('candidatures').insert([candidature]);
+    } catch(e) { /* silencieux */ }
 
-    // Récupérer URLs (déchiffrées en mémoire uniquement)
-    const sheetUrl = deobfuscate(cfg.sheetUrlEnc || '');
-    const sheetRejUrl = deobfuscate(cfg.sheetRejUrlEnc || '');
-
-    if (isRejected && sheetRejUrl) {
-        try {
-            const d = new FormData();
-            d.append('reference', ref); d.append('nom', nom); d.append('prenom', prenom);
-            d.append('email', email); d.append('raison', age < minAge ? 'Âge < ' + minAge : !allowedNat.includes(nat) ? 'Nationalité hors liste' : 'Disponibilité insuffisante');
-            d.append('_token', sessionToken);
-            await fetch(sheetRejUrl, {method:'POST', body:d});
-        } catch(e) {}
-    } else if (!isRejected && sheetUrl) {
-        try {
-            const d = new FormData();
-            d.append('timestamp', new Date().toLocaleString('fr-FR')); d.append('reference', ref);
-            d.append('prenom', prenom); d.append('nom', nom); d.append('age', age); d.append('email', email);
-            d.append('nationalite', natL[nat]||nat); d.append('disponibilite', dispoL[dispo]||dispo);
-            d.append('valeur', valeurL[newCand.valeur]||'—');
-            d.append('motivation', newCand.motivation); d.append('apport', newCand.apport);
-            d.append('objectif', newCand.objectif); d.append('defi', newCand.defi);
-            d.append('experience', newCand.experience); d.append('detailExp', newCand.detailExp);
-            d.append('ratingEquipe', newCand.ratingEquipe+'/10'); d.append('ratingPression', newCand.ratingPression+'/10');
-            d.append('competences', newCand.competences); d.append('comment', newCand.comment);
-            d.append('statut', 'new'); d.append('_token', sessionToken);
-            await fetch(sheetUrl, {method:'POST', body:d});
-        } catch(e) {}
-    }
-
+    localStorage.setItem('bc_rate_v3', Date.now().toString());
     showSuccess(ref);
 }
 
 function showSuccess(ref) {
-    document.getElementById('success-analyzing').style.display = 'none';
-    const sf = document.getElementById('success-final');
-    sf.style.display = 'flex';
-    document.getElementById('success-ref').textContent = `Référence — ${ref}`;
-    document.getElementById('stepIndicator').textContent = 'Candidature envoyée';
+    document.getElementById('success-analyzing').style.display='none';
+    const sf=document.getElementById('success-final');
+    sf.style.display='flex';
+    document.getElementById('success-ref').textContent=`Référence — ${ref}`;
+    document.getElementById('stepIndicator').textContent='Candidature envoyée';
 }
 
 /* ═══════════════════════════════════════════════════════════
    ADMIN — AUTH
 ═══════════════════════════════════════════════════════════ */
-let adminLoginAttempts = 0;
-let adminLockUntil = 0;
-
 function openAdmin() {
     document.getElementById('admin-panel').classList.add('open');
-    document.getElementById('adm-login-screen').style.display = 'flex';
-    document.getElementById('adm-dashboard').style.display = 'none';
-    document.getElementById('adm-pw').value = '';
-    document.getElementById('adm-error').style.display = 'none';
+    document.getElementById('adm-login-screen').style.display='flex';
+    document.getElementById('adm-dashboard').style.display='none';
+    document.getElementById('adm-pw').value='';
+    document.getElementById('adm-error').style.display='none';
 }
-function closeAdmin() {
-    document.getElementById('admin-panel').classList.remove('open');
-}
-function adminLogin() {
-    const now = Date.now();
-    if (adminLockUntil && now < adminLockUntil) {
-        const wait = Math.ceil((adminLockUntil - now) / 1000);
-        document.getElementById('adm-error').textContent = `Trop de tentatives. Attendez ${wait}s.`;
-        document.getElementById('adm-error').style.display = 'block';
-        return;
+function closeAdmin() { document.getElementById('admin-panel').classList.remove('open'); }
+
+async function adminLogin() {
+    const now=Date.now();
+    if(adminLockUntil&&now<adminLockUntil){
+        const wait=Math.ceil((adminLockUntil-now)/1000);
+        document.getElementById('adm-error').textContent=`Trop de tentatives. Attendez ${wait}s.`;
+        document.getElementById('adm-error').style.display='block'; return;
     }
-    const pw = document.getElementById('adm-pw').value;
-    const hash = simpleHash(pw);
-    if (hash === getPwHash()) {
-        adminLoginAttempts = 0;
-        document.getElementById('adm-login-screen').style.display = 'none';
-        document.getElementById('adm-dashboard').style.display = 'block';
-        populateAdminForms();
-        refreshCandidatures();
+    const pw=document.getElementById('adm-pw').value;
+    if(simpleHash(pw)===getPwHash()){
+        adminLoginAttempts=0; adminLoggedIn=true;
+        document.getElementById('adm-login-screen').style.display='none';
+        document.getElementById('adm-dashboard').style.display='block';
+        await populateAdminForms();
+        await refreshCandidatures();
         refreshDashboard();
     } else {
         adminLoginAttempts++;
-        if (adminLoginAttempts >= 5) {
-            adminLockUntil = Date.now() + 60000;
-            document.getElementById('adm-error').textContent = 'Trop de tentatives. Accès bloqué 60 secondes.';
-        } else {
-            document.getElementById('adm-error').textContent = `Mot de passe incorrect (${adminLoginAttempts}/5)`;
-        }
-        document.getElementById('adm-error').style.display = 'block';
-        document.getElementById('adm-pw').value = '';
+        if(adminLoginAttempts>=5){adminLockUntil=Date.now()+60000;document.getElementById('adm-error').textContent='Trop de tentatives. Accès bloqué 60 secondes.';}
+        else{document.getElementById('adm-error').textContent=`Mot de passe incorrect (${adminLoginAttempts}/5)`;}
+        document.getElementById('adm-error').style.display='block';
+        document.getElementById('adm-pw').value='';
     }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ADMIN — NAVIGATION
+   ADMIN — REMPLISSAGE FORMULAIRES
 ═══════════════════════════════════════════════════════════ */
-document.querySelectorAll('.adm-nav-item').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.adm-nav-item').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.adm-section').forEach(s => s.classList.remove('active'));
-        btn.classList.add('active');
-        const sec = document.getElementById('sec-' + btn.dataset.section);
-        if (sec) sec.classList.add('active');
-        if (btn.dataset.section === 'candidatures') refreshCandidatures();
-        if (btn.dataset.section === 'dashboard') refreshDashboard();
-    });
-});
-
-/* ═══════════════════════════════════════════════════════════
-   ADMIN — REMPLISSAGE DES FORMULAIRES
-═══════════════════════════════════════════════════════════ */
-function populateAdminForms() {
-    const d = getData();
-    const s = d.site;
-    const cfg = getConfig();
-
-    // Site textes
-    setVal('s-title', s.title); setVal('s-nav-logo', s.navLogo); setVal('s-loader', s.loader);
-    setVal('s-hero-title', s.heroTitle); setVal('s-hero-tagline', s.heroTagline);
-    setVal('s-intro-p1', s.introP1); setVal('s-intro-p2', s.introP2);
-    setVal('s-vision-titre', s.visionTitre);
-    setVal('s-p1-titre', s.p1Titre); setVal('s-p1-texte', s.p1Texte);
-    setVal('s-p2-titre', s.p2Titre); setVal('s-p2-texte', s.p2Texte);
-    setVal('s-cta-titre', s.ctaTitre); setVal('s-cta-disclaimer', s.ctaDisclaimer);
-    setVal('s-prog-titre', s.progTitre); setVal('s-prog-sous', s.progSous);
-    setVal('s-sel-titre', s.selTitre); setVal('s-sel-sous', s.selSous);
-
-    // Actualités
-    renderActuAdmin(d.actualites);
-    // Branches
-    renderBranchesAdmin(d.branches);
-    // Progression
-    renderEchelonsAdmin(d.echelons);
-    // Sélection
-    renderStatsAdmin(d.stats);
-    renderEtapesAdmin(d.etapes);
-
-    // Config (URLs déchiffrées pour affichage)
-    const sheetUrl = deobfuscate(cfg.sheetUrlEnc || '');
-    const sheetRejUrl = deobfuscate(cfg.sheetRejUrlEnc || '');
-    if (sheetUrl) document.getElementById('cfg-sheet-url').placeholder = '••••••••••••• (configurée)';
-    if (sheetRejUrl) document.getElementById('cfg-sheet-rejected-url').placeholder = '••••••••••••• (configurée)';
-    setVal('cfg-rate-limit', cfg.rateLimit || 120);
-    setVal('cfg-min-age', cfg.minAge || 18);
-    const minDispoEl = document.getElementById('cfg-min-dispo');
-    if (minDispoEl) minDispoEl.value = cfg.minDispo || '>20';
-}
-
-function setVal(id, val) {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
+async function populateAdminForms() {
+    await loadSiteConfigV2();
+    const s=SITE_DATA.site;
+    setField('s-title',s.title); setField('s-nav-logo',s.navLogo); setField('s-loader',s.loader);
+    setField('s-hero-title',s.heroTitle); setField('s-hero-tagline',s.heroTagline);
+    setField('s-intro-p1',s.introP1); setField('s-intro-p2',s.introP2);
+    setField('s-vision-titre',s.visionTitre);
+    setField('s-p1-titre',s.p1Titre); setField('s-p1-texte',s.p1Texte);
+    setField('s-p2-titre',s.p2Titre); setField('s-p2-texte',s.p2Texte);
+    setField('s-cta-titre',s.ctaTitre); setField('s-cta-disclaimer',s.ctaDisclaimer);
+    setField('s-prog-titre',s.progTitre); setField('s-prog-sous',s.progSous);
+    setField('s-sel-titre',s.selTitre); setField('s-sel-sous',s.selSous);
+    renderActuAdmin(SITE_DATA.actualites);
+    renderBranchesAdmin(SITE_DATA.branches);
+    renderEchelonsAdmin(SITE_DATA.echelons);
+    renderStatsAdmin(SITE_DATA.stats);
+    renderEtapesAdmin(SITE_DATA.etapes);
 }
 
 function renderActuAdmin(actus) {
-    const el = document.getElementById('actu-admin-list');
-    if (!el) return;
-    el.innerHTML = actus.map((a, i) => `
-    <div class="adm-block">
-        <div class="adm-block-title">Actualité ${i+1}</div>
-        <div class="adm-grid-2">
-            <div class="adm-field"><label>Date</label><input type="text" id="actu-${i}-date" value="${escHtml(a.date||'')}" maxlength="60" placeholder="ex: Mars 2025"></div>
-            <div class="adm-field"><label>Titre</label><input type="text" id="actu-${i}-titre" value="${escHtml(a.titre)}" maxlength="150"></div>
-        </div>
-        <div class="adm-field"><label>Texte / Description</label><textarea id="actu-${i}-texte" maxlength="1000">${escHtml(a.texte)}</textarea></div>
-        <div class="adm-grid-2">
-            <div class="adm-field"><label>Image 1 — URL (https://...)</label><input type="url" id="actu-${i}-img1" value="${escHtml(a.img1||'')}" maxlength="500" placeholder="https://..."><div class="adm-field-hint">Hébergez vos images sur Imgur, Cloudinary ou votre serveur</div></div>
-            <div class="adm-field"><label>Image 2 — URL (https://...)</label><input type="url" id="actu-${i}-img2" value="${escHtml(a.img2||'')}" maxlength="500" placeholder="https://..."></div>
-        </div>
-    </div>`).join('');
+    const el=document.getElementById('actu-admin-list'); if(!el) return;
+    el.innerHTML=actus.map((a,i)=>`
+    <div class="adm-block"><div class="adm-block-title">Actualité ${i+1}</div>
+    <div class="adm-grid-2">
+        <div class="adm-field"><label>Date</label><input type="text" id="actu-${i}-date" value="${escHtml(a.date||'')}" maxlength="60" placeholder="ex: Mars 2025"></div>
+        <div class="adm-field"><label>Titre</label><input type="text" id="actu-${i}-titre" value="${escHtml(a.titre)}" maxlength="150"></div>
+    </div>
+    <div class="adm-field"><label>Texte</label><textarea id="actu-${i}-texte" maxlength="1000">${escHtml(a.texte)}</textarea></div>
+    <div class="adm-grid-2">
+        <div class="adm-field"><label>Image 1 — URL https://</label><input type="url" id="actu-${i}-img1" value="${escHtml(a.img1||'')}" maxlength="500" placeholder="https://..."><div class="adm-field-hint">Hébergez sur Imgur ou Cloudinary</div></div>
+        <div class="adm-field"><label>Image 2 — URL https://</label><input type="url" id="actu-${i}-img2" value="${escHtml(a.img2||'')}" maxlength="500" placeholder="https://..."></div>
+    </div></div>`).join('');
 }
 
 function renderBranchesAdmin(branches) {
-    const el = document.getElementById('branches-admin-list');
-    if (!el) return;
-    el.innerHTML = Object.entries(branches).map(([key, b]) => `
+    const el=document.getElementById('branches-admin-list'); if(!el) return;
+    el.innerHTML=Object.entries(branches).map(([key,b])=>`
     <div class="adm-block">
         <div class="adm-block-title" style="display:flex;align-items:center;justify-content:space-between">
             <span>${escHtml(b.name)}</span>
@@ -1569,409 +1331,316 @@ function renderBranchesAdmin(branches) {
             </label>
         </div>
         <div class="adm-grid-2">
-            <div class="adm-field"><label>Sous-titre discret (eyebrow)</label><input type="text" id="b-${key}-eyebrow" value="${escHtml(b.eyebrow)}" maxlength="100"></div>
+            <div class="adm-field"><label>Sous-titre (eyebrow)</label><input type="text" id="b-${key}-eyebrow" value="${escHtml(b.eyebrow)}" maxlength="100"></div>
             <div class="adm-field"><label>Nom affiché</label><input type="text" id="b-${key}-name" value="${escHtml(b.name)}" maxlength="60"></div>
         </div>
-        <div class="adm-field"><label>Accroche (tagline)</label><input type="text" id="b-${key}-tagline" value="${escHtml(b.tagline)}" maxlength="200"></div>
-        <div class="adm-field"><label>Description longue</label><textarea id="b-${key}-desc" maxlength="1000">${escHtml(b.desc)}</textarea></div>
-        <div class="adm-field"><label>Titre bloc produits/collections</label><input type="text" id="b-${key}-prodtitle" value="${escHtml(b.prodTitle)}" maxlength="80"></div>
-        ${b.details.map((det,di)=>`
-        <div class="adm-grid-2" style="margin-bottom:0.5rem">
+        <div class="adm-field"><label>Accroche</label><input type="text" id="b-${key}-tagline" value="${escHtml(b.tagline)}" maxlength="200"></div>
+        <div class="adm-field"><label>Description</label><textarea id="b-${key}-desc" maxlength="1000">${escHtml(b.desc)}</textarea></div>
+        <div class="adm-field"><label>Titre bloc produits</label><input type="text" id="b-${key}-prodtitle" value="${escHtml(b.prodTitle)}" maxlength="80"></div>
+        ${(b.details||[]).map((det,di)=>`<div class="adm-grid-2" style="margin-bottom:0.5rem">
             <div class="adm-field"><label>Détail ${di+1} — Clé</label><input type="text" id="b-${key}-det-${di}-k" value="${escHtml(det.k)}" maxlength="50"></div>
             <div class="adm-field"><label>Détail ${di+1} — Valeur</label><input type="text" id="b-${key}-det-${di}-v" value="${escHtml(det.v)}" maxlength="200"></div>
         </div>`).join('')}
-        ${b.products.map((pr,pi)=>`
-        <div class="adm-grid-2" style="margin-bottom:0.5rem">
+        ${(b.products||[]).map((pr,pi)=>`<div class="adm-grid-2" style="margin-bottom:0.5rem">
             <div class="adm-field"><label>Produit ${pi+1} — Nom</label><input type="text" id="b-${key}-pr-${pi}-n" value="${escHtml(pr.n)}" maxlength="80"></div>
             <div class="adm-field"><label>Produit ${pi+1} — Description</label><input type="text" id="b-${key}-pr-${pi}-d" value="${escHtml(pr.d)}" maxlength="300"></div>
         </div>`).join('')}
-        ${b.type === 'production' ? `
-        <hr style="border-color:rgba(255,255,255,0.04);margin:1.5rem 0">
+        ${b.type==='production'?`<hr style="border-color:rgba(255,255,255,0.04);margin:1.5rem 0">
         <div class="adm-block-title">Film de l'Année</div>
-        <div class="adm-grid-2">
-            <div class="adm-field"><label>Titre</label><input type="text" id="b-${key}-filmTitre" value="${escHtml(b.filmTitre||'')}" maxlength="150"></div>
-            <div class="adm-field"><label>URL Affiche (https://...)</label><input type="url" id="b-${key}-filmImg" value="${escHtml(b.filmImg||'')}" maxlength="500" placeholder="https://..."></div>
-        </div>
+        <div class="adm-grid-2"><div class="adm-field"><label>Titre</label><input type="text" id="b-${key}-filmTitre" value="${escHtml(b.filmTitre||'')}" maxlength="150"></div><div class="adm-field"><label>URL Affiche</label><input type="url" id="b-${key}-filmImg" value="${escHtml(b.filmImg||'')}" maxlength="500" placeholder="https://..."></div></div>
         <div class="adm-field"><label>Synopsis</label><textarea id="b-${key}-filmSynopsis" maxlength="1000">${escHtml(b.filmSynopsis||'')}</textarea></div>
-        <div class="adm-grid-3">
-            <div class="adm-field"><label>Durée</label><input type="text" id="b-${key}-filmDuree" value="${escHtml(b.filmDuree||'')}" maxlength="30"></div>
-            <div class="adm-field"><label>Réalisation</label><input type="text" id="b-${key}-filmReal" value="${escHtml(b.filmReal||'')}" maxlength="80"></div>
-            <div class="adm-field"><label>Année</label><input type="text" id="b-${key}-filmAnnee" value="${escHtml(b.filmAnnee||'')}" maxlength="20"></div>
-        </div>
+        <div class="adm-grid-3"><div class="adm-field"><label>Durée</label><input type="text" id="b-${key}-filmDuree" value="${escHtml(b.filmDuree||'')}" maxlength="30"></div><div class="adm-field"><label>Réalisation</label><input type="text" id="b-${key}-filmReal" value="${escHtml(b.filmReal||'')}" maxlength="80"></div><div class="adm-field"><label>Année</label><input type="text" id="b-${key}-filmAnnee" value="${escHtml(b.filmAnnee||'')}" maxlength="20"></div></div>
         <div class="adm-block-title" style="margin-top:1.5rem">Court Métrage du Mois</div>
-        <div class="adm-grid-2">
-            <div class="adm-field"><label>Titre</label><input type="text" id="b-${key}-cmTitre" value="${escHtml(b.cmTitre||'')}" maxlength="150"></div>
-            <div class="adm-field"><label>URL Affiche (https://...)</label><input type="url" id="b-${key}-cmImg" value="${escHtml(b.cmImg||'')}" maxlength="500" placeholder="https://..."></div>
-        </div>
+        <div class="adm-grid-2"><div class="adm-field"><label>Titre</label><input type="text" id="b-${key}-cmTitre" value="${escHtml(b.cmTitre||'')}" maxlength="150"></div><div class="adm-field"><label>URL Affiche</label><input type="url" id="b-${key}-cmImg" value="${escHtml(b.cmImg||'')}" maxlength="500" placeholder="https://..."></div></div>
         <div class="adm-field"><label>Synopsis</label><textarea id="b-${key}-cmSynopsis" maxlength="1000">${escHtml(b.cmSynopsis||'')}</textarea></div>
-        <div class="adm-grid-3">
-            <div class="adm-field"><label>Durée</label><input type="text" id="b-${key}-cmDuree" value="${escHtml(b.cmDuree||'')}" maxlength="30"></div>
-            <div class="adm-field"><label>Réalisation</label><input type="text" id="b-${key}-cmReal" value="${escHtml(b.cmReal||'')}" maxlength="80"></div>
-            <div class="adm-field"><label>Mois</label><input type="text" id="b-${key}-cmMois" value="${escHtml(b.cmMois||'')}" maxlength="30"></div>
-        </div>` : ''}
-        ${b.type === 'writing' ? `
-        <hr style="border-color:rgba(255,255,255,0.04);margin:1.5rem 0">
+        <div class="adm-grid-3"><div class="adm-field"><label>Durée</label><input type="text" id="b-${key}-cmDuree" value="${escHtml(b.cmDuree||'')}" maxlength="30"></div><div class="adm-field"><label>Réalisation</label><input type="text" id="b-${key}-cmReal" value="${escHtml(b.cmReal||'')}" maxlength="80"></div><div class="adm-field"><label>Mois</label><input type="text" id="b-${key}-cmMois" value="${escHtml(b.cmMois||'')}" maxlength="30"></div></div>`:''}
+        ${b.type==='writing'?`<hr style="border-color:rgba(255,255,255,0.04);margin:1.5rem 0">
         <div class="adm-block-title">Livre — À l'Affiche</div>
-        <div class="adm-grid-2">
-            <div class="adm-field"><label>Titre du livre</label><input type="text" id="b-${key}-livreTitre" value="${escHtml(b.livreTitre||'')}" maxlength="150"></div>
-            <div class="adm-field"><label>URL Couverture (https://...)</label><input type="url" id="b-${key}-livreCoverImg" value="${escHtml(b.livreCoverImg||'')}" maxlength="500" placeholder="https://..."></div>
-        </div>
-        <div class="adm-field"><label>Description / Résumé</label><textarea id="b-${key}-livreDescription" maxlength="1500">${escHtml(b.livreDescription||'')}</textarea></div>
-        <div class="adm-grid-3">
-            <div class="adm-field"><label>Auteur</label><input type="text" id="b-${key}-livreAuteur" value="${escHtml(b.livreAuteur||'')}" maxlength="80"></div>
-            <div class="adm-field"><label>Genre</label><input type="text" id="b-${key}-livreGenre" value="${escHtml(b.livreGenre||'')}" maxlength="80"></div>
-            <div class="adm-field"><label>Date de parution</label><input type="text" id="b-${key}-livreDateSortie" value="${escHtml(b.livreDateSortie||'')}" maxlength="80"></div>
-        </div>` : ''}
+        <div class="adm-grid-2"><div class="adm-field"><label>Titre</label><input type="text" id="b-${key}-livreTitre" value="${escHtml(b.livreTitre||'')}" maxlength="150"></div><div class="adm-field"><label>URL Couverture</label><input type="url" id="b-${key}-livreCoverImg" value="${escHtml(b.livreCoverImg||'')}" maxlength="500" placeholder="https://..."></div></div>
+        <div class="adm-field"><label>Description</label><textarea id="b-${key}-livreDescription" maxlength="1500">${escHtml(b.livreDescription||'')}</textarea></div>
+        <div class="adm-grid-3"><div class="adm-field"><label>Auteur</label><input type="text" id="b-${key}-livreAuteur" value="${escHtml(b.livreAuteur||'')}" maxlength="80"></div><div class="adm-field"><label>Genre</label><input type="text" id="b-${key}-livreGenre" value="${escHtml(b.livreGenre||'')}" maxlength="80"></div><div class="adm-field"><label>Date de parution</label><input type="text" id="b-${key}-livreDateSortie" value="${escHtml(b.livreDateSortie||'')}" maxlength="80"></div></div>`:''}
     </div>`).join('');
-
-    // Bind toggle status updates
-    Object.keys(branches).forEach(key => {
-        const toggle = document.getElementById(`branch-${key}-open`);
-        const status = document.getElementById(`branch-${key}-status`);
-        if (toggle && status) {
-            toggle.addEventListener('change', () => {
-                status.textContent = toggle.checked ? 'OUVERTE' : 'FERMÉE';
-                status.className = 'toggle-status' + (toggle.checked ? '' : ' off');
-            });
-        }
+    Object.keys(branches).forEach(key=>{
+        const toggle=document.getElementById(`branch-${key}-open`);
+        const status=document.getElementById(`branch-${key}-status`);
+        if(toggle&&status){toggle.addEventListener('change',()=>{status.textContent=toggle.checked?'OUVERTE':'FERMÉE';status.className='toggle-status'+(toggle.checked?'':' off');});}
     });
 }
 
 function renderEchelonsAdmin(echelons) {
-    const el = document.getElementById('echelons-admin-list');
-    if (!el) return;
-    el.innerHTML = echelons.map((e, i) => `
-    <div style="display:grid;grid-template-columns:1fr 2fr;gap:1rem;margin-bottom:1rem">
+    const el=document.getElementById('echelons-admin-list'); if(!el) return;
+    el.innerHTML=echelons.map((e,i)=>`<div style="display:grid;grid-template-columns:1fr 2fr;gap:1rem;margin-bottom:1rem">
         <div class="adm-field"><label>Échelon ${i+1} — Titre</label><input type="text" id="ech-${i}-titre" value="${escHtml(e.titre)}" maxlength="60"></div>
         <div class="adm-field"><label>Description</label><input type="text" id="ech-${i}-texte" value="${escHtml(e.texte)}" maxlength="300"></div>
     </div>`).join('');
 }
 
 function renderStatsAdmin(stats) {
-    const el = document.getElementById('stats-admin-list');
-    if (!el) return;
-    el.innerHTML = stats.map((s, i) => `
-    <div class="adm-grid-2" style="margin-bottom:1rem">
+    const el=document.getElementById('stats-admin-list'); if(!el) return;
+    el.innerHTML=stats.map((s,i)=>`<div class="adm-grid-2" style="margin-bottom:1rem">
         <div class="adm-field"><label>Stat ${i+1} — Nombre</label><input type="text" id="stat-${i}-nombre" value="${escHtml(s.nombre)}" maxlength="40"></div>
         <div class="adm-field"><label>Stat ${i+1} — Libellé</label><input type="text" id="stat-${i}-label" value="${escHtml(s.label)}" maxlength="100"></div>
     </div>`).join('');
 }
 
 function renderEtapesAdmin(etapes) {
-    const el = document.getElementById('etapes-admin-list');
-    if (!el) return;
-    el.innerHTML = etapes.map((e, i) => `
-    <div class="adm-grid-2" style="margin-bottom:1rem">
+    const el=document.getElementById('etapes-admin-list'); if(!el) return;
+    el.innerHTML=etapes.map((e,i)=>`<div class="adm-grid-2" style="margin-bottom:1rem">
         <div class="adm-field"><label>Étape ${i+1} — Titre</label><input type="text" id="etape-${i}-titre" value="${escHtml(e.titre)}" maxlength="80"></div>
-        <div class="adm-field"><label>Étape ${i+1} — Description</label><textarea id="etape-${i}-texte" maxlength="300" style="min-height:60px">${escHtml(e.texte)}</textarea></div>
+        <div class="adm-field"><label>Description</label><textarea id="etape-${i}-texte" maxlength="300" style="min-height:60px">${escHtml(e.texte)}</textarea></div>
     </div>`).join('');
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ADMIN — SAUVEGARDE
+   ADMIN — SAUVEGARDE SUPABASE
 ═══════════════════════════════════════════════════════════ */
-function saveAdmin() {
-    const d = getData();
+async function saveAdmin() {
+    const btn=document.getElementById('adm-save-btn');
+    btn.textContent='Sauvegarde...'; btn.disabled=true;
 
-    // Site textes
-    d.site.title = getVal('s-title') || d.site.title;
-    d.site.navLogo = getVal('s-nav-logo'); d.site.loader = getVal('s-loader');
-    d.site.heroTitle = getVal('s-hero-title'); d.site.heroTagline = getVal('s-hero-tagline');
-    d.site.introP1 = getVal('s-intro-p1'); d.site.introP2 = getVal('s-intro-p2');
-    d.site.visionTitre = getVal('s-vision-titre');
-    d.site.p1Titre = getVal('s-p1-titre'); d.site.p1Texte = getVal('s-p1-texte');
-    d.site.p2Titre = getVal('s-p2-titre'); d.site.p2Texte = getVal('s-p2-texte');
-    d.site.ctaTitre = getVal('s-cta-titre'); d.site.ctaDisclaimer = getVal('s-cta-disclaimer');
-    d.site.progTitre = getVal('s-prog-titre'); d.site.progSous = getVal('s-prog-sous');
-    d.site.selTitre = getVal('s-sel-titre'); d.site.selSous = getVal('s-sel-sous');
+    // Collecter depuis les formulaires
+    SITE_DATA.site.title=setVal('s-title')||SITE_DATA.site.title;
+    SITE_DATA.site.navLogo=setVal('s-nav-logo'); SITE_DATA.site.loader=setVal('s-loader');
+    SITE_DATA.site.heroTitle=setVal('s-hero-title'); SITE_DATA.site.heroTagline=setVal('s-hero-tagline');
+    SITE_DATA.site.introP1=setVal('s-intro-p1'); SITE_DATA.site.introP2=setVal('s-intro-p2');
+    SITE_DATA.site.visionTitre=setVal('s-vision-titre');
+    SITE_DATA.site.p1Titre=setVal('s-p1-titre'); SITE_DATA.site.p1Texte=setVal('s-p1-texte');
+    SITE_DATA.site.p2Titre=setVal('s-p2-titre'); SITE_DATA.site.p2Texte=setVal('s-p2-texte');
+    SITE_DATA.site.ctaTitre=setVal('s-cta-titre'); SITE_DATA.site.ctaDisclaimer=setVal('s-cta-disclaimer');
+    SITE_DATA.site.progTitre=setVal('s-prog-titre'); SITE_DATA.site.progSous=setVal('s-prog-sous');
+    SITE_DATA.site.selTitre=setVal('s-sel-titre'); SITE_DATA.site.selSous=setVal('s-sel-sous');
 
-    // Actualités
-    d.actualites.forEach((a, i) => {
-        a.date = getVal(`actu-${i}-date`); a.titre = getVal(`actu-${i}-titre`);
-        a.texte = getVal(`actu-${i}-texte`);
-        const img1 = getVal(`actu-${i}-img1`); const img2 = getVal(`actu-${i}-img2`);
-        a.img1 = img1.startsWith('http') ? img1 : '';
-        a.img2 = img2.startsWith('http') ? img2 : '';
+    SITE_DATA.actualites.forEach((a,i)=>{
+        a.date=setVal(`actu-${i}-date`); a.titre=setVal(`actu-${i}-titre`); a.texte=setVal(`actu-${i}-texte`);
+        const i1=setVal(`actu-${i}-img1`); const i2=setVal(`actu-${i}-img2`);
+        a.img1=i1.startsWith('http')?i1:''; a.img2=i2.startsWith('http')?i2:'';
     });
 
-    // Branches
-    Object.keys(d.branches).forEach(key => {
-        const b = d.branches[key];
-        b.open = document.getElementById(`branch-${key}-open`)?.checked || false;
-        b.eyebrow = getVal(`b-${key}-eyebrow`); b.name = getVal(`b-${key}-name`);
-        b.tagline = getVal(`b-${key}-tagline`); b.desc = getVal(`b-${key}-desc`);
-        b.prodTitle = getVal(`b-${key}-prodtitle`);
-        b.details.forEach((det, di) => { det.k = getVal(`b-${key}-det-${di}-k`); det.v = getVal(`b-${key}-det-${di}-v`); });
-        b.products.forEach((pr, pi) => { pr.n = getVal(`b-${key}-pr-${pi}-n`); pr.d = getVal(`b-${key}-pr-${pi}-d`); });
-        if (b.type === 'production') {
-            b.filmTitre = getVal(`b-${key}-filmTitre`); b.filmSynopsis = getVal(`b-${key}-filmSynopsis`);
-            const fi = getVal(`b-${key}-filmImg`); b.filmImg = fi.startsWith('http') ? fi : '';
-            b.filmDuree = getVal(`b-${key}-filmDuree`); b.filmReal = getVal(`b-${key}-filmReal`); b.filmAnnee = getVal(`b-${key}-filmAnnee`);
-            b.cmTitre = getVal(`b-${key}-cmTitre`); b.cmSynopsis = getVal(`b-${key}-cmSynopsis`);
-            const ci = getVal(`b-${key}-cmImg`); b.cmImg = ci.startsWith('http') ? ci : '';
-            b.cmDuree = getVal(`b-${key}-cmDuree`); b.cmReal = getVal(`b-${key}-cmReal`); b.cmMois = getVal(`b-${key}-cmMois`);
+    Object.keys(SITE_DATA.branches).forEach(key=>{
+        const b=SITE_DATA.branches[key];
+        b.open=document.getElementById(`branch-${key}-open`)?.checked||false;
+        b.eyebrow=setVal(`b-${key}-eyebrow`); b.name=setVal(`b-${key}-name`);
+        b.tagline=setVal(`b-${key}-tagline`); b.desc=setVal(`b-${key}-desc`);
+        b.prodTitle=setVal(`b-${key}-prodtitle`);
+        (b.details||[]).forEach((det,di)=>{det.k=setVal(`b-${key}-det-${di}-k`);det.v=setVal(`b-${key}-det-${di}-v`);});
+        (b.products||[]).forEach((pr,pi)=>{pr.n=setVal(`b-${key}-pr-${pi}-n`);pr.d=setVal(`b-${key}-pr-${pi}-d`);});
+        if(b.type==='production'){
+            b.filmTitre=setVal(`b-${key}-filmTitre`); b.filmSynopsis=setVal(`b-${key}-filmSynopsis`);
+            const fi=setVal(`b-${key}-filmImg`); b.filmImg=fi.startsWith('http')?fi:'';
+            b.filmDuree=setVal(`b-${key}-filmDuree`); b.filmReal=setVal(`b-${key}-filmReal`); b.filmAnnee=setVal(`b-${key}-filmAnnee`);
+            b.cmTitre=setVal(`b-${key}-cmTitre`); b.cmSynopsis=setVal(`b-${key}-cmSynopsis`);
+            const ci=setVal(`b-${key}-cmImg`); b.cmImg=ci.startsWith('http')?ci:'';
+            b.cmDuree=setVal(`b-${key}-cmDuree`); b.cmReal=setVal(`b-${key}-cmReal`); b.cmMois=setVal(`b-${key}-cmMois`);
         }
-        if (b.type === 'writing') {
-            b.livreTitre = getVal(`b-${key}-livreTitre`); b.livreDescription = getVal(`b-${key}-livreDescription`);
-            const lci = getVal(`b-${key}-livreCoverImg`); b.livreCoverImg = lci.startsWith('http') ? lci : '';
-            b.livreAuteur = getVal(`b-${key}-livreAuteur`); b.livreGenre = getVal(`b-${key}-livreGenre`); b.livreDateSortie = getVal(`b-${key}-livreDateSortie`);
+        if(b.type==='writing'){
+            b.livreTitre=setVal(`b-${key}-livreTitre`); b.livreDescription=setVal(`b-${key}-livreDescription`);
+            const lci=setVal(`b-${key}-livreCoverImg`); b.livreCoverImg=lci.startsWith('http')?lci:'';
+            b.livreAuteur=setVal(`b-${key}-livreAuteur`); b.livreGenre=setVal(`b-${key}-livreGenre`); b.livreDateSortie=setVal(`b-${key}-livreDateSortie`);
         }
     });
 
-    // Progression
-    d.echelons.forEach((e, i) => { e.titre = getVal(`ech-${i}-titre`); e.texte = getVal(`ech-${i}-texte`); });
-    // Stats
-    d.stats.forEach((s, i) => { s.nombre = getVal(`stat-${i}-nombre`); s.label = getVal(`stat-${i}-label`); });
-    // Étapes
-    d.etapes.forEach((e, i) => { e.titre = getVal(`etape-${i}-titre`); e.texte = getVal(`etape-${i}-texte`); });
+    SITE_DATA.echelons.forEach((e,i)=>{e.titre=setVal(`ech-${i}-titre`);e.texte=setVal(`ech-${i}-texte`);});
+    SITE_DATA.stats.forEach((s,i)=>{s.nombre=setVal(`stat-${i}-nombre`);s.label=setVal(`stat-${i}-label`);});
+    SITE_DATA.etapes.forEach((e,i)=>{e.titre=setVal(`etape-${i}-titre`);e.texte=setVal(`etape-${i}-texte`);});
 
-    saveData(d);
+    // Changement mot de passe
+    const newPw=setVal('cfg-new-pw'); const confirmPw=setVal('cfg-confirm-pw');
+    if(newPw&&newPw===confirmPw&&newPw.length>=6){localStorage.setItem('bc_pw_v3',simpleHash(newPw));setField('cfg-new-pw','');setField('cfg-confirm-pw','');}
 
-    // Config
-    const cfg = getConfig();
-    const sheetUrl = document.getElementById('cfg-sheet-url').value.trim();
-    const sheetRejUrl = document.getElementById('cfg-sheet-rejected-url').value.trim();
-    if (sheetUrl && sheetUrl.startsWith('http')) cfg.sheetUrlEnc = obfuscate(sheetUrl);
-    if (sheetRejUrl && sheetRejUrl.startsWith('http')) cfg.sheetRejUrlEnc = obfuscate(sheetRejUrl);
-    // Clear the fields after saving (sécurité)
-    document.getElementById('cfg-sheet-url').value = '';
-    document.getElementById('cfg-sheet-rejected-url').value = '';
-    document.getElementById('cfg-sheet-url').placeholder = '••••••••••••• (configurée)';
-    document.getElementById('cfg-sheet-rejected-url').placeholder = '••••••••••••• (configurée)';
-
-    cfg.rateLimit = parseInt(document.getElementById('cfg-rate-limit').value) || 120;
-    cfg.minAge = parseInt(document.getElementById('cfg-min-age').value) || 18;
-    cfg.minDispo = document.getElementById('cfg-min-dispo').value || '>20';
-
-    // Changement de mot de passe
-    const newPw = document.getElementById('cfg-new-pw').value;
-    const confirmPw = document.getElementById('cfg-confirm-pw').value;
-    if (newPw && newPw === confirmPw && newPw.length >= 6) {
-        localStorage.setItem(STORAGE_KEYS.PW_HASH, simpleHash(newPw));
-        document.getElementById('cfg-new-pw').value = '';
-        document.getElementById('cfg-confirm-pw').value = '';
+    // Sauvegarder dans Supabase
+    try {
+        await saveSiteConfigToSupabase();
+        renderSite(); bindObserver();
+        btn.textContent='Sauvegarder';
+        btn.disabled=false;
+        const status=document.getElementById('adm-save-status');
+        status.classList.add('show');
+        setTimeout(()=>status.classList.remove('show'),3000);
+    } catch(e) {
+        btn.textContent='Sauvegarder';
+        btn.disabled=false;
+        alert('Erreur lors de la sauvegarde. Vérifiez votre connexion.');
     }
-
-    saveConfig(cfg);
-
-    // Mettre à jour le site en temps réel
-    renderSite();
-    bindObserver();
-
-    // Feedback visuel
-    const status = document.getElementById('adm-save-status');
-    status.classList.add('show');
-    setTimeout(() => status.classList.remove('show'), 3000);
-}
-
-function getVal(id) {
-    const el = document.getElementById(id);
-    return el ? (el.value || '').trim() : '';
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ADMIN — CANDIDATURES
+   ADMIN — CANDIDATURES SUPABASE
 ═══════════════════════════════════════════════════════════ */
-let currentFilter = 'all';
+async function refreshCandidatures(filter) {
+    if(filter) currentFilter=filter;
+    let query=sb.from('candidatures').select('*').order('created_at',{ascending:false});
+    if(currentFilter==='new') query=query.eq('statut','new');
+    else if(currentFilter==='accepted') query=query.eq('statut','accepted');
+    else if(currentFilter==='rejected') query=query.in('statut',['rejected','auto-rejected']);
 
-function refreshCandidatures(filter) {
-    if (filter) currentFilter = filter;
-    const cands = getCands();
-    const filtered = currentFilter === 'all' ? cands : cands.filter(c => {
-        if (currentFilter === 'new') return c.statut === 'new';
-        if (currentFilter === 'accepted') return c.statut === 'accepted';
-        if (currentFilter === 'rejected') return c.statut === 'rejected' || c.statut === 'auto-rejected';
-        return true;
-    });
+    const {data:cands,error}=await query;
+    const tbody=document.getElementById('candidatures-tbody'); if(!tbody) return;
+    if(error||!cands||cands.length===0){tbody.innerHTML='<tr><td colspan="9" style="text-align:center;color:rgba(255,255,255,0.2);padding:3rem">Aucune candidature</td></tr>';return;}
+    tbody.innerHTML=cands.map(c=>`
+    <tr>
+        <td style="font-family:monospace;font-size:0.75rem">${escHtml(c.ref||'')}</td>
+        <td>${escHtml(c.prenom||'')} ${escHtml(c.nom||'')}</td>
+        <td style="font-size:0.75rem">${escHtml(c.email||'')}</td>
+        <td>${escHtml(String(c.age||''))}</td>
+        <td>${escHtml(c.nat||'')}</td>
+        <td>${escHtml(c.dispo||'')}</td>
+        <td style="font-size:0.7rem;white-space:nowrap">${escHtml(c.created_at?new Date(c.created_at).toLocaleString('fr-FR'):'')}</td>
+        <td><span class="badge badge-${c.statut==='new'?'new':c.statut==='accepted'?'accepted':c.statut==='pending'?'pending':'rejected'}">${escHtml(c.statut||'')}</span></td>
+        <td style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <button class="adm-btn-sm adm-btn-success" onclick="changeStatus('${escHtml(c.id)}','accepted')">✓</button>
+            <button class="adm-btn-sm" onclick="changeStatus('${escHtml(c.id)}','pending')">⟳</button>
+            <button class="adm-btn-sm adm-btn-danger" onclick="changeStatus('${escHtml(c.id)}','rejected')">✗</button>
+            <button class="adm-btn-sm" onclick="viewCand('${escHtml(c.id)}')">👁</button>
+        </td>
+    </tr>`).join('');
+}
 
-    const tbody = document.getElementById('candidatures-tbody');
-    if (!tbody) return;
-    tbody.innerHTML = filtered.length === 0 ? '<tr><td colspan="9" style="text-align:center;color:rgba(255,255,255,0.2);padding:3rem">Aucune candidature</td></tr>' :
-        filtered.map(c => `
-        <tr>
-            <td style="font-family:monospace;font-size:0.75rem">${escHtml(c.ref)}</td>
-            <td>${escHtml(c.prenom)} ${escHtml(c.nom)}</td>
-            <td style="font-size:0.75rem">${escHtml(c.email)}</td>
-            <td>${escHtml(String(c.age))}</td>
-            <td>${escHtml(c.nat)}</td>
-            <td>${escHtml(c.dispo)}</td>
-            <td style="font-size:0.7rem;white-space:nowrap">${escHtml(c.date)}</td>
-            <td><span class="badge badge-${c.statut === 'new' ? 'new' : c.statut === 'accepted' ? 'accepted' : c.statut === 'pending' ? 'pending' : 'rejected'}">${escHtml(c.statut)}</span></td>
-            <td style="display:flex;gap:0.5rem;flex-wrap:wrap">
-                <button class="adm-btn-sm adm-btn-success" onclick="changeStatus('${escHtml(c.ref)}','accepted')">✓</button>
-                <button class="adm-btn-sm" onclick="changeStatus('${escHtml(c.ref)}','pending')">⟳</button>
-                <button class="adm-btn-sm adm-btn-danger" onclick="changeStatus('${escHtml(c.ref)}','rejected')">✗</button>
-                <button class="adm-btn-sm" onclick="viewCand('${escHtml(c.ref)}')">👁</button>
-            </td>
+async function changeStatus(id,statut) {
+    await sb.from('candidatures').update({statut}).eq('id',id);
+    await refreshCandidatures();
+    await refreshDashboard();
+}
+
+async function viewCand(id) {
+    const {data}=await sb.from('candidatures').select('*').eq('id',id).single();
+    if(!data) return;
+    alert(`CANDIDATURE ${data.ref}\n\nNom : ${data.prenom} ${data.nom}\nEmail : ${data.email}\nÂge : ${data.age}\nNationalité : ${data.nat}\nDisponibilité : ${data.dispo}\nValeur : ${data.valeur}\nExpérience : ${data.experience}\n\nMOTIVATION :\n${data.motivation}\n\nAPPORT :\n${data.apport}\n\nOBJECTIF :\n${data.objectif}\n\nDÉFI :\n${data.defi}\n\nCompétences : ${data.competences}\nÉquipe : ${data.rating_equipe}/10  Pression : ${data.rating_pression}/10\nSource : ${data.comment}`);
+}
+
+async function refreshDashboard() {
+    const {data:all}=await sb.from('candidatures').select('statut');
+    const cands=all||[];
+    const stats=[
+        {num:cands.length,label:'Total candidatures'},
+        {num:cands.filter(c=>c.statut==='new').length,label:'Nouvelles'},
+        {num:cands.filter(c=>c.statut==='accepted').length,label:'Acceptées'},
+        {num:cands.filter(c=>c.statut==='rejected'||c.statut==='auto-rejected').length,label:'Refusées'},
+    ];
+    const cards=document.getElementById('adm-stats-cards');
+    if(cards) cards.innerHTML=stats.map(s=>`<div class="adm-stat"><div class="adm-stat-num">${s.num}</div><div class="adm-stat-label">${s.label}</div></div>`).join('');
+
+    const {data:recent}=await sb.from('candidatures').select('*').order('created_at',{ascending:false}).limit(5);
+    const tbody=document.getElementById('recent-tbody'); if(!tbody) return;
+    tbody.innerHTML=(!recent||recent.length===0)?'<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,0.2);padding:2rem">Aucune candidature</td></tr>':
+        recent.map(c=>`<tr>
+            <td style="font-family:monospace;font-size:0.75rem">${escHtml(c.ref||'')}</td>
+            <td>${escHtml(c.prenom||'')} ${escHtml(c.nom||'')}</td>
+            <td style="font-size:0.75rem">${escHtml(c.email||'')}</td>
+            <td style="font-size:0.7rem">${escHtml(c.created_at?new Date(c.created_at).toLocaleString('fr-FR'):'')}</td>
+            <td><span class="badge badge-${c.statut==='new'?'new':c.statut==='accepted'?'accepted':c.statut==='pending'?'pending':'rejected'}">${escHtml(c.statut||'')}</span></td>
+            <td><button class="adm-btn-sm" onclick="viewCand('${escHtml(c.id)}')">Voir</button></td>
         </tr>`).join('');
 }
 
-function changeStatus(ref, statut) {
-    const cands = getCands();
-    const idx = cands.findIndex(c => c.ref === ref);
-    if (idx !== -1) { cands[idx].statut = statut; saveCands(cands); }
-    refreshCandidatures();
-    refreshDashboard();
-}
-
-function viewCand(ref) {
-    const c = getCands().find(x => x.ref === ref);
-    if (!c) return;
-    alert(`CANDIDATURE ${c.ref}\n\n` +
-        `Nom : ${c.prenom} ${c.nom}\nEmail : ${c.email}\nÂge : ${c.age}\nNat : ${c.nat}\nDispo : ${c.dispo}\n` +
-        `Valeur : ${c.valeur}\nExpérience : ${c.experience}\n\n` +
-        `MOTIVATION :\n${c.motivation}\n\nAPPORT :\n${c.apport}\n\nOBJECTIF :\n${c.objectif}\n\nDÉFI :\n${c.defi}`
-    );
-}
-
-function refreshDashboard() {
-    const cands = getCands();
-    const stats = [
-        { num: cands.length, label: 'Total candidatures' },
-        { num: cands.filter(c=>c.statut==='new').length, label: 'Nouvelles' },
-        { num: cands.filter(c=>c.statut==='accepted').length, label: 'Acceptées' },
-        { num: cands.filter(c=>c.statut==='rejected'||c.statut==='auto-rejected').length, label: 'Refusées' },
-    ];
-    const cards = document.getElementById('adm-stats-cards');
-    if (cards) cards.innerHTML = stats.map(s => `<div class="adm-stat"><div class="adm-stat-num">${s.num}</div><div class="adm-stat-label">${s.label}</div></div>`).join('');
-
-    const tbody = document.getElementById('recent-tbody');
-    if (tbody) {
-        const recent = [...cands].sort((a,b) => b.date > a.date ? 1 : -1).slice(0, 5);
-        tbody.innerHTML = recent.length === 0 ? '<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,0.2);padding:2rem">Aucune candidature</td></tr>' :
-            recent.map(c => `
-            <tr>
-                <td style="font-family:monospace;font-size:0.75rem">${escHtml(c.ref)}</td>
-                <td>${escHtml(c.prenom)} ${escHtml(c.nom)}</td>
-                <td style="font-size:0.75rem">${escHtml(c.email)}</td>
-                <td style="font-size:0.7rem">${escHtml(c.date)}</td>
-                <td><span class="badge badge-${c.statut==='new'?'new':c.statut==='accepted'?'accepted':c.statut==='pending'?'pending':'rejected'}">${escHtml(c.statut)}</span></td>
-                <td><button class="adm-btn-sm" onclick="viewCand('${escHtml(c.ref)}')">Voir</button></td>
-            </tr>`).join('');
-    }
-}
-
-function exportCSV() {
-    const cands = getCands();
-    if (!cands.length) { alert('Aucune candidature à exporter.'); return; }
-    const headers = ['Référence','Prénom','Nom','Email','Âge','Nationalité','Disponibilité','Valeur','Expérience','Rating Équipe','Rating Pression','Compétences','Source','Statut','Date'];
-    const rows = cands.map(c => [c.ref,c.prenom,c.nom,c.email,c.age,c.nat,c.dispo,c.valeur,c.experience,c.ratingEquipe,c.ratingPression,c.competences,c.comment,c.statut,c.date].map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(','));
-    const csv = [headers.join(','), ...rows].join('\n');
-    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = `burton-candidatures-${Date.now()}.csv`;
-    a.click(); URL.revokeObjectURL(url);
+async function exportCSV() {
+    const {data:cands}=await sb.from('candidatures').select('*').order('created_at',{ascending:false});
+    if(!cands||!cands.length){alert('Aucune candidature à exporter.');return;}
+    const headers=['Référence','Prénom','Nom','Email','Âge','Nationalité','Disponibilité','Valeur','Expérience','Rating Équipe','Rating Pression','Compétences','Source','Statut','Date'];
+    const rows=cands.map(c=>[c.ref,c.prenom,c.nom,c.email,c.age,c.nat,c.dispo,c.valeur,c.experience,c.rating_equipe,c.rating_pression,c.competences,c.comment,c.statut,c.created_at?new Date(c.created_at).toLocaleString('fr-FR'):''].map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(','));
+    const csv=[headers.join(','),...rows].join('\n');
+    const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download=`burton-candidatures-${Date.now()}.csv`;a.click();URL.revokeObjectURL(url);
 }
 
 /* ═══════════════════════════════════════════════════════════
    INITIALISATION
 ═══════════════════════════════════════════════════════════ */
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     // Loader
-    setTimeout(() => {
-        const l = document.getElementById('pageLoader');
+    setTimeout(()=>{
+        const l=document.getElementById('pageLoader');
         l.classList.add('hidden');
         document.body.classList.remove('loading');
-        setTimeout(() => l.style.display = 'none', 1500);
-    }, 2000);
+        setTimeout(()=>l.style.display='none',1500);
+    },2000);
 
-    // Render site
+    // Charger config depuis Supabase puis render
+    await loadSiteConfigV2();
     renderSite();
     bindObserver();
 
     // Nav scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 100));
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>100));
 
     // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
-        e.preventDefault();
-        const t = document.querySelector(this.getAttribute('href'));
-        if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
-    }));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}));
 
     // Parallax
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const s = window.pageYOffset, h = document.querySelector('.hero-content');
-                if (h && s < window.innerHeight) {
-                    h.style.transform = `translateY(${s*0.5}px)`;
-                    h.style.opacity = Math.max(0, 1-(s/window.innerHeight)*1.2);
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
+    let ticking=false;
+    window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{const s=window.pageYOffset,h=document.querySelector('.hero-content');if(h&&s<window.innerHeight){h.style.transform=`translateY(${s*0.5}px)`;h.style.opacity=Math.max(0,1-(s/window.innerHeight)*1.2);}ticking=false;});ticking=true;}});
 
-    // Rating scales
-    buildRating('rating-equipe');
-    buildRating('rating-pression');
+    // Rating
+    buildRating('rating-equipe'); buildRating('rating-pression');
 
     // Modal
-    document.getElementById('openApplication').addEventListener('click', openModal);
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    document.getElementById('applicationModal').addEventListener('click', e => { if (e.target === document.getElementById('applicationModal')) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); } });
-
-    document.getElementById('btnNext').addEventListener('click', async () => {
-        if (validateStep(currentStep)) {
-            if (currentStep === TOTAL_STEPS) {
-                goToStep(currentStep + 1);
-                await submitApplication();
-            } else {
-                goToStep(currentStep + 1);
-            }
-        }
+    document.getElementById('openApplication').addEventListener('click',openModal);
+    document.getElementById('closeModal').addEventListener('click',closeModal);
+    document.getElementById('applicationModal').addEventListener('click',e=>{if(e.target===document.getElementById('applicationModal'))closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    document.getElementById('btnNext').addEventListener('click',async()=>{
+        if(validateStep(currentStep)){if(currentStep===TOTAL_STEPS){goToStep(currentStep+1);await submitApplication();}else goToStep(currentStep+1);}
     });
-    document.getElementById('btnPrev').addEventListener('click', () => { if (currentStep > 1) goToStep(currentStep - 1); });
+    document.getElementById('btnPrev').addEventListener('click',()=>{if(currentStep>1)goToStep(currentStep-1);});
 
-    // Admin — accès via Konami code ou hash URL
-    let konamiSeq = '';
-    const konamiTarget = 'arrowupArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba'.toLowerCase();
-    document.addEventListener('keydown', e => {
-        konamiSeq += e.key.toLowerCase();
-        if (konamiSeq.length > 70) konamiSeq = konamiSeq.slice(-70);
-        if (konamiSeq.includes('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba')) {
-            openAdmin();
-            konamiSeq = '';
-        }
+    // Admin — accès URL ou Konami
+    let konamiSeq='';
+    document.addEventListener('keydown',e=>{
+        konamiSeq+=e.key.toLowerCase();
+        if(konamiSeq.length>70)konamiSeq=konamiSeq.slice(-70);
+        if(konamiSeq.includes('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba')){openAdmin();konamiSeq='';}
     });
-    if (window.location.hash === '#admin' || window.location.search.includes('admin')) openAdmin();
+    if(window.location.hash==='#admin'||window.location.search.includes('admin'))openAdmin();
+
+    // Admin navigation
+    document.querySelectorAll('.adm-nav-item').forEach(btn=>{
+        btn.addEventListener('click',async()=>{
+            document.querySelectorAll('.adm-nav-item').forEach(b=>b.classList.remove('active'));
+            document.querySelectorAll('.adm-section').forEach(s=>s.classList.remove('active'));
+            btn.classList.add('active');
+            const sec=document.getElementById('sec-'+btn.dataset.section);
+            if(sec)sec.classList.add('active');
+            if(btn.dataset.section==='candidatures')await refreshCandidatures();
+            if(btn.dataset.section==='dashboard')await refreshDashboard();
+        });
+    });
 
     // Admin events
-    document.getElementById('adm-login-btn').addEventListener('click', adminLogin);
-    document.getElementById('adm-pw').addEventListener('keydown', e => { if (e.key === 'Enter') adminLogin(); });
-    document.getElementById('adm-logout').addEventListener('click', () => {
-        document.getElementById('adm-dashboard').style.display = 'none';
-        document.getElementById('adm-login-screen').style.display = 'flex';
-        document.getElementById('adm-pw').value = '';
+    document.getElementById('adm-login-btn').addEventListener('click',adminLogin);
+    document.getElementById('adm-pw').addEventListener('keydown',e=>{if(e.key==='Enter')adminLogin();});
+    document.getElementById('adm-logout').addEventListener('click',()=>{
+        adminLoggedIn=false;
+        document.getElementById('adm-dashboard').style.display='none';
+        document.getElementById('adm-login-screen').style.display='flex';
+        document.getElementById('adm-pw').value='';
     });
-    document.getElementById('adm-save-btn').addEventListener('click', saveAdmin);
-    document.getElementById('export-csv').addEventListener('click', exportCSV);
-    document.getElementById('clear-candidatures').addEventListener('click', () => {
-        if (confirm('⚠️ Supprimer TOUTES les candidatures ? Cette action est irréversible.')) {
-            saveCands([]); refreshCandidatures(); refreshDashboard();
+    document.getElementById('adm-save-btn').addEventListener('click',saveAdmin);
+    document.getElementById('export-csv').addEventListener('click',exportCSV);
+    document.getElementById('clear-candidatures').addEventListener('click',async()=>{
+        if(confirm('⚠️ Supprimer TOUTES les candidatures ? Cette action est irréversible.')){
+            await sb.from('candidatures').delete().neq('id','00000000-0000-0000-0000-000000000000');
+            await refreshCandidatures(); await refreshDashboard();
         }
     });
-    document.getElementById('filter-all').addEventListener('click', () => refreshCandidatures('all'));
-    document.getElementById('filter-new').addEventListener('click', () => refreshCandidatures('new'));
-    document.getElementById('filter-accepted').addEventListener('click', () => refreshCandidatures('accepted'));
-    document.getElementById('filter-rejected').addEventListener('click', () => refreshCandidatures('rejected'));
-    document.getElementById('reset-content').addEventListener('click', () => {
-        if (confirm('Réinitialiser tout le contenu éditorial aux valeurs par défaut ?')) {
-            saveData(JSON.parse(JSON.stringify(DEFAULT_DATA)));
-            populateAdminForms();
-            renderSite();
-            bindObserver();
+    document.getElementById('filter-all').addEventListener('click',()=>refreshCandidatures('all'));
+    document.getElementById('filter-new').addEventListener('click',()=>refreshCandidatures('new'));
+    document.getElementById('filter-accepted').addEventListener('click',()=>refreshCandidatures('accepted'));
+    document.getElementById('filter-rejected').addEventListener('click',()=>refreshCandidatures('rejected'));
+    document.getElementById('reset-content').addEventListener('click',async()=>{
+        if(confirm('Réinitialiser tout le contenu aux valeurs par défaut ?')){
+            SITE_DATA=JSON.parse(JSON.stringify(DEFAULT_DATA));
+            await saveSiteConfigToSupabase();
+            await populateAdminForms();
+            renderSite(); bindObserver();
             alert('Contenu réinitialisé.');
         }
     });
-    document.getElementById('reset-all').addEventListener('click', () => {
-        if (confirm('⚠️ ATTENTION : Ceci supprime tout — contenu, candidatures, configuration. Continuer ?')) {
-            [STORAGE_KEYS.DATA, STORAGE_KEYS.CANDIDATURES, STORAGE_KEYS.CONFIG, STORAGE_KEYS.PW_HASH, STORAGE_KEYS.RATE].forEach(k => localStorage.removeItem(k));
+    document.getElementById('reset-all').addEventListener('click',async()=>{
+        if(confirm('⚠️ ATTENTION : Ceci supprime tout. Continuer ?')){
+            await sb.from('site_configuration').delete().neq('id','00000000-0000-0000-0000-000000000000');
+            await sb.from('candidatures').delete().neq('id','00000000-0000-0000-0000-000000000000');
+            localStorage.removeItem('bc_pw_v3'); localStorage.removeItem('bc_rate_v3');
             location.reload();
         }
     });
