@@ -751,7 +751,7 @@
                         <button class="adm-btn-sm adm-btn-danger" id="clear-candidatures">Vider la liste</button>
                     </div>
                     <div class="adm-block">
-                        <div class="adm-table-wrap"><table class="adm-table" id="candidatures-table"><thead><tr><th>Référence</th><th>Prénom Nom</th><th>Email</th><th>Âge</th><th>Nationalité</th><th>Disponibilité</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="candidatures-tbody"></tbody></table></div>
+                        <div class="adm-table-wrap"><table class="adm-table" id="candidatures-table"><thead><tr><th>Référence</th><th>Prénom Nom</th><th>Email</th><th>Âge</th><th>Division</th><th>Disponibilité</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="candidatures-tbody"></tbody></table></div>
                     </div>
                 </div>
                 <!-- CONFIG -->
@@ -848,74 +848,109 @@ async function getBrevoKey() {
     return BREVO_KEY;
 }
 
-const BREVO_TPL_POSITIF = `<!DOCTYPE html>
+const BREVO_TPL_NEGATIF_AUTO = `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
-<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px">
-<p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
-<p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Confirmation de Candidature</p>
-<p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
-<p style="font-size:14px;margin-bottom:20px">Nous avons bien reçu votre candidature au sein de <em>Burton Corporation</em>. Votre dossier a été enregistré et sera examiné avec attention lors de notre prochaine session mensuelle de sélection.</p>
-<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center">
-<span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span>
-<strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
-<p style="font-family:Georgia,serif;font-size:15px;font-weight:bold;margin:30px 0 15px 0">Notre processus de sélection se déroule en trois étapes :</p>
-<p style="font-size:14px;margin-bottom:15px"><strong style="font-size:13px;text-transform:uppercase">► Étape 1 — Questionnaire de Sélection</strong><br>
-<span style="font-size:13px">Pour des raisons techniques, Burton Corporation ne prévient <em>uniquement</em> le ou la candidat(e) que lorsque celui-ci ou celle-ci est <strong>sélectionné(e)</strong>.<br><br>
-Si vous ne recevez pas de réponse <strong>1 mois</strong> après avoir envoyé le questionnaire, c'est que votre candidature a malheureusement été <em>déclinée</em> par nos équipes de sélection.</span></p>
-<p style="font-size:14px;margin-bottom:15px"><strong style="font-size:13px;text-transform:uppercase">► Étape 2 — Entretien avec le Fondateur</strong><br>
-<span style="font-size:13px">Si votre profil est retenu, vous serez contacté pour un <em>entretien approfondi</em>.</span></p>
-<p style="font-size:14px;margin-bottom:25px"><strong style="font-size:13px;text-transform:uppercase">► Étape 3 — Décision Finale</strong><br>
-<span style="font-size:13px">Peu importe notre décision, à ce stade de la sélection, vous serez <strong>prévenu(e)</strong> de notre décision <strong>1 semaine</strong> après avoir passé l'entretien.</span></p>
-<hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
-<p style="font-size:13px;font-style:italic;margin-bottom:25px">Les candidatures sont examinées sur une base mensuelle. Nous vous remercions de votre patience et de l'intérêt que vous portez à Burton Corporation.</p>
-<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br>
-<span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
-</body></html>`;
-
-const BREVO_TPL_NEGATIF = `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"></head>
-<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px">
+<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px;max-width:600px;margin:0 auto">
 <p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
 <p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Décision de Candidature</p>
 <p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
 <p style="font-size:14px;margin-bottom:20px">Nous accusons réception de votre candidature au sein de <em>Burton Corporation</em> et vous remercions sincèrement de l'intérêt que vous portez à notre organisation.</p>
-<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center">
-<span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span>
-<strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
-<p style="font-size:14px;margin-bottom:20px">Après examen approfondi de votre dossier, nous sommes au regret de vous informer que <strong>votre candidature n'a pas été retenue</strong> à ce stade du processus de sélection.</p>
-<p style="font-size:13px;margin-bottom:20px">Cette décision fait suite à une analyse rigoureuse de l'ensemble des candidatures reçues. Bien que votre profil présente des qualités certaines, <em>certaines aptitudes spécifiques requises par Burton Corporation</em> ne correspondent pas entièrement aux critères d'éligibilité actuels de notre structure.</p>
-<p style="font-size:13px;margin-bottom:25px">Nous vous encourageons néanmoins à poursuivre votre développement personnel et professionnel. Les standards de Burton Corporation évoluent, et nous serions honorés de revoir votre candidature dans le futur si vos compétences venaient à correspondre davantage à nos exigences.</p>
+<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center"><span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span><strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
+<p style="font-size:14px;margin-bottom:20px">Après examen de votre dossier, nous sommes au regret de vous informer que <strong>votre candidature n'a pas été retenue</strong> à ce stade du processus de sélection.</p>
+<p style="font-size:13px;margin-bottom:20px">Cette décision fait suite à une analyse rigoureuse des critères d'éligibilité de Burton Corporation. Bien que votre profil présente des qualités certaines, <em>certaines aptitudes spécifiques requises par notre structure</em> ne correspondent pas entièrement aux critères actuels.</p>
+<p style="font-size:13px;margin-bottom:25px">Nous vous encourageons à poursuivre votre développement personnel et professionnel. Les standards de Burton Corporation évoluent, et nous serions honorés de revoir votre candidature dans le futur.</p>
 <hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
-<p style="font-size:13px;font-style:italic;margin-bottom:25px">Nous vous souhaitons le meilleur dans vos projets futurs et vous remercions à nouveau pour l'attention que vous avez accordée à Burton Corporation.</p>
-<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br>
-<span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
+<p style="font-size:13px;font-style:italic;margin-bottom:25px">Nous vous souhaitons le meilleur dans vos projets futurs et vous remercions pour l'attention accordée à Burton Corporation.</p>
+<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br><span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
 </body></html>`;
 
-async function sendAutoReply(email, prenom, nom, ref, isRejected) {
+const BREVO_TPL_POSITIF_AUTO = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px;max-width:600px;margin:0 auto">
+<p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
+<p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Confirmation de Candidature</p>
+<p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
+<p style="font-size:14px;margin-bottom:20px">Nous avons bien reçu votre candidature au sein de <em>Burton Corporation</em> pour la division <strong>{{branche}}</strong>. Votre dossier a été enregistré avec succès et sera examiné avec attention lors de notre prochaine session mensuelle de sélection.</p>
+<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center"><span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span><strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
+<p style="font-family:Georgia,serif;font-size:15px;font-weight:bold;margin:30px 0 15px 0">Notre processus de sélection :</p>
+<p style="font-size:14px;margin-bottom:15px"><strong style="font-size:13px;text-transform:uppercase">► Étape 1 — Examen du dossier</strong><br><span style="font-size:13px">Votre candidature sera examinée par nos équipes. Vous recevrez une réponse de notre part dans tous les cas.</span></p>
+<p style="font-size:14px;margin-bottom:15px"><strong style="font-size:13px;text-transform:uppercase">► Étape 2 — Entretien avec le Fondateur</strong><br><span style="font-size:13px">Si votre profil est retenu, vous serez contacté(e) pour un <em>entretien vidéo</em> avec le fondateur de Burton Corporation.</span></p>
+<p style="font-size:14px;margin-bottom:25px"><strong style="font-size:13px;text-transform:uppercase">► Étape 3 — Décision Finale</strong><br><span style="font-size:13px">Quelle que soit notre décision à l'issue de l'entretien, vous en serez informé(e) dans la semaine suivante.</span></p>
+<hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
+<p style="font-size:13px;font-style:italic;margin-bottom:25px">Les candidatures sont examinées sur une base mensuelle. Nous vous remercions de votre patience et de l'intérêt que vous portez à Burton Corporation.</p>
+<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br><span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
+</body></html>`;
+
+const BREVO_TPL_ACCEPTE = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px;max-width:600px;margin:0 auto">
+<p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
+<p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Invitation à l'Entretien</p>
+<p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
+<p style="font-size:14px;margin-bottom:20px">Nous avons le plaisir de vous informer que votre candidature pour la division <strong>{{branche}}</strong> au sein de <em>Burton Corporation</em> a <strong>passé avec succès la première étape</strong> de notre processus de sélection.</p>
+<p style="font-size:14px;margin-bottom:20px">Votre profil a retenu toute notre attention et nous souhaitons vous convier à un <strong>entretien vidéo</strong> avec le fondateur de Burton Corporation.</p>
+<p style="font-size:13px;margin:25px 0;padding:15px;border:1px solid #000;text-align:center">
+<span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:12px">Détails de votre entretien</span>
+<span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px">Date</span>
+<strong style="font-size:16px;letter-spacing:1px;display:block;margin-bottom:12px">{{date_entretien}}</strong>
+<span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px">Heure</span>
+<strong style="font-size:16px;letter-spacing:1px;display:block;margin-bottom:12px">{{heure_entretien}}</strong>
+<span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:4px">Votre référence</span>
+<strong style="font-size:14px;letter-spacing:2px">{{ref}}</strong></p>
+<p style="font-size:13px;margin-bottom:20px">Le lien de connexion à l'entretien vidéo vous sera communiqué ultérieurement. Veuillez vous assurer d'être disponible à l'heure indiquée.</p>
+<p style="font-size:13px;margin-bottom:20px">En cas d'indisponibilité ou pour toute question, vous pouvez nous contacter à l'adresse suivante en indiquant votre référence :</p>
+<p style="font-size:14px;margin-bottom:25px;text-align:center"><strong>contact@burton-corporation.com</strong><br><span style="font-size:11px;color:#666">Référence à indiquer : {{ref}}</span></p>
+<hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
+<p style="font-size:13px;font-style:italic;margin-bottom:25px">Nous vous félicitons pour cette première étape et nous réjouissons de vous rencontrer prochainement.</p>
+<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8"><span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
+</body></html>`;
+
+const BREVO_TPL_REFUSE_MANUEL = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="font-family:Arial,sans-serif;color:#000;line-height:1.6;padding:20px;max-width:600px;margin:0 auto">
+<p style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:3px;margin-bottom:5px">BURTON CORPORATION</p>
+<p style="font-family:Georgia,serif;font-size:18px;font-weight:300;margin-bottom:25px">Décision de Candidature</p>
+<p style="font-size:14px;margin-bottom:20px">Madame, Monsieur <strong style="font-size:15px">{{candidat_nom}}</strong>,</p>
+<p style="font-size:14px;margin-bottom:20px">Nous vous remercions de l'intérêt que vous portez à <em>Burton Corporation</em> ainsi que du temps consacré à votre candidature.</p>
+<p style="font-size:13px;margin:25px 0;padding:12px;border:1px solid #ddd;text-align:center"><span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:5px">Votre référence</span><strong style="font-size:17px;letter-spacing:2px">{{ref}}</strong></p>
+<p style="font-size:14px;margin-bottom:20px">Après examen approfondi de votre dossier par nos équipes, nous sommes au regret de vous informer que <strong>votre candidature n'a pas été retenue</strong> à l'issue de la première étape de sélection.</p>
+<p style="font-size:13px;margin-bottom:20px">Cette décision reflète les exigences très spécifiques de notre organisation à ce stade de son développement. <em>Elle ne remet nullement en question vos compétences et votre valeur.</em></p>
+<p style="font-size:13px;margin-bottom:25px">Nous vous encourageons vivement à continuer votre progression. Burton Corporation évolue en permanence, et votre profil pourrait correspondre davantage à nos besoins futurs.</p>
+<hr style="border:none;border-top:1px solid #ddd;margin:25px 0">
+<p style="font-size:13px;font-style:italic;margin-bottom:25px">Nous vous souhaitons plein succès dans vos projets et vous remercions sincèrement pour l'intérêt porté à Burton Corporation.</p>
+<p style="font-size:11px;color:#666;text-align:center;margin-top:35px;line-height:1.8">Cet e-mail a été envoyé automatiquement — merci de ne pas y répondre.<br>Toute réponse à ce message ne sera pas traitée.<br><br><span style="font-family:'Courier New',monospace;letter-spacing:1px">BURTON CORPORATION</span><br><em>Système de Candidature Automatisé</em></p>
+</body></html>`;
+
+async function sendBrevoEmail(email, candidat_nom, ref, templateHtml, subject, extra={}) {
     try {
         const key = await getBrevoKey();
         if (!key) return;
-        const candidat_nom = prenom + ' ' + nom;
-        const htmlContent = (isRejected ? BREVO_TPL_NEGATIF : BREVO_TPL_POSITIF)
+        let html = templateHtml
             .replace(/{{candidat_nom}}/g, candidat_nom)
-            .replace(/{{ref}}/g, ref);
-        const subject = isRejected
-            ? 'Burton Corporation — Décision de Candidature'
-            : 'Burton Corporation — Confirmation de Candidature';
+            .replace(/{{ref}}/g, ref)
+            .replace(/{{date_entretien}}/g, extra.date||'')
+            .replace(/{{heure_entretien}}/g, extra.heure||'')
+            .replace(/{{branche}}/g, extra.branche||'—');
         await fetch('https://api.brevo.com/v3/smtp/email', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'api-key': key,
-            },
+            headers: {'Content-Type':'application/json','api-key':key},
             body: JSON.stringify({
                 sender: BREVO_SENDER,
-                to: [{ email: email, name: candidat_nom }],
-                subject: subject,
-                htmlContent: htmlContent,
+                to: [{email, name: candidat_nom}],
+                subject,
+                htmlContent: html,
             })
         });
-    } catch(e) { /* silencieux — ne bloque pas la candidature */ }
+    } catch(e) { /* silencieux */ }
+}
+
+async function sendAutoReply(email, prenom, nom, ref, branche, isRejected) {
+    const candidat_nom = prenom + ' ' + nom;
+    if (isRejected) {
+        await sendBrevoEmail(email, candidat_nom, ref, BREVO_TPL_NEGATIF_AUTO, 'Burton Corporation — Décision de Candidature', {branche});
+    } else {
+        await sendBrevoEmail(email, candidat_nom, ref, BREVO_TPL_POSITIF_AUTO, 'Burton Corporation — Confirmation de Candidature', {branche});
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1323,8 +1358,10 @@ async function submitApplication() {
     const dispoOrder={'<5':0,'5-10':1,'10-20':2,'>20':3};
     const isRejected = age<18 || !allowedNat.includes(nat) || (dispoOrder[dispo]||0)<3;
 
+    const branche = document.getElementById('f-branche').value || '—';
     const candidature = {
         ref, prenom, nom, email, age, nat, dispo,
+        branche,
         valeur: document.querySelector('input[name="valeur"]:checked')?.value||'—',
         motivation: document.getElementById('f-motivation').value.trim(),
         apport: document.getElementById('f-apport').value.trim(),
@@ -1345,7 +1382,7 @@ async function submitApplication() {
     } catch(e) { /* silencieux */ }
 
     // Auto-reply EmailJS
-    await sendAutoReply(email, prenom, nom, ref, isRejected);
+    await sendAutoReply(email, prenom, nom, ref, branche, isRejected);
 
     localStorage.setItem('bc_rate_v3', Date.now().toString());
     showSuccess(ref);
@@ -1581,12 +1618,21 @@ async function saveAdmin() {
 /* ═══════════════════════════════════════════════════════════
    ADMIN — CANDIDATURES SUPABASE
 ═══════════════════════════════════════════════════════════ */
+const BRANCH_FILTERS = ['watch','parfum','clothes','chocolate','production','writing'];
+
 async function refreshCandidatures(filter) {
     if(filter) currentFilter=filter;
+    document.querySelectorAll('.adm-filter-btn').forEach(b=>b.classList.remove('active'));
+    const activeBtn = document.getElementById('filter-'+currentFilter);
+    if(activeBtn) activeBtn.classList.add('active');
+
     let query=sb.from('candidatures').select('*').order('created_at',{ascending:false});
     if(currentFilter==='new') query=query.eq('statut','new');
     else if(currentFilter==='accepted') query=query.eq('statut','accepted');
     else if(currentFilter==='rejected') query=query.in('statut',['rejected','auto-rejected']);
+    else if(BRANCH_FILTERS.includes(currentFilter)) {
+        query=query.ilike('branche', '%'+currentFilter+'%');
+    }
 
     const {data:cands,error}=await query;
     const tbody=document.getElementById('candidatures-tbody'); if(!tbody) return;
@@ -1597,7 +1643,7 @@ async function refreshCandidatures(filter) {
         <td>${escHtml(c.prenom||'')} ${escHtml(c.nom||'')}</td>
         <td style="font-size:0.75rem">${escHtml(c.email||'')}</td>
         <td>${escHtml(String(c.age||''))}</td>
-        <td>${escHtml(c.nat||'')}</td>
+        <td><span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase">${escHtml(c.branche||'—')}</span></td>
         <td>${escHtml(c.dispo||'')}</td>
         <td style="font-size:0.7rem;white-space:nowrap">${escHtml(c.created_at?new Date(c.created_at).toLocaleString('fr-FR'):'')}</td>
         <td><span class="badge badge-${c.statut==='new'?'new':c.statut==='accepted'?'accepted':c.statut==='pending'?'pending':'rejected'}">${escHtml(c.statut||'')}</span></td>
@@ -1610,12 +1656,21 @@ async function refreshCandidatures(filter) {
     </tr>`).join('');
 }
 
-async function changeStatus(id,statut) {
-    await sb.from('candidatures').update({statut}).eq('id',id);
-    // Envoyer email de refus si rejeté manuellement
-    if(statut==='rejected'){
-        const {data:c}=await sb.from('candidatures').select('email,prenom,nom,ref').eq('id',id).single();
-        if(c) await sendAutoReply(c.email, c.prenom, c.nom, c.ref, true);
+async function changeStatus(id, statut) {
+    if (statut === 'accepted') {
+        const date = prompt('Date de l\'entretien (ex: Samedi 15 Mars 2025) :');
+        if (!date) return;
+        const heure = prompt('Heure de l\'entretien (ex: 14h00) :');
+        if (!heure) return;
+        await sb.from('candidatures').update({statut}).eq('id', id);
+        const {data:c} = await sb.from('candidatures').select('email,prenom,nom,ref,branche').eq('id',id).single();
+        if (c) await sendBrevoEmail(c.email, c.prenom+' '+c.nom, c.ref, BREVO_TPL_ACCEPTE, 'Burton Corporation — Invitation à l\'Entretien', {date, heure, branche: c.branche||'—'});
+    } else if (statut === 'rejected') {
+        await sb.from('candidatures').update({statut}).eq('id', id);
+        const {data:c} = await sb.from('candidatures').select('email,prenom,nom,ref,branche').eq('id',id).single();
+        if (c) await sendBrevoEmail(c.email, c.prenom+' '+c.nom, c.ref, BREVO_TPL_REFUSE_MANUEL, 'Burton Corporation — Décision de Candidature', {branche: c.branche||'—'});
+    } else {
+        await sb.from('candidatures').update({statut}).eq('id', id);
     }
     await refreshCandidatures();
     await refreshDashboard();
@@ -1624,7 +1679,7 @@ async function changeStatus(id,statut) {
 async function viewCand(id) {
     const {data}=await sb.from('candidatures').select('*').eq('id',id).single();
     if(!data) return;
-    alert(`CANDIDATURE ${data.ref}\n\nNom : ${data.prenom} ${data.nom}\nEmail : ${data.email}\nÂge : ${data.age}\nNationalité : ${data.nat}\nDisponibilité : ${data.dispo}\nValeur : ${data.valeur}\nExpérience : ${data.experience}\n\nMOTIVATION :\n${data.motivation}\n\nAPPORT :\n${data.apport}\n\nOBJECTIF :\n${data.objectif}\n\nDÉFI :\n${data.defi}\n\nCompétences : ${data.competences}\nÉquipe : ${data.rating_equipe}/10  Pression : ${data.rating_pression}/10\nSource : ${data.comment}`);
+    alert(`CANDIDATURE ${data.ref}\n\nNom : ${data.prenom} ${data.nom}\nEmail : ${data.email}\nÂge : ${data.age}\nNationalité : ${data.nat}\nDisponibilité : ${data.dispo}\nDivision souhaitée : ${data.branche||'—'}\nValeur : ${data.valeur}\nExpérience : ${data.experience}\n\nMOTIVATION :\n${data.motivation}\n\nAPPORT :\n${data.apport}\n\nOBJECTIF :\n${data.objectif}\n\nDÉFI :\n${data.defi}\n\nCompétences : ${data.competences}\nÉquipe : ${data.rating_equipe}/10  Pression : ${data.rating_pression}/10\nSource : ${data.comment}`);
 }
 
 async function refreshDashboard() {
@@ -1747,6 +1802,10 @@ window.addEventListener('load', async () => {
     document.getElementById('filter-new').addEventListener('click',()=>refreshCandidatures('new'));
     document.getElementById('filter-accepted').addEventListener('click',()=>refreshCandidatures('accepted'));
     document.getElementById('filter-rejected').addEventListener('click',()=>refreshCandidatures('rejected'));
+    ['watch','parfum','clothes','chocolate','production','writing'].forEach(b=>{
+        const btn=document.getElementById('filter-'+b);
+        if(btn) btn.addEventListener('click',()=>refreshCandidatures(b));
+    });
     document.getElementById('reset-content').addEventListener('click',async()=>{
         if(confirm('Réinitialiser tout le contenu aux valeurs par défaut ?')){
             SITE_DATA=JSON.parse(JSON.stringify(DEFAULT_DATA));
