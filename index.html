@@ -1482,7 +1482,10 @@ async function submitApplication() {
 
     const allowedNat=['fr','be','ch','ca','lu','ma','dz','tn','sn','ci','cm','ml','gn','cd','ga','de','es','it','pt','nl','gb','pl','ro'];
     const dispoOrder={'<5':0,'5-10':1,'10-20':2,'>20':3};
-    const isRejected = age<18 || !allowedNat.includes(nat) || (dispoOrder[dispo]||0)<3;
+    const minAge = SITE_DATA.questionnaire?.filtres?.minAge || 18;
+    const minDispo = SITE_DATA.questionnaire?.filtres?.minDispo || '>20';
+    const minDispoIndex = dispoOrder[minDispo] ?? 3;
+    const isRejected = age<minAge || !allowedNat.includes(nat) || (dispoOrder[dispo]||0)<minDispoIndex;
 
     const branche = document.getElementById('f-branche')?.value || '—';
     const candidature = {
