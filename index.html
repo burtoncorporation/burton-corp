@@ -743,10 +743,17 @@
                     <div class="adm-page-title">Candidatures</div>
                     <div class="adm-page-sub">Toutes les candidatures reçues</div>
                     <div style="display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap">
-                        <button class="adm-btn-sm" id="filter-all">Toutes</button>
-                        <button class="adm-btn-sm" id="filter-new">Nouvelles</button>
-                        <button class="adm-btn-sm" id="filter-accepted">Acceptées</button>
-                        <button class="adm-btn-sm" id="filter-rejected">Refusées</button>
+                        <button class="adm-btn-sm adm-filter-btn active" id="filter-all">Toutes</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-new">Nouvelles</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-accepted">Acceptées</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-rejected">Refusées</button>
+                        <span style="color:rgba(255,255,255,0.15);margin:0 0.5rem">|</span>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-watch">Watch</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-parfum">Parfum</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-clothes">Clothes</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-chocolate">Chocolate</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-production">Production</button>
+                        <button class="adm-btn-sm adm-filter-btn" id="filter-writing">Writing</button>
                         <button class="adm-btn-sm adm-btn-success" id="export-csv">Exporter CSV</button>
                         <button class="adm-btn-sm adm-btn-danger" id="clear-candidatures">Vider la liste</button>
                     </div>
@@ -1730,10 +1737,14 @@ window.addEventListener('load', async () => {
         setTimeout(()=>l.style.display='none',1500);
     },2000);
 
-    // Charger config depuis Supabase puis render
-    await loadSiteConfigV2();
+    // Render immédiatement avec données par défaut (rapide)
     renderSite();
     bindObserver();
+    // Charger config depuis Supabase en arrière-plan
+    loadSiteConfigV2().then(() => {
+        renderSite();
+        bindObserver();
+    });
 
     // Nav scroll
     const navbar=document.getElementById('navbar');
@@ -1794,7 +1805,11 @@ window.addEventListener('load', async () => {
     document.getElementById('export-csv').addEventListener('click',exportCSV);
     document.getElementById('clear-candidatures').addEventListener('click',async()=>{
         if(confirm('⚠️ Supprimer TOUTES les candidatures ? Cette action est irréversible.')){
-            await sb.from('candidatures').delete().neq('id','00000000-0000-0000-0000-000000000000');
+            const {data:all} = await sb.from('candidatures').select('id');
+            if(all && all.length > 0) {
+                const ids = all.map(r=>r.id);
+                await sb.from('candidatures').delete().in('id', ids);
+            }
             await refreshCandidatures(); await refreshDashboard();
         }
     });
