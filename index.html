@@ -630,6 +630,7 @@
                 <button class="adm-nav-item" data-section="progression">Progression</button>
                 <button class="adm-nav-item" data-section="selection">Sélection</button>
                 <div class="adm-nav-sep"></div>
+                <button class="adm-nav-item" data-section="questionnaire">Questionnaire</button>
                 <button class="adm-nav-item" data-section="candidatures">Candidatures</button>
                 <button class="adm-nav-item" data-section="config">Configuration</button>
                 <button class="adm-logout" id="adm-logout">Déconnexion</button>
@@ -739,6 +740,75 @@
                         <div id="etapes-admin-list"></div>
                     </div>
                 </div>
+                <!-- QUESTIONNAIRE -->
+                <div class="adm-section" id="sec-questionnaire">
+                    <div class="adm-page-title">Questionnaire</div>
+                    <div class="adm-page-sub">Gérez les divisions disponibles et les textes du formulaire de candidature</div>
+
+                    <div class="adm-block">
+                        <div class="adm-block-title">Divisions disponibles à la candidature</div>
+                        <p style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-bottom:2rem;line-height:1.8">Activez ou désactivez les divisions qui apparaissent dans le formulaire de candidature. Seules les divisions activées seront proposées aux candidats.</p>
+                        <div id="divisions-admin-list">
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+                                <label class="adm-toggle" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:1.2rem;gap:1rem">
+                                    <div class="toggle-wrap"><input type="checkbox" id="div-watch" checked><div class="toggle-slider"></div></div>
+                                    <div><span class="toggle-label" style="display:block;margin-bottom:0.3rem">Watch</span><span style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2)">Division Horlogerie</span></div>
+                                </label>
+                                <label class="adm-toggle" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:1.2rem;gap:1rem">
+                                    <div class="toggle-wrap"><input type="checkbox" id="div-parfum" checked><div class="toggle-slider"></div></div>
+                                    <div><span class="toggle-label" style="display:block;margin-bottom:0.3rem">Parfum</span><span style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2)">Division Olfactive</span></div>
+                                </label>
+                                <label class="adm-toggle" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:1.2rem;gap:1rem">
+                                    <div class="toggle-wrap"><input type="checkbox" id="div-clothes" checked><div class="toggle-slider"></div></div>
+                                    <div><span class="toggle-label" style="display:block;margin-bottom:0.3rem">Clothes</span><span style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2)">Division Vestimentaire</span></div>
+                                </label>
+                                <label class="adm-toggle" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:1.2rem;gap:1rem">
+                                    <div class="toggle-wrap"><input type="checkbox" id="div-chocolate" checked><div class="toggle-slider"></div></div>
+                                    <div><span class="toggle-label" style="display:block;margin-bottom:0.3rem">Chocolate</span><span style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2)">Division Gastronomique</span></div>
+                                </label>
+                                <label class="adm-toggle" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:1.2rem;gap:1rem">
+                                    <div class="toggle-wrap"><input type="checkbox" id="div-production" checked><div class="toggle-slider"></div></div>
+                                    <div><span class="toggle-label" style="display:block;margin-bottom:0.3rem">Production</span><span style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2)">Division Créative</span></div>
+                                </label>
+                                <label class="adm-toggle" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:1.2rem;gap:1rem">
+                                    <div class="toggle-wrap"><input type="checkbox" id="div-writing" checked><div class="toggle-slider"></div></div>
+                                    <div><span class="toggle-label" style="display:block;margin-bottom:0.3rem">Writing</span><span style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.2)">Division Littéraire</span></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="adm-block">
+                        <div class="adm-block-title">Textes du formulaire — Étape 1</div>
+                        <div class="adm-field"><label>Label — Champ Prénom</label><input type="text" id="q-prenom-label" value="Prénom" maxlength="60"></div>
+                        <div class="adm-field"><label>Label — Champ Nom</label><input type="text" id="q-nom-label" value="Nom" maxlength="60"></div>
+                        <div class="adm-field"><label>Label — Champ Email</label><input type="text" id="q-email-label" value="Adresse e-mail" maxlength="60"></div>
+                        <div class="adm-field"><label>Label — Disponibilité</label><input type="text" id="q-dispo-label" value="Disponibilité hebdomadaire" maxlength="80"></div>
+                        <div class="adm-field"><label>Label — Division</label><input type="text" id="q-division-label" value="Division souhaitée" maxlength="80"></div>
+                    </div>
+
+                    <div class="adm-block">
+                        <div class="adm-block-title">Textes du formulaire — Étape 2</div>
+                        <div class="adm-field"><label>Question — Motivation</label><textarea id="q-motivation-label" maxlength="200">Pourquoi souhaitez-vous rejoindre Burton Corporation ?</textarea></div>
+                        <div class="adm-field"><label>Question — Apport</label><textarea id="q-apport-label" maxlength="200">Quelle compétence ou valeur ajoutée apporteriez-vous ?</textarea></div>
+                    </div>
+
+                    <div class="adm-block">
+                        <div class="adm-block-title">Textes du formulaire — Étape 4</div>
+                        <div class="adm-field"><label>Question — Objectif</label><textarea id="q-objectif-label" maxlength="200">Quel objectif souhaitez-vous atteindre dans les 6 prochains mois ?</textarea></div>
+                        <div class="adm-field"><label>Question — Défi</label><textarea id="q-defi-label" maxlength="200">Décrivez un défi que vous avez surmonté et ce que vous en avez retenu</textarea></div>
+                    </div>
+
+                    <div class="adm-block">
+                        <div class="adm-block-title">Critères de filtrage automatique</div>
+                        <div class="adm-grid-3">
+                            <div class="adm-field"><label>Âge minimum</label><input type="number" id="q-min-age" value="18" min="13" max="30"><div class="adm-field-hint">Candidatures sous cet âge → refus automatique</div></div>
+                            <div class="adm-field"><label>Disponibilité minimale</label><div class="select-wrapper" style="position:relative"><select class="adm-input" id="q-min-dispo" style="padding:0.8rem 1rem;margin:0"><option value="<5">&lt; 5h</option><option value="5-10">5–10h</option><option value="10-20">10–20h</option><option value=">20" selected>&gt; 20h</option></select><span style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);pointer-events:none;font-size:0.7rem">↓</span></div><div class="adm-field-hint">En dessous → refus automatique</div></div>
+                            <div class="adm-field"><label>Délai entre soumissions (sec)</label><input type="number" id="q-rate-limit" value="120" min="30" max="3600"><div class="adm-field-hint">Anti-spam</div></div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- CANDIDATURES -->
                 <div class="adm-section" id="sec-candidatures">
                     <div class="adm-page-title">Candidatures</div>
@@ -1005,6 +1075,11 @@ const DEFAULT_DATA = {
         {titre:'Entretien avec le Fondateur',texte:"Discussion approfondie pour comprendre votre vision, vos ambitions et votre potentiel de progression."},
         {titre:'Décision Finale',texte:"La direction collégiale examine votre candidature et prend la décision d'intégration définitive."},
     ],
+    questionnaire:{
+        divisions:{watch:true,parfum:true,clothes:true,chocolate:true,production:true,writing:true},
+        labels:{prenom:'Prénom',nom:'Nom',email:'Adresse e-mail',dispo:'Disponibilité hebdomadaire',division:'Division souhaitée',motivation:'Pourquoi souhaitez-vous rejoindre Burton Corporation ?',apport:'Quelle compétence ou valeur ajoutée apporteriez-vous ?',objectif:'Quel objectif souhaitez-vous atteindre dans les 6 prochains mois ?',defi:'Décrivez un défi que vous avez surmonté et ce que vous en avez retenu'},
+        filtres:{minAge:18,minDispo:'>20',rateLimit:120},
+    },
 };
 
 /* ═══════════════════════════════════════════════════════════
@@ -1083,6 +1158,7 @@ async function saveSiteConfigToSupabase() {
         {cle:'echelons.list', valeur: JSON.stringify(SITE_DATA.echelons)},
         {cle:'stats.list', valeur: JSON.stringify(SITE_DATA.stats)},
         {cle:'etapes.list', valeur: JSON.stringify(SITE_DATA.etapes)},
+        {cle:'questionnaire.config', valeur: JSON.stringify(SITE_DATA.questionnaire)},
     ];
     for (const row of rows) {
         await sb.from('site_configuration').upsert({cle: row.cle, valeur: row.valeur, updated_at: new Date().toISOString()}, {onConflict:'cle'});
@@ -1102,6 +1178,7 @@ async function loadSiteConfigV2() {
                 else if (row.cle === 'echelons.list') SITE_DATA.echelons = parsed;
                 else if (row.cle === 'stats.list') SITE_DATA.stats = parsed;
                 else if (row.cle === 'etapes.list') SITE_DATA.etapes = parsed;
+                else if (row.cle === 'questionnaire.config') SITE_DATA.questionnaire = parsed;
             } catch(e) {}
         });
     } catch(e) {}
@@ -1121,6 +1198,47 @@ function validateEmail(email) { return /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-
 /* ═══════════════════════════════════════════════════════════
    RENDU SITE PUBLIC
 ═══════════════════════════════════════════════════════════ */
+function updateFormDivisions() {
+    const q = SITE_DATA.questionnaire;
+    if (!q) return;
+    const select = document.getElementById('f-branche');
+    if (!select) return;
+    const divMap = {
+        watch: 'Watch — Division Horlogerie',
+        parfum: 'Parfum — Division Olfactive',
+        clothes: 'Clothes — Division Vestimentaire',
+        chocolate: 'Chocolate — Division Gastronomique',
+        production: 'Production — Division Créative',
+        writing: 'Writing — Division Littéraire',
+    };
+    const keys = ['watch','parfum','clothes','chocolate','production','writing'];
+    // Update label
+    const lbl = select.closest('.form-group')?.querySelector('label');
+    if (lbl && q.labels?.division) lbl.firstChild.textContent = q.labels.division + ' ';
+    // Rebuild options
+    select.innerHTML = '<option value="" disabled selected>Sélectionnez une division</option>';
+    keys.forEach(k => {
+        if (q.divisions?.[k] !== false) {
+            const opt = document.createElement('option');
+            opt.value = k.charAt(0).toUpperCase() + k.slice(1);
+            opt.textContent = divMap[k];
+            select.appendChild(opt);
+        }
+    });
+    // Update other labels
+    const labels = q.labels || {};
+    const labelMap = {
+        'f-motivation': 'motivation',
+        'f-apport': 'apport',
+        'f-objectif': 'objectif',
+        'f-defi': 'defi',
+    };
+    Object.entries(labelMap).forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (el && labels[key]) el.closest('.form-group')?.querySelector('label')?.childNodes[0] && (el.closest('.form-group').querySelector('label').firstChild.textContent = labels[key] + ' ');
+    });
+}
+
 function renderSite() {
     const s = SITE_DATA.site;
     document.title = s.title || 'Burton Corporation';
@@ -1456,11 +1574,35 @@ async function populateAdminForms() {
     setField('s-cta-titre',s.ctaTitre); setField('s-cta-disclaimer',s.ctaDisclaimer);
     setField('s-prog-titre',s.progTitre); setField('s-prog-sous',s.progSous);
     setField('s-sel-titre',s.selTitre); setField('s-sel-sous',s.selSous);
+    populateQuestionnaireAdmin();
     renderActuAdmin(SITE_DATA.actualites);
     renderBranchesAdmin(SITE_DATA.branches);
     renderEchelonsAdmin(SITE_DATA.echelons);
     renderStatsAdmin(SITE_DATA.stats);
     renderEtapesAdmin(SITE_DATA.etapes);
+}
+
+function populateQuestionnaireAdmin() {
+    const q = SITE_DATA.questionnaire || {};
+    const divs = q.divisions || {};
+    const labels = q.labels || {};
+    const filtres = q.filtres || {};
+    ['watch','parfum','clothes','chocolate','production','writing'].forEach(k => {
+        const el = document.getElementById('div-'+k);
+        if (el) el.checked = divs[k] !== false;
+    });
+    if (document.getElementById('q-prenom-label')) document.getElementById('q-prenom-label').value = labels.prenom || 'Prénom';
+    if (document.getElementById('q-nom-label')) document.getElementById('q-nom-label').value = labels.nom || 'Nom';
+    if (document.getElementById('q-email-label')) document.getElementById('q-email-label').value = labels.email || 'Adresse e-mail';
+    if (document.getElementById('q-dispo-label')) document.getElementById('q-dispo-label').value = labels.dispo || 'Disponibilité hebdomadaire';
+    if (document.getElementById('q-division-label')) document.getElementById('q-division-label').value = labels.division || 'Division souhaitée';
+    if (document.getElementById('q-motivation-label')) document.getElementById('q-motivation-label').value = labels.motivation || '';
+    if (document.getElementById('q-apport-label')) document.getElementById('q-apport-label').value = labels.apport || '';
+    if (document.getElementById('q-objectif-label')) document.getElementById('q-objectif-label').value = labels.objectif || '';
+    if (document.getElementById('q-defi-label')) document.getElementById('q-defi-label').value = labels.defi || '';
+    if (document.getElementById('q-min-age')) document.getElementById('q-min-age').value = filtres.minAge || 18;
+    if (document.getElementById('q-min-dispo')) document.getElementById('q-min-dispo').value = filtres.minDispo || '>20';
+    if (document.getElementById('q-rate-limit')) document.getElementById('q-rate-limit').value = filtres.rateLimit || 120;
 }
 
 function renderActuAdmin(actus) {
@@ -1603,6 +1745,29 @@ async function saveAdmin() {
     SITE_DATA.stats.forEach((s,i)=>{s.nombre=setVal(`stat-${i}-nombre`);s.label=setVal(`stat-${i}-label`);});
     SITE_DATA.etapes.forEach((e,i)=>{e.titre=setVal(`etape-${i}-titre`);e.texte=setVal(`etape-${i}-texte`);});
 
+    // Questionnaire
+    if (!SITE_DATA.questionnaire) SITE_DATA.questionnaire = {};
+    SITE_DATA.questionnaire.divisions = {};
+    ['watch','parfum','clothes','chocolate','production','writing'].forEach(k => {
+        SITE_DATA.questionnaire.divisions[k] = document.getElementById('div-'+k)?.checked !== false;
+    });
+    SITE_DATA.questionnaire.labels = {
+        prenom: document.getElementById('q-prenom-label')?.value || 'Prénom',
+        nom: document.getElementById('q-nom-label')?.value || 'Nom',
+        email: document.getElementById('q-email-label')?.value || 'Adresse e-mail',
+        dispo: document.getElementById('q-dispo-label')?.value || 'Disponibilité hebdomadaire',
+        division: document.getElementById('q-division-label')?.value || 'Division souhaitée',
+        motivation: document.getElementById('q-motivation-label')?.value || '',
+        apport: document.getElementById('q-apport-label')?.value || '',
+        objectif: document.getElementById('q-objectif-label')?.value || '',
+        defi: document.getElementById('q-defi-label')?.value || '',
+    };
+    SITE_DATA.questionnaire.filtres = {
+        minAge: parseInt(document.getElementById('q-min-age')?.value || '18'),
+        minDispo: document.getElementById('q-min-dispo')?.value || '>20',
+        rateLimit: parseInt(document.getElementById('q-rate-limit')?.value || '120'),
+    };
+
     // Changement mot de passe
     const newPw=setVal('cfg-new-pw'); const confirmPw=setVal('cfg-confirm-pw');
     if(newPw&&newPw===confirmPw&&newPw.length>=6){await savePwHash(simpleHash(newPw));setField('cfg-new-pw','');setField('cfg-confirm-pw','');}
@@ -1740,10 +1905,12 @@ window.addEventListener('load', async () => {
 
     // Render immédiatement avec données par défaut (rapide)
     renderSite();
+    updateFormDivisions();
     bindObserver();
     // Charger config depuis Supabase en arrière-plan
     loadSiteConfigV2().then(() => {
         renderSite();
+        updateFormDivisions();
         bindObserver();
     });
 
