@@ -548,6 +548,7 @@
             </div>
             <div class="form-group"><label class="form-label" for="f-email">Adresse e-mail <span>*</span></label><input class="form-input" type="email" id="f-email" maxlength="120" placeholder="votre@email.com" required autocomplete="off"></div>
             <div class="form-group"><label class="form-label" for="f-disponibilite">Disponibilité hebdomadaire <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-disponibilite" required><option value="" disabled selected>Sélectionnez une plage</option><option value="<5">Moins de 5h / semaine</option><option value="5-10">5 à 10h / semaine</option><option value="10-20">10 à 20h / semaine</option><option value=">20">Plus de 20h / semaine</option></select></div></div>
+            <div class="form-group"><label class="form-label" for="f-branche">Division souhaitée <span>*</span></label><div class="select-wrapper"><select class="form-select" id="f-branche" required><option value="" disabled selected>Sélectionnez une division</option><option value="Watch">Watch — Division Horlogerie</option><option value="Parfum">Parfum — Division Olfactive</option><option value="Clothes">Clothes — Division Vestimentaire</option><option value="Chocolate">Chocolate — Division Gastronomique</option><option value="Production">Production — Division Créative</option><option value="Writing">Writing — Division Littéraire</option></select></div></div>
         </div>
         <!-- ÉTAPE 2 -->
         <div class="form-step" id="step-2">
@@ -1365,7 +1366,7 @@ async function submitApplication() {
     const dispoOrder={'<5':0,'5-10':1,'10-20':2,'>20':3};
     const isRejected = age<18 || !allowedNat.includes(nat) || (dispoOrder[dispo]||0)<3;
 
-    const branche = document.getElementById('f-branche').value || '—';
+    const branche = document.getElementById('f-branche')?.value || '—';
     const candidature = {
         ref, prenom, nom, email, age, nat, dispo,
         branche,
